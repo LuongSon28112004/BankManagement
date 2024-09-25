@@ -71,10 +71,10 @@ namespace BankManagement
 			this.reset();
 			//Load gender dafault
 			this.LoadGender();
-
 			//Load danh sach tat ca cac customer khi form duoc load len
 			this.LoadAllCustomer();
-			
+            //Hover IMG customer none
+            imgCustomerCustomerForm.HoverState.FillColor = Color.FromArgb(40, 42, 45);
 
 			//Đăng ký sự kiện ScrollBar vertical
 			dataGridViewCustomerInforCustomerForm.MouseWheel += dataGridViewCustomerInforCustomerForm_MouseWheel;
@@ -185,7 +185,7 @@ namespace BankManagement
                 // Hiển thị dữ liệu.
                 txtCCCDCustomerForm.Text = cccd;
                 //không cho phép chỉnh sửa dữ liệu căn cước công dân.
-                txtCCCDCustomerForm.Enabled = false;
+                txtCCCDCustomerForm.ReadOnly = true;
                 txtCustomerNameCustomerForm.Text = name;
                 txtPhoneNumberCustomerForm.Text = phone_number;
                 txtDateOfBirthCustomerForm.Text = dateOfBirth;

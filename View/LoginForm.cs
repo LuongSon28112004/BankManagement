@@ -78,11 +78,18 @@ namespace BankManagement
 			string username = txtUsername.Text; //Lấy username từ TextBox
 			string password = txtPassword.Text; //Lấy password từ TextBox
 
-			if (username == "" || password == "")
+			if (username == "")
 			{
 				lblWarningLogin.Text = "Enter username and password!";
+				txtUsername.Focus();
 				return;
 			}
+			if (password == "")
+			{
+                lblWarningLogin.Text = "Enter username and password!";
+                txtPassword.Focus();
+                return;
+            }
 			try
 			{
 				viewModel.LoadLogin(username, password); //Thực hiện truy vấn với username và password từ người dùng nhập
@@ -96,7 +103,8 @@ namespace BankManagement
 				else
 				{
 					lblWarningLogin.Text = "Wrong username or password!";
-				}
+                    txtPassword.Focus();
+                }
 			}
 			catch (Exception ex)
 			{
