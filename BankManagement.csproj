@@ -163,6 +163,8 @@
     <None Include="Image\StaffImage\staff_woman.png" />
     <None Include="Image\StaffImage\staff_man.png" />
     <None Include="Resources\bell_icon.png" />
+    <None Include="Resources\backgroun_login.png" />
+    <None Include="Resources\avatar_login_man.png" />
     <Content Include="Resources\maximize.png" />
     <None Include="Resources\notification_bell.png" />
     <None Include="Resources\staff.png" />

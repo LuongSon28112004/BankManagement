@@ -25,8 +25,9 @@ namespace BankManagement
             InitializeComponent();
             //this.BackColor = ColorTranslator.FromHtml("#34AB53");
             btnCloseLogin.HoverState.FillColor = Color.FromArgb(255, 90, 90); //Thuộc tính hover btnClose "đỏ"
+			btnMinimizeLogin.HoverState.FillColor = Color.FromArgb(50, 50, 73); //Thuộc tính hover btnMinimize
 
-			viewModel = new LoginViewModel();
+            viewModel = new LoginViewModel();
         }
 
 
@@ -103,5 +104,5 @@ namespace BankManagement
 				lblWarningLogin.Text = "Lỗi: " + ex.Message;
 			}
 		}
-	}
+    }
 }

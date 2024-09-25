@@ -83,6 +83,26 @@ namespace BankManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap avatar_login_man {
+            get {
+                object obj = ResourceManager.GetObject("avatar_login_man", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backgroun_login {
+            get {
+                object obj = ResourceManager.GetObject("backgroun_login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bell_icon {
             get {
                 object obj = ResourceManager.GetObject("bell_icon", resourceCulture);
