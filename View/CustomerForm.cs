@@ -134,7 +134,10 @@ namespace BankManagement
 			//tạo 1 customerInfor
 			CustomerInfor customerInfor = new CustomerInfor(id, name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo);
 			viewModel.addCustomer(customerInfor);
-		}
+            //xóa tất cả các dữ liệu trong datagridview
+            dataGridViewCustomerInforCustomerForm.Rows.Clear();
+            this.LoadAllCustomer();
+        }
 
 		private void btnSearchCustomerForm_Click(object sender, EventArgs e)
 		{
