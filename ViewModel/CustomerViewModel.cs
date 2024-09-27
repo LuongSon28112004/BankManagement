@@ -19,14 +19,77 @@ namespace BankManagement.ViewModel
         private string name;
         private string email;
         private string job;
-        private string phone_number;
-        private DateTime date_of_birth;
+        private string phoneNumber;
+        private DateTime dateOfBirth;
         private string nationality;
         private string address;
+        private DataTable dataTableCustomerInfor;
 
         public CustomerViewModel()
         {
             customerInforRepository = new CustomerInforRepository();
+        }
+
+        //Getter, Setter
+        // Getter và Setter cho từng thuộc tính
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public string Cccd
+        {
+            get { return cccd; }
+            set { cccd = value; }
+        }
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
+        public string Job
+        {
+            get { return job; }
+            set { job = value; }
+        }
+
+        public string PhoneNumber
+        {
+            get { return phoneNumber; }
+            set { phoneNumber = value; }
+        }
+
+        public DateTime DateOfBirth
+        {
+            get { return dateOfBirth; }
+            set { dateOfBirth = value; }
+        }
+
+        public string Nationality
+        {
+            get { return nationality; }
+            set { nationality = value; }
+        }
+
+        public string Address
+        {
+            get { return address; }
+            set { address = value; }
+        }
+
+        public DataTable DataTableCustomerInfor
+        {
+            get { return dataTableCustomerInfor; }
+            set { dataTableCustomerInfor = value; }
         }
 
         //Lấy thông tin từ repository
@@ -38,15 +101,15 @@ namespace BankManagement.ViewModel
             this.name = customerInfor.Name;
             this.email = customerInfor.Email;
             this.job = customerInfor.Job;
-            this.phone_number = customerInfor.PhoneNumber;
-            this.date_of_birth = customerInfor.DateOfBirth;
+            this.phoneNumber = customerInfor.PhoneNumber;
+            this.dateOfBirth = customerInfor.DateOfBirth;
             this.nationality = customerInfor.Nationality;
             this.address = customerInfor.Address;
         }
 
-        public void addCustomer(CustomerInfor customer)
+        public void addCustomer()
         {
-            CustomerInfor customerInfor = customerInforRepository.getCustomerInforByCccd(customer.Cccd);
+            CustomerInfor customerInfor = customerInforRepository.getCustomerInforByCccd(this.Cccd);
             if (customerInfor != null)
             {
                 MessageBox.Show("Đã có Khách Hàng này trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -54,7 +117,8 @@ namespace BankManagement.ViewModel
             }
             else if (customerInfor == null)
             {
-                customerInforRepository.addCustomer(customer);
+                CustomerInfor cI = new CustomerInfor(0, this.name, this.cccd, this.phoneNumber, this.email, this.job, this.nationality, this.address, this.dateOfBirth, "");
+                customerInforRepository.addCustomer(cI);
             }
         }
 
@@ -66,16 +130,78 @@ namespace BankManagement.ViewModel
             }
         }
 
-        public DataTable SearchCustomer(string Cccd)
+        public void SearchCustomer(string Cccd)
         {
-            DataTable dataTable = customerInforRepository.searchCustomerByCccd(Cccd);
-            return dataTable;
+            this.dataTableCustomerInfor = customerInforRepository.searchCustomerByCccd(Cccd);
         }
 
-        public DataTable LoadAllCustomer()
+        public void LoadAllCustomer()
         {
-            DataTable datatable = customerInforRepository.LoadAllCustomer();
-            return datatable;
+            this.dataTableCustomerInfor = customerInforRepository.LoadAllCustomer();
+        }
+
+        public string CheckFormatCustomerForm(string txtCCCDCustomerForm,
+                                              string txtCustomerNameCustomerForm, 
+                                              string txtEmailCustomerForm, 
+                                              string txtJobCustomerForm,
+                                              string txtPhoneNumberCustomerForm,
+                                              string txtDateOfBirthCustomerForm,
+                                              string txtNationalityCustomerForm,
+                                              string txtAddressCustomerForm)
+        {
+            string error = "0";
+            if (txtCCCDCustomerForm == "" ||
+                txtCustomerNameCustomerForm == "" ||
+                txtEmailCustomerForm == "" ||
+                txtJobCustomerForm == "" ||
+                txtPhoneNumberCustomerForm == "" ||
+                txtDateOfBirthCustomerForm == "" ||
+                txtNationalityCustomerForm == "" ||
+                txtAddressCustomerForm == "")
+            {
+                error = "Vui lòng điền đầy đủ thông tin!";
+                return error;
+            }
+
+            // Kiểm tra định dạng của CCCD phải toàn là số
+            if (!txtCCCDCustomerForm.All(char.IsDigit))
+            {
+                error = "Vui lòng nhập đúng định dạng CCCD!";
+                return error;
+            }
+
+            // Tên chỉ được phép là chữ cái in hoa
+            if (!txtCustomerNameCustomerForm.All(c => char.IsUpper(c) || char.IsWhiteSpace(c)))
+            {
+                error = "Vui lòng nhập tên khách hàng đúng định dạng!\nVD: DINH NGOC THE";
+                return error;
+            }
+
+            // Kiểm tra định dạng SĐT phải toàn là số
+            if (!txtPhoneNumberCustomerForm.All(char.IsDigit))
+            {
+                error = "Vui lòng nhập đúng định dạng SĐT!";
+                return error;
+            }
+
+            // Kiểm tra định dạng của DateOfBirth
+            if (!DateTime.TryParseExact(txtDateOfBirthCustomerForm, "dd/MM/yyyy",
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    System.Globalization.DateTimeStyles.None, out _))
+            {
+                error = "Vui lòng nhập đúng định dạng ngày sinh: DD/MM/YYYY!";
+                return error;
+            }
+
+            // Định nghĩa biểu thức chính quy để kiểm tra định dạng email
+            var emailPattern = @"[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"; 
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtEmailCustomerForm, emailPattern))
+            {
+                error = "Địa chỉ email không hợp lệ!";
+                return error;
+            }
+
+            return error;
         }
 
 

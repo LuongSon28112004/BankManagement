@@ -24,143 +24,92 @@ namespace BankManagement
 			this.ShowInTaskbar = false;
 		}
 
-		public void LoadGender()
+        private void CustomerForm_Load(object sender, EventArgs e)
+        {
+            //reset các textbox và combo box
+            this.reset();
+
+            //Load gender dafault
+            this.LoadGender();
+
+            //Load danh sach tat ca cac customer khi form duoc load len
+            this.LoadAllCustomer();
+
+            //Hover IMG customer none
+            imgCustomerCustomerForm.HoverState.FillColor = Color.FromArgb(40, 42, 45);
+
+            //Đăng ký sự kiện ScrollBar vertical
+            dataGridViewCustomerInforCustomerForm.MouseWheel += dataGridViewCustomerInforCustomerForm_MouseWheel;
+        }
+
+        //Sự kiện sử dụng con lăn chuột để kéo dataGridView
+        private void dataGridViewCustomerInforCustomerForm_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                if (dataGridViewCustomerInforCustomerForm.FirstDisplayedScrollingRowIndex > 0)
+                {
+                    dataGridViewCustomerInforCustomerForm.FirstDisplayedScrollingRowIndex--;
+                }
+            }
+            else if (e.Delta < 0)
+            {
+                if (dataGridViewCustomerInforCustomerForm.FirstDisplayedScrollingRowIndex < dataGridViewCustomerInforCustomerForm.RowCount - 1)
+                {
+                    dataGridViewCustomerInforCustomerForm.FirstDisplayedScrollingRowIndex++;
+                }
+            }
+        }
+
+        public void LoadGender()
 		{
             cbGenderCustomerForm.Items.Add("Male");
             cbGenderCustomerForm.Items.Add("Female");
         }
 
-		public void LoadAllCustomer()
+        public void LoadAllCustomer()
 		{
-			DataTable dt = viewModel.LoadAllCustomer();
+			viewModel.LoadAllCustomer();
             //duyệt datatable để lấy các thông tin hiển thị lên datagridview
-            foreach (DataRow row in dt.Rows)
-            {
-                int id = Convert.ToInt32(row["id"]);
-                string cccd = row["cccd"].ToString();
-                string name = row["name"].ToString();
-                string phone_number = row["phone_number"].ToString();
-                // Parse and format the dateOfBirth to only display the date part
-                DateTime dateOfBirth = DateTime.Parse(row["date_of_birth"].ToString());
-                string formattedDateOfBirth = dateOfBirth.ToString("dd/MM/yyyy");
-                string address = row["address"].ToString();
-                string nationality = row["nationality"].ToString();
-                string job = row["job"].ToString();
-                string email = row["email"].ToString();
-
-                dataGridViewCustomerInforCustomerForm.Rows.Add(id, cccd, name, phone_number, formattedDateOfBirth, address, nationality, job, email);
-            }
+            this.UpdateDataGridView(viewModel.DataTableCustomerInfor);
         }
-
-		public void reset()
-		{
-			txtCCCDCustomerForm.Text = "";
-            txtCCCDCustomerForm.Enabled = true;
-            txtCustomerNameCustomerForm.Text = "";
-            txtPhoneNumberCustomerForm.Text = "";
-            txtDateOfBirthCustomerForm.Text = "";
-            txtAddressCustomerForm.Text = "";
-            txtNationalityCustomerForm.Text = "";
-            txtJobCustomerForm.Text = "";
-            txtEmailCustomerForm.Text = "";
-        }
-
-		private void CustomerForm_Load(object sender, EventArgs e)
-		{
-			//reset các textbox và combo box
-			this.reset();
-			//Load gender dafault
-			this.LoadGender();
-			//Load danh sach tat ca cac customer khi form duoc load len
-			this.LoadAllCustomer();
-            //Hover IMG customer none
-            imgCustomerCustomerForm.HoverState.FillColor = Color.FromArgb(40, 42, 45);
-
-			//Đăng ký sự kiện ScrollBar vertical
-			dataGridViewCustomerInforCustomerForm.MouseWheel += dataGridViewCustomerInforCustomerForm_MouseWheel;
-		}
-
-        private void cbGenderCustomerForm_Paint(object sender, PaintEventArgs e)
-        {
-            // Lấy kích thước của ComboBox
-            Rectangle rect = new Rectangle(0, 0, cbGenderCustomerForm.Width, cbGenderCustomerForm.Height);
-
-            // Tùy chỉnh vẽ viền
-            e.Graphics.DrawRectangle(new Pen(Color.Red, 2), rect);
-        }
-
-        //Sự kiện sử dụng con lăn chuột để kéo dataGridView
-        private void dataGridViewCustomerInforCustomerForm_MouseWheel(object sender, MouseEventArgs e)
-		{
-			if (e.Delta > 0)
-			{
-				if (dataGridViewCustomerInforCustomerForm.FirstDisplayedScrollingRowIndex > 0)
-				{
-					dataGridViewCustomerInforCustomerForm.FirstDisplayedScrollingRowIndex--;
-				}
-			}
-			else if (e.Delta < 0)
-			{
-				if (dataGridViewCustomerInforCustomerForm.FirstDisplayedScrollingRowIndex < dataGridViewCustomerInforCustomerForm.RowCount - 1)
-				{
-					dataGridViewCustomerInforCustomerForm.FirstDisplayedScrollingRowIndex++;
-				}
-			}
-		}
 
 		private void btnAddCustomerForm_Click(object sender, EventArgs e)
 		{
-            if (txtCCCDCustomerForm.Text == "" || txtCustomerNameCustomerForm.Text == "" || txtPhoneNumberCustomerForm.Text == "" 
-				|| txtDateOfBirthCustomerForm.Text == "" || txtAddressCustomerForm.Text == "" || txtNationalityCustomerForm.Text == "" 
-				|| txtJobCustomerForm.Text == "" || txtEmailCustomerForm.Text == "")
+            string error = viewModel.CheckFormatCustomerForm(txtCCCDCustomerForm.Text,
+                                                             txtCustomerNameCustomerForm.Text,
+                                                             txtEmailCustomerForm.Text,
+                                                             txtJobCustomerForm.Text,
+                                                             txtPhoneNumberCustomerForm.Text,
+                                                             txtDateOfBirthCustomerForm.Text,
+                                                             txtNationalityCustomerForm.Text,
+                                                             txtAddressCustomerForm.Text);
+
+            if (error != "0")
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"{error}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             //Lấy các thông tin từ các textBox
-            int id = 0;
-			string cccd = txtCCCDCustomerForm.Text;
-			string name = txtCustomerNameCustomerForm.Text;
-			string phone_number = txtPhoneNumberCustomerForm.Text;
-			DateTime date_of_birth = DateTime.Parse(txtDateOfBirthCustomerForm.Text);
-			date_of_birth.ToString("yyyy-MM-dd");
-			string address = txtAddressCustomerForm.Text;
-			string nationality = txtNationalityCustomerForm.Text;
-			string job = txtJobCustomerForm.Text;
-			string email = txtEmailCustomerForm.Text;
-			string photo = "";
+            this.UpdateViewModelFromForm();
 
+			//CustomerInfor customerInfor = new CustomerInfor(id, name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo);
+			viewModel.addCustomer();
 
-			//tạo 1 customerInfor
-			CustomerInfor customerInfor = new CustomerInfor(id, name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo);
-			viewModel.addCustomer(customerInfor);
-            //xóa tất cả các dữ liệu trong datagridview
+            //Thay thế tất cả các dữ liệu trong datagridview
             dataGridViewCustomerInforCustomerForm.Rows.Clear();
             this.LoadAllCustomer();
         }
 
 		private void btnSearchCustomerForm_Click(object sender, EventArgs e)
 		{
-			//datatable trả về 1 bảng các customer 
-            DataTable dt = viewModel.SearchCustomer(txtSearchCustomerForm.Text);
+			//Lấy ra các Customer phù hợp
+            viewModel.SearchCustomer(txtSearchCustomerForm.Text);
+
 			//xóa tất cả các dữ liệu trong datagridview
             dataGridViewCustomerInforCustomerForm.Rows.Clear();
-            //duyệt datatable để lấy các thông tin hiển thị lên datagridview
-            foreach (DataRow row in dt.Rows)
-			{
-				int id = Convert.ToInt32(row["id"]);
-				string cccd = row["cccd"].ToString();
-				string name = row["name"].ToString();
-				string phone_number = row["phone_number"].ToString();
-                // Parse and format the dateOfBirth to only display the date part
-                DateTime dateOfBirth = DateTime.Parse(row["date_of_birth"].ToString());
-                string formattedDateOfBirth = dateOfBirth.ToString("dd/MM/yyyy");
-                string address = row["address"].ToString();
-				string nationality = row["nationality"].ToString();
-				string job = row["job"].ToString() ;
-				string email = row["email"].ToString();
-                dataGridViewCustomerInforCustomerForm.Rows.Add(id, cccd, name, phone_number, formattedDateOfBirth, address , nationality , job , email);
-            }
+
+            this.UpdateDataGridView(viewModel.DataTableCustomerInfor);
         }
 
         private void dataGridViewCustomerInforCustomerForm_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -237,6 +186,65 @@ namespace BankManagement
         private void btnResetCustomerForm_Click(object sender, EventArgs e)
         {
             this.reset();
+            //xóa tất cả các dữ liệu trong datagridview
+            dataGridViewCustomerInforCustomerForm.Rows.Clear();
+            this.LoadAllCustomer();
+        }
+        private void reset()
+        {
+            txtSearchCustomerForm.Text = "";
+            txtCCCDCustomerForm.Text = "";
+            txtCCCDCustomerForm.ReadOnly = false;
+            txtCustomerNameCustomerForm.Text = "";
+            txtPhoneNumberCustomerForm.Text = "";
+            txtDateOfBirthCustomerForm.Text = "";
+            txtAddressCustomerForm.Text = "";
+            txtNationalityCustomerForm.Text = "";
+            txtJobCustomerForm.Text = "";
+            txtEmailCustomerForm.Text = "";
+        }
+        private void UpdateViewModelFromForm()
+        {
+            viewModel.Cccd = txtCCCDCustomerForm.Text;
+            viewModel.Name = txtCustomerNameCustomerForm.Text;
+            viewModel.Email = txtEmailCustomerForm.Text;
+            viewModel.Job = txtJobCustomerForm.Text;
+            viewModel.PhoneNumber = txtPhoneNumberCustomerForm.Text;
+            viewModel.DateOfBirth = DateTime.Parse(txtDateOfBirthCustomerForm.Text);
+            viewModel.Nationality = txtNationalityCustomerForm.Text;
+            viewModel.Address = txtAddressCustomerForm.Text;
+        }
+
+        private void UpdateFormFromViewModel()
+        {
+            txtCCCDCustomerForm.Text = viewModel.Cccd;
+            txtCustomerNameCustomerForm.Text = viewModel.Name;
+            txtEmailCustomerForm.Text = viewModel.Email;
+            txtJobCustomerForm.Text = viewModel.Job;
+            txtPhoneNumberCustomerForm.Text = viewModel.PhoneNumber;
+            txtDateOfBirthCustomerForm.Text = viewModel.DateOfBirth.ToString("yyyy-MM-dd");
+            txtNationalityCustomerForm.Text = viewModel.Nationality;
+            txtAddressCustomerForm.Text = viewModel.Address;
+        }
+
+        private void UpdateDataGridView(DataTable dataTable)
+        {
+            foreach (DataRow row in dataTable.Rows)
+            {
+                int id = Convert.ToInt32(row["id"]);
+                string cccd = row["cccd"].ToString();
+                string name = row["name"].ToString();
+                string phone_number = row["phone_number"].ToString();
+                // Parse and format the dateOfBirth to only display the date part
+                DateTime dateOfBirth = DateTime.Parse(row["date_of_birth"].ToString());
+                string formattedDateOfBirth = dateOfBirth.ToString("dd/MM/yyyy");
+                string address = row["address"].ToString();
+                string nationality = row["nationality"].ToString();
+                string job = row["job"].ToString();
+                string email = row["email"].ToString();
+
+                dataGridViewCustomerInforCustomerForm.Rows.Add(id, cccd, name, phone_number, formattedDateOfBirth, address, nationality, job, email);
+            }
         }
     }
 }

@@ -72,7 +72,7 @@ namespace BankManagement.Model
 
         public DataTable searchCustomerByCccd(string cccd)//moi lan truy van duoc nhieu customer voi chuoi tuong tu 
         {
-            DataTable dt = new DataTable();
+            DataTable dataTableCustomerInfor = new DataTable();
             // Tạo truy vấn SQL sử dụng LIKE để tìm kiếm chuỗi tương tự
             string query = "SELECT id, name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo " + "FROM customer_infor " +"WHERE cccd LIKE @Cccd";
 
@@ -89,9 +89,9 @@ namespace BankManagement.Model
                         conn.Open();
 
                         // Sử dụng SqlDataAdapter để điền dữ liệu vào DataTable
-                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd))
                         {
-                            da.Fill(dt);
+                            sqlDataAdapter.Fill(dataTableCustomerInfor);
                         }
                     }
                 }
@@ -103,7 +103,7 @@ namespace BankManagement.Model
             }
 
             // Trả về DataTable chứa các bản ghi tìm kiếm được
-            return dt;
+            return dataTableCustomerInfor;
         }
 
         public DataTable LoadAllCustomer()//truy van het tat ca customer trong csdl 
@@ -170,7 +170,7 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                 }
-                MessageBox.Show("Addcustomer successful !", "successfull", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
