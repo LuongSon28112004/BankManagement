@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -26,12 +27,15 @@ namespace BankManagement
 
         private void CustomerForm_Load(object sender, EventArgs e)
         {
-            //reset các textbox và combo box
-            this.reset();
 
-            //Load gender dafault
+            //Load gender default
             this.LoadGender();
 
+            //Load status default
+            this.LoadStatus();
+
+            //reset các textbox và combo box
+            this.reset();
             //Load danh sach tat ca cac customer khi form duoc load len
             this.LoadAllCustomer();
 
@@ -67,6 +71,12 @@ namespace BankManagement
             cbGenderCustomerForm.Items.Add("Female");
         }
 
+        public void LoadStatus()
+        {
+            cbStatusCustomerForm.Items.Add("active");
+            cbStatusCustomerForm.Items.Add("inActive");
+        }
+
         public void LoadAllCustomer()
 		{
 			viewModel.LoadAllCustomer();
@@ -76,6 +86,10 @@ namespace BankManagement
 
 		private void btnAddCustomerForm_Click(object sender, EventArgs e)
 		{
+            // Kiểm tra nếu ComboBox Status không chọn thì gán "" cho Status
+            string status = cbStatusCustomerForm.SelectedItem != null ? cbStatusCustomerForm.SelectedItem.ToString() : "";
+            // Kiểm tra nếu ComboBox Gender không chọn thì gán "" cho Gender
+            string gender = cbGenderCustomerForm.SelectedItem != null ? cbGenderCustomerForm.SelectedItem.ToString() : "";
             string error = viewModel.CheckFormatCustomerForm(txtCCCDCustomerForm.Text,
                                                              txtCustomerNameCustomerForm.Text,
                                                              txtEmailCustomerForm.Text,
@@ -83,7 +97,7 @@ namespace BankManagement
                                                              txtPhoneNumberCustomerForm.Text,
                                                              txtDateOfBirthCustomerForm.Text,
                                                              txtNationalityCustomerForm.Text,
-                                                             txtAddressCustomerForm.Text);
+                                                             txtAddressCustomerForm.Text , status , gender);
 
             if (error != "0")
             {
@@ -93,7 +107,7 @@ namespace BankManagement
             //Lấy các thông tin từ các textBox
             this.UpdateViewModelFromForm();
 
-			//CustomerInfor customerInfor = new CustomerInfor(id, name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo);
+			//add customer form viewModel
 			viewModel.addCustomer();
 
             //Thay thế tất cả các dữ liệu trong datagridview
@@ -130,6 +144,9 @@ namespace BankManagement
 				string nationality = selectedRow.Cells["nationality"].Value.ToString();
 				string job = selectedRow.Cells["job"].Value.ToString();
 				string email = selectedRow.Cells["email"].Value.ToString();
+                string gender = selectedRow.Cells["Gender"].Value.ToString();
+                string status = selectedRow.Cells["Status"].Value.ToString();
+
 
                 // Hiển thị dữ liệu.
                 txtCCCDCustomerForm.Text = cccd;
@@ -142,42 +159,43 @@ namespace BankManagement
                 txtNationalityCustomerForm.Text = nationality;
                 txtJobCustomerForm.Text = job;
                 txtEmailCustomerForm.Text = email;
+                cbGenderCustomerForm.SelectedIndex = (gender == "Male") ? 0 : 1;
+                cbStatusCustomerForm.SelectedIndex = (status == "Active") ? 0 : 1;
+                cbStatusCustomerForm.Enabled = true;
             }
         }
 
         private void btnUpdateCustomerForm_Click(object sender, EventArgs e)
         {
-            if (txtCCCDCustomerForm.Text == "" || txtCustomerNameCustomerForm.Text == "" || txtPhoneNumberCustomerForm.Text == ""
-                || txtDateOfBirthCustomerForm.Text == "" || txtAddressCustomerForm.Text == "" || txtNationalityCustomerForm.Text == ""
-                || txtJobCustomerForm.Text == "" || txtEmailCustomerForm.Text == "")
-            {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if(txtCCCDCustomerForm.Enabled == true)
+            if (txtCCCDCustomerForm.ReadOnly == false)
             {
                 MessageBox.Show("Phải chọn các tài khoản có sẵn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            // Kiểm tra nếu ComboBox Status không chọn thì gán "" cho Status
+            string status = cbStatusCustomerForm.SelectedItem != null ? cbStatusCustomerForm.SelectedItem.ToString() : "";
+            // Kiểm tra nếu ComboBox Gender không chọn thì gán "" cho Gender
+            string gender = cbGenderCustomerForm.SelectedItem != null ? cbGenderCustomerForm.SelectedItem.ToString() : "";
+            string error = viewModel.CheckFormatCustomerForm(txtCCCDCustomerForm.Text,
+                                                              txtCustomerNameCustomerForm.Text,
+                                                              txtEmailCustomerForm.Text,
+                                                              txtJobCustomerForm.Text,
+                                                              txtPhoneNumberCustomerForm.Text,
+                                                              txtDateOfBirthCustomerForm.Text,
+                                                              txtNationalityCustomerForm.Text,
+                                                              txtAddressCustomerForm.Text ,status , gender);
 
-            //Lấy các thông tin từ các textBox
-            int id = 0;
-            string cccd = txtCCCDCustomerForm.Text;
-            string name = txtCustomerNameCustomerForm.Text;
-            string phone_number = txtPhoneNumberCustomerForm.Text;
-            DateTime date_of_birth = DateTime.Parse(txtDateOfBirthCustomerForm.Text);
-            date_of_birth.ToString("yyyy-MM-dd");
-            string address = txtAddressCustomerForm.Text;
-            string nationality = txtNationalityCustomerForm.Text;
-            string job = txtJobCustomerForm.Text;
-            string email = txtEmailCustomerForm.Text;
-            string photo = "";
+            if (error != "0")
+            {
+                MessageBox.Show($"{error}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
 
-            //tạo 1 customerInfor
-            CustomerInfor customerInfor = new CustomerInfor(id, name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo);
-            viewModel.updateCustomer(customerInfor);
+            //lấy dữ liệu từ các textBox
+            this.UpdateViewModelFromForm();
+
+            viewModel.updateCustomer();
             //xóa tất cả các dữ liệu trong datagridview
             dataGridViewCustomerInforCustomerForm.Rows.Clear();
             this.LoadAllCustomer();
@@ -186,45 +204,9 @@ namespace BankManagement
         private void btnResetCustomerForm_Click(object sender, EventArgs e)
         {
             this.reset();
-            //xóa tất cả các dữ liệu trong datagridview
-            dataGridViewCustomerInforCustomerForm.Rows.Clear();
-            this.LoadAllCustomer();
-        }
-        private void reset()
-        {
-            txtSearchCustomerForm.Text = "";
-            txtCCCDCustomerForm.Text = "";
-            txtCCCDCustomerForm.ReadOnly = false;
-            txtCustomerNameCustomerForm.Text = "";
-            txtPhoneNumberCustomerForm.Text = "";
-            txtDateOfBirthCustomerForm.Text = "";
-            txtAddressCustomerForm.Text = "";
-            txtNationalityCustomerForm.Text = "";
-            txtJobCustomerForm.Text = "";
-            txtEmailCustomerForm.Text = "";
-        }
-        private void UpdateViewModelFromForm()
-        {
-            viewModel.Cccd = txtCCCDCustomerForm.Text;
-            viewModel.Name = txtCustomerNameCustomerForm.Text;
-            viewModel.Email = txtEmailCustomerForm.Text;
-            viewModel.Job = txtJobCustomerForm.Text;
-            viewModel.PhoneNumber = txtPhoneNumberCustomerForm.Text;
-            viewModel.DateOfBirth = DateTime.Parse(txtDateOfBirthCustomerForm.Text);
-            viewModel.Nationality = txtNationalityCustomerForm.Text;
-            viewModel.Address = txtAddressCustomerForm.Text;
-        }
-
-        private void UpdateFormFromViewModel()
-        {
-            txtCCCDCustomerForm.Text = viewModel.Cccd;
-            txtCustomerNameCustomerForm.Text = viewModel.Name;
-            txtEmailCustomerForm.Text = viewModel.Email;
-            txtJobCustomerForm.Text = viewModel.Job;
-            txtPhoneNumberCustomerForm.Text = viewModel.PhoneNumber;
-            txtDateOfBirthCustomerForm.Text = viewModel.DateOfBirth.ToString("yyyy-MM-dd");
-            txtNationalityCustomerForm.Text = viewModel.Nationality;
-            txtAddressCustomerForm.Text = viewModel.Address;
+            ////xóa tất cả các dữ liệu trong datagridview
+            //dataGridViewCustomerInforCustomerForm.Rows.Clear();
+            //this.LoadAllCustomer();
         }
 
         private void UpdateDataGridView(DataTable dataTable)
@@ -242,9 +224,74 @@ namespace BankManagement
                 string nationality = row["nationality"].ToString();
                 string job = row["job"].ToString();
                 string email = row["email"].ToString();
+                string gender = row["gender"].ToString();
+                string status = row["Status"].ToString();
 
-                dataGridViewCustomerInforCustomerForm.Rows.Add(id, cccd, name, phone_number, formattedDateOfBirth, address, nationality, job, email);
+                dataGridViewCustomerInforCustomerForm.Rows.Add(id, cccd, name, phone_number, formattedDateOfBirth, address, nationality, job, email, gender, status);
             }
+        }
+
+        private void btnDeleteCustomerForm_Click(object sender, EventArgs e)
+        {
+            //phải chọn các tài khoản có sẵn từ bảng 
+            if (txtCCCDCustomerForm.ReadOnly == false)
+            {
+                MessageBox.Show("Phải chọn các tài khoản có sẵn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //lấy dữ liệu từ các textBox
+            this.UpdateViewModelFromForm();
+
+            viewModel.deleteCustomer();
+
+            //xóa tất cả các dữ liệu trong datagridview
+            dataGridViewCustomerInforCustomerForm.Rows.Clear();
+            this.LoadAllCustomer();
+
+
+        }
+        private void reset()
+        {
+            txtSearchCustomerForm.Text = "";
+            txtCCCDCustomerForm.Text = "";
+            txtCCCDCustomerForm.ReadOnly = false;
+            txtCustomerNameCustomerForm.Text = "";
+            txtPhoneNumberCustomerForm.Text = "";
+            txtDateOfBirthCustomerForm.Text = "";
+            txtAddressCustomerForm.Text = "";
+            txtNationalityCustomerForm.Text = "";
+            txtJobCustomerForm.Text = "";
+            txtEmailCustomerForm.Text = "";
+            cbGenderCustomerForm.SelectedIndex = -1;
+            cbStatusCustomerForm.SelectedIndex = 0;
+            cbStatusCustomerForm.Enabled = false;
+        }
+        private void UpdateViewModelFromForm()
+        {
+            viewModel.Cccd = txtCCCDCustomerForm.Text;
+            viewModel.Name = txtCustomerNameCustomerForm.Text;
+            viewModel.Email = txtEmailCustomerForm.Text;
+            viewModel.Job = txtJobCustomerForm.Text;
+            viewModel.PhoneNumber = txtPhoneNumberCustomerForm.Text;
+            viewModel.DateOfBirth = DateTime.Parse(txtDateOfBirthCustomerForm.Text);
+            viewModel.Nationality = txtNationalityCustomerForm.Text;
+            viewModel.Address = txtAddressCustomerForm.Text;
+            viewModel.Status = cbStatusCustomerForm.SelectedItem.ToString();
+            viewModel.Gender = cbGenderCustomerForm.SelectedItem.ToString();
+        }
+
+
+        private void UpdateFormFromViewModel()
+        {
+            txtCCCDCustomerForm.Text = viewModel.Cccd;
+            txtCustomerNameCustomerForm.Text = viewModel.Name;
+            txtEmailCustomerForm.Text = viewModel.Email;
+            txtJobCustomerForm.Text = viewModel.Job;
+            txtPhoneNumberCustomerForm.Text = viewModel.PhoneNumber;
+            txtDateOfBirthCustomerForm.Text = viewModel.DateOfBirth.ToString("yyyy-MM-dd");
+            txtNationalityCustomerForm.Text = viewModel.Nationality;
+            txtAddressCustomerForm.Text = viewModel.Address;
         }
     }
 }

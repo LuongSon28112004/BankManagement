@@ -57,6 +57,14 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtJobCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.dataGridViewCustomerInforCustomerForm = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbGenderCustomerForm = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.imgCustomerCustomerForm = new Guna.UI2.WinForms.Guna2Button();
+            this.btnImportCustomerForm = new Guna.UI2.WinForms.Guna2Button();
+            this.btnResetCustomerForm = new Guna.UI2.WinForms.Guna2Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cbStatusCustomerForm = new Guna.UI2.WinForms.Guna2ComboBox();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cccd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,12 +74,8 @@
             this.nationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.job = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbGenderCustomerForm = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.imgCustomerCustomerForm = new Guna.UI2.WinForms.Guna2Button();
-            this.btnImportCustomerForm = new Guna.UI2.WinForms.Guna2Button();
-            this.btnResetCustomerForm = new Guna.UI2.WinForms.Guna2Button();
+            this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomerInforCustomerForm)).BeginInit();
             this.SuspendLayout();
             // 
@@ -374,6 +378,7 @@
             this.btnDeleteCustomerForm.Size = new System.Drawing.Size(81, 35);
             this.btnDeleteCustomerForm.TabIndex = 13;
             this.btnDeleteCustomerForm.Text = "Delete";
+            this.btnDeleteCustomerForm.Click += new System.EventHandler(this.btnDeleteCustomerForm_Click);
             // 
             // label9
             // 
@@ -518,7 +523,9 @@
             this.address,
             this.nationality,
             this.job,
-            this.email});
+            this.email,
+            this.Gender,
+            this.Status});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -572,83 +579,6 @@
             this.dataGridViewCustomerInforCustomerForm.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewCustomerInforCustomerForm.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dataGridViewCustomerInforCustomerForm.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCustomerInforCustomerForm_CellClick);
-            // 
-            // id
-            // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.id.Frozen = true;
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 20;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Width = 85;
-            // 
-            // cccd
-            // 
-            this.cccd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.cccd.Frozen = true;
-            this.cccd.HeaderText = "CCCD";
-            this.cccd.MinimumWidth = 20;
-            this.cccd.Name = "cccd";
-            this.cccd.ReadOnly = true;
-            this.cccd.Width = 140;
-            // 
-            // customerName
-            // 
-            this.customerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.customerName.Frozen = true;
-            this.customerName.HeaderText = "Customer Name";
-            this.customerName.MinimumWidth = 20;
-            this.customerName.Name = "customerName";
-            this.customerName.ReadOnly = true;
-            this.customerName.Width = 170;
-            // 
-            // phoneNumber
-            // 
-            this.phoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.phoneNumber.HeaderText = "Phone Number";
-            this.phoneNumber.MinimumWidth = 20;
-            this.phoneNumber.Name = "phoneNumber";
-            this.phoneNumber.ReadOnly = true;
-            this.phoneNumber.Width = 165;
-            // 
-            // dateOfBirth
-            // 
-            this.dateOfBirth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dateOfBirth.HeaderText = "Date Of Birth";
-            this.dateOfBirth.MinimumWidth = 20;
-            this.dateOfBirth.Name = "dateOfBirth";
-            this.dateOfBirth.ReadOnly = true;
-            this.dateOfBirth.Width = 150;
-            // 
-            // address
-            // 
-            this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.address.HeaderText = "Address";
-            this.address.MinimumWidth = 20;
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // nationality
-            // 
-            this.nationality.HeaderText = "Nationality";
-            this.nationality.Name = "nationality";
-            this.nationality.ReadOnly = true;
-            this.nationality.Visible = false;
-            // 
-            // job
-            // 
-            this.job.HeaderText = "Job";
-            this.job.Name = "job";
-            this.job.ReadOnly = true;
-            this.job.Visible = false;
-            // 
-            // email
-            // 
-            this.email.HeaderText = "Email";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.Visible = false;
             // 
             // guna2Panel1
             // 
@@ -741,12 +671,136 @@
             this.btnResetCustomerForm.Text = "Reset";
             this.btnResetCustomerForm.Click += new System.EventHandler(this.btnResetCustomerForm_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.LightGray;
+            this.label12.Location = new System.Drawing.Point(565, 36);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 18);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "Status";
+            // 
+            // cbStatusCustomerForm
+            // 
+            this.cbStatusCustomerForm.BackColor = System.Drawing.Color.Transparent;
+            this.cbStatusCustomerForm.BorderColor = System.Drawing.Color.Transparent;
+            this.cbStatusCustomerForm.BorderRadius = 5;
+            this.cbStatusCustomerForm.BorderThickness = 0;
+            this.cbStatusCustomerForm.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbStatusCustomerForm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatusCustomerForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.cbStatusCustomerForm.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbStatusCustomerForm.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbStatusCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.cbStatusCustomerForm.ForeColor = System.Drawing.Color.LightGray;
+            this.cbStatusCustomerForm.ItemHeight = 30;
+            this.cbStatusCustomerForm.Location = new System.Drawing.Point(565, 64);
+            this.cbStatusCustomerForm.Name = "cbStatusCustomerForm";
+            this.cbStatusCustomerForm.Size = new System.Drawing.Size(105, 36);
+            this.cbStatusCustomerForm.TabIndex = 32;
+            this.cbStatusCustomerForm.Tag = "";
+            // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.id.Frozen = true;
+            this.id.HeaderText = "ID";
+            this.id.MinimumWidth = 20;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 85;
+            // 
+            // cccd
+            // 
+            this.cccd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.cccd.Frozen = true;
+            this.cccd.HeaderText = "CCCD";
+            this.cccd.MinimumWidth = 20;
+            this.cccd.Name = "cccd";
+            this.cccd.ReadOnly = true;
+            this.cccd.Width = 140;
+            // 
+            // customerName
+            // 
+            this.customerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.customerName.Frozen = true;
+            this.customerName.HeaderText = "Customer Name";
+            this.customerName.MinimumWidth = 20;
+            this.customerName.Name = "customerName";
+            this.customerName.ReadOnly = true;
+            this.customerName.Width = 170;
+            // 
+            // phoneNumber
+            // 
+            this.phoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.phoneNumber.HeaderText = "Phone Number";
+            this.phoneNumber.MinimumWidth = 20;
+            this.phoneNumber.Name = "phoneNumber";
+            this.phoneNumber.ReadOnly = true;
+            this.phoneNumber.Width = 165;
+            // 
+            // dateOfBirth
+            // 
+            this.dateOfBirth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dateOfBirth.HeaderText = "Date Of Birth";
+            this.dateOfBirth.MinimumWidth = 20;
+            this.dateOfBirth.Name = "dateOfBirth";
+            this.dateOfBirth.ReadOnly = true;
+            this.dateOfBirth.Width = 150;
+            // 
+            // address
+            // 
+            this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.address.HeaderText = "Address";
+            this.address.MinimumWidth = 20;
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            this.address.Visible = false;
+            // 
+            // nationality
+            // 
+            this.nationality.HeaderText = "Nationality";
+            this.nationality.Name = "nationality";
+            this.nationality.ReadOnly = true;
+            this.nationality.Visible = false;
+            // 
+            // job
+            // 
+            this.job.HeaderText = "Job";
+            this.job.Name = "job";
+            this.job.ReadOnly = true;
+            this.job.Visible = false;
+            // 
+            // email
+            // 
+            this.email.HeaderText = "Email";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.Visible = false;
+            // 
+            // Gender
+            // 
+            this.Gender.HeaderText = "Gender ";
+            this.Gender.Name = "Gender";
+            this.Gender.ReadOnly = true;
+            this.Gender.Visible = false;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(43)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(1039, 859);
+            this.Controls.Add(this.cbStatusCustomerForm);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.btnResetCustomerForm);
             this.Controls.Add(this.imgCustomerCustomerForm);
             this.Controls.Add(this.cbGenderCustomerForm);
@@ -814,6 +868,13 @@
 		private Guna.UI2.WinForms.Guna2TextBox txtJobCustomerForm;
 		private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
 		private Guna.UI2.WinForms.Guna2DataGridView dataGridViewCustomerInforCustomerForm;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2ComboBox cbGenderCustomerForm;
+        private Guna.UI2.WinForms.Guna2Button imgCustomerCustomerForm;
+        private Guna.UI2.WinForms.Guna2Button btnImportCustomerForm;
+        private Guna.UI2.WinForms.Guna2Button btnResetCustomerForm;
+        private System.Windows.Forms.Label label12;
+        private Guna.UI2.WinForms.Guna2ComboBox cbStatusCustomerForm;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn cccd;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerName;
@@ -823,10 +884,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nationality;
         private System.Windows.Forms.DataGridViewTextBoxColumn job;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
-        private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2ComboBox cbGenderCustomerForm;
-        private Guna.UI2.WinForms.Guna2Button imgCustomerCustomerForm;
-        private Guna.UI2.WinForms.Guna2Button btnImportCustomerForm;
-        private Guna.UI2.WinForms.Guna2Button btnResetCustomerForm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
 }

@@ -23,6 +23,8 @@ namespace BankManagement.ViewModel
         private DateTime dateOfBirth;
         private string nationality;
         private string address;
+        private string status;
+        private string gender;
         private DataTable dataTableCustomerInfor;
 
         public CustomerViewModel()
@@ -92,6 +94,18 @@ namespace BankManagement.ViewModel
             set { dataTableCustomerInfor = value; }
         }
 
+        public string Status
+        {
+            get { return status; }
+            set { status = value; }
+        }
+
+        public string Gender
+        {
+            get { return gender; }
+            set { gender = value; }
+        }
+
         //Lấy thông tin từ repository
         public void LoadCustomer(CustomerInfor customerInfor)
         {
@@ -105,6 +119,8 @@ namespace BankManagement.ViewModel
             this.dateOfBirth = customerInfor.DateOfBirth;
             this.nationality = customerInfor.Nationality;
             this.address = customerInfor.Address;
+            this.Status = customerInfor.Status;
+            this.gender = customerInfor.Gender;
         }
 
         public void addCustomer()
@@ -117,17 +133,20 @@ namespace BankManagement.ViewModel
             }
             else if (customerInfor == null)
             {
-                CustomerInfor cI = new CustomerInfor(0, this.name, this.cccd, this.phoneNumber, this.email, this.job, this.nationality, this.address, this.dateOfBirth, "");
+                CustomerInfor cI = new CustomerInfor(0, this.name, this.cccd, this.phoneNumber, this.email, this.job, this.nationality, this.address, this.dateOfBirth, "" , this.status , this.gender);
                 customerInforRepository.addCustomer(cI);
             }
         }
 
-        public void updateCustomer(CustomerInfor customer)
+        public void updateCustomer()
         {
-            if(customer != null)
-            {
-                customerInforRepository.updateCustomer(customer);
-            }
+            CustomerInfor cI = new CustomerInfor(0, this.name, this.cccd, this.phoneNumber, this.email, this.job, this.nationality, this.address, this.dateOfBirth, "" , this.status , this.gender);
+            customerInforRepository.updateCustomer(cI);
+        }
+
+        public void deleteCustomer()
+        {
+            customerInforRepository.deleteCustomer(this.cccd);
         }
 
         public void SearchCustomer(string Cccd)
@@ -147,7 +166,7 @@ namespace BankManagement.ViewModel
                                               string txtPhoneNumberCustomerForm,
                                               string txtDateOfBirthCustomerForm,
                                               string txtNationalityCustomerForm,
-                                              string txtAddressCustomerForm)
+                                              string txtAddressCustomerForm , string cbStatusCustomerForm , string cbGenderCustomerForm)
         {
             string error = "0";
             if (txtCCCDCustomerForm == "" ||
@@ -157,7 +176,7 @@ namespace BankManagement.ViewModel
                 txtPhoneNumberCustomerForm == "" ||
                 txtDateOfBirthCustomerForm == "" ||
                 txtNationalityCustomerForm == "" ||
-                txtAddressCustomerForm == "")
+                txtAddressCustomerForm == "" || cbStatusCustomerForm == "" || cbGenderCustomerForm == "")
             {
                 error = "Vui lòng điền đầy đủ thông tin!";
                 return error;

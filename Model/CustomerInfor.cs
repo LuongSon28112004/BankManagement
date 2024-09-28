@@ -18,8 +18,10 @@ namespace BankManagement.Model
         private string nationality;
         private string address;
         private string photoPath;
+        private string status;
+        private string gender;
 
-        public CustomerInfor(int id, string name, string cccd, string phoneNumber, string email, string job, string nationality, string address, DateTime dateOfBoth, string photoPath)
+        public CustomerInfor(int id, string name, string cccd, string phoneNumber, string email, string job, string nationality, string address, DateTime dateOfBoth, string photoPath , string status , string gender)
         {
             this.id = id;
             this.name = name;
@@ -31,6 +33,8 @@ namespace BankManagement.Model
             this.address = address;
             this.dateOfBirth = dateOfBoth;
             this.photoPath = photoPath;
+            this.status = status;
+            this.gender = gender;
         }
 
         public int Id { get => id; }
@@ -43,5 +47,7 @@ namespace BankManagement.Model
         public string Address { get => address; }
         public DateTime DateOfBirth { get => dateOfBirth; }
         public string PhotoPath { get => photoPath; }
+        public string Status { get => status;}
+        public string Gender { get => gender;}
     }
 }

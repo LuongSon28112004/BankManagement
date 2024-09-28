@@ -18,11 +18,12 @@ namespace BankManagement.Model
         //Chuỗi kết nối database
         private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
 
+        //lấy ra thông tin của một khách hàng bởi căn cước công dân
         public CustomerInfor getCustomerInforByCccd(string customerInforCccd)//moi lan truy van chi duoc 1 customer
         {
             CustomerInfor customerInfor = null;
 
-            string query = "SELECT id, name, cccd, phone_number, email, job, nationality , address, date_of_birth, photo FROM customer_infor WHERE cccd = @Cccd";
+            string query = "SELECT id, name, cccd, phone_number, email, job, nationality , address, date_of_birth, photo , status , gender FROM customer_infor WHERE cccd = @Cccd";
 
             try
             {
@@ -52,9 +53,11 @@ namespace BankManagement.Model
 
                                 // Kiểm tra nếu cột "photo" là DBNull, nếu không thì lấy giá trị của nó
                                 string photo = reader.IsDBNull(9) ? null : reader.GetString(9);
+                                string status = reader.GetString(10);
+                                string gender = reader.GetString(11);
 
                                 // Tạo đối tượng CustomerInfor từ dữ liệu truy vấn
-                                customerInfor = new CustomerInfor(id, name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo);
+                                customerInfor = new CustomerInfor(id, name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo , status , gender);
                             }
                         }
                     }
@@ -70,11 +73,12 @@ namespace BankManagement.Model
         }
 
 
+        // tìm kiếm một danh sách các khách hàng giống hệt
         public DataTable searchCustomerByCccd(string cccd)//moi lan truy van duoc nhieu customer voi chuoi tuong tu 
         {
             DataTable dataTableCustomerInfor = new DataTable();
             // Tạo truy vấn SQL sử dụng LIKE để tìm kiếm chuỗi tương tự
-            string query = "SELECT id, name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo " + "FROM customer_infor " +"WHERE cccd LIKE @Cccd";
+            string query = "SELECT id, name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo , status , gender " + "FROM customer_infor " +"WHERE cccd LIKE @Cccd";
 
             try
             {
@@ -140,8 +144,8 @@ namespace BankManagement.Model
 
         public void addCustomer(CustomerInfor customerInfor)
         {
-            string query = "INSERT INTO customer_Infor (name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo)" +
-               "VALUES (@Name, @Cccd, @PhoneNumber, @Email, @Job, @Nationality, @Address, @DateOfBirth, @PhotoPath)";
+            string query = "INSERT INTO customer_Infor (name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo, gender)" +
+               "VALUES (@Name, @Cccd, @PhoneNumber, @Email, @Job, @Nationality, @Address, @DateOfBirth, @PhotoPath, @Gender)";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -157,7 +161,7 @@ namespace BankManagement.Model
                         cmd.Parameters.Add(new SqlParameter("@Job", SqlDbType.NVarChar) { Value = customerInfor.Job });
                         cmd.Parameters.Add(new SqlParameter("@Nationality", SqlDbType.NVarChar) { Value = customerInfor.Nationality });
                         cmd.Parameters.Add(new SqlParameter("@Address", SqlDbType.NVarChar) { Value = customerInfor.Address });
-                        cmd.Parameters.Add(new SqlParameter("@DateOfBirth", SqlDbType.Date) { Value = customerInfor.DateOfBirth });
+                        cmd.Parameters.Add(new SqlParameter("@DateOfBirth", SqlDbType.Date) { Value = customerInfor.DateOfBirth.ToString("yyyy-MM-dd") });
                         if (customerInfor.PhotoPath != "")
                         {
                             cmd.Parameters.Add(new SqlParameter("@PhotoPath", SqlDbType.NVarChar) { Value = customerInfor.PhotoPath });
@@ -166,6 +170,7 @@ namespace BankManagement.Model
                         {
                             cmd.Parameters.Add(new SqlParameter("@PhotoPath", SqlDbType.NVarChar) { Value = DBNull.Value });
                         }
+                        cmd.Parameters.Add(new SqlParameter("@Gender", SqlDbType.NVarChar) { Value = customerInfor.Gender });
 
                         cmd.ExecuteNonQuery();
                     }
@@ -178,10 +183,42 @@ namespace BankManagement.Model
             }
         }
 
+        public void deleteCustomer(string cccd)
+        {
+            string query = "DELETE FROM customer_Infor WHERE cccd = @Cccd";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@Cccd", SqlDbType.NVarChar) { Value = cccd });
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy khách hàng với CCCD này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+
         public void updateCustomer(CustomerInfor customerInfor)
         {
             string query = "UPDATE customer_Infor SET name = @Name, cccd = @Cccd, phone_number = @PhoneNumber, email = @Email, " +
-                           "job = @Job, nationality = @Nationality, address = @Address, date_of_birth = @DateOfBirth, photo = @PhotoPath " +
+                           "job = @Job, nationality = @Nationality, address = @Address, date_of_birth = @DateOfBirth, photo = @PhotoPath , status = @Status , gender = @Gender " +
                            "WHERE cccd = @Cccd"; // Điều kiện để xác định khách hàng cần cập nhật, ở đây dùng cccd
 
             try
@@ -208,7 +245,8 @@ namespace BankManagement.Model
                         {
                             cmd.Parameters.Add(new SqlParameter("@PhotoPath", SqlDbType.NVarChar) { Value = DBNull.Value });
                         }
-
+                        cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.NVarChar) { Value = customerInfor.Status });
+                        cmd.Parameters.Add(new SqlParameter("@Gender", SqlDbType.NVarChar) { Value = customerInfor.Gender });
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -219,6 +257,7 @@ namespace BankManagement.Model
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
 
     }
