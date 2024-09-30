@@ -152,6 +152,9 @@
     <None Include="Resources\user_icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\update-user1.png" />
+    <None Include="Resources\update-user.png" />
+    <None Include="Resources\trash-bin.png" />
     <None Include="Resources\staff_woman.png" />
     <None Include="Resources\setting.png" />
     <None Include="Resources\transaction.png" />
@@ -165,6 +168,19 @@
     <None Include="Resources\bell_icon.png" />
     <None Include="Resources\backgroun_login.png" />
     <None Include="Resources\avatar_login_man.png" />
+    <None Include="Resources\img_maximize.png" />
+    <None Include="Resources\letter-x.png" />
+    <None Include="Resources\help.png" />
+    <None Include="Resources\img_help1.png" />
+    <None Include="Resources\feedback.png" />
+    <None Include="Resources\img_feedback.png" />
+    <None Include="Resources\img_btn_feedback.png" />
+    <None Include="Resources\active.png" />
+    <None Include="Resources\inactive.png" />
+    <None Include="Resources\avatar_default.png" />
+    <None Include="Resources\img_customer_default.png" />
+    <None Include="Resources\checked.png" />
+    <None Include="Resources\add-user.png" />
     <Content Include="Resources\maximize.png" />
     <None Include="Resources\notification_bell.png" />
     <None Include="Resources\staff.png" />

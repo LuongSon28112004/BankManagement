@@ -31,9 +31,6 @@ namespace BankManagement
             //Load gender default
             this.LoadGender();
 
-            //Load status default
-            this.LoadStatus();
-
             //reset các textbox và combo box
             this.reset();
             //Load danh sach tat ca cac customer khi form duoc load len
@@ -69,12 +66,6 @@ namespace BankManagement
 		{
             cbGenderCustomerForm.Items.Add("Male");
             cbGenderCustomerForm.Items.Add("Female");
-        }
-
-        public void LoadStatus()
-        {
-            cbStatusCustomerForm.Items.Add("Active");
-            cbStatusCustomerForm.Items.Add("inActive");
         }
 
         public void LoadAllCustomer()
@@ -159,9 +150,6 @@ namespace BankManagement
                     txtNationalityCustomerForm.Text = nationality;
                     txtJobCustomerForm.Text = job;
                     txtEmailCustomerForm.Text = email;
-                    cbGenderCustomerForm.SelectedIndex = (gender == "Male") ? 0 : 1;
-                    cbStatusCustomerForm.SelectedIndex = (status == "Active") ? 0 : 1;
-                    cbStatusCustomerForm.Enabled = true;
                 }
             }
         }
@@ -263,8 +251,6 @@ namespace BankManagement
             txtJobCustomerForm.Text = "";
             txtEmailCustomerForm.Text = "";
             cbGenderCustomerForm.SelectedIndex = -1;
-            cbStatusCustomerForm.SelectedIndex = 0;
-            cbStatusCustomerForm.Enabled = false;
         }
         private void UpdateViewModelFromForm()
         {
@@ -276,7 +262,6 @@ namespace BankManagement
             viewModel.DateOfBirth = DateTime.Parse(txtDateOfBirthCustomerForm.Text);
             viewModel.Nationality = txtNationalityCustomerForm.Text;
             viewModel.Address = txtAddressCustomerForm.Text;
-            viewModel.Status = cbStatusCustomerForm.SelectedItem.ToString();
             viewModel.Gender = cbGenderCustomerForm.SelectedItem.ToString();
         }
 
@@ -296,6 +281,19 @@ namespace BankManagement
         private void btnImportCustomerForm_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbGenderCustomerForm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Kiểm tra nếu không có mục nào được chọn (SelectedIndex == -1)
+            if (cbGenderCustomerForm.SelectedIndex == -1)
+            {
+                lbGenderCustomerForm.Visible = true;
+            }
+            else
+            {
+                lbGenderCustomerForm.Visible = false;
+            }
         }
     }
 }
