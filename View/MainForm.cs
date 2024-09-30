@@ -266,5 +266,11 @@ namespace BankManagement
         {
 
         }
+
+        private void MainForm_ResizeEnd(object sender, EventArgs e)
+        {
+            // Đặt lại con trỏ về dạng mặc định sau khi kết thúc resize
+            this.Cursor = Cursors.Default;
+        }
     }
 }
