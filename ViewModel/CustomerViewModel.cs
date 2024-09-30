@@ -166,7 +166,7 @@ namespace BankManagement.ViewModel
                                               string txtPhoneNumberCustomerForm,
                                               string txtDateOfBirthCustomerForm,
                                               string txtNationalityCustomerForm,
-                                              string txtAddressCustomerForm , string cbStatusCustomerForm , string cbGenderCustomerForm)
+                                              string txtAddressCustomerForm  , string cbGenderCustomerForm)
         {
             string error = "0";
             if (txtCCCDCustomerForm == "" ||
@@ -176,7 +176,7 @@ namespace BankManagement.ViewModel
                 txtPhoneNumberCustomerForm == "" ||
                 txtDateOfBirthCustomerForm == "" ||
                 txtNationalityCustomerForm == "" ||
-                txtAddressCustomerForm == "" || cbStatusCustomerForm == "" || cbGenderCustomerForm == "")
+                txtAddressCustomerForm == "" || cbGenderCustomerForm == "")
             {
                 error = "Vui lòng điền đầy đủ thông tin!";
                 return error;
