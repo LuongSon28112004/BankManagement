@@ -93,7 +93,7 @@
             this.btnSettingMain.Image = global::BankManagement.Properties.Resources.setting;
             this.btnSettingMain.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnSettingMain.ImageOffset = new System.Drawing.Point(-4, 0);
-            this.btnSettingMain.Location = new System.Drawing.Point(881, 8);
+            this.btnSettingMain.Location = new System.Drawing.Point(879, 11);
             this.btnSettingMain.Name = "btnSettingMain";
             this.btnSettingMain.Size = new System.Drawing.Size(32, 32);
             this.btnSettingMain.TabIndex = 2;
@@ -113,7 +113,7 @@
             this.btnStaffAvatarMain.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnStaffAvatarMain.ImageOffset = new System.Drawing.Point(-9, 0);
             this.btnStaffAvatarMain.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnStaffAvatarMain.Location = new System.Drawing.Point(924, 8);
+            this.btnStaffAvatarMain.Location = new System.Drawing.Point(922, 11);
             this.btnStaffAvatarMain.Name = "btnStaffAvatarMain";
             this.btnStaffAvatarMain.Size = new System.Drawing.Size(32, 32);
             this.btnStaffAvatarMain.TabIndex = 2;
@@ -134,7 +134,7 @@
             this.btnNotifyMain.Image = global::BankManagement.Properties.Resources.notification_bell;
             this.btnNotifyMain.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnNotifyMain.ImageOffset = new System.Drawing.Point(-4, 0);
-            this.btnNotifyMain.Location = new System.Drawing.Point(838, 8);
+            this.btnNotifyMain.Location = new System.Drawing.Point(836, 11);
             this.btnNotifyMain.Name = "btnNotifyMain";
             this.btnNotifyMain.Size = new System.Drawing.Size(32, 32);
             this.btnNotifyMain.TabIndex = 2;
@@ -146,7 +146,7 @@
             this.lbStaffName.AutoSize = true;
             this.lbStaffName.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStaffName.ForeColor = System.Drawing.Color.White;
-            this.lbStaffName.Location = new System.Drawing.Point(960, 17);
+            this.lbStaffName.Location = new System.Drawing.Point(958, 20);
             this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
             this.lbStaffName.Size = new System.Drawing.Size(88, 14);
@@ -167,7 +167,7 @@
             this.btnMinimizeMain.ForeColor = System.Drawing.Color.White;
             this.btnMinimizeMain.Image = global::BankManagement.Properties.Resources.minimize;
             this.btnMinimizeMain.ImageSize = new System.Drawing.Size(12, 2);
-            this.btnMinimizeMain.Location = new System.Drawing.Point(1077, 7);
+            this.btnMinimizeMain.Location = new System.Drawing.Point(1075, 10);
             this.btnMinimizeMain.Name = "btnMinimizeMain";
             this.btnMinimizeMain.Size = new System.Drawing.Size(35, 35);
             this.btnMinimizeMain.TabIndex = 2;
@@ -188,7 +188,7 @@
             this.btnMaximizeMain.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnMaximizeMain.ImageOffset = new System.Drawing.Point(1, 0);
             this.btnMaximizeMain.ImageSize = new System.Drawing.Size(13, 10);
-            this.btnMaximizeMain.Location = new System.Drawing.Point(1118, 7);
+            this.btnMaximizeMain.Location = new System.Drawing.Point(1116, 10);
             this.btnMaximizeMain.Name = "btnMaximizeMain";
             this.btnMaximizeMain.Size = new System.Drawing.Size(35, 35);
             this.btnMaximizeMain.TabIndex = 2;
@@ -206,7 +206,7 @@
             this.btnCloseMain.ForeColor = System.Drawing.Color.White;
             this.btnCloseMain.Image = global::BankManagement.Properties.Resources.letter_x;
             this.btnCloseMain.ImageSize = new System.Drawing.Size(11, 11);
-            this.btnCloseMain.Location = new System.Drawing.Point(1159, 7);
+            this.btnCloseMain.Location = new System.Drawing.Point(1157, 10);
             this.btnCloseMain.Name = "btnCloseMain";
             this.btnCloseMain.Size = new System.Drawing.Size(35, 35);
             this.btnCloseMain.TabIndex = 2;

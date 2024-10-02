@@ -217,9 +217,10 @@ namespace BankManagement.Model
 
         public void updateCustomer(CustomerInfor customerInfor)
         {
-            string query = "UPDATE customer_Infor SET name = @Name, cccd = @Cccd, phone_number = @PhoneNumber, email = @Email, " +
-                           "job = @Job, nationality = @Nationality, address = @Address, date_of_birth = @DateOfBirth, photo = @PhotoPath , status = @Status , gender = @Gender " +
-                           "WHERE cccd = @Cccd"; // Điều kiện để xác định khách hàng cần cập nhật, ở đây dùng cccd
+            string query = "UPDATE customer_Infor SET name = @Name, phone_number = @PhoneNumber, email = @Email, " +
+                   "job = @Job, nationality = @Nationality, address = @Address, date_of_birth = @DateOfBirth, " +
+                   "photo = @PhotoPath, status = @Status, gender = @Gender " +
+                   "WHERE cccd = @Cccd"; // Không thay đổi cccd
 
             try
             {
@@ -237,6 +238,7 @@ namespace BankManagement.Model
                         cmd.Parameters.Add(new SqlParameter("@Nationality", SqlDbType.NVarChar) { Value = customerInfor.Nationality });
                         cmd.Parameters.Add(new SqlParameter("@Address", SqlDbType.NVarChar) { Value = customerInfor.Address });
                         cmd.Parameters.Add(new SqlParameter("@DateOfBirth", SqlDbType.Date) { Value = customerInfor.DateOfBirth });
+
                         if (!string.IsNullOrEmpty(customerInfor.PhotoPath))
                         {
                             cmd.Parameters.Add(new SqlParameter("@PhotoPath", SqlDbType.NVarChar) { Value = customerInfor.PhotoPath });
@@ -245,11 +247,14 @@ namespace BankManagement.Model
                         {
                             cmd.Parameters.Add(new SqlParameter("@PhotoPath", SqlDbType.NVarChar) { Value = DBNull.Value });
                         }
+
                         cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.NVarChar) { Value = customerInfor.Status });
                         cmd.Parameters.Add(new SqlParameter("@Gender", SqlDbType.NVarChar) { Value = customerInfor.Gender });
+
                         cmd.ExecuteNonQuery();
                     }
                 }
+
                 MessageBox.Show("Update customer successful!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)

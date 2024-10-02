@@ -150,17 +150,13 @@ namespace BankManagement
                     txtNationalityCustomerForm.Text = nationality;
                     txtJobCustomerForm.Text = job;
                     txtEmailCustomerForm.Text = email;
+                    cbGenderCustomerForm.SelectedItem = gender;
                 }
             }
         }
 
         private void btnUpdateCustomerForm_Click(object sender, EventArgs e)
         {
-            if (txtCCCDCustomerForm.ReadOnly == false)
-            {
-                MessageBox.Show("Phải chọn các tài khoản có sẵn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             // Kiểm tra nếu ComboBox Gender không chọn thì gán "" cho Gender
             string gender = cbGenderCustomerForm.SelectedItem != null ? cbGenderCustomerForm.SelectedItem.ToString() : "";
             string error = viewModel.CheckFormatCustomerForm(txtCCCDCustomerForm.Text,
@@ -181,6 +177,13 @@ namespace BankManagement
 
             //lấy dữ liệu từ các textBox
             this.UpdateViewModelFromForm();
+
+            //Check xem đã có thông tin trong data base chưa thông qua cccd
+            viewModel.SearchCustomer(viewModel.Cccd);
+            if (viewModel.DataTableCustomerInfor.Rows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng nhập một tài khoản có sẵn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             viewModel.updateCustomer();
             //xóa tất cả các dữ liệu trong datagridview
@@ -212,9 +215,9 @@ namespace BankManagement
                 string job = row["job"].ToString();
                 string email = row["email"].ToString();
                 string gender = row["gender"].ToString();
-                string status = row["Status"].ToString();
+                string status = row["status"].ToString();
 
-                dataGridViewCustomerInforCustomerForm.Rows.Add(id, cccd, name, phone_number, formattedDateOfBirth, address, nationality, job, email, gender, status);
+                dataGridViewCustomerInforCustomerForm.Rows.Add(id, cccd, name, gender, formattedDateOfBirth, address, phone_number, nationality, job, email, status);
             }
         }
 
@@ -294,6 +297,11 @@ namespace BankManagement
             {
                 lbGenderCustomerForm.Visible = false;
             }
+        }
+
+        private void lbCustomerProfileCustomerForm_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

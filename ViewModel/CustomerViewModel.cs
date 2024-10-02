@@ -25,6 +25,7 @@ namespace BankManagement.ViewModel
         private string address;
         private string status;
         private string gender;
+        private string photo;
         private DataTable dataTableCustomerInfor;
 
         public CustomerViewModel()
@@ -106,6 +107,12 @@ namespace BankManagement.ViewModel
             set { gender = value; }
         }
 
+        public string Phôt
+        {
+            get { return photo; }
+            set { photo = value; }
+        }
+
         //Lấy thông tin từ repository
         public void LoadCustomer(CustomerInfor customerInfor)
         {
@@ -121,6 +128,7 @@ namespace BankManagement.ViewModel
             this.address = customerInfor.Address;
             this.Status = customerInfor.Status;
             this.gender = customerInfor.Gender;
+            this.photo = customerInfor.PhotoPath;
         }
 
         public void addCustomer()
@@ -166,7 +174,8 @@ namespace BankManagement.ViewModel
                                               string txtPhoneNumberCustomerForm,
                                               string txtDateOfBirthCustomerForm,
                                               string txtNationalityCustomerForm,
-                                              string txtAddressCustomerForm  , string cbGenderCustomerForm)
+                                              string txtAddressCustomerForm,
+                                              string cbGenderCustomerForm)
         {
             string error = "0";
             if (txtCCCDCustomerForm == "" ||
@@ -176,16 +185,10 @@ namespace BankManagement.ViewModel
                 txtPhoneNumberCustomerForm == "" ||
                 txtDateOfBirthCustomerForm == "" ||
                 txtNationalityCustomerForm == "" ||
-                txtAddressCustomerForm == "" || cbGenderCustomerForm == "")
+                txtAddressCustomerForm == "" ||
+                cbGenderCustomerForm == "")
             {
                 error = "Vui lòng điền đầy đủ thông tin!";
-                return error;
-            }
-
-            // Kiểm tra định dạng của CCCD phải toàn là số
-            if (!txtCCCDCustomerForm.All(char.IsDigit))
-            {
-                error = "Vui lòng nhập đúng định dạng CCCD!";
                 return error;
             }
 
@@ -196,10 +199,10 @@ namespace BankManagement.ViewModel
                 return error;
             }
 
-            // Kiểm tra định dạng SĐT phải toàn là số
-            if (!txtPhoneNumberCustomerForm.All(char.IsDigit))
+            // Kiểm tra định dạng của CCCD phải toàn là số
+            if (!txtCCCDCustomerForm.All(char.IsDigit))
             {
-                error = "Vui lòng nhập đúng định dạng SĐT!";
+                error = "Vui lòng nhập đúng định dạng CCCD!";
                 return error;
             }
 
@@ -209,6 +212,13 @@ namespace BankManagement.ViewModel
                     System.Globalization.DateTimeStyles.None, out _))
             {
                 error = "Vui lòng nhập đúng định dạng ngày sinh: DD/MM/YYYY!";
+                return error;
+            }
+
+            // Kiểm tra định dạng SĐT phải toàn là số
+            if (!txtPhoneNumberCustomerForm.All(char.IsDigit))
+            {
+                error = "Vui lòng nhập đúng định dạng SĐT!";
                 return error;
             }
 
