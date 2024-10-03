@@ -70,6 +70,7 @@
             this.job = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Photo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomerInforCustomerForm)).BeginInit();
             this.panelTop1CustomerForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgStatusCustomerForm)).BeginInit();
@@ -86,7 +87,6 @@
             this.lbCustomerProfileCustomerForm.Size = new System.Drawing.Size(179, 28);
             this.lbCustomerProfileCustomerForm.TabIndex = 1;
             this.lbCustomerProfileCustomerForm.Text = "Customer Profile";
-            this.lbCustomerProfileCustomerForm.Click += new System.EventHandler(this.lbCustomerProfileCustomerForm_Click);
             // 
             // txtCustomerNameCustomerForm
             // 
@@ -218,7 +218,8 @@
             this.nationality,
             this.job,
             this.email,
-            this.Status});
+            this.Status,
+            this.Photo});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -358,6 +359,7 @@
             this.imgCustomerCustomerForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2);
             this.imgCustomerCustomerForm.Size = new System.Drawing.Size(100, 100);
             this.imgCustomerCustomerForm.TabIndex = 17;
+            this.imgCustomerCustomerForm.Click += new System.EventHandler(this.imgCustomerCustomerForm_Click);
             // 
             // imgStatusCustomerForm
             // 
@@ -777,6 +779,13 @@
             this.Status.Name = "Status";
             this.Status.ReadOnly = true;
             // 
+            // Photo
+            // 
+            this.Photo.HeaderText = "Photo";
+            this.Photo.Name = "Photo";
+            this.Photo.ReadOnly = true;
+            this.Photo.Visible = false;
+            // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -844,5 +853,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn job;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Photo;
     }
 }

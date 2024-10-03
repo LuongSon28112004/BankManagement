@@ -185,7 +185,7 @@ namespace BankManagement.Model
 
         public void deleteCustomer(string cccd)
         {
-            string query = "DELETE FROM customer_Infor WHERE cccd = @Cccd";
+            string query = "Update customer_Infor SET status = @Status WHERE cccd = @Cccd";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -195,15 +195,11 @@ namespace BankManagement.Model
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.Add(new SqlParameter("@Cccd", SqlDbType.NVarChar) { Value = cccd });
-
+                        cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.NVarChar) { Value = "InActive" });
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không tìm thấy khách hàng với CCCD này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
@@ -219,7 +215,7 @@ namespace BankManagement.Model
         {
             string query = "UPDATE customer_Infor SET name = @Name, phone_number = @PhoneNumber, email = @Email, " +
                    "job = @Job, nationality = @Nationality, address = @Address, date_of_birth = @DateOfBirth, " +
-                   "photo = @PhotoPath, status = @Status, gender = @Gender " +
+                   "photo = @PhotoPath, gender = @Gender , status = @Status " +
                    "WHERE cccd = @Cccd"; // Không thay đổi cccd
 
             try
@@ -248,9 +244,8 @@ namespace BankManagement.Model
                             cmd.Parameters.Add(new SqlParameter("@PhotoPath", SqlDbType.NVarChar) { Value = DBNull.Value });
                         }
 
-                        cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.NVarChar) { Value = customerInfor.Status });
                         cmd.Parameters.Add(new SqlParameter("@Gender", SqlDbType.NVarChar) { Value = customerInfor.Gender });
-
+                        cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.NVarChar) { Value = "Active" });
                         cmd.ExecuteNonQuery();
                     }
                 }

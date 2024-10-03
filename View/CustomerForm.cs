@@ -1,4 +1,5 @@
 ﻿using BankManagement.Model;
+using BankManagement.Properties;
 using BankManagement.ViewModel;
 using Guna.UI2.WinForms;
 using System;
@@ -6,18 +7,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Image = System.Drawing.Image;
 
 namespace BankManagement
 {
 	public partial class CustomerForm : Form
 	{
 		CustomerViewModel viewModel;
+        string filePath;
 		public CustomerForm()
 		{
 			InitializeComponent();
@@ -95,9 +99,10 @@ namespace BankManagement
             }
             //Lấy các thông tin từ các textBox
             this.UpdateViewModelFromForm();
+            if(filePath != "") MoveImageToFolder(filePath, "\\Image\\CustomerImage");
 
-			//add customer form viewModel
-			viewModel.addCustomer();
+            //add customer form viewModel
+            viewModel.addCustomer();
 
             //Thay thế tất cả các dữ liệu trong datagridview
             dataGridViewCustomerInforCustomerForm.Rows.Clear();
@@ -137,6 +142,9 @@ namespace BankManagement
                     string email = selectedRow.Cells["email"].Value.ToString();
                     string gender = selectedRow.Cells["Gender"].Value.ToString();
                     string status = selectedRow.Cells["Status"].Value.ToString();
+                    string photo = selectedRow.Cells["Photo"].Value.ToString();
+                    filePath = photo;
+
 
 
                     // Hiển thị dữ liệu.
@@ -151,9 +159,37 @@ namespace BankManagement
                     txtJobCustomerForm.Text = job;
                     txtEmailCustomerForm.Text = email;
                     cbGenderCustomerForm.SelectedItem = gender;
+                    if(photo != "")
+                    {
+                        imgCustomerCustomerForm.Image = Image.FromFile(photo);
+                    }
+                    else
+                    {
+                        imgCustomerCustomerForm.Image = Image.FromFile("..\\..\\Image\\CustomerImage\\img_customer_default.png");
+                    }
+                    checkStatus(status);
                 }
             }
         }
+
+        private void checkStatus(string status)
+        {
+            if (status == "Active")
+            {
+                imgStatusCustomerForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
+                lbStatusCustomerForm.Text = status;
+                lbStatusCustomerForm.ForeColor = Color.FromArgb(78, 167, 46);
+                btnActiveCustomerForm.Visible = false; //show button active
+            }
+            else
+            {
+                imgStatusCustomerForm.Image = Image.FromFile("..\\..\\Resources\\inactive.png");
+                lbStatusCustomerForm.Text = status;
+                lbStatusCustomerForm.ForeColor = Color.FromArgb(203, 57, 53);
+                btnActiveCustomerForm.Visible = true; // hide button active
+            }
+        }
+
 
         private void btnUpdateCustomerForm_Click(object sender, EventArgs e)
         {
@@ -177,12 +213,15 @@ namespace BankManagement
 
             //lấy dữ liệu từ các textBox
             this.UpdateViewModelFromForm();
+            if(filePath != "") MoveImageToFolder(filePath, "\\Image\\CustomerImage");
 
+            //this.MoveImageToFolder(filePath, "\\Image\\CustomerImage");
             //Check xem đã có thông tin trong data base chưa thông qua cccd
             viewModel.SearchCustomer(viewModel.Cccd);
             if (viewModel.DataTableCustomerInfor.Rows.Count == 0)
             {
                 MessageBox.Show("Vui lòng nhập một tài khoản có sẵn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             viewModel.updateCustomer();
@@ -216,17 +255,20 @@ namespace BankManagement
                 string email = row["email"].ToString();
                 string gender = row["gender"].ToString();
                 string status = row["status"].ToString();
+                string photo = row["photo"].ToString();
 
-                dataGridViewCustomerInforCustomerForm.Rows.Add(id, cccd, name, gender, formattedDateOfBirth, address, phone_number, nationality, job, email, status);
+                dataGridViewCustomerInforCustomerForm.Rows.Add(id, cccd, name, gender, formattedDateOfBirth, address, phone_number, nationality, job, email, status , photo);
             }
         }
 
         private void btnDeleteCustomerForm_Click(object sender, EventArgs e)
         {
-            //phải chọn các tài khoản có sẵn từ bảng 
-            if (txtCCCDCustomerForm.ReadOnly == false)
+
+            //Check xem đã có thông tin trong data base chưa thông qua cccd
+            viewModel.SearchCustomer(viewModel.Cccd);
+            if (viewModel.DataTableCustomerInfor.Rows.Count == 0)
             {
-                MessageBox.Show("Phải chọn các tài khoản có sẵn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập một tài khoản có sẵn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -243,6 +285,7 @@ namespace BankManagement
         }
         private void reset()
         {
+            filePath = "";
             txtSearchCustomerForm.Text = "";
             txtCCCDCustomerForm.Text = "";
             txtCCCDCustomerForm.ReadOnly = false;
@@ -254,6 +297,8 @@ namespace BankManagement
             txtJobCustomerForm.Text = "";
             txtEmailCustomerForm.Text = "";
             cbGenderCustomerForm.SelectedIndex = -1;
+            imgCustomerCustomerForm.Image = Image.FromFile("..\\..\\Resources\\img_customer_default.png");
+            btnActiveCustomerForm.Visible = false;
         }
         private void UpdateViewModelFromForm()
         {
@@ -266,6 +311,14 @@ namespace BankManagement
             viewModel.Nationality = txtNationalityCustomerForm.Text;
             viewModel.Address = txtAddressCustomerForm.Text;
             viewModel.Gender = cbGenderCustomerForm.SelectedItem.ToString();
+            if(filePath != "")
+            {
+                viewModel.Photo = $"..\\\\..\\\\Image\\\\CustomerImage\\\\{Path.GetFileName(filePath)}";
+            }
+            else
+            {
+                viewModel.Photo = $"..\\\\..\\\\Image\\\\CustomerImage\\\\img_customer_default.png";
+            }
         }
 
 
@@ -299,9 +352,75 @@ namespace BankManagement
             }
         }
 
-        private void lbCustomerProfileCustomerForm_Click(object sender, EventArgs e)
-        {
 
+        private void imgCustomerCustomerForm_Click(object sender, EventArgs e)
+        {
+            // Tạo đối tượng OpenFileDialog để chọn ảnh
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+            openFileDialog.Title = "Select a Picture";
+
+            // Kiểm tra xem người dùng đã chọn file hay chưa
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Lấy đường dẫn file
+                filePath = openFileDialog.FileName;
+
+                // Sử dụng FileStream để load ảnh và tránh bị khóa file
+                using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    // Hiển thị hình ảnh trên PictureBox (imgCustomerCustomerForm)
+                    imgCustomerCustomerForm.Image = Image.FromStream(stream);
+                }
+            }
         }
+
+
+        private void MoveImageToFolder(string filePath , string folderName)
+        {
+            if (filePath == null) return;
+            try
+            {
+                // Đường dẫn tới thư mục CustomerImage trong dự án
+                string projectDirectory = Directory.GetParent(Application.StartupPath).Parent.Parent.FullName;
+                string destinationFolder = Path.Combine(projectDirectory, $@"BankManagement{folderName}");
+
+
+                // Hiển thị đường dẫn đích để kiểm tra
+                //MessageBox.Show("Đường dẫn lưu ảnh: " + destinationFolder);
+
+                // Kiểm tra và tạo thư mục nếu chưa tồn tại
+                if (!Directory.Exists(destinationFolder))
+                {
+                    Directory.CreateDirectory(destinationFolder);
+                }
+
+                // Copy ảnh vào thư mục CustomerImage
+           
+
+                // Tạo đường dẫn đầy đủ cho file ảnh mới
+                string destinationPath = Path.Combine(destinationFolder, Path.GetFileName(filePath));
+
+                //// Kiểm tra nếu ảnh đã tồn tại, thì xóa ảnh cũ trước khi sao chép
+                if (File.Exists(destinationPath))
+                {
+                    //File.Delete(destinationPath);
+                    return;
+                }
+
+                // Sao chép ảnh vào thư mục đích
+                File.Copy(filePath, destinationPath);
+                //MessageBox.Show("Ảnh đã được lưu vào thư mục CustomerImage.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi lưu ảnh: " + ex.Message);
+                }
+        }
+
+
+
+
+
     }
 }

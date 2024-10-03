@@ -107,7 +107,7 @@ namespace BankManagement.ViewModel
             set { gender = value; }
         }
 
-        public string Phôt
+        public string Photo
         {
             get { return photo; }
             set { photo = value; }
@@ -141,14 +141,14 @@ namespace BankManagement.ViewModel
             }
             else if (customerInfor == null)
             {
-                CustomerInfor cI = new CustomerInfor(0, this.name, this.cccd, this.phoneNumber, this.email, this.job, this.nationality, this.address, this.dateOfBirth, "" , this.status , this.gender);
+                CustomerInfor cI = new CustomerInfor(0, this.name, this.cccd, this.phoneNumber, this.email, this.job, this.nationality, this.address, this.dateOfBirth, this.photo , this.status , this.gender);
                 customerInforRepository.addCustomer(cI);
             }
         }
 
         public void updateCustomer()
         {
-            CustomerInfor cI = new CustomerInfor(0, this.name, this.cccd, this.phoneNumber, this.email, this.job, this.nationality, this.address, this.dateOfBirth, "" , this.status , this.gender);
+            CustomerInfor cI = new CustomerInfor(0, this.name, this.cccd, this.phoneNumber, this.email, this.job, this.nationality, this.address, this.dateOfBirth, this.photo , this.status , this.gender);
             customerInforRepository.updateCustomer(cI);
         }
 
