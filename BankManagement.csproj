@@ -152,6 +152,7 @@
     <None Include="Resources\user_icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\x-button.png" />
     <None Include="Resources\update-user1.png" />
     <None Include="Resources\update-user.png" />
     <None Include="Resources\trash-bin.png" />

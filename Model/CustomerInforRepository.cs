@@ -18,7 +18,11 @@ namespace BankManagement.Model
         //Chuỗi kết nối database
         private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
 
-        //lấy ra thông tin của một khách hàng bởi căn cước công dân
+
+
+
+
+        //Lấy ra thông tin của một khách hàng bằng CCCD----------------------------------------------------------------------------------------------------------------------------
         public CustomerInfor getCustomerInforByCccd(string customerInforCccd)//moi lan truy van chi duoc 1 customer
         {
             CustomerInfor customerInfor = null;
@@ -73,7 +77,10 @@ namespace BankManagement.Model
         }
 
 
-        // tìm kiếm một danh sách các khách hàng giống hệt
+
+
+
+        //Lấy ra một list khách hàng bằng CCCD-------------------------------------------------------------------------------------------------------------------------------------------------
         public DataTable searchCustomerByCccd(string cccd)//moi lan truy van duoc nhieu customer voi chuoi tuong tu 
         {
             DataTable dataTableCustomerInfor = new DataTable();
@@ -110,7 +117,12 @@ namespace BankManagement.Model
             return dataTableCustomerInfor;
         }
 
-        public DataTable LoadAllCustomer()//truy van het tat ca customer trong csdl 
+
+
+
+
+        //Lấy ra tất cả khách hàng để load lên dataGridView------------------------------------------------------------------------------------------------------------------------
+        public DataTable LoadAllCustomer()
         {
             DataTable dt = new DataTable();
             string query = "SELECT * FROM customer_infor";
@@ -142,6 +154,8 @@ namespace BankManagement.Model
 
 
 
+
+        //Thêm một khách hàng------------------------------------------------------------------------------------------------------------------------------------------------------------
         public void addCustomer(CustomerInfor customerInfor)
         {
             string query = "INSERT INTO customer_Infor (name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo, gender)" +
@@ -183,6 +197,11 @@ namespace BankManagement.Model
             }
         }
 
+
+
+
+
+        //Xoá một khách hàng--------------------------------------------------------------------------------------------------------------------------------------------------------------------
         public void deleteCustomer(string cccd)
         {
             string query = "Update customer_Infor SET status = @Status WHERE cccd = @Cccd";
@@ -195,7 +214,7 @@ namespace BankManagement.Model
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.Add(new SqlParameter("@Cccd", SqlDbType.NVarChar) { Value = cccd });
-                        cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.NVarChar) { Value = "InActive" });
+                        cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.NVarChar) { Value = "Inactive" });
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
@@ -211,6 +230,10 @@ namespace BankManagement.Model
         }
 
 
+
+
+
+        //Cập nhật thông tin khách hàng-------------------------------------------------------------------------------------------------------------------------------------------------------------
         public void updateCustomer(CustomerInfor customerInfor)
         {
             string query = "UPDATE customer_Infor SET name = @Name, phone_number = @PhoneNumber, email = @Email, " +
@@ -257,6 +280,8 @@ namespace BankManagement.Model
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+
 
 
 

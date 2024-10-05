@@ -22,12 +22,21 @@ namespace BankManagement
 	{
 		CustomerViewModel viewModel;
         string filePath;
+
+
+
+
+
 		public CustomerForm()
 		{
 			InitializeComponent();
 			viewModel = new CustomerViewModel();
 			this.ShowInTaskbar = false;
 		}
+
+
+
+
 
         private void CustomerForm_Load(object sender, EventArgs e)
         {
@@ -47,7 +56,38 @@ namespace BankManagement
             dataGridViewCustomerInforCustomerForm.MouseWheel += dataGridViewCustomerInforCustomerForm_MouseWheel;
         }
 
-        //Sự kiện sử dụng con lăn chuột để kéo dataGridView
+
+
+
+
+        //Thêm lựa chọn giới tính
+        public void LoadGender()
+        {
+            cbGenderCustomerForm.Items.Add("Male");
+            cbGenderCustomerForm.Items.Add("Female");
+        }
+
+
+
+
+        //Ẩn lbGender = "Gender" khi cbGender được chọn
+        private void cbGenderCustomerForm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Kiểm tra nếu không có mục nào được chọn (SelectedIndex == -1)
+            if (cbGenderCustomerForm.SelectedIndex == -1)
+            {
+                lbGenderCustomerForm.Visible = true;
+            }
+            else
+            {
+                lbGenderCustomerForm.Visible = false;
+            }
+        }
+
+
+
+
+        //Sự kiện sử dụng con lăn chuột để kéo dataGridView--------------------------------------------------------------------------------------------
         private void dataGridViewCustomerInforCustomerForm_MouseWheel(object sender, MouseEventArgs e)
         {
             if (e.Delta > 0)
@@ -66,20 +106,28 @@ namespace BankManagement
             }
         }
 
-        public void LoadGender()
-		{
-            cbGenderCustomerForm.Items.Add("Male");
-            cbGenderCustomerForm.Items.Add("Female");
-        }
 
-        public void LoadAllCustomer()
-		{
-			viewModel.LoadAllCustomer();
-            //duyệt datatable để lấy các thông tin hiển thị lên datagridview
+
+
+
+        //Tìm kiếm theo cccd---------------------------------------------------------------------------------------------------------------------------
+        private void btnSearchCustomerForm_Click(object sender, EventArgs e)
+        {
+            //Lấy ra các Customer phù hợp
+            viewModel.SearchCustomer(txtSearchCustomerForm.Text);
+
+            //xóa tất cả các dữ liệu trong datagridview
+            dataGridViewCustomerInforCustomerForm.Rows.Clear();
+
             this.UpdateDataGridView(viewModel.DataTableCustomerInfor);
         }
 
-		private void btnAddCustomerForm_Click(object sender, EventArgs e)
+
+
+
+
+        //Thêm khách hàng-------------------------------------------------------------------------------------------------------------------------------
+        private void btnAddCustomerForm_Click(object sender, EventArgs e)
 		{
             // Kiểm tra nếu ComboBox Gender không chọn thì gán "" cho Gender
             string gender = cbGenderCustomerForm.SelectedItem != null ? cbGenderCustomerForm.SelectedItem.ToString() : "";
@@ -90,7 +138,8 @@ namespace BankManagement
                                                              txtPhoneNumberCustomerForm.Text,
                                                              txtDateOfBirthCustomerForm.Text,
                                                              txtNationalityCustomerForm.Text,
-                                                             txtAddressCustomerForm.Text , gender);
+                                                             txtAddressCustomerForm.Text, 
+                                                             gender);
 
             if (error != "0")
             {
@@ -109,17 +158,11 @@ namespace BankManagement
             this.LoadAllCustomer();
         }
 
-		private void btnSearchCustomerForm_Click(object sender, EventArgs e)
-		{
-			//Lấy ra các Customer phù hợp
-            viewModel.SearchCustomer(txtSearchCustomerForm.Text);
 
-			//xóa tất cả các dữ liệu trong datagridview
-            dataGridViewCustomerInforCustomerForm.Rows.Clear();
 
-            this.UpdateDataGridView(viewModel.DataTableCustomerInfor);
-        }
 
+
+        //Cập nhật các lb, txt... chứa thông tin khách hàng khi click vào 1 row trong dataGridView------------------------------------------------------------------------------
         private void dataGridViewCustomerInforCustomerForm_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra xem chỉ số hàng hợp lệ
@@ -159,19 +202,29 @@ namespace BankManagement
                     txtJobCustomerForm.Text = job;
                     txtEmailCustomerForm.Text = email;
                     cbGenderCustomerForm.SelectedItem = gender;
-                    if(photo != "")
+                    try
                     {
-                        imgCustomerCustomerForm.Image = Image.FromFile(photo);
+                        if (photo != "")
+                        {
+                            imgCustomerCustomerForm.Image = Image.FromFile(photo);
+                        }
+                        else
+                        {
+                            imgCustomerCustomerForm.Image = Image.FromFile("..\\..\\Image\\CustomerImage\\img_customer_default.png");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
+                        // Nếu có lỗi xảy ra, sử dụng hình ảnh mặc định
                         imgCustomerCustomerForm.Image = Image.FromFile("..\\..\\Image\\CustomerImage\\img_customer_default.png");
+
+                        // Bạn có thể log hoặc xử lý lỗi nếu cần thiết
+                        Console.WriteLine(ex.Message);
                     }
                     checkStatus(status);
                 }
             }
         }
-
         private void checkStatus(string status)
         {
             if (status == "Active")
@@ -183,7 +236,7 @@ namespace BankManagement
             }
             else
             {
-                imgStatusCustomerForm.Image = Image.FromFile("..\\..\\Resources\\inactive.png");
+                imgStatusCustomerForm.Image = Image.FromFile("..\\..\\Resources\\x-button.png");
                 lbStatusCustomerForm.Text = status;
                 lbStatusCustomerForm.ForeColor = Color.FromArgb(203, 57, 53);
                 btnActiveCustomerForm.Visible = true; // hide button active
@@ -191,18 +244,23 @@ namespace BankManagement
         }
 
 
+
+
+
+        //Cập nhật thông tin khách hàng----------------------------------------------------------------------------------------------------------------
         private void btnUpdateCustomerForm_Click(object sender, EventArgs e)
         {
             // Kiểm tra nếu ComboBox Gender không chọn thì gán "" cho Gender
             string gender = cbGenderCustomerForm.SelectedItem != null ? cbGenderCustomerForm.SelectedItem.ToString() : "";
             string error = viewModel.CheckFormatCustomerForm(txtCCCDCustomerForm.Text,
-                                                              txtCustomerNameCustomerForm.Text,
-                                                              txtEmailCustomerForm.Text,
-                                                              txtJobCustomerForm.Text,
-                                                              txtPhoneNumberCustomerForm.Text,
-                                                              txtDateOfBirthCustomerForm.Text,
-                                                              txtNationalityCustomerForm.Text,
-                                                              txtAddressCustomerForm.Text , gender);
+                                                             txtCustomerNameCustomerForm.Text,
+                                                             txtEmailCustomerForm.Text,
+                                                             txtJobCustomerForm.Text,
+                                                             txtPhoneNumberCustomerForm.Text,
+                                                             txtDateOfBirthCustomerForm.Text,
+                                                             txtNationalityCustomerForm.Text,
+                                                             txtAddressCustomerForm.Text,
+                                                             gender);
 
             if (error != "0")
             {
@@ -216,7 +274,7 @@ namespace BankManagement
             if(filePath != "") MoveImageToFolder(filePath, "\\Image\\CustomerImage");
 
             //this.MoveImageToFolder(filePath, "\\Image\\CustomerImage");
-            //Check xem đã có thông tin trong data base chưa thông qua cccd
+            //Check xem đã có thông tin trong database chưa thông qua cccd
             viewModel.SearchCustomer(viewModel.Cccd);
             if (viewModel.DataTableCustomerInfor.Rows.Count == 0)
             {
@@ -230,6 +288,35 @@ namespace BankManagement
             this.LoadAllCustomer();
         }
 
+
+
+
+
+        //Xoá khách hàng khỏi hệ thống----------------------------------------------------------------------------------------------------------------
+        private void btnDeleteCustomerForm_Click(object sender, EventArgs e)
+        {
+            //Check xem đã có thông tin trong data base chưa thông qua cccd
+            viewModel.SearchCustomer(viewModel.Cccd);
+            if (viewModel.DataTableCustomerInfor.Rows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng nhập một tài khoản có sẵn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //lấy dữ liệu từ các textBox
+            this.UpdateViewModelFromForm();
+
+            viewModel.deleteCustomer();
+
+            //xóa tất cả các dữ liệu trong datagridview
+            dataGridViewCustomerInforCustomerForm.Rows.Clear();
+            this.LoadAllCustomer();
+        }
+
+
+
+
+        //Reset các lb, txt để chuẩn bị add khách hàng...-----------------------------------------------------------------------------------------------
         private void btnResetCustomerForm_Click(object sender, EventArgs e)
         {
             this.reset();
@@ -237,7 +324,38 @@ namespace BankManagement
             dataGridViewCustomerInforCustomerForm.Rows.Clear();
             this.LoadAllCustomer();
         }
+        private void reset()
+        {
+            filePath = "";
+            txtSearchCustomerForm.Text = "";
+            txtCCCDCustomerForm.Text = "";
+            txtCCCDCustomerForm.ReadOnly = false;
+            txtCustomerNameCustomerForm.Text = "";
+            txtPhoneNumberCustomerForm.Text = "";
+            txtDateOfBirthCustomerForm.Text = "";
+            txtAddressCustomerForm.Text = "";
+            txtNationalityCustomerForm.Text = "";
+            txtJobCustomerForm.Text = "";
+            txtEmailCustomerForm.Text = "";
+            cbGenderCustomerForm.SelectedIndex = -1;
+            imgCustomerCustomerForm.Image = Image.FromFile("..\\..\\Resources\\img_customer_default.png");
+            btnActiveCustomerForm.Visible = false;
+            imgStatusCustomerForm.Image = null;
+            lbStatusCustomerForm.Text = "";
+        }
 
+
+
+
+
+        //Cập nhật toàn bộ khách hàng lên dataGridView--------------------------------------------------------------------------------------------------
+        public void LoadAllCustomer()
+        {
+            viewModel.LoadAllCustomer();
+            //duyệt datatable để lấy các thông tin hiển thị lên datagridview
+            this.UpdateDataGridView(viewModel.DataTableCustomerInfor);
+
+        }
         private void UpdateDataGridView(DataTable dataTable)
         {
             foreach (DataRow row in dataTable.Rows)
@@ -257,49 +375,15 @@ namespace BankManagement
                 string status = row["status"].ToString();
                 string photo = row["photo"].ToString();
 
-                dataGridViewCustomerInforCustomerForm.Rows.Add(id, cccd, name, gender, formattedDateOfBirth, address, phone_number, nationality, job, email, status , photo);
+                dataGridViewCustomerInforCustomerForm.Rows.Add(id, cccd, name, gender, formattedDateOfBirth, address, phone_number, nationality, job, email, status, photo);
             }
         }
 
-        private void btnDeleteCustomerForm_Click(object sender, EventArgs e)
-        {
-
-            //Check xem đã có thông tin trong data base chưa thông qua cccd
-            viewModel.SearchCustomer(viewModel.Cccd);
-            if (viewModel.DataTableCustomerInfor.Rows.Count == 0)
-            {
-                MessageBox.Show("Vui lòng nhập một tài khoản có sẵn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            //lấy dữ liệu từ các textBox
-            this.UpdateViewModelFromForm();
-
-            viewModel.deleteCustomer();
-
-            //xóa tất cả các dữ liệu trong datagridview
-            dataGridViewCustomerInforCustomerForm.Rows.Clear();
-            this.LoadAllCustomer();
 
 
-        }
-        private void reset()
-        {
-            filePath = "";
-            txtSearchCustomerForm.Text = "";
-            txtCCCDCustomerForm.Text = "";
-            txtCCCDCustomerForm.ReadOnly = false;
-            txtCustomerNameCustomerForm.Text = "";
-            txtPhoneNumberCustomerForm.Text = "";
-            txtDateOfBirthCustomerForm.Text = "";
-            txtAddressCustomerForm.Text = "";
-            txtNationalityCustomerForm.Text = "";
-            txtJobCustomerForm.Text = "";
-            txtEmailCustomerForm.Text = "";
-            cbGenderCustomerForm.SelectedIndex = -1;
-            imgCustomerCustomerForm.Image = Image.FromFile("..\\..\\Resources\\img_customer_default.png");
-            btnActiveCustomerForm.Visible = false;
-        }
+
+
+        //Cập nhật các thông tin khách hàng từ form vào viewModel-------------------------------------------------------------------------------------
         private void UpdateViewModelFromForm()
         {
             viewModel.Cccd = txtCCCDCustomerForm.Text;
@@ -320,39 +404,23 @@ namespace BankManagement
                 viewModel.Photo = $"..\\\\..\\\\Image\\\\CustomerImage\\\\img_customer_default.png";
             }
         }
+        //private void UpdateFormFromViewModel()
+        //{
+        //    txtCCCDCustomerForm.Text = viewModel.Cccd;
+        //    txtCustomerNameCustomerForm.Text = viewModel.Name;
+        //    txtEmailCustomerForm.Text = viewModel.Email;
+        //    txtJobCustomerForm.Text = viewModel.Job;
+        //    txtPhoneNumberCustomerForm.Text = viewModel.PhoneNumber;
+        //    txtDateOfBirthCustomerForm.Text = viewModel.DateOfBirth.ToString("yyyy-MM-dd");
+        //    txtNationalityCustomerForm.Text = viewModel.Nationality;
+        //    txtAddressCustomerForm.Text = viewModel.Address;
+        //}
 
 
-        private void UpdateFormFromViewModel()
-        {
-            txtCCCDCustomerForm.Text = viewModel.Cccd;
-            txtCustomerNameCustomerForm.Text = viewModel.Name;
-            txtEmailCustomerForm.Text = viewModel.Email;
-            txtJobCustomerForm.Text = viewModel.Job;
-            txtPhoneNumberCustomerForm.Text = viewModel.PhoneNumber;
-            txtDateOfBirthCustomerForm.Text = viewModel.DateOfBirth.ToString("yyyy-MM-dd");
-            txtNationalityCustomerForm.Text = viewModel.Nationality;
-            txtAddressCustomerForm.Text = viewModel.Address;
-        }
-
-        private void btnImportCustomerForm_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbGenderCustomerForm_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Kiểm tra nếu không có mục nào được chọn (SelectedIndex == -1)
-            if (cbGenderCustomerForm.SelectedIndex == -1)
-            {
-                lbGenderCustomerForm.Visible = true;
-            }
-            else
-            {
-                lbGenderCustomerForm.Visible = false;
-            }
-        }
 
 
+
+        //Xử lý ảnh của khách hàng-----------------------------------------------------------------------------------------------------------------------
         private void imgCustomerCustomerForm_Click(object sender, EventArgs e)
         {
             // Tạo đối tượng OpenFileDialog để chọn ảnh
@@ -374,8 +442,6 @@ namespace BankManagement
                 }
             }
         }
-
-
         private void MoveImageToFolder(string filePath , string folderName)
         {
             if (filePath == null) return;

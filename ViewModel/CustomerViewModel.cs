@@ -13,6 +13,10 @@ namespace BankManagement.ViewModel
     {
         private CustomerInforRepository customerInforRepository;
 
+
+
+
+
         //Các thuộc tính bind với CustomerForm
         private int id;
         private string cccd;
@@ -33,7 +37,10 @@ namespace BankManagement.ViewModel
             customerInforRepository = new CustomerInforRepository();
         }
 
-        //Getter, Setter
+
+
+
+
         // Getter và Setter cho từng thuộc tính
         public int Id
         {
@@ -113,24 +120,11 @@ namespace BankManagement.ViewModel
             set { photo = value; }
         }
 
-        //Lấy thông tin từ repository
-        public void LoadCustomer(CustomerInfor customerInfor)
-        {
-            //CustomerInfor customerInfor = customerInforRepository.getCustomerInforById(CustomerInforID);
-            this.id = customerInfor.Id;
-            this.cccd = customerInfor.Cccd;
-            this.name = customerInfor.Name;
-            this.email = customerInfor.Email;
-            this.job = customerInfor.Job;
-            this.phoneNumber = customerInfor.PhoneNumber;
-            this.dateOfBirth = customerInfor.DateOfBirth;
-            this.nationality = customerInfor.Nationality;
-            this.address = customerInfor.Address;
-            this.Status = customerInfor.Status;
-            this.gender = customerInfor.Gender;
-            this.photo = customerInfor.PhotoPath;
-        }
 
+
+
+
+        //Thêm một khách hàng-------------------------------------------------------------------------------------------------------------------------------------------------------------
         public void addCustomer()
         {
             CustomerInfor customerInfor = customerInforRepository.getCustomerInforByCccd(this.Cccd);
@@ -146,27 +140,53 @@ namespace BankManagement.ViewModel
             }
         }
 
+
+
+
+
+        //Cập nhật thông tin khách hàng---------------------------------------------------------------------------------------------------------------------------------------------------------
         public void updateCustomer()
         {
             CustomerInfor cI = new CustomerInfor(0, this.name, this.cccd, this.phoneNumber, this.email, this.job, this.nationality, this.address, this.dateOfBirth, this.photo , this.status , this.gender);
             customerInforRepository.updateCustomer(cI);
         }
 
+
+
+
+
+        //Xoá một khách hàng----------------------------------------------------------------------------------------------------------------------------------------------------------------------
         public void deleteCustomer()
         {
             customerInforRepository.deleteCustomer(this.cccd);
         }
 
+
+
+
+
+        //Tìm kiếm list khách hàng theo cccd để thêm vào dataGridView-----------------------------------------------------------------------------------------------------------------------------
         public void SearchCustomer(string Cccd)
         {
             this.dataTableCustomerInfor = customerInforRepository.searchCustomerByCccd(Cccd);
         }
 
+
+
+
+
+        //Lấy ra toàn bộ khách hàng để thêm vào dataGridView sau khi loadForm, resetForm...--------------------------------------------------------------------------------------------------------
         public void LoadAllCustomer()
         {
             this.dataTableCustomerInfor = customerInforRepository.LoadAllCustomer();
         }
 
+
+
+
+
+
+        //Kiểm tra định dạng của các trường điền thông tin khách hàng--------------------------------------------------------------------------------------------------------------------------------
         public string CheckFormatCustomerForm(string txtCCCDCustomerForm,
                                               string txtCustomerNameCustomerForm, 
                                               string txtEmailCustomerForm, 
@@ -232,6 +252,9 @@ namespace BankManagement.ViewModel
 
             return error;
         }
+
+
+
 
 
     }
