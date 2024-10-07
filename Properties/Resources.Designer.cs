@@ -113,6 +113,16 @@ namespace BankManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap avatar_customer_default {
+            get {
+                object obj = ResourceManager.GetObject("avatar_customer_default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap avatar_default {
             get {
                 object obj = ResourceManager.GetObject("avatar_default", resourceCulture);

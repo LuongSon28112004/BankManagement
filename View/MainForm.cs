@@ -266,8 +266,15 @@ namespace BankManagement
             btnLoan.FillColor = initialButtonColor;
 
             //Đóng các form khác
-            customerForm.Close();
-		}
+            if (customerAccountForm != null && !customerAccountForm.IsDisposed)
+            {
+                customerAccountForm.Close();
+            }
+            if (customerForm != null && !customerForm.IsDisposed)
+            {
+                customerForm.Close();
+            }
+        }
 
 
 
@@ -282,8 +289,15 @@ namespace BankManagement
             btnLoan.FillColor = clickedButtonColor; //Đổi màu khi click, set màu các btn khác về ban đầu
 
             //Đóng các form khác
-            customerForm.Close();
-		}
+            if (customerAccountForm != null && !customerAccountForm.IsDisposed)
+            {
+                customerAccountForm.Close();
+            }
+            if (customerForm != null && !customerForm.IsDisposed)
+            {
+                customerForm.Close();
+            }
+        }
 
 
 

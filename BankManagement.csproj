@@ -196,6 +196,7 @@
     <None Include="Resources\img_search.png" />
     <None Include="Resources\employee.png" />
     <None Include="Resources\img_reset.png" />
+    <None Include="Resources\avatar_customer_default.png" />
     <Content Include="Resources\maximize.png" />
     <None Include="Resources\notification_bell.png" />
     <None Include="Resources\staff.png" />

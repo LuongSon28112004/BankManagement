@@ -28,28 +28,16 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCustomerNameCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCCCDCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSearchCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnSearchCustomerForm = new Guna.UI2.WinForms.Guna2Button();
             this.dataGridViewCustomerInforCustomerForm = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cccd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.job = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Photo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelDataGridViewCustomerForm = new Guna.UI2.WinForms.Guna2Panel();
             this.lbStatusCustomerForm = new System.Windows.Forms.Label();
             this.panelTop1CustomerForm = new Guna.UI2.WinForms.Guna2Panel();
@@ -70,12 +58,24 @@
             this.lbJobCustomerForm = new System.Windows.Forms.Label();
             this.lbDateOfBirthCustomerForm = new System.Windows.Forms.Label();
             this.lbCustomerAccountCustomerAccountForm = new System.Windows.Forms.Label();
+            this.btnResetCustomerForm = new Guna.UI2.WinForms.Guna2Button();
             this.btnAddCustomerForm = new Guna.UI2.WinForms.Guna2Button();
             this.btnDeleteCustomerForm = new Guna.UI2.WinForms.Guna2Button();
             this.imgCustomerCustomerForm = new Guna.UI2.WinForms.Guna2Button();
             this.imgStatusCustomerForm = new System.Windows.Forms.PictureBox();
             this.btnUpdateCustomerForm = new Guna.UI2.WinForms.Guna2Button();
-            this.btnResetCustomerForm = new Guna.UI2.WinForms.Guna2Button();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cccd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.job = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Photo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomerInforCustomerForm)).BeginInit();
             this.panelTop1CustomerForm.SuspendLayout();
             this.panelTop2CustomefForm.SuspendLayout();
@@ -182,24 +182,24 @@
             // dataGridViewCustomerInforCustomerForm
             // 
             this.dataGridViewCustomerInforCustomerForm.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(62)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.dataGridViewCustomerInforCustomerForm.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(62)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.dataGridViewCustomerInforCustomerForm.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewCustomerInforCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewCustomerInforCustomerForm.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(20, 0, 0, 12);
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCustomerInforCustomerForm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(20, 0, 0, 12);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCustomerInforCustomerForm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewCustomerInforCustomerForm.ColumnHeadersHeight = 38;
             this.dataGridViewCustomerInforCustomerForm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dataGridViewCustomerInforCustomerForm.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -215,14 +215,14 @@
             this.email,
             this.Status,
             this.Photo});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCustomerInforCustomerForm.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCustomerInforCustomerForm.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCustomerInforCustomerForm.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
             this.dataGridViewCustomerInforCustomerForm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataGridViewCustomerInforCustomerForm.Location = new System.Drawing.Point(37, 478);
@@ -231,17 +231,18 @@
             this.dataGridViewCustomerInforCustomerForm.Name = "dataGridViewCustomerInforCustomerForm";
             this.dataGridViewCustomerInforCustomerForm.ReadOnly = true;
             this.dataGridViewCustomerInforCustomerForm.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.dataGridViewCustomerInforCustomerForm.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.dataGridViewCustomerInforCustomerForm.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewCustomerInforCustomerForm.RowHeadersVisible = false;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(90)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewCustomerInforCustomerForm.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(90)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewCustomerInforCustomerForm.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewCustomerInforCustomerForm.RowTemplate.Height = 40;
             this.dataGridViewCustomerInforCustomerForm.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridViewCustomerInforCustomerForm.Size = new System.Drawing.Size(917, 398);
@@ -268,103 +269,6 @@
             this.dataGridViewCustomerInforCustomerForm.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewCustomerInforCustomerForm.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dataGridViewCustomerInforCustomerForm.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCustomerInforCustomerForm_CellClick);
-            // 
-            // id
-            // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.id.Frozen = true;
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 70;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Width = 70;
-            // 
-            // cccd
-            // 
-            this.cccd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.cccd.Frozen = true;
-            this.cccd.HeaderText = "CCCD";
-            this.cccd.MinimumWidth = 110;
-            this.cccd.Name = "cccd";
-            this.cccd.ReadOnly = true;
-            this.cccd.Width = 110;
-            // 
-            // customerName
-            // 
-            this.customerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.customerName.HeaderText = "Customer Name";
-            this.customerName.MinimumWidth = 155;
-            this.customerName.Name = "customerName";
-            this.customerName.ReadOnly = true;
-            // 
-            // Gender
-            // 
-            this.Gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Gender.HeaderText = "Gender ";
-            this.Gender.MinimumWidth = 100;
-            this.Gender.Name = "Gender";
-            this.Gender.ReadOnly = true;
-            // 
-            // dateOfBirth
-            // 
-            this.dateOfBirth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dateOfBirth.HeaderText = "Date Of Birth";
-            this.dateOfBirth.MinimumWidth = 150;
-            this.dateOfBirth.Name = "dateOfBirth";
-            this.dateOfBirth.ReadOnly = true;
-            // 
-            // address
-            // 
-            this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.address.HeaderText = "Address";
-            this.address.MinimumWidth = 141;
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // phoneNumber
-            // 
-            this.phoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.phoneNumber.HeaderText = "Phone Number";
-            this.phoneNumber.MinimumWidth = 20;
-            this.phoneNumber.Name = "phoneNumber";
-            this.phoneNumber.ReadOnly = true;
-            this.phoneNumber.Visible = false;
-            // 
-            // nationality
-            // 
-            this.nationality.HeaderText = "Nationality";
-            this.nationality.Name = "nationality";
-            this.nationality.ReadOnly = true;
-            this.nationality.Visible = false;
-            // 
-            // job
-            // 
-            this.job.HeaderText = "Job";
-            this.job.Name = "job";
-            this.job.ReadOnly = true;
-            this.job.Visible = false;
-            // 
-            // email
-            // 
-            this.email.HeaderText = "Email";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.Visible = false;
-            // 
-            // Status
-            // 
-            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 80;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // Photo
-            // 
-            this.Photo.HeaderText = "Photo";
-            this.Photo.Name = "Photo";
-            this.Photo.ReadOnly = true;
-            this.Photo.Visible = false;
             // 
             // panelDataGridViewCustomerForm
             // 
@@ -737,6 +641,27 @@
             this.lbCustomerAccountCustomerAccountForm.TabIndex = 34;
             this.lbCustomerAccountCustomerAccountForm.Text = "Customer Profile";
             // 
+            // btnResetCustomerForm
+            // 
+            this.btnResetCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnResetCustomerForm.BorderRadius = 15;
+            this.btnResetCustomerForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnResetCustomerForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnResetCustomerForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnResetCustomerForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnResetCustomerForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.btnResetCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnResetCustomerForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.btnResetCustomerForm.Image = global::BankManagement.Properties.Resources.img_reset;
+            this.btnResetCustomerForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnResetCustomerForm.ImageOffset = new System.Drawing.Point(-4, 0);
+            this.btnResetCustomerForm.ImageSize = new System.Drawing.Size(28, 28);
+            this.btnResetCustomerForm.Location = new System.Drawing.Point(897, 13);
+            this.btnResetCustomerForm.Name = "btnResetCustomerForm";
+            this.btnResetCustomerForm.Size = new System.Drawing.Size(40, 40);
+            this.btnResetCustomerForm.TabIndex = 19;
+            this.btnResetCustomerForm.Click += new System.EventHandler(this.btnResetCustomerForm_Click_1);
+            // 
             // btnAddCustomerForm
             // 
             this.btnAddCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -787,7 +712,7 @@
             this.imgCustomerCustomerForm.FillColor = System.Drawing.Color.Transparent;
             this.imgCustomerCustomerForm.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.imgCustomerCustomerForm.ForeColor = System.Drawing.Color.White;
-            this.imgCustomerCustomerForm.Image = global::BankManagement.Properties.Resources.img_customer_default;
+            this.imgCustomerCustomerForm.Image = global::BankManagement.Properties.Resources.avatar_customer_default;
             this.imgCustomerCustomerForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.imgCustomerCustomerForm.ImageOffset = new System.Drawing.Point(-8, 0);
             this.imgCustomerCustomerForm.ImageSize = new System.Drawing.Size(95, 95);
@@ -831,26 +756,103 @@
             this.btnUpdateCustomerForm.Text = "Update";
             this.btnUpdateCustomerForm.Click += new System.EventHandler(this.btnUpdateCustomerForm_Click);
             // 
-            // btnResetCustomerForm
+            // id
             // 
-            this.btnResetCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnResetCustomerForm.BorderRadius = 15;
-            this.btnResetCustomerForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnResetCustomerForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnResetCustomerForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnResetCustomerForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnResetCustomerForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.btnResetCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnResetCustomerForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.btnResetCustomerForm.Image = global::BankManagement.Properties.Resources.img_reset;
-            this.btnResetCustomerForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnResetCustomerForm.ImageOffset = new System.Drawing.Point(-4, 0);
-            this.btnResetCustomerForm.ImageSize = new System.Drawing.Size(28, 28);
-            this.btnResetCustomerForm.Location = new System.Drawing.Point(897, 13);
-            this.btnResetCustomerForm.Name = "btnResetCustomerForm";
-            this.btnResetCustomerForm.Size = new System.Drawing.Size(40, 40);
-            this.btnResetCustomerForm.TabIndex = 19;
-            this.btnResetCustomerForm.Click += new System.EventHandler(this.btnResetCustomerForm_Click_1);
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.id.Frozen = true;
+            this.id.HeaderText = "ID";
+            this.id.MinimumWidth = 70;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            this.id.Width = 70;
+            // 
+            // cccd
+            // 
+            this.cccd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.cccd.Frozen = true;
+            this.cccd.HeaderText = "CCCD";
+            this.cccd.MinimumWidth = 130;
+            this.cccd.Name = "cccd";
+            this.cccd.ReadOnly = true;
+            this.cccd.Width = 130;
+            // 
+            // customerName
+            // 
+            this.customerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.customerName.HeaderText = "Customer Name";
+            this.customerName.MinimumWidth = 155;
+            this.customerName.Name = "customerName";
+            this.customerName.ReadOnly = true;
+            // 
+            // Gender
+            // 
+            this.Gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Gender.HeaderText = "Gender ";
+            this.Gender.MinimumWidth = 100;
+            this.Gender.Name = "Gender";
+            this.Gender.ReadOnly = true;
+            // 
+            // dateOfBirth
+            // 
+            this.dateOfBirth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateOfBirth.HeaderText = "Date Of Birth";
+            this.dateOfBirth.MinimumWidth = 150;
+            this.dateOfBirth.Name = "dateOfBirth";
+            this.dateOfBirth.ReadOnly = true;
+            // 
+            // address
+            // 
+            this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.address.HeaderText = "Address";
+            this.address.MinimumWidth = 141;
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // phoneNumber
+            // 
+            this.phoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.phoneNumber.HeaderText = "Phone Number";
+            this.phoneNumber.MinimumWidth = 20;
+            this.phoneNumber.Name = "phoneNumber";
+            this.phoneNumber.ReadOnly = true;
+            this.phoneNumber.Visible = false;
+            // 
+            // nationality
+            // 
+            this.nationality.HeaderText = "Nationality";
+            this.nationality.Name = "nationality";
+            this.nationality.ReadOnly = true;
+            this.nationality.Visible = false;
+            // 
+            // job
+            // 
+            this.job.HeaderText = "Job";
+            this.job.Name = "job";
+            this.job.ReadOnly = true;
+            this.job.Visible = false;
+            // 
+            // email
+            // 
+            this.email.HeaderText = "Email";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.Visible = false;
+            // 
+            // Status
+            // 
+            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 80;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Photo
+            // 
+            this.Photo.HeaderText = "Photo";
+            this.Photo.Name = "Photo";
+            this.Photo.ReadOnly = true;
+            this.Photo.Visible = false;
             // 
             // CustomerForm
             // 
@@ -904,6 +906,14 @@
         private Guna.UI2.WinForms.Guna2TextBox txtPhoneNumberCustomerForm;
         private Guna.UI2.WinForms.Guna2Panel panelTop2CustomefForm;
         private System.Windows.Forms.Label lbGenderCustomerForm;
+        private System.Windows.Forms.Label lbDateOfBirthCustomerForm;
+        private System.Windows.Forms.Label lbNationalityCustomerForm;
+        private System.Windows.Forms.Label lbPhoneNumberCustomerForm;
+        private System.Windows.Forms.Label lbEmailCustomerForm;
+        private System.Windows.Forms.Label lbAddressCustomerForm;
+        private System.Windows.Forms.Label lbJobCustomerForm;
+        private System.Windows.Forms.Label lbCustomerAccountCustomerAccountForm;
+        private Guna.UI2.WinForms.Guna2Button btnResetCustomerForm;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn cccd;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerName;
@@ -916,13 +926,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn Photo;
-        private System.Windows.Forms.Label lbDateOfBirthCustomerForm;
-        private System.Windows.Forms.Label lbNationalityCustomerForm;
-        private System.Windows.Forms.Label lbPhoneNumberCustomerForm;
-        private System.Windows.Forms.Label lbEmailCustomerForm;
-        private System.Windows.Forms.Label lbAddressCustomerForm;
-        private System.Windows.Forms.Label lbJobCustomerForm;
-        private System.Windows.Forms.Label lbCustomerAccountCustomerAccountForm;
-        private Guna.UI2.WinForms.Guna2Button btnResetCustomerForm;
     }
 }

@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 using System.Xml.Linq;
 using Image = System.Drawing.Image;
 
@@ -46,7 +47,7 @@ namespace BankManagement
             //Hover IMG customer none
             imgCustomerCustomerForm.HoverState.FillColor = Color.FromArgb(40, 42, 45);
 
-            //Đăng ký sự kiện ScrollBar vertical
+            //Đăng ký sự kiện ScrollBar vertical của dataGridView
             dataGridViewCustomerInforCustomerForm.MouseWheel += dataGridViewCustomerInforCustomerForm_MouseWheel;
         }
 
@@ -265,7 +266,11 @@ namespace BankManagement
 
             //lấy dữ liệu từ các textBox
             this.UpdateViewModelFromForm();
-            if(filePath != "") MoveImageToFolder(filePath, "\\Image\\CustomerImage");
+            if (filePath != "")
+            {
+                MoveImageToFolder(filePath, "\\Image\\CustomerImage");
+            }
+
 
             //this.MoveImageToFolder(filePath, "\\Image\\CustomerImage");
             //Check xem đã có thông tin trong database chưa thông qua cccd
@@ -332,7 +337,7 @@ namespace BankManagement
             txtJobCustomerForm.Text = "";
             txtEmailCustomerForm.Text = "";
             cbGenderCustomerForm.SelectedIndex = -1;
-            imgCustomerCustomerForm.Image = Image.FromFile("..\\..\\Resources\\img_customer_default.png");
+            imgCustomerCustomerForm.Image = Image.FromFile("..\\..\\Resources\\avatar_customer_default.png");
             btnActiveCustomerForm.Visible = false;
             imgStatusCustomerForm.Image = null;
             lbStatusCustomerForm.Text = "";
