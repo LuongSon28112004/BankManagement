@@ -58,6 +58,12 @@
     <Compile Include="ViewModel\InfoStaffViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\CustomerAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomerAccountForm.Designer.cs">
+      <DependentUpon>CustomerAccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <Compile Include="RoundControl.Designer.cs">
       <DependentUpon>RoundControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\CustomerAccountForm.resx">
+      <DependentUpon>CustomerAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +161,7 @@
     <None Include="Resources\user_icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\user.png" />
     <None Include="Resources\x-button.png" />
     <None Include="Resources\update-user1.png" />
     <None Include="Resources\update-user.png" />
@@ -182,6 +192,10 @@
     <None Include="Resources\img_customer_default.png" />
     <None Include="Resources\checked.png" />
     <None Include="Resources\add-user.png" />
+    <None Include="Resources\customer_background.png" />
+    <None Include="Resources\img_search.png" />
+    <None Include="Resources\employee.png" />
+    <None Include="Resources\img_reset.png" />
     <Content Include="Resources\maximize.png" />
     <None Include="Resources\notification_bell.png" />
     <None Include="Resources\staff.png" />

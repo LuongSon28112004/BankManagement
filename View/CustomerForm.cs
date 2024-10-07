@@ -24,18 +24,12 @@ namespace BankManagement
         string filePath;
 
 
-
-
-
 		public CustomerForm()
 		{
 			InitializeComponent();
 			viewModel = new CustomerViewModel();
-			this.ShowInTaskbar = false;
+			this.ShowInTaskbar = false; //Ẩn khỏi thanh taskbar
 		}
-
-
-
 
 
         private void CustomerForm_Load(object sender, EventArgs e)
@@ -317,7 +311,7 @@ namespace BankManagement
 
 
         //Reset các lb, txt để chuẩn bị add khách hàng...-----------------------------------------------------------------------------------------------
-        private void btnResetCustomerForm_Click(object sender, EventArgs e)
+        private void btnResetCustomerForm_Click_1(object sender, EventArgs e)
         {
             this.reset();
             //xóa tất cả các dữ liệu trong datagridview
@@ -484,9 +478,6 @@ namespace BankManagement
                 }
         }
 
-
-
-
-
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using BankManagement.ViewModel;
+﻿using BankManagement.View;
+using BankManagement.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,10 +17,12 @@ namespace BankManagement
 {
     public partial class MainForm : Form
     {
-		private int staffId;
+		private int staffId; //Nhận dữ liệu truyền từ LoginForm
+
 		private MainViewModel viewModel;
-		public Color initialButtonColor = Color.FromArgb(31, 31, 31);
-		public Color clickedButtonColor = Color.FromArgb(255, 130, 37);
+
+		public Color initialButtonColor = Color.FromArgb(31, 31, 31); //Màu của các btn không được chọn
+		public Color clickedButtonColor = Color.FromArgb(255, 130, 37); //Màu của các btn được chọn
 
         public MainForm(int staffId)
         {
@@ -27,7 +30,7 @@ namespace BankManagement
             this.Load += Main_Load;
 
 			this.staffId = staffId;//Nhận dữ liệu từ LoginForm
-			viewModel = new MainViewModel();
+			viewModel = new MainViewModel(); //Hàm tạo ViewModel
 		}
 		private void Main_Load(object sender, EventArgs e)
 		{
@@ -35,17 +38,18 @@ namespace BankManagement
 			normalBounds = this.Bounds;
 
 			//Đổi màu hover
-			btnCloseMain.HoverState.FillColor = Color.FromArgb(255, 90, 90);
+			btnCloseMain.HoverState.FillColor = Color.FromArgb(255, 90, 90); 
 			btnStaffAvatarMain.HoverState.FillColor = Color.FromArgb(200, 200, 200);
 			btnNotifyMain.HoverState.FillColor = Color.FromArgb(100, 100, 100);
 
-			// Gọi trực tiếp phương thức xử lý sự kiện Click của btnCustomer để mặc địch form CustomerForm được mở khi load MainForm
+			// Gọi trực tiếp phương thức xử lý sự kiện Click của btnCustomer để mặc địch Form CustomerForm được mở khi load MainForm
 			btnCustomer_Click(this, EventArgs.Empty);
 
 
 			//Cập nhật data binding
 			viewModel.LoadStaff(staffId);
-			lbStaffName.Text = viewModel.GetStaffName();
+			lbStaffName.Text = viewModel.GetStaffName(); //Cập nhật tên nhân viên 
+
 			// Cập nhật ảnh của PictureBox từ file
 			try
 			{
@@ -70,7 +74,7 @@ namespace BankManagement
 
 
 
-		//Begin - Hỗ trợ kéo thả khi giữ click vào thanh title 
+		//Hỗ trợ kéo thả khi giữ click vào thanh title -------------------------------------------------------------------------------------------------------------------------
 		public const int WM_NCLBUTTONDOWN = 0xA1;
 		//0xA1 là mã Hex đại diện cho sự kiện khi Windows khi nhấn nút trái chuột vào vùng không chứa title bar
 
@@ -113,11 +117,40 @@ namespace BankManagement
                 }
             }
         }
+        private void MainForm_ResizeEnd(object sender, EventArgs e)
+        {
+            // Đặt lại con trỏ về dạng mặc định sau khi kết thúc resize
+            this.Cursor = Cursors.Default;
+        }
 
 
 
-		//Sự kiện 3 button đóng, phóng to, thu nhỏ ứng dụng
-		private void btnClose_Click(object sender, EventArgs e)
+
+
+        //Sự kiện click StaffAvatarMain mở ra form thông tin nhân viên---------------------------------------------------------------------------------------------------------
+        private void btnStaffAvatarMain_Click(object sender, EventArgs e)
+        {
+            InfoStaffForm infoStaff = new InfoStaffForm(staffId); //Truyền dữ liệu đến InfoStaffForm
+                                                                  // Lấy tọa độ và điều chỉnh vị trí
+            var buttonScreenPos = btnStaffAvatarMain.PointToScreen(new System.Drawing.Point(-35, btnStaffAvatarMain.Height + 20));
+
+            // Đặt vị trí của InfoStaff ngay dưới nút btnStaffAvatar
+            infoStaff.StartPosition = FormStartPosition.Manual;
+            infoStaff.Location = buttonScreenPos;
+
+            // Hiển thị InfoStaff
+            infoStaff.Show(this);
+        }
+
+
+
+
+
+        //Sự kiện 3 button đóng, phóng to, thu nhỏ ứng dụng-------------------------------------------------------------------------------------------------------------------
+        //Các biến trạng thái
+        private bool isMaximized = false;
+        private Rectangle normalBounds; //Lưu trữ kích thước form
+        private void btnClose_Click(object sender, EventArgs e)
 		{
 			Application.Exit(); //Đóng ứng dụng
 		}
@@ -126,10 +159,6 @@ namespace BankManagement
 		{
 			this.WindowState = FormWindowState.Minimized; //Thu nhỏ ứng dụng
 		}
-
-		//Các biến trạng thái
-		private bool isMaximized = false;
-		private Rectangle normalBounds; //Lưu trữ kích thước form
 		private void btnMaximize_Click(object sender, EventArgs e)
 		{
 			if (isMaximized) //Khi form ở trạng thái phóng to
@@ -148,7 +177,9 @@ namespace BankManagement
 
 
 
-        //Sự kiện click btnCustomer
+
+
+        //Sự kiện click btnCustomer-----------------------------------------------------------------------------------------------------------------------------------------------
 		private CustomerForm customerForm;
 		private void btnCustomer_Click(object sender, EventArgs e)
 		{
@@ -157,7 +188,7 @@ namespace BankManagement
 			btnTransaction.FillColor = initialButtonColor;
             btnLoan.FillColor = initialButtonColor;
 
-            //Begin - mở form CustomerForm
+            //Mở form CustomerForm
             if (customerForm == null || customerForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
 			{
 				customerForm = new CustomerForm();
@@ -173,11 +204,22 @@ namespace BankManagement
 				customerForm.BringToFront();
 				customerForm.Activate();
 			}
+
+
+			//Đóng các form khác
+			if (customerAccountForm != null && !customerAccountForm.IsDisposed)
+			{
+                customerAccountForm.Close();
+            }
+			
 		}
 
 
 
-		//Sự kiện click btnAccount
+
+
+		//Sự kiện click btnAccount-------------------------------------------------------------------------------------------------------------------------------------------------
+		private CustomerAccountForm customerAccountForm;
 		private void btnAccount_Click(object sender, EventArgs e)
         {
 			btnCustomer.FillColor = initialButtonColor;
@@ -185,13 +227,37 @@ namespace BankManagement
             btnTransaction.FillColor = initialButtonColor;
             btnLoan.FillColor = initialButtonColor;
 
+
+            //Mở form CustomerAccountForm
+            if (customerAccountForm == null || customerAccountForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
+            {
+                customerAccountForm = new CustomerAccountForm();
+                customerAccountForm.StartPosition = FormStartPosition.Manual;
+                customerAccountForm.Height = this.Height - 63; //Chỉnh độ cao của form CustomerAccountForm
+                customerAccountForm.Width = this.Width - panelLeftBarMain.Width - 3;
+                customerAccountForm.Location = new Point(this.Location.X + panelLeftBarMain.Width + (this.Width - panelLeftBarMain.Width - customerAccountForm.Width) / 2, this.Location.Y + 60);
+                customerAccountForm.Show(this);
+            }
+            else
+            {
+                // Nếu form đã mở, chỉ cần kích hoạt và đưa nó lên trên cùng
+                customerAccountForm.BringToFront();
+                customerAccountForm.Activate();
+            }
+
+
             //Đóng các form khác
-            customerForm.Close();
-		}
+            if (customerForm != null && !customerForm.IsDisposed)
+            {
+                customerForm.Close();
+            }
+        }
 
 
 
-		//Sự kiện click btnTransaction
+
+
+		//Sự kiện click btnTransaction---------------------------------------------------------------------------------------------------------------------------------------------
         private void btnTransaction_Click(object sender, EventArgs e)
         {
 			btnCustomer.FillColor = initialButtonColor;
@@ -205,7 +271,9 @@ namespace BankManagement
 
 
 
-		//Sự kiện click btn Loan
+
+
+		//Sự kiện click btn Loan---------------------------------------------------------------------------------------------------------------------------------------------------
         private void btnLoan_Click(object sender, EventArgs e)
         {
 			btnCustomer.FillColor = initialButtonColor;
@@ -219,20 +287,7 @@ namespace BankManagement
 
 
 
-		//Sự kiện click StaffAvatarMain
-		private void btnStaffAvatarMain_Click(object sender, EventArgs e)
-        {
-			InfoStaffForm infoStaff = new InfoStaffForm(staffId); //Truyền dữ liệu đến InfoStaffForm
-			// Lấy tọa độ và điều chỉnh vị trí
-			var buttonScreenPos = btnStaffAvatarMain.PointToScreen(new System.Drawing.Point(-35, btnStaffAvatarMain.Height + 20));
-
-            // Đặt vị trí của InfoStaff ngay dưới nút btnStaffAvatar
-            infoStaff.StartPosition = FormStartPosition.Manual;
-            infoStaff.Location = buttonScreenPos;
-
-            // Hiển thị InfoStaff
-            infoStaff.Show(this);
-        }
+		
 
 
 
@@ -241,13 +296,21 @@ namespace BankManagement
 		{
             panelLeftBarMain.Width = 200 + (this.Width - 999 - 200) / 4;
             UpdateCustomerFormSizeAndPosition(); //Cập nhật CustomerForm
-		}
+			UpdateCustomerAccountFormSizeAndPosition(); //Cập nhật CustomerAccountForm
+
+        }
 
 		private void Main_Resize(object sender, EventArgs e) //Cập nhật form con khi resize
 		{
             panelLeftBarMain.Width = 200 + (this.Width - 999 - 200) / 4;
             UpdateCustomerFormSizeAndPosition(); //Cập nhật CustomerForm
-		}
+			UpdateCustomerAccountFormSizeAndPosition(); //Cập nhật CustomerAccountForm
+
+        }
+
+
+
+
 
 		//Hàm cập nhật trạng thái CustomerForm
 		private void UpdateCustomerFormSizeAndPosition()
@@ -262,15 +325,31 @@ namespace BankManagement
 			}
 		}
 
+
+
+
+
+        //Hàm cập nhật trạng thái CustomerForm
+        private void UpdateCustomerAccountFormSizeAndPosition()
+        {
+            if (customerAccountForm != null && !customerAccountForm.IsDisposed)
+            {
+                // Đặt vị trí của Form con và chỉnh size
+                customerAccountForm.Height = this.Height - 63; //Chỉnh độ cao của form CustomerForm
+                customerAccountForm.Width = this.Width - panelLeftBarMain.Width - 3;
+                customerAccountForm.Location = new Point(this.Location.X + panelLeftBarMain.Width + (this.Width - panelLeftBarMain.Width - customerAccountForm.Width) / 2, this.Location.Y + 60);
+            }
+        }
+
+
         private void btnNotifyMain_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void MainForm_ResizeEnd(object sender, EventArgs e)
+        private void panelTitleBarMain_MouseEnter(object sender, EventArgs e)
         {
-            // Đặt lại con trỏ về dạng mặc định sau khi kết thúc resize
-            this.Cursor = Cursors.Default;
+			this.Cursor = Cursors.Default;
         }
     }
 }
