@@ -67,17 +67,16 @@
             this.lbUsernameCustomerAccountForm = new System.Windows.Forms.Label();
             this.btnDeleteCustomerAccountForm = new Guna.UI2.WinForms.Guna2Button();
             this.btnAddCustomerAccountForm = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnSearchByAccountNumberCustomerAccountForm = new Guna.UI2.WinForms.Guna2Button();
+            this.txtSearchAccountNumberAccountCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.dataGridViewCustomerAccountForm = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.panelDataGridViewCustomerForm = new Guna.UI2.WinForms.Guna2Panel();
             this.accountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cccd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AccountNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AccountStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +84,7 @@
             this.CustomerStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpenDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelDataGridViewCustomerForm = new Guna.UI2.WinForms.Guna2Panel();
             this.panelCustomerInfCustomerAccountForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgCustomerInfStatusCustomerAccountForm)).BeginInit();
             this.panelAccount01CustomerAccountForm.SuspendLayout();
@@ -196,6 +196,7 @@
             this.txtEmailCustomerAccountForm.PasswordChar = '\0';
             this.txtEmailCustomerAccountForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.txtEmailCustomerAccountForm.PlaceholderText = "abc@gmail.com";
+            this.txtEmailCustomerAccountForm.ReadOnly = true;
             this.txtEmailCustomerAccountForm.SelectedText = "";
             this.txtEmailCustomerAccountForm.Size = new System.Drawing.Size(277, 35);
             this.txtEmailCustomerAccountForm.TabIndex = 0;
@@ -223,6 +224,7 @@
             this.txtAddressCustomerAccountForm.PasswordChar = '\0';
             this.txtAddressCustomerAccountForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.txtAddressCustomerAccountForm.PlaceholderText = "Ward - District - City";
+            this.txtAddressCustomerAccountForm.ReadOnly = true;
             this.txtAddressCustomerAccountForm.SelectedText = "";
             this.txtAddressCustomerAccountForm.Size = new System.Drawing.Size(276, 35);
             this.txtAddressCustomerAccountForm.TabIndex = 0;
@@ -250,6 +252,7 @@
             this.txtDateOfBirthCustomerAccountForm.PasswordChar = '\0';
             this.txtDateOfBirthCustomerAccountForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.txtDateOfBirthCustomerAccountForm.PlaceholderText = "dd/mm/yyyy";
+            this.txtDateOfBirthCustomerAccountForm.ReadOnly = true;
             this.txtDateOfBirthCustomerAccountForm.SelectedText = "";
             this.txtDateOfBirthCustomerAccountForm.Size = new System.Drawing.Size(146, 35);
             this.txtDateOfBirthCustomerAccountForm.TabIndex = 0;
@@ -277,6 +280,7 @@
             this.txtGenderCustomerAccountForm.PasswordChar = '\0';
             this.txtGenderCustomerAccountForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.txtGenderCustomerAccountForm.PlaceholderText = "Male";
+            this.txtGenderCustomerAccountForm.ReadOnly = true;
             this.txtGenderCustomerAccountForm.SelectedText = "";
             this.txtGenderCustomerAccountForm.Size = new System.Drawing.Size(100, 35);
             this.txtGenderCustomerAccountForm.TabIndex = 0;
@@ -409,6 +413,7 @@
             this.btnSearchByCCCDCustomerAccountForm.Size = new System.Drawing.Size(80, 33);
             this.btnSearchByCCCDCustomerAccountForm.TabIndex = 37;
             this.btnSearchByCCCDCustomerAccountForm.Text = "Search";
+            this.btnSearchByCCCDCustomerAccountForm.Click += new System.EventHandler(this.btnSearchByCCCDCustomerAccountForm_Click);
             // 
             // panelAccount01CustomerAccountForm
             // 
@@ -451,6 +456,7 @@
             this.btnActiveCustomerAccountForm.TabIndex = 35;
             this.btnActiveCustomerAccountForm.Text = "Active";
             this.btnActiveCustomerAccountForm.TextOffset = new System.Drawing.Point(1, -1);
+            this.btnActiveCustomerAccountForm.Click += new System.EventHandler(this.btnActiveCustomerAccountForm_Click);
             // 
             // lbAccountStatusCustomerAccountForm
             // 
@@ -482,6 +488,7 @@
             this.btnResetCustomerAccountForm.Name = "btnResetCustomerAccountForm";
             this.btnResetCustomerAccountForm.Size = new System.Drawing.Size(40, 40);
             this.btnResetCustomerAccountForm.TabIndex = 18;
+            this.btnResetCustomerAccountForm.Click += new System.EventHandler(this.btnResetCustomerAccountForm_Click);
             // 
             // imgAccountStatusCustomerAccountForm
             // 
@@ -516,6 +523,7 @@
             this.txtOpenDateCustomerAccountForm.PasswordChar = '\0';
             this.txtOpenDateCustomerAccountForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.txtOpenDateCustomerAccountForm.PlaceholderText = "dd/mm/yyyy";
+            this.txtOpenDateCustomerAccountForm.ReadOnly = true;
             this.txtOpenDateCustomerAccountForm.SelectedText = "";
             this.txtOpenDateCustomerAccountForm.Size = new System.Drawing.Size(200, 35);
             this.txtOpenDateCustomerAccountForm.TabIndex = 1;
@@ -543,6 +551,7 @@
             this.txtAccountNumberCustomerAccountForm.PasswordChar = '\0';
             this.txtAccountNumberCustomerAccountForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.txtAccountNumberCustomerAccountForm.PlaceholderText = "101xxxxxxx";
+            this.txtAccountNumberCustomerAccountForm.ReadOnly = true;
             this.txtAccountNumberCustomerAccountForm.SelectedText = "";
             this.txtAccountNumberCustomerAccountForm.Size = new System.Drawing.Size(200, 35);
             this.txtAccountNumberCustomerAccountForm.TabIndex = 0;
@@ -614,6 +623,7 @@
             this.txtBalanceCustomerAccountForm.PasswordChar = '\0';
             this.txtBalanceCustomerAccountForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.txtBalanceCustomerAccountForm.PlaceholderText = "0,000";
+            this.txtBalanceCustomerAccountForm.ReadOnly = true;
             this.txtBalanceCustomerAccountForm.SelectedText = "";
             this.txtBalanceCustomerAccountForm.Size = new System.Drawing.Size(200, 35);
             this.txtBalanceCustomerAccountForm.TabIndex = 1;
@@ -684,6 +694,7 @@
             this.btnDeleteCustomerAccountForm.Size = new System.Drawing.Size(95, 35);
             this.btnDeleteCustomerAccountForm.TabIndex = 13;
             this.btnDeleteCustomerAccountForm.Text = "Delete";
+            this.btnDeleteCustomerAccountForm.Click += new System.EventHandler(this.btnDeleteCustomerAccountForm_Click);
             // 
             // btnAddCustomerAccountForm
             // 
@@ -702,50 +713,52 @@
             this.btnAddCustomerAccountForm.Size = new System.Drawing.Size(80, 35);
             this.btnAddCustomerAccountForm.TabIndex = 15;
             this.btnAddCustomerAccountForm.Text = "Add";
+            this.btnAddCustomerAccountForm.Click += new System.EventHandler(this.btnAddCustomerAccountForm_Click);
             // 
-            // guna2Button1
+            // btnSearchByAccountNumberCustomerAccountForm
             // 
-            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button1.BorderRadius = 13;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(213)))), ((int)(((byte)(127)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button1.Location = new System.Drawing.Point(884, 466);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(80, 33);
-            this.guna2Button1.TabIndex = 42;
-            this.guna2Button1.Text = "Search";
+            this.btnSearchByAccountNumberCustomerAccountForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearchByAccountNumberCustomerAccountForm.BorderRadius = 13;
+            this.btnSearchByAccountNumberCustomerAccountForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSearchByAccountNumberCustomerAccountForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSearchByAccountNumberCustomerAccountForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSearchByAccountNumberCustomerAccountForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSearchByAccountNumberCustomerAccountForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(213)))), ((int)(((byte)(127)))));
+            this.btnSearchByAccountNumberCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchByAccountNumberCustomerAccountForm.ForeColor = System.Drawing.Color.Black;
+            this.btnSearchByAccountNumberCustomerAccountForm.Location = new System.Drawing.Point(884, 466);
+            this.btnSearchByAccountNumberCustomerAccountForm.Name = "btnSearchByAccountNumberCustomerAccountForm";
+            this.btnSearchByAccountNumberCustomerAccountForm.Size = new System.Drawing.Size(80, 33);
+            this.btnSearchByAccountNumberCustomerAccountForm.TabIndex = 42;
+            this.btnSearchByAccountNumberCustomerAccountForm.Text = "Search";
+            this.btnSearchByAccountNumberCustomerAccountForm.Click += new System.EventHandler(this.btnSearchByAccountNumberCustomerAccountForm_Click);
             // 
-            // guna2TextBox1
+            // txtSearchAccountNumberAccountCustomerForm
             // 
-            this.guna2TextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2TextBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2TextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
-            this.guna2TextBox1.BorderRadius = 12;
-            this.guna2TextBox1.BorderThickness = 0;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TextBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(669, 466);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "Account number";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(200, 33);
-            this.guna2TextBox1.TabIndex = 41;
+            this.txtSearchAccountNumberAccountCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchAccountNumberAccountCustomerForm.BackColor = System.Drawing.Color.Transparent;
+            this.txtSearchAccountNumberAccountCustomerForm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
+            this.txtSearchAccountNumberAccountCustomerForm.BorderRadius = 12;
+            this.txtSearchAccountNumberAccountCustomerForm.BorderThickness = 0;
+            this.txtSearchAccountNumberAccountCustomerForm.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearchAccountNumberAccountCustomerForm.DefaultText = "";
+            this.txtSearchAccountNumberAccountCustomerForm.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtSearchAccountNumberAccountCustomerForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtSearchAccountNumberAccountCustomerForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearchAccountNumberAccountCustomerForm.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearchAccountNumberAccountCustomerForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.txtSearchAccountNumberAccountCustomerForm.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearchAccountNumberAccountCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchAccountNumberAccountCustomerForm.ForeColor = System.Drawing.Color.White;
+            this.txtSearchAccountNumberAccountCustomerForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearchAccountNumberAccountCustomerForm.Location = new System.Drawing.Point(669, 466);
+            this.txtSearchAccountNumberAccountCustomerForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSearchAccountNumberAccountCustomerForm.Name = "txtSearchAccountNumberAccountCustomerForm";
+            this.txtSearchAccountNumberAccountCustomerForm.PasswordChar = '\0';
+            this.txtSearchAccountNumberAccountCustomerForm.PlaceholderText = "Account number";
+            this.txtSearchAccountNumberAccountCustomerForm.SelectedText = "";
+            this.txtSearchAccountNumberAccountCustomerForm.Size = new System.Drawing.Size(200, 33);
+            this.txtSearchAccountNumberAccountCustomerForm.TabIndex = 41;
             // 
             // dataGridViewCustomerAccountForm
             // 
@@ -777,7 +790,7 @@
             this.Gender,
             this.AccountNumber,
             this.Username,
-            this.AccountStatus,
+            this.status,
             this.dateOfBirth,
             this.address,
             this.email,
@@ -838,18 +851,7 @@
             this.dataGridViewCustomerAccountForm.ThemeStyle.RowsStyle.Height = 40;
             this.dataGridViewCustomerAccountForm.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridViewCustomerAccountForm.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // panelDataGridViewCustomerForm
-            // 
-            this.panelDataGridViewCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelDataGridViewCustomerForm.BackColor = System.Drawing.Color.Transparent;
-            this.panelDataGridViewCustomerForm.BorderRadius = 18;
-            this.panelDataGridViewCustomerForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.panelDataGridViewCustomerForm.Location = new System.Drawing.Point(20, 509);
-            this.panelDataGridViewCustomerForm.Name = "panelDataGridViewCustomerForm";
-            this.panelDataGridViewCustomerForm.Size = new System.Drawing.Size(944, 423);
-            this.panelDataGridViewCustomerForm.TabIndex = 44;
+            this.dataGridViewCustomerAccountForm.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCustomerAccountForm_CellClick);
             // 
             // accountId
             // 
@@ -902,13 +904,13 @@
             this.Username.Name = "Username";
             this.Username.ReadOnly = true;
             // 
-            // AccountStatus
+            // status
             // 
-            this.AccountStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.AccountStatus.HeaderText = "Status";
-            this.AccountStatus.MinimumWidth = 80;
-            this.AccountStatus.Name = "AccountStatus";
-            this.AccountStatus.ReadOnly = true;
+            this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.status.HeaderText = "Status";
+            this.status.MinimumWidth = 80;
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
             // 
             // dateOfBirth
             // 
@@ -963,6 +965,18 @@
             this.Balance.ReadOnly = true;
             this.Balance.Visible = false;
             // 
+            // panelDataGridViewCustomerForm
+            // 
+            this.panelDataGridViewCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelDataGridViewCustomerForm.BackColor = System.Drawing.Color.Transparent;
+            this.panelDataGridViewCustomerForm.BorderRadius = 18;
+            this.panelDataGridViewCustomerForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.panelDataGridViewCustomerForm.Location = new System.Drawing.Point(20, 509);
+            this.panelDataGridViewCustomerForm.Name = "panelDataGridViewCustomerForm";
+            this.panelDataGridViewCustomerForm.Size = new System.Drawing.Size(944, 423);
+            this.panelDataGridViewCustomerForm.TabIndex = 44;
+            // 
             // CustomerAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -971,8 +985,8 @@
             this.ClientSize = new System.Drawing.Size(990, 895);
             this.Controls.Add(this.dataGridViewCustomerAccountForm);
             this.Controls.Add(this.panelDataGridViewCustomerForm);
-            this.Controls.Add(this.guna2Button1);
-            this.Controls.Add(this.guna2TextBox1);
+            this.Controls.Add(this.btnSearchByAccountNumberCustomerAccountForm);
+            this.Controls.Add(this.txtSearchAccountNumberAccountCustomerForm);
             this.Controls.Add(this.panelAccount02CustomerAccountForm);
             this.Controls.Add(this.panelAccount01CustomerAccountForm);
             this.Controls.Add(this.btnSearchByCCCDCustomerAccountForm);
@@ -1034,8 +1048,8 @@
         private System.Windows.Forms.Label lbAccountStatusCustomerAccountForm;
         private System.Windows.Forms.PictureBox imgAccountStatusCustomerAccountForm;
         private Guna.UI2.WinForms.Guna2Button btnActiveCustomerAccountForm;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2Button btnSearchByAccountNumberCustomerAccountForm;
+        private Guna.UI2.WinForms.Guna2TextBox txtSearchAccountNumberAccountCustomerForm;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridViewCustomerAccountForm;
         private Guna.UI2.WinForms.Guna2Panel panelDataGridViewCustomerForm;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountId;
@@ -1044,7 +1058,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn AccountNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AccountStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateOfBirth;
         private System.Windows.Forms.DataGridViewTextBoxColumn address;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;

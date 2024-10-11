@@ -305,6 +305,7 @@ namespace BankManagement
             //lấy dữ liệu từ các textBox
             this.UpdateViewModelFromForm();
 
+
             viewModel.deleteCustomer();
 
             //xóa tất cả các dữ liệu trong datagridview
@@ -403,20 +404,6 @@ namespace BankManagement
                 viewModel.Photo = $"..\\\\..\\\\Image\\\\CustomerImage\\\\img_customer_default.png";
             }
         }
-        //private void UpdateFormFromViewModel()
-        //{
-        //    txtCCCDCustomerForm.Text = viewModel.Cccd;
-        //    txtCustomerNameCustomerForm.Text = viewModel.Name;
-        //    txtEmailCustomerForm.Text = viewModel.Email;
-        //    txtJobCustomerForm.Text = viewModel.Job;
-        //    txtPhoneNumberCustomerForm.Text = viewModel.PhoneNumber;
-        //    txtDateOfBirthCustomerForm.Text = viewModel.DateOfBirth.ToString("yyyy-MM-dd");
-        //    txtNationalityCustomerForm.Text = viewModel.Nationality;
-        //    txtAddressCustomerForm.Text = viewModel.Address;
-        //}
-
-
-
 
 
         //Xử lý ảnh của khách hàng-----------------------------------------------------------------------------------------------------------------------

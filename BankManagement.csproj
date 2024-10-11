@@ -52,8 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\CustomerAccount.cs" />
+    <Compile Include="Model\CustomerAccountWithInforRepository.cs" />
     <Compile Include="Model\CustomerInfor.cs" />
     <Compile Include="Model\CustomerInforRepository.cs" />
+    <Compile Include="ViewModel\AccountViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\InfoStaffViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

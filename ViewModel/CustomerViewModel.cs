@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,9 +13,6 @@ namespace BankManagement.ViewModel
     internal class CustomerViewModel
     {
         private CustomerInforRepository customerInforRepository;
-
-
-
 
 
         //Các thuộc tính bind với CustomerForm
@@ -181,6 +179,11 @@ namespace BankManagement.ViewModel
             this.dataTableCustomerInfor = customerInforRepository.LoadAllCustomer();
         }
 
+        //public void getAccountCustomerByCustomerId()
+        //{
+        //    customerInforRepository.getAccountCustomerBycustomerId(this.id);
+        //}
+
 
 
 
@@ -252,10 +255,6 @@ namespace BankManagement.ViewModel
 
             return error;
         }
-
-
-
-
 
     }
 }

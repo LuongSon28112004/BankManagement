@@ -18,9 +18,13 @@ namespace BankManagement.Model
         //Chuỗi kết nối database
         private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
 
+        //
+        //private CustomerAccountWithInforRepository customerAccountWithInforRepository;
 
-
-
+        //public CustomerInforRepository()
+        //{
+        //    customerAccountWithInforRepository = new CustomerAccountWithInforRepository();
+        //}
 
         //Lấy ra thông tin của một khách hàng bằng CCCD----------------------------------------------------------------------------------------------------------------------------
         public CustomerInfor getCustomerInforByCccd(string customerInforCccd)//moi lan truy van chi duoc 1 customer
@@ -281,6 +285,13 @@ namespace BankManagement.Model
             }
         }
 
+
+        // lấy một thông tin tài khoản khách hàng ra
+
+        //public CustomerAccount getAccountCustomerBycustomerId(int customerId)
+        //{
+        //    return customerAccountWithInforRepository.getCustomerAccountByCustomerId(customerId);
+        //}
 
 
 
