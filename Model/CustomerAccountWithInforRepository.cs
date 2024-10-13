@@ -15,20 +15,23 @@ namespace BankManagement.Model
         //Chuỗi kết nối database
         private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
 
-        private CustomerInforRepository customerInforRepository;
-
         public CustomerAccountWithInforRepository()
         {
-            customerInforRepository = new CustomerInforRepository();
         }
 
-        //----------------------------------------------------------------------------------------------------------------------------------------------
 
+
+
+
+        //Tìm kiếm theo account number và trả về một danh sách thông tin khách hàng và tài khoản tương ứng-------------------------------------------------------------------------------------------
         public DataTable SearchCustomerAccountByAccountNumber(int account_number)
         {
             DataTable dataTableCustomerAccountInfor = new DataTable();
 
-            string query = "SELECT a.id , b.cccd , b.name , b.gender , a.account_number , a.username , a.account_status , b.date_of_birth , b.address , b.email , b.photo , b.status , a.date_opened , a.balance FROM customer_account a inner join customer_infor b ON  a.customer_id = b.id Where cast(account_number as nvarchar) LIKE @Account_number ";
+            string query = "SELECT a.id ,b.cccd ,b.name ,b.gender ,a.account_number, a.username, a.account_status," +
+                " b.date_of_birth, b.address, b.email, b.photo, b.status, a.date_opened, a.balance " +
+                "FROM customer_account a inner join customer_infor b ON a.customer_id = b.id " +
+                "Where cast(account_number as nvarchar) LIKE @Account_number ";
 
             try
             {
@@ -54,22 +57,61 @@ namespace BankManagement.Model
                 Console.WriteLine("Error: " + ex.Message);
             }
 
-            return dataTableCustomerAccountInfor; // Trả về đối tượng DataTable
+            return dataTableCustomerAccountInfor; // Trả về danh sách thông tin khách hàng và tài khoản tương ứng
         }
 
-        //-----------------------------------------------------------------------------------------------------------------------------------
 
-        public DataTable SearchCustomerInforByCccd(string cccd)
+
+
+
+        //Tìm kiếm theo account number và trả về một danh sách thông tin khách hàng và tài khoản tương ứng-------------------------------------------------------------------------------------------
+        public DataTable SearchCustomerAccountByCccd(string cccd)
         {
-            return customerInforRepository.searchCustomerByCccd(cccd);
+            DataTable dataTableCustomerAccountInfor = new DataTable();
+
+            string query = "SELECT a.id ,b.cccd ,b.name ,b.gender ,a.account_number, a.username, a.account_status," +
+                " b.date_of_birth, b.address, b.email, b.photo, b.status, a.date_opened, a.balance " +
+                "FROM customer_account a INNER JOIN customer_infor b ON a.customer_id = b.id " +
+                "WHERE b.cccd LIKE @Cccd";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString)) // Đảm bảo ngắt kết nối khi kết thúc khối lệnh
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn)) // Truy vấn
+                    {
+                        // Thêm tham số CCCD vào truy vấn
+                        cmd.Parameters.Add(new SqlParameter("@Cccd", SqlDbType.NVarChar) { Value = "%" + cccd + "%" });
+                        // Sử dụng SqlDataAdapter để điền dữ liệu vào DataTable
+                        using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd))
+                        {
+                            sqlDataAdapter.Fill(dataTableCustomerAccountInfor);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi nếu có
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return dataTableCustomerAccountInfor; // Trả về danh sách thông tin khách hàng và tài khoản tương ứng
         }
 
-        //---------------------------------------------------------------------------------------------------------------------------------
 
+
+
+
+
+        //Lấy ra thông tin tất cả các khách hàng và tài khoản tương ứng--------------------------------------------------------------------------------------------------------------------------------------------
         public DataTable LoadAllAccount()
         {
             DataTable dataTableAccount = new DataTable();
-            string query = "select a.id , b.cccd , b.name , b.gender , a.account_number , a.username , a.account_status , b.date_of_birth , b.address , b.email , b.photo , b.status , a.date_opened , a.balance from customer_account a inner join customer_infor b ON  a.customer_id = b.id";
+            string query = "select a.id, b.cccd, b.name, b.gender, a.account_number, a.username, a.account_status, b.date_of_birth, b.address, b.email, b.photo, b.status, a.date_opened, a.balance " +
+                "FROM customer_account a inner join customer_infor b ON a.customer_id = b.id";
 
             try
             {
@@ -93,12 +135,16 @@ namespace BankManagement.Model
             return dataTableAccount;
         }
 
-        //---------------------------------------------------------------------------------------------------------------------------------------------
 
+
+
+
+        //Thêm một tài khoản----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         public void AddCustomerAccount(CustomerAccount customerAccount)
         {
             string query = "INSERT INTO customer_account (username, password, balance, date_opened, customer_id, account_status, account_number)" +
                 " VALUES (@Username, @Password, @Balance, @Date_opened, @Customer_id, @Account_status ,@Account_number);";
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -124,7 +170,41 @@ namespace BankManagement.Model
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+        //Lấy ra số tài khoản lớn nhất
+        public int getMaxAccountNumber()
+        {
+            int maxAccountNumber = 0;
+            string query = "SELECT MAX(account_number) FROM customer_account";
 
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        object result = cmd.ExecuteScalar();
+                        if (result != DBNull.Value)
+                        {
+                            maxAccountNumber = Convert.ToInt32(result);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi nếu có
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+            return maxAccountNumber;
+        }
+
+
+
+
+
+        //Lấy ra 1 tài khoản bằng userName------------------------------------------------------------------------------------------------------------------------------
         public CustomerAccount getCustomerAccountByUserName(string user_name)
         {
             CustomerAccount customerAccount = null;
@@ -163,48 +243,14 @@ namespace BankManagement.Model
             return customerAccount;
         }
 
-        public CustomerAccount getCustomerAccountByCustomerId(int customer_Id)
-        {
-            CustomerAccount customerAccount = null;
-            string query = "SELECT * from customer_account where customerId = @Customer_id";
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.Add(new SqlParameter("@Customer_id", SqlDbType.Int) { Value = customer_Id });
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                int id = reader.GetInt32(0);
-                                string username = reader.GetString(1);
-                                string password = reader.GetString(2);
-                                Decimal balance = reader.GetDecimal(3);
-                                DateTime date_opened = reader.GetDateTime(4);
-                                int customerId = reader.GetInt32(5);
-                                string account_status = reader.GetString(6);
-                                int accountNumber = reader.GetInt32(7);
-                                customerAccount = new CustomerAccount(id, username, password, balance, date_opened, customerId, account_status, accountNumber);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Xử lý lỗi nếu có
-                Console.WriteLine("Error: " + ex.Message);
-            }
-            return customerAccount;
-        }
 
-        //------------------------------------------------------------------------------------
-        public void deleteCustomerAccount(string username)
+
+
+
+        //Xoá tài khoản----------------------------------------------------------------------------------------------------------------------------------------------------
+        public void deleteCustomerAccount(int accountNumber)
         {
-            string query = "Update customer_account SET account_status = @Status WHERE username = @Username";
+            string query = "Update customer_account SET account_status = @Status WHERE account_number = @AccountNumber";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -213,7 +259,7 @@ namespace BankManagement.Model
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.Add(new SqlParameter("@Username", SqlDbType.NVarChar) { Value = username });
+                        cmd.Parameters.Add(new SqlParameter("@AccountNumber", SqlDbType.Int) { Value = accountNumber });
                         cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.NVarChar) { Value = "Inactive" });
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
@@ -229,9 +275,14 @@ namespace BankManagement.Model
             }
         }
 
-        public void updateStatusAccountCustomer(string username)
+
+
+
+
+        //Active tài khoản---------------------------------------------------------------------------------------------------------------------------------------------------------
+        public void updateStatusAccountCustomer(int accountNumber)
         {
-            string query = "Update customer_account SET account_status = @Status WHERE username = @Username";
+            string query = "Update customer_account SET account_status = @Status WHERE account_number = @AccountNumber";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -240,12 +291,12 @@ namespace BankManagement.Model
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.Add(new SqlParameter("@Username", SqlDbType.NVarChar) { Value = username });
-                        cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.NVarChar) { Value = "active" });
+                        cmd.Parameters.Add(new SqlParameter("@AccountNumber", SqlDbType.Int) { Value = accountNumber });
+                        cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.NVarChar) { Value = "Active" });
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("khôi phục tài khoản thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Khôi phục tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }

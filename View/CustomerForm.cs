@@ -294,17 +294,26 @@ namespace BankManagement
         //Xoá khách hàng khỏi hệ thống----------------------------------------------------------------------------------------------------------------
         private void btnDeleteCustomerForm_Click(object sender, EventArgs e)
         {
-            //Check xem đã có thông tin trong data base chưa thông qua cccd
-            viewModel.SearchCustomer(viewModel.Cccd);
-            if (viewModel.DataTableCustomerInfor.Rows.Count == 0)
+            // Kiểm tra nếu ComboBox Gender không chọn thì gán "" cho Gender
+            string gender = cbGenderCustomerForm.SelectedItem != null ? cbGenderCustomerForm.SelectedItem.ToString() : "";
+            string error = viewModel.CheckFormatCustomerForm(txtCCCDCustomerForm.Text,
+                                                             txtCustomerNameCustomerForm.Text,
+                                                             txtEmailCustomerForm.Text,
+                                                             txtJobCustomerForm.Text,
+                                                             txtPhoneNumberCustomerForm.Text,
+                                                             txtDateOfBirthCustomerForm.Text,
+                                                             txtNationalityCustomerForm.Text,
+                                                             txtAddressCustomerForm.Text,
+                                                             gender);
+
+            if (error != "0")
             {
-                MessageBox.Show("Vui lòng nhập một tài khoản có sẵn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"{error}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             //lấy dữ liệu từ các textBox
             this.UpdateViewModelFromForm();
-
 
             viewModel.deleteCustomer();
 

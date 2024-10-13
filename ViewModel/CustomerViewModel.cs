@@ -13,7 +13,7 @@ namespace BankManagement.ViewModel
     internal class CustomerViewModel
     {
         private CustomerInforRepository customerInforRepository;
-
+        private CustomerAccountWithInforRepository customerAccountWithInforRepository;
 
         //Các thuộc tính bind với CustomerForm
         private int id;
@@ -33,11 +33,8 @@ namespace BankManagement.ViewModel
         public CustomerViewModel()
         {
             customerInforRepository = new CustomerInforRepository();
+            customerAccountWithInforRepository = new CustomerAccountWithInforRepository();
         }
-
-
-
-
 
         // Getter và Setter cho từng thuộc tính
         public int Id
@@ -125,6 +122,7 @@ namespace BankManagement.ViewModel
         //Thêm một khách hàng-------------------------------------------------------------------------------------------------------------------------------------------------------------
         public void addCustomer()
         {
+            //Tìm khách hàng theo cccd, nếu có thì return
             CustomerInfor customerInfor = customerInforRepository.getCustomerInforByCccd(this.Cccd);
             if (customerInfor != null)
             {
@@ -156,8 +154,18 @@ namespace BankManagement.ViewModel
         //Xoá một khách hàng----------------------------------------------------------------------------------------------------------------------------------------------------------------------
         public void deleteCustomer()
         {
+            DataTable lsCustomerAccount = customerAccountWithInforRepository.SearchCustomerAccountByCccd(this.Cccd);
+            foreach (DataRow row in lsCustomerAccount.Rows)
+            {
+                if (row["account_status"].ToString() == "Active")
+                {
+                    MessageBox.Show("Vẫn còn tài khoản của khách hàng tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             customerInforRepository.deleteCustomer(this.cccd);
         }
+
 
 
 
@@ -178,12 +186,6 @@ namespace BankManagement.ViewModel
         {
             this.dataTableCustomerInfor = customerInforRepository.LoadAllCustomer();
         }
-
-        //public void getAccountCustomerByCustomerId()
-        //{
-        //    customerInforRepository.getAccountCustomerBycustomerId(this.id);
-        //}
-
 
 
 
@@ -255,6 +257,5 @@ namespace BankManagement.ViewModel
 
             return error;
         }
-
     }
 }

@@ -14,19 +14,16 @@ namespace BankManagement.View
 {
     public partial class CustomerAccountForm : Form
     {
-        // format account
-        const int ACCOUNT_NUMBER = 101000000;
         AccountViewModel viewModel;
-        bool foundCustomerInfor;
-        int customer_id;
+
         public CustomerAccountForm()
         {
             InitializeComponent();
-            foundCustomerInfor = false;
             viewModel = new AccountViewModel();
             this.reset();
             this.ShowInTaskbar = false; //Ẩn khỏi thanh taskbar
         }
+
 
         private void CustomerAccountForm_Load(object sender, EventArgs e)
         {
@@ -38,8 +35,7 @@ namespace BankManagement.View
 
 
 
-
-        //Sự kiện sử dụng con lăn chuột để kéo dataGridView--------------------------------------------------------------------------------------------
+        //Sự kiện sử dụng con lăn chuột để kéo dataGridView---------------------------------------------------------------------------------------------------------
         private void dataGridViewCustomerAccountForm_MouseWheel(object sender, MouseEventArgs e)
         {
             if (e.Delta > 0)
@@ -58,51 +54,99 @@ namespace BankManagement.View
             }
         }
 
-        //search accountnumber , hiển thị thông tin của các tài khoản nếu nó có các thành phần giống nhau
+
+
+
+
+        //Tìm kiếm theo account number và trả về danh sách các tài khoản---------------------------------------------------------------------------------------------------
         private void btnSearchByAccountNumberCustomerAccountForm_Click(object sender, EventArgs e)
         {
+            //Nếu txtSearchAccountNumberAccountCustomerForm null thì không làm gì cả
             if (txtSearchAccountNumberAccountCustomerForm.Text == "") return;
+
+            //Cập nhật DataTableAccountInfor của viewModel chứa các thông tin về tài khoản và thông tin người dùng
             viewModel.searchCustomerAccountByAccountNumber(Convert.ToInt32(txtSearchAccountNumberAccountCustomerForm.Text));
 
+            //Cập nhật dataGridView
             dataGridViewCustomerAccountForm.Rows.Clear();
-
             this.updateDataGridView(viewModel.DataTableAccountInfor);
         }
 
-        //search customerinfor và hiển thị thông tin khi chỉ có một khách hàng được tìm thấy
+
+
+
+
+        //Tìm kiếm thông tin khách hàng bằng CCCD và cập nhật Panel chứa thông tin khách hàng-----------------------------------------------------------------
         private void btnSearchByCCCDCustomerAccountForm_Click(object sender, EventArgs e)
         {
-            viewModel.searchCustomerInforByCccd(txtSearchByCCCDCustomerAccountForm.Text);
-            if (viewModel.DataTableCustomerInfor.Rows.Count != 1) return;
-            this.updateCustomerInfor(viewModel.DataTableCustomerInfor);
+            viewModel.searchCustomerInforByCccd(txtSearchByCCCDCustomerAccountForm.Text); //Trả về một DataTable
+            if (viewModel.DataTableCustomerInfor.Rows.Count == 1) //Nếu có 1 bản ghi duy nhất thì cập nhật thông tin khách hàng
+            {
+                this.updateCustomerInfor(viewModel.DataTableCustomerInfor);
+            }
+            viewModel.searchCustomerAccountByCCCD(txtSearchByCCCDCustomerAccountForm.Text);
+            //Cập nhật dataGridView
+            dataGridViewCustomerAccountForm.Rows.Clear();
+            this.updateDataGridView(viewModel.DataTableAccountInfor);
+        }
+        //Hiển thị thông tin của Customer trên Form
+        private void updateCustomerInfor(DataTable dt)
+        {
+            DataRow row = dt.Rows[0]; // Lấy hàng đầu tiên (index 0)
+
+            lbCustomerNameCustomerAccountForm.Text = row["name"].ToString();
+
+            imgCustomerCustomerAccountForm.Image = Image.FromFile($"..\\..\\Image\\CustomerImage\\{row["photo"].ToString()}");
+            lbCCCDCustomerAccountForm.Text = row["cccd"].ToString();
+
+            DateTime dateOfBirth = DateTime.Parse(row["date_of_birth"].ToString());
+            string formattedDateOfBirth = dateOfBirth.ToString("dd/MM/yyyy");
+            txtDateOfBirthCustomerAccountForm.Text = formattedDateOfBirth;
+
+            txtGenderCustomerAccountForm.Text = row["gender"].ToString();
+            txtEmailCustomerAccountForm.Text = row["email"].ToString();
+            txtAddressCustomerAccountForm.Text = row["address"].ToString();
+
+            this.checkStatusCustomerInfor(row["status"].ToString());
         }
 
-        
-        //thêm một tài khoản vào ngân hàng
+
+
+
+
+        //Thêm một tài khoản--------------------------------------------------------------------------------------------------------------------------
         private void btnAddCustomerAccountForm_Click(object sender, EventArgs e)
         {
-            if(lbCustomerInfStatusCustomerAccountForm.Text == "Inactive")
+            if (lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
             {
-                MessageBox.Show("khách hàng này không còn tồn tại trong hệ thống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (foundCustomerInfor)
+            //Khi khách hàng không còn tồn tại trong hệ thống
+            if (lbCustomerInfStatusCustomerAccountForm.Text == "Inactive") 
             {
-                this.updateViewModelFromForm();
-                if(txtUsernameCustomerAccountForm.Text == "")
-                {
-                    MessageBox.Show("vui lòng điền tên username", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                viewModel.AddCustomerAccount(customer_id);
-                //Thay thế tất cả các dữ liệu trong datagridview
-                dataGridViewCustomerAccountForm.Rows.Clear();
-                this.LoadAllAccount();
-                this.updateAccountNumber();
+                MessageBox.Show("Khách hàng này không còn tồn tại trong hệ thống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
+
+            this.updateViewModelFromForm();
+            if(txtUsernameCustomerAccountForm.Text == "")
+            {
+                MessageBox.Show("Vui lòng điền Username!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            viewModel.AddCustomerAccount();
+
+            //Thay thế tất cả các dữ liệu trong dataGridView
+            dataGridViewCustomerAccountForm.Rows.Clear();
+            this.LoadAllAccount();
         }
-        
-        // reset tất cả các textbox
+
+
+
+
+
+        // Reset các component trong View-----------------------------------------------------------------------------------------------------------------------------
         private void btnResetCustomerAccountForm_Click(object sender, EventArgs e)
         {
             this.reset();
@@ -112,9 +156,17 @@ namespace BankManagement.View
         }
 
 
+
+
+
         // xóa một tài khoản khỏi ngân hàng
         private void btnDeleteCustomerAccountForm_Click(object sender, EventArgs e)
         {
+            if (txtAccountNumberCustomerAccountForm.Text == "0000000000" || lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
+            {
+                MessageBox.Show("Chưa có tài khoản nào được chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }    
             if (Decimal.Parse(txtBalanceCustomerAccountForm.Text) != 0)
             {
                 MessageBox.Show("Tài Khoản này vẫn còn tiền vui lòng rút hết tiền trước khi xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -130,13 +182,18 @@ namespace BankManagement.View
         }
 
 
-        //mothod reset
+
+
+
+        //Reset View---------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void reset()
         {
             this.LoadAllAccount();
-            this.updateAccountNumber();
             this.updateDateOpened();
             this.updateBalance();
+
+            txtUsernameCustomerAccountForm.ReadOnly = false;
+            txtAccountNumberCustomerAccountForm.Text = "000xxxxxxx";
             txtSearchByCCCDCustomerAccountForm.Text = "";
             lbCustomerNameCustomerAccountForm.Text = "Customer Name";
             lbCCCDCustomerAccountForm.Text = "024xxxxxxxxx";
@@ -146,44 +203,59 @@ namespace BankManagement.View
             txtAddressCustomerAccountForm.Text = "";
             txtUsernameCustomerAccountForm.Text = "";
             txtSearchAccountNumberAccountCustomerForm.Text = "";
-            imgCustomerCustomerAccountForm.Image = Image.FromFile("..\\..\\Image\\CustomerImage\\img_customer_default.png");
-        }
+            imgCustomerCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\avatar_customer_default.png");
+            lbCustomerInfStatusCustomerAccountForm.Text = "Status";
+            lbCustomerInfStatusCustomerAccountForm.ForeColor = Color.FromArgb(90, 190, 40);
+            lbAccountStatusCustomerAccountForm.Text = "Status";
+            lbAccountStatusCustomerAccountForm.ForeColor = Color.FromArgb(90, 190, 40);
+            imgCustomerInfStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
+            imgAccountStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
 
-        //method update dateopened default
+        }
+        //Cập nhật ngày hiện tại
         private void updateDateOpened()
         {
             DateTime today = DateTime.Today;
             string formattedDateOpened = today.ToString("dd/MM/yyyy");
             txtOpenDateCustomerAccountForm.Text = formattedDateOpened;
         }
-
-        //method update accountnumber default is today
-        private void updateAccountNumber()
-        {
-            viewModel.LoadAllCustomerAccount();
-            int accountNumber = viewModel.DataTableAccount.Rows.Count + ACCOUNT_NUMBER;
-            txtAccountNumberCustomerAccountForm.Text = accountNumber.ToString();
-        }
-
-        //method update balance default = 50,00
+        //Cập nhật số dư mặc định khi thêm tài khoản
         private void updateBalance()
         {
             txtBalanceCustomerAccountForm.Text = Decimal.Parse("50,00").ToString();
         }
 
-        // active customerAccount
+
+
+
+
+        //Active account----------------------------------------------------------------------------------------------------------------------------------------------------
         private void btnActiveCustomerAccountForm_Click(object sender, EventArgs e)
         {
+            if (txtAccountNumberCustomerAccountForm.Text == "0000000000" || lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
+            {
+                MessageBox.Show("Chưa có tài khoản nào được chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (lbCustomerInfStatusCustomerAccountForm.Text == "Inactive")
+            {
+                MessageBox.Show("Không thể kích hoạt tài khoản do khách hàng này không còn hoạt động!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             this.updateViewModelFromForm();
             viewModel.updateStatusAccountCustomer();
 
             //Thay thế tất cả các dữ liệu trong datagridview
             dataGridViewCustomerAccountForm.Rows.Clear();
             this.LoadAllAccount();
-
         }
 
-        //khi chọn vào một hàng trong table thì nó sẽ hiển thị thông tin lên các textbox 
+
+
+
+
+        //Cập nhật các view khi click vào một cell trong DataGridView--------------------------------------------------------------------------------------------------------------------
         private void dataGridViewCustomerAccountForm_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Kiểm tra xem chỉ số hàng hợp lệ
@@ -191,6 +263,7 @@ namespace BankManagement.View
             {
                 // Lấy hàng được chọn
                 DataGridViewRow selectedRow = dataGridViewCustomerAccountForm.Rows[e.RowIndex];
+                txtUsernameCustomerAccountForm.ReadOnly = true;
 
                 if (selectedRow.Cells["cccd"].Value != null)
                 {
@@ -247,17 +320,67 @@ namespace BankManagement.View
                 }
             }
         }
+        //Cập nhật customerStatus View
+        private void checkStatusCustomerInfor(string status)
+        {
+            if (status == "Active")
+            {
+                imgCustomerInfStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
+                lbCustomerInfStatusCustomerAccountForm.Text = status;
+                lbCustomerInfStatusCustomerAccountForm.ForeColor = Color.FromArgb(78, 167, 46);
+            }
+            else
+            {
+                imgCustomerInfStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\x-button.png");
+                lbCustomerInfStatusCustomerAccountForm.Text = status;
+                lbCustomerInfStatusCustomerAccountForm.ForeColor = Color.FromArgb(203, 57, 53);
+            }
+        }
+        //Cập nhật customerAccountStatus View
+        private void checkStatusCustomerAccount(string status)
+        {
+            if (status == "Active")
+            {
+                imgAccountStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
+                lbAccountStatusCustomerAccountForm.Text = status;
+                lbAccountStatusCustomerAccountForm.ForeColor = Color.FromArgb(78, 167, 46);
+            }
+            else
+            {
+                imgAccountStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\x-button.png");
+                lbAccountStatusCustomerAccountForm.Text = status;
+                lbAccountStatusCustomerAccountForm.ForeColor = Color.FromArgb(203, 57, 53);
+            }
+        }
+        //Kiếm tra trạng thái của tài khoản, nếu đã Active thì ẩn btnActive
+        private void checkActive()
+        {
+            if (lbAccountStatusCustomerAccountForm.Text == "Active")
+            {
+                btnActiveCustomerAccountForm.Visible = false;
+            }
+            else
+            {
+                btnActiveCustomerAccountForm.Visible = true;
+            }
+        }
 
-       
 
-        //load tất cả các tài khoản
+
+
+
+        //Load thông tin tất cả các khách hàng và tài khoản tương ứng--------------------------------------------------------------------------------------------------------------------------------------------
         private void LoadAllAccount()
         {
             viewModel.LoadAllCustomerAccount();
-            this.updateDataGridView(viewModel.DataTableAccount);
+            this.updateDataGridView(viewModel.DataTableAccountInfor);
         }
         
-        //update attribute of viewmodel from Form
+
+
+
+
+        //Cập nhật các thuộc tính của viewModel từ Form-----------------------------------------------------------------------------------------------------------------------------
         private void updateViewModelFromForm()
         {
 
@@ -268,7 +391,10 @@ namespace BankManagement.View
         }
 
 
-        // update dataGridView hiển thị thông tin các account 
+
+
+
+        //Cập nhật DataGridView------------------------------------------------------------------------------------------------------------------------------------------------
         private void updateDataGridView(DataTable dt)
         {
             foreach (DataRow row in dt.Rows)
@@ -290,76 +416,6 @@ namespace BankManagement.View
                 string formattedDateOpened = date_opened.ToString("dd/MM/yyyy");
                 Decimal balance = Decimal.Parse(row["balance"].ToString());
                 dataGridViewCustomerAccountForm.Rows.Add(id, cccd, name, gender, account_number, username, account_status, formattedDateOfBirth, address, email, photo, customer_status, formattedDateOpened, balance);
-            }
-        }
-
-        //hiển thị lên các textbox thông tin của customer
-        private void updateCustomerInfor(DataTable dt)
-        {
-
-            foreach (DataRow row in dt.Rows)
-            {
-                lbCustomerNameCustomerAccountForm.Text = row["name"].ToString();
-
-                imgCustomerCustomerAccountForm.Image = Image.FromFile($"..\\..\\Image\\CustomerImage\\{row["photo"].ToString()}");
-                lbCCCDCustomerAccountForm.Text = row["cccd"].ToString();
-                DateTime dateOfBirth = DateTime.Parse(row["date_of_birth"].ToString());
-                string formattedDateOfBirth = dateOfBirth.ToString("dd/MM/yyyy");
-                txtDateOfBirthCustomerAccountForm.Text = formattedDateOfBirth;
-                txtGenderCustomerAccountForm.Text = row["gender"].ToString();
-                txtEmailCustomerAccountForm.Text = row["email"].ToString();
-                txtAddressCustomerAccountForm.Text = row["address"].ToString();
-                this.customer_id = Convert.ToInt32(row["id"]);
-                this.checkStatusCustomerInfor(row["status"].ToString());
-                foundCustomerInfor = true;
-            }
-
-        }
-
-        // set status of customerInfor
-        private void checkStatusCustomerInfor(string status)
-        {
-            if (status == "Active")
-            {
-                imgCustomerInfStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
-                lbCustomerInfStatusCustomerAccountForm.Text = status;
-                lbCustomerInfStatusCustomerAccountForm.ForeColor = Color.FromArgb(78, 167, 46);
-            }
-            else
-            {
-                imgCustomerInfStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\x-button.png");
-                lbCustomerInfStatusCustomerAccountForm.Text = status;
-                lbCustomerInfStatusCustomerAccountForm.ForeColor = Color.FromArgb(203, 57, 53);
-            }
-        }
-
-        //set status of customerAccount
-        private void checkStatusCustomerAccount(string status)
-        {
-            if (status == "active")
-            {
-                imgAccountStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
-                lbAccountStatusCustomerAccountForm.Text = status;
-                lbAccountStatusCustomerAccountForm.ForeColor = Color.FromArgb(78, 167, 46);
-            }
-            else
-            {
-                imgAccountStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\x-button.png");
-                lbAccountStatusCustomerAccountForm.Text = status;
-                lbAccountStatusCustomerAccountForm.ForeColor = Color.FromArgb(203, 57, 53);
-            }
-        }
-
-        //check active of customerAccount
-        private void checkActive()
-        {
-            if (lbAccountStatusCustomerAccountForm.Text == "active")
-            {
-                btnActiveCustomerAccountForm.Visible = false;
-            }
-            else
-            {
-                btnActiveCustomerAccountForm.Visible = true;
             }
         }
     }

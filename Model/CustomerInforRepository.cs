@@ -18,13 +18,6 @@ namespace BankManagement.Model
         //Chuỗi kết nối database
         private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
 
-        //
-        //private CustomerAccountWithInforRepository customerAccountWithInforRepository;
-
-        //public CustomerInforRepository()
-        //{
-        //    customerAccountWithInforRepository = new CustomerAccountWithInforRepository();
-        //}
 
         //Lấy ra thông tin của một khách hàng bằng CCCD----------------------------------------------------------------------------------------------------------------------------
         public CustomerInfor getCustomerInforByCccd(string customerInforCccd)//moi lan truy van chi duoc 1 customer
@@ -193,7 +186,7 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                 }
-                MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Thêm khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -222,7 +215,7 @@ namespace BankManagement.Model
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Xóa khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -277,24 +270,12 @@ namespace BankManagement.Model
                     }
                 }
 
-                MessageBox.Show("Update customer successful!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cập nhật khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-
-
-        // lấy một thông tin tài khoản khách hàng ra
-
-        //public CustomerAccount getAccountCustomerBycustomerId(int customerId)
-        //{
-        //    return customerAccountWithInforRepository.getCustomerAccountByCustomerId(customerId);
-        //}
-
-
-
-
     }
 }
