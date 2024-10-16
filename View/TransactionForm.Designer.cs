@@ -426,16 +426,16 @@
             // 
             // btnDepositWithdrawTaskBarTransactionForm
             // 
+            this.btnDepositWithdrawTaskBarTransactionForm.BorderRadius = 7;
             this.btnDepositWithdrawTaskBarTransactionForm.CustomBorderColor = System.Drawing.Color.Aquamarine;
-            this.btnDepositWithdrawTaskBarTransactionForm.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.btnDepositWithdrawTaskBarTransactionForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnDepositWithdrawTaskBarTransactionForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnDepositWithdrawTaskBarTransactionForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnDepositWithdrawTaskBarTransactionForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnDepositWithdrawTaskBarTransactionForm.FillColor = System.Drawing.Color.Transparent;
             this.btnDepositWithdrawTaskBarTransactionForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDepositWithdrawTaskBarTransactionForm.ForeColor = System.Drawing.Color.White;
-            this.btnDepositWithdrawTaskBarTransactionForm.Location = new System.Drawing.Point(25, 58);
+            this.btnDepositWithdrawTaskBarTransactionForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.btnDepositWithdrawTaskBarTransactionForm.Location = new System.Drawing.Point(117, 58);
             this.btnDepositWithdrawTaskBarTransactionForm.Name = "btnDepositWithdrawTaskBarTransactionForm";
             this.btnDepositWithdrawTaskBarTransactionForm.Size = new System.Drawing.Size(149, 30);
             this.btnDepositWithdrawTaskBarTransactionForm.TabIndex = 37;
@@ -466,7 +466,6 @@
             this.panelCustomerReceiveTransactionForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2, 2, 2, 4);
             this.panelCustomerReceiveTransactionForm.Size = new System.Drawing.Size(309, 287);
             this.panelCustomerReceiveTransactionForm.TabIndex = 47;
-            this.panelCustomerReceiveTransactionForm.Visible = false;
             // 
             // btnTransferTransactionForm
             // 
@@ -612,15 +611,17 @@
             // 
             // btnTransferTaskBarTransactionForm
             // 
-            this.btnTransferTaskBarTransactionForm.CustomBorderColor = System.Drawing.Color.Aqua;
+            this.btnTransferTaskBarTransactionForm.BorderRadius = 7;
+            this.btnTransferTaskBarTransactionForm.CustomBorderColor = System.Drawing.Color.Aquamarine;
+            this.btnTransferTaskBarTransactionForm.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.btnTransferTaskBarTransactionForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnTransferTaskBarTransactionForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTransferTaskBarTransactionForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnTransferTaskBarTransactionForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTransferTaskBarTransactionForm.FillColor = System.Drawing.Color.Transparent;
             this.btnTransferTaskBarTransactionForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTransferTaskBarTransactionForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.btnTransferTaskBarTransactionForm.Location = new System.Drawing.Point(176, 58);
+            this.btnTransferTaskBarTransactionForm.ForeColor = System.Drawing.Color.White;
+            this.btnTransferTaskBarTransactionForm.Location = new System.Drawing.Point(21, 58);
             this.btnTransferTaskBarTransactionForm.Name = "btnTransferTaskBarTransactionForm";
             this.btnTransferTaskBarTransactionForm.Size = new System.Drawing.Size(94, 30);
             this.btnTransferTaskBarTransactionForm.TabIndex = 37;
