@@ -103,6 +103,12 @@
     <Compile Include="RoundControl.Designer.cs">
       <DependentUpon>RoundControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TransactionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TransactionForm.Designer.cs">
+      <DependentUpon>TransactionForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\CustomerAccountForm.resx">
       <DependentUpon>CustomerAccountForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +136,9 @@
     </Compile>
     <EmbeddedResource Include="RoundControl.resx">
       <DependentUpon>RoundControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TransactionForm.resx">
+      <DependentUpon>TransactionForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

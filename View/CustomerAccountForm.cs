@@ -167,11 +167,6 @@ namespace BankManagement.View
                 MessageBox.Show("Chưa có tài khoản nào được chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }    
-            if (Decimal.Parse(txtBalanceCustomerAccountForm.Text) != 0)
-            {
-                MessageBox.Show("Tài Khoản này vẫn còn tiền vui lòng rút hết tiền trước khi xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
             this.updateViewModelFromForm();
             viewModel.deleteCustomerAccount();
 

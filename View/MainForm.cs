@@ -131,7 +131,7 @@ namespace BankManagement
         private void btnStaffAvatarMain_Click(object sender, EventArgs e)
         {
             InfoStaffForm infoStaff = new InfoStaffForm(staffId); //Truyền dữ liệu đến InfoStaffForm
-                                                                  // Lấy tọa độ và điều chỉnh vị trí
+            // Lấy tọa độ và điều chỉnh vị trí
             var buttonScreenPos = btnStaffAvatarMain.PointToScreen(new System.Drawing.Point(-35, btnStaffAvatarMain.Height + 20));
 
             // Đặt vị trí của InfoStaff ngay dưới nút btnStaffAvatar
@@ -211,8 +211,12 @@ namespace BankManagement
 			{
                 customerAccountForm.Close();
             }
-			
-		}
+            if (transactionForm != null && !transactionForm.IsDisposed)
+            {
+                transactionForm.Close();
+            }
+
+        }
 
 
 
@@ -251,19 +255,41 @@ namespace BankManagement
             {
                 customerForm.Close();
             }
+            if (transactionForm != null && !transactionForm.IsDisposed)
+            {
+                transactionForm.Close();
+            }
         }
 
 
 
 
 
-		//Sự kiện click btnTransaction---------------------------------------------------------------------------------------------------------------------------------------------
+        //Sự kiện click btnTransaction---------------------------------------------------------------------------------------------------------------------------------------------
+        private TransactionForm transactionForm;
         private void btnTransaction_Click(object sender, EventArgs e)
         {
 			btnCustomer.FillColor = initialButtonColor;
             btnAccount.FillColor = initialButtonColor;
             btnTransaction.FillColor = clickedButtonColor; //Đổi màu khi click, set màu các btn khác về ban đầu
             btnLoan.FillColor = initialButtonColor;
+
+            //Mở form CustomerAccountForm
+            if (transactionForm == null || transactionForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
+            {
+                transactionForm = new TransactionForm();
+                transactionForm.StartPosition = FormStartPosition.Manual;
+                transactionForm.Height = this.Height - 63; //Chỉnh độ cao của form CustomerAccountForm
+                transactionForm.Width = this.Width - panelLeftBarMain.Width - 3;
+                transactionForm.Location = new Point(this.Location.X + panelLeftBarMain.Width + (this.Width - panelLeftBarMain.Width - transactionForm.Width) / 2, this.Location.Y + 60);
+                transactionForm.Show(this);
+            }
+            else
+            {
+                // Nếu form đã mở, chỉ cần kích hoạt và đưa nó lên trên cùng
+                transactionForm.BringToFront();
+                transactionForm.Activate();
+            }
 
             //Đóng các form khác
             if (customerAccountForm != null && !customerAccountForm.IsDisposed)
@@ -297,6 +323,10 @@ namespace BankManagement
             {
                 customerForm.Close();
             }
+            if (transactionForm != null && !transactionForm.IsDisposed)
+            {
+                transactionForm.Close();
+            }
         }
 
 
@@ -311,6 +341,7 @@ namespace BankManagement
             panelLeftBarMain.Width = 200 + (this.Width - 999 - 200) / 4;
             UpdateCustomerFormSizeAndPosition(); //Cập nhật CustomerForm
 			UpdateCustomerAccountFormSizeAndPosition(); //Cập nhật CustomerAccountForm
+            UpdateTransactionFormSizeAndPosition(); //Cập nhật TransactionForm
 
         }
 
@@ -319,6 +350,7 @@ namespace BankManagement
             panelLeftBarMain.Width = 200 + (this.Width - 999 - 200) / 4;
             UpdateCustomerFormSizeAndPosition(); //Cập nhật CustomerForm
 			UpdateCustomerAccountFormSizeAndPosition(); //Cập nhật CustomerAccountForm
+            UpdateTransactionFormSizeAndPosition(); //Cập nhật TransactionForm
 
         }
 
@@ -326,8 +358,8 @@ namespace BankManagement
 
 
 
-		//Hàm cập nhật trạng thái CustomerForm
-		private void UpdateCustomerFormSizeAndPosition()
+        //Hàm cập nhật trạng thái CustomerForm
+        private void UpdateCustomerFormSizeAndPosition()
 		{
 			if (customerForm != null && !customerForm.IsDisposed)
 			{
@@ -355,6 +387,21 @@ namespace BankManagement
             }
         }
 
+
+
+
+
+        //Hàm cập nhật trạng thái TransactionForm
+        private void UpdateTransactionFormSizeAndPosition()
+        {
+            if (transactionForm != null && !transactionForm.IsDisposed)
+            {
+                // Đặt vị trí của Form con và chỉnh size
+                transactionForm.Height = this.Height - 63; //Chỉnh độ cao của form CustomerForm
+                transactionForm.Width = this.Width - panelLeftBarMain.Width - 3;
+                transactionForm.Location = new Point(this.Location.X + panelLeftBarMain.Width + (this.Width - panelLeftBarMain.Width - transactionForm.Width) / 2, this.Location.Y + 60);
+            }
+        }
 
         private void btnNotifyMain_Click(object sender, EventArgs e)
         {
