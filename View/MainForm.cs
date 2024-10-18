@@ -277,7 +277,7 @@ namespace BankManagement
             //Mở form CustomerAccountForm
             if (transactionForm == null || transactionForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
             {
-                transactionForm = new TransactionForm();
+                transactionForm = new TransactionForm(staffId);
                 transactionForm.StartPosition = FormStartPosition.Manual;
                 transactionForm.Height = this.Height - 63; //Chỉnh độ cao của form CustomerAccountForm
                 transactionForm.Width = this.Width - panelLeftBarMain.Width - 3;

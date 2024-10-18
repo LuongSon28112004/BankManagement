@@ -56,11 +56,14 @@
     <Compile Include="Model\CustomerAccountWithInforRepository.cs" />
     <Compile Include="Model\CustomerInfor.cs" />
     <Compile Include="Model\CustomerInforRepository.cs" />
+    <Compile Include="Model\Transaction.cs" />
+    <Compile Include="Model\TransactionReponsitory.cs" />
     <Compile Include="ViewModel\AccountViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\InfoStaffViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\TransactionViewModel.cs" />
     <Compile Include="View\CustomerAccountForm.cs">
       <SubType>Form</SubType>
     </Compile>

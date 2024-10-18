@@ -307,5 +307,41 @@ namespace BankManagement.Model
             }
         }
 
-    }
+		public bool updateAccountBalance(Decimal amount, int accountNumber)
+		{
+			// Cập nhật câu lệnh SQL với tham số @Amount
+			string query = "UPDATE customer_account SET balance = balance + @Amount WHERE account_number = @AccountNumber";
+
+			try
+			{
+				using (SqlConnection conn = new SqlConnection(connectionString))
+				{
+					conn.Open();
+
+					using (SqlCommand cmd = new SqlCommand(query, conn))
+					{
+						// Thêm tham số @AccountNumber
+						cmd.Parameters.Add(new SqlParameter("@AccountNumber", SqlDbType.Int) { Value = accountNumber });
+
+						// Thêm tham số @Amount
+						cmd.Parameters.Add(new SqlParameter("@Amount", SqlDbType.Int) { Value = amount });
+
+						int rowsAffected = cmd.ExecuteNonQuery();
+						if (rowsAffected > 0)
+						{
+							return true;
+						}
+						return false;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Error: " + ex.Message);
+				return false;
+			}
+		}
+
+
+	}
 }
