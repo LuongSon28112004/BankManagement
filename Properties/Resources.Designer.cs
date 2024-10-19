@@ -223,6 +223,16 @@ namespace BankManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap img_background_bill {
+            get {
+                object obj = ResourceManager.GetObject("img_background_bill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap img_btn_feedback {
             get {
                 object obj = ResourceManager.GetObject("img_btn_feedback", resourceCulture);
@@ -236,6 +246,16 @@ namespace BankManagement.Properties {
         internal static System.Drawing.Bitmap img_customer_default {
             get {
                 object obj = ResourceManager.GetObject("img_customer_default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_export_pdf {
+            get {
+                object obj = ResourceManager.GetObject("img_export_pdf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

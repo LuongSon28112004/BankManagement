@@ -31,7 +31,7 @@ namespace BankManagement.Model
 		}
 
 		//getter and setter
-		public int Id { get => id;}
+		public int Id { get => id; set => id = value; }
 		public decimal Amount { get => amount;  }
 		public DateTime Date { get => date;  }
 		public string Note { get => note;  }

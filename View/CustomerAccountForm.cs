@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -138,6 +139,7 @@ namespace BankManagement.View
             viewModel.AddCustomerAccount();
 
             //Thay thế tất cả các dữ liệu trong dataGridView
+            this.reset();
             dataGridViewCustomerAccountForm.Rows.Clear();
             this.LoadAllAccount();
         }
@@ -205,6 +207,7 @@ namespace BankManagement.View
             lbAccountStatusCustomerAccountForm.ForeColor = Color.FromArgb(90, 190, 40);
             imgCustomerInfStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
             imgAccountStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
+            btnActiveCustomerAccountForm.Visible = false;
 
         }
         //Cập nhật ngày hiện tại
@@ -217,7 +220,8 @@ namespace BankManagement.View
         //Cập nhật số dư mặc định khi thêm tài khoản
         private void updateBalance()
         {
-            txtBalanceCustomerAccountForm.Text = Decimal.Parse("50,00").ToString();
+            decimal balance = 50000.0000m; // Số decimal
+            txtBalanceCustomerAccountForm.Text = balance.ToString("#,##0", new CultureInfo("vi-VN")); // Hiển thị với định dạng dấu chấm phân cách
         }
 
 
@@ -275,7 +279,15 @@ namespace BankManagement.View
                     string account_number = selectedRow.Cells["AccountNumber"].Value.ToString();
                     string date_opened = selectedRow.Cells["OpenDate"].Value.ToString();
                     string username = selectedRow.Cells["Username"].Value.ToString();
-                    string balance = selectedRow.Cells["Balance"].Value.ToString();
+                    string balanceString = selectedRow.Cells["Balance"].Value.ToString();
+
+                    // Chuyển đổi chuỗi thành decimal
+                    if (Decimal.TryParse(balanceString, NumberStyles.Any, new CultureInfo("vi-VN"), out decimal balance))
+                    {
+                        // Định dạng lại thành chuỗi với dấu phân cách hàng nghìn
+                        string formattedBalance = balance.ToString("#,##0", new CultureInfo("vi-VN"));
+                        txtBalanceCustomerAccountForm.Text = formattedBalance;
+                    }
 
                     // Hiển thị dữ liệu.
                     lbCustomerNameCustomerAccountForm.Text = name;
@@ -287,7 +299,7 @@ namespace BankManagement.View
                     txtAccountNumberCustomerAccountForm.Text = account_number;
                     txtOpenDateCustomerAccountForm.Text = date_opened;
                     txtUsernameCustomerAccountForm.Text = username;
-                    txtBalanceCustomerAccountForm.Text = balance;
+                    
                     
 
                     try
@@ -378,11 +390,9 @@ namespace BankManagement.View
         //Cập nhật các thuộc tính của viewModel từ Form-----------------------------------------------------------------------------------------------------------------------------
         private void updateViewModelFromForm()
         {
-
-            viewModel.Account_number = int.Parse(txtAccountNumberCustomerAccountForm.Text);
             viewModel.Username = txtUsernameCustomerAccountForm.Text;
             viewModel.Date_opened = DateTime.Parse(txtDateOfBirthCustomerAccountForm.Text);
-            viewModel.Balance = Decimal.Parse(txtBalanceCustomerAccountForm.Text);
+            viewModel.Balance = Decimal.Parse(txtBalanceCustomerAccountForm.Text, new CultureInfo("vi-VN"));
         }
 
 
@@ -409,7 +419,7 @@ namespace BankManagement.View
                 string email = row["email"].ToString();
                 DateTime date_opened = DateTime.Parse(row["date_opened"].ToString());
                 string formattedDateOpened = date_opened.ToString("dd/MM/yyyy");
-                Decimal balance = Decimal.Parse(row["balance"].ToString());
+                Decimal balance = Decimal.Parse(row["balance"].ToString(), new CultureInfo("vi-VN"));
                 dataGridViewCustomerAccountForm.Rows.Add(id, cccd, name, gender, account_number, username, account_status, formattedDateOfBirth, address, email, photo, customer_status, formattedDateOpened, balance);
             }
         }
