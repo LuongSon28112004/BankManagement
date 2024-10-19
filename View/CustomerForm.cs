@@ -15,6 +15,7 @@ using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Image = System.Drawing.Image;
 
 namespace BankManagement
@@ -283,6 +284,7 @@ namespace BankManagement
 
             viewModel.updateCustomer();
             //xóa tất cả các dữ liệu trong datagridview
+            checkStatusCustomer("Active");
             dataGridViewCustomerInforCustomerForm.Rows.Clear();
             this.LoadAllCustomer();
         }
@@ -318,10 +320,25 @@ namespace BankManagement
             viewModel.deleteCustomer();
 
             //xóa tất cả các dữ liệu trong datagridview
+            checkStatusCustomer("Inactive");
             dataGridViewCustomerInforCustomerForm.Rows.Clear();
             this.LoadAllCustomer();
         }
-
+        private void checkStatusCustomer(string status)
+        {
+            if (status == "Active")
+            {
+                imgStatusCustomerForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
+                lbStatusCustomerForm.Text = status;
+                lbStatusCustomerForm.ForeColor = Color.FromArgb(78, 167, 46);
+            }
+            else
+            {
+                imgStatusCustomerForm.Image = Image.FromFile("..\\..\\Resources\\x-button.png");
+                lbStatusCustomerForm.Text = status;
+                lbStatusCustomerForm.ForeColor = Color.FromArgb(203, 57, 53);
+            }
+        }
 
 
 

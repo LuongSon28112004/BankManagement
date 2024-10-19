@@ -60,6 +60,7 @@ namespace BankManagement.ViewModel
 			transactionReponsitory.addTransactionTransfer(transaction);
 			bool updateBalanceAccountSend = customerAccountWithInforRepository.updateAccountBalance(this.amount*-1, this.Account_customer_send);
 			bool updateBalanceAccountReceive = customerAccountWithInforRepository.updateAccountBalance(this.amount, this.Account_customer_receive);
+			this.Id = transaction.Id;
 		}
 
 
@@ -86,6 +87,7 @@ namespace BankManagement.ViewModel
 			Transaction transaction = new Transaction(0, this.amount, time, this.note, this.account_customer_send_id, 0, this.staff_account_transfer_id);
 			transactionReponsitory.addTransactionWithdraw(transaction);
 			bool updateBalanceAccountReceive = customerAccountWithInforRepository.updateAccountBalance(this.amount * -1, this.Account_customer_send);
+			this.Id = transaction.Id;
 		}
 
 

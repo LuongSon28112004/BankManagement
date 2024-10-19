@@ -173,6 +173,7 @@ namespace BankManagement.View
             viewModel.deleteCustomerAccount();
 
             //Thay thế tất cả các dữ liệu trong datagridview
+            checkStatusCustomerAccount("Inactive");
             dataGridViewCustomerAccountForm.Rows.Clear();
             this.LoadAllAccount();
 
@@ -231,7 +232,7 @@ namespace BankManagement.View
         //Active account----------------------------------------------------------------------------------------------------------------------------------------------------
         private void btnActiveCustomerAccountForm_Click(object sender, EventArgs e)
         {
-            if (txtAccountNumberCustomerAccountForm.Text == "0000000000" || lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
+            if (txtAccountNumberCustomerAccountForm.Text == "000xxxxxxx" || lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
             {
                 MessageBox.Show("Chưa có tài khoản nào được chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -246,6 +247,7 @@ namespace BankManagement.View
             viewModel.updateStatusAccountCustomer();
 
             //Thay thế tất cả các dữ liệu trong datagridview
+            checkStatusCustomerAccount("Active");
             dataGridViewCustomerAccountForm.Rows.Clear();
             this.LoadAllAccount();
         }
@@ -390,6 +392,10 @@ namespace BankManagement.View
         //Cập nhật các thuộc tính của viewModel từ Form-----------------------------------------------------------------------------------------------------------------------------
         private void updateViewModelFromForm()
         {
+            if (int.TryParse(txtAccountNumberCustomerAccountForm.Text, out int accountNumber))
+            {
+                viewModel.Account_number = accountNumber;
+            }
             viewModel.Username = txtUsernameCustomerAccountForm.Text;
             viewModel.Date_opened = DateTime.Parse(txtDateOfBirthCustomerAccountForm.Text);
             viewModel.Balance = Decimal.Parse(txtBalanceCustomerAccountForm.Text, new CultureInfo("vi-VN"));
