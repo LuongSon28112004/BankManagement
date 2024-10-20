@@ -106,8 +106,8 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                // Xử lý các ngoại lệ khác
-                Console.WriteLine("Error: " + ex.Message);
+                // Ném lại ngoại lệ
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
 
             // Trả về DataTable chứa các bản ghi tìm kiếm được
@@ -190,7 +190,8 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
         }
 
@@ -222,7 +223,8 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
         }
 
@@ -274,7 +276,8 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
         }
     }

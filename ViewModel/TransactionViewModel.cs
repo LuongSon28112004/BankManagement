@@ -57,11 +57,20 @@ namespace BankManagement.ViewModel
 		public void addTransactionTransfer(DateTime time)
 		{
 			Transaction transaction = new Transaction(0, this.amount, time, this.note, this.account_customer_send_id, this.account_customer_receive_id, this.staff_account_transfer_id);
-			transactionReponsitory.addTransactionTransfer(transaction);
-			bool updateBalanceAccountSend = customerAccountWithInforRepository.updateAccountBalance(this.amount*-1, this.Account_customer_send);
-			bool updateBalanceAccountReceive = customerAccountWithInforRepository.updateAccountBalance(this.amount, this.Account_customer_receive);
-			this.Id = transaction.Id;
-		}
+			try
+			{
+                transactionReponsitory.addTransactionTransfer(transaction);
+                bool updateBalanceAccountSend = customerAccountWithInforRepository.updateAccountBalance(this.amount * -1, this.Account_customer_send);
+                bool updateBalanceAccountReceive = customerAccountWithInforRepository.updateAccountBalance(this.amount, this.Account_customer_receive);
+                this.Id = transaction.Id;
+            }
+            catch (Exception ex)
+            {
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
+
+        }
 
 
 
@@ -72,10 +81,18 @@ namespace BankManagement.ViewModel
 		{
 			//mặc định giao dịch là ngày hôm nay 
 			Transaction transaction = new Transaction(0, this.amount, time, this.note, this.account_customer_send_id, 0, this.staff_account_transfer_id);
-			transactionReponsitory.addTransactionDeposit(transaction);
-			bool updateBalanceAccountSend = customerAccountWithInforRepository.updateAccountBalance(this.amount, this.Account_customer_send);
-			this.id = transaction.Id;
-		}
+			try
+			{
+                transactionReponsitory.addTransactionDeposit(transaction);
+                bool updateBalanceAccountSend = customerAccountWithInforRepository.updateAccountBalance(this.amount, this.Account_customer_send);
+                this.id = transaction.Id;
+            }
+            catch (Exception ex)
+            {
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
+        }
 
 
 
@@ -85,10 +102,18 @@ namespace BankManagement.ViewModel
 		public void addTransactionWithdraw(DateTime time)
 		{ 
 			Transaction transaction = new Transaction(0, this.amount, time, this.note, this.account_customer_send_id, 0, this.staff_account_transfer_id);
-			transactionReponsitory.addTransactionWithdraw(transaction);
-			bool updateBalanceAccountReceive = customerAccountWithInforRepository.updateAccountBalance(this.amount * -1, this.Account_customer_send);
-			this.Id = transaction.Id;
-		}
+			try
+			{
+                transactionReponsitory.addTransactionWithdraw(transaction);
+                bool updateBalanceAccountReceive = customerAccountWithInforRepository.updateAccountBalance(this.amount * -1, this.Account_customer_send);
+                this.Id = transaction.Id;
+            }
+            catch (Exception ex)
+            {
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
+        }
 
 
 

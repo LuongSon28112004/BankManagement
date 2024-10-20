@@ -62,15 +62,31 @@ namespace BankManagement.View
         //Tìm kiếm theo account number và trả về danh sách các tài khoản---------------------------------------------------------------------------------------------------
         private void btnSearchByAccountNumberCustomerAccountForm_Click(object sender, EventArgs e)
         {
-            //Nếu txtSearchAccountNumberAccountCustomerForm null thì không làm gì cả
-            if (txtSearchAccountNumberAccountCustomerForm.Text == "") return;
+            int accountNumber;
 
-            //Cập nhật DataTableAccountInfor của viewModel chứa các thông tin về tài khoản và thông tin người dùng
-            viewModel.searchCustomerAccountByAccountNumber(Convert.ToInt32(txtSearchAccountNumberAccountCustomerForm.Text));
+            // Thử chuyển đổi giá trị từ txtSearchAccountNumberSendTransactionForm
+            bool isValid = int.TryParse(txtSearchAccountNumberAccountCustomerForm.Text, out accountNumber);
 
-            //Cập nhật dataGridView
-            dataGridViewCustomerAccountForm.Rows.Clear();
-            this.updateDataGridView(viewModel.DataTableAccountInfor);
+            // Kiểm tra xem giá trị có hợp lệ không
+            if (!isValid)
+            {
+                return;
+            }
+
+            try
+            {
+                //Cập nhật DataTableAccountInfor của viewModel chứa các thông tin về tài khoản và thông tin người dùng
+                viewModel.searchCustomerAccountByAccountNumber(accountNumber);
+
+                //Cập nhật dataGridView
+                dataGridViewCustomerAccountForm.Rows.Clear();
+                this.updateDataGridView(viewModel.DataTableAccountInfor);
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu cần
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
         }
 
 
@@ -136,12 +152,20 @@ namespace BankManagement.View
                 MessageBox.Show("Vui lòng điền Username!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            viewModel.AddCustomerAccount();
+            try
+            {
+                viewModel.AddCustomerAccount();
 
-            //Thay thế tất cả các dữ liệu trong dataGridView
-            this.reset();
-            dataGridViewCustomerAccountForm.Rows.Clear();
-            this.LoadAllAccount();
+                //Thay thế tất cả các dữ liệu trong dataGridView
+                this.reset();
+                dataGridViewCustomerAccountForm.Rows.Clear();
+                this.LoadAllAccount();
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu cần
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -170,13 +194,20 @@ namespace BankManagement.View
                 return;
             }    
             this.updateViewModelFromForm();
-            viewModel.deleteCustomerAccount();
+            try
+            {
+                viewModel.deleteCustomerAccount();
 
-            //Thay thế tất cả các dữ liệu trong datagridview
-            checkStatusCustomerAccount("Inactive");
-            dataGridViewCustomerAccountForm.Rows.Clear();
-            this.LoadAllAccount();
-
+                //Thay thế tất cả các dữ liệu trong datagridview
+                checkStatusCustomerAccount("Inactive");
+                dataGridViewCustomerAccountForm.Rows.Clear();
+                this.LoadAllAccount();
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu cần
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -244,12 +275,20 @@ namespace BankManagement.View
             }
 
             this.updateViewModelFromForm();
-            viewModel.updateStatusAccountCustomer();
+            try
+            {
+                viewModel.updateStatusAccountCustomer();
 
-            //Thay thế tất cả các dữ liệu trong datagridview
-            checkStatusCustomerAccount("Active");
-            dataGridViewCustomerAccountForm.Rows.Clear();
-            this.LoadAllAccount();
+                //Thay thế tất cả các dữ liệu trong datagridview
+                checkStatusCustomerAccount("Active");
+                dataGridViewCustomerAccountForm.Rows.Clear();
+                this.LoadAllAccount();
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu cần
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

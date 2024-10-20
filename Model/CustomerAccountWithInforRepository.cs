@@ -53,8 +53,8 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi nếu có
-                Console.WriteLine("Error: " + ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
 
             return dataTableCustomerAccountInfor; // Trả về danh sách thông tin khách hàng và tài khoản tương ứng
@@ -167,7 +167,8 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
         }
         //Lấy ra số tài khoản lớn nhất
@@ -237,8 +238,8 @@ namespace BankManagement.Model
             }
             catch(Exception ex)
             {
-                // Xử lý lỗi nếu có
-                Console.WriteLine("Error: " + ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
             return customerAccount;
         }
@@ -271,7 +272,8 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
         }
 
@@ -303,7 +305,8 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
         }
 
@@ -337,8 +340,7 @@ namespace BankManagement.Model
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Error: " + ex.Message);
-				return false;
+                return false;
 			}
 		}
 

@@ -109,13 +109,22 @@ namespace BankManagement
         //Tìm kiếm theo cccd---------------------------------------------------------------------------------------------------------------------------
         private void btnSearchCustomerForm_Click(object sender, EventArgs e)
         {
-            //Lấy ra các Customer phù hợp
-            viewModel.SearchCustomer(txtSearchCustomerForm.Text);
+            try
+            {
+                // Lấy ra các Customer phù hợp
+                viewModel.SearchCustomer(txtSearchCustomerForm.Text);
 
-            //xóa tất cả các dữ liệu trong datagridview
-            dataGridViewCustomerInforCustomerForm.Rows.Clear();
+                // Xóa tất cả các dữ liệu trong DataGridView
+                dataGridViewCustomerInforCustomerForm.Rows.Clear();
 
-            this.UpdateDataGridView(viewModel.DataTableCustomerInfor);
+                // Cập nhật DataGridView với dữ liệu tìm kiếm được
+                this.UpdateDataGridView(viewModel.DataTableCustomerInfor);
+            }
+            catch (Exception ex)
+            {
+                // Ném lại ngoại lệ hoặc hiển thị thông báo lỗi
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -145,13 +154,20 @@ namespace BankManagement
             //Lấy các thông tin từ các textBox
             this.UpdateViewModelFromForm();
             if(filePath != "") MoveImageToFolder(filePath, "\\Image\\CustomerImage");
+            try
+            {
+                //add customer form viewModel
+                viewModel.addCustomer();
 
-            //add customer form viewModel
-            viewModel.addCustomer();
-
-            //Thay thế tất cả các dữ liệu trong datagridview
-            dataGridViewCustomerInforCustomerForm.Rows.Clear();
-            this.LoadAllCustomer();
+                //Thay thế tất cả các dữ liệu trong datagridview
+                dataGridViewCustomerInforCustomerForm.Rows.Clear();
+                this.LoadAllCustomer();
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ ở đây
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -272,21 +288,29 @@ namespace BankManagement
                 MoveImageToFolder(filePath, "\\Image\\CustomerImage");
             }
 
-
-            //this.MoveImageToFolder(filePath, "\\Image\\CustomerImage");
-            //Check xem đã có thông tin trong database chưa thông qua cccd
-            viewModel.SearchCustomer(viewModel.Cccd);
-            if (viewModel.DataTableCustomerInfor.Rows.Count == 0)
+            try
             {
-                MessageBox.Show("Vui lòng nhập một tài khoản có sẵn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                //Check xem đã có thông tin trong database chưa thông qua cccd
+                viewModel.SearchCustomer(viewModel.Cccd);
+                if (viewModel.DataTableCustomerInfor.Rows.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng nhập một tài khoản có sẵn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            viewModel.updateCustomer();
-            //xóa tất cả các dữ liệu trong datagridview
-            checkStatusCustomer("Active");
-            dataGridViewCustomerInforCustomerForm.Rows.Clear();
-            this.LoadAllCustomer();
+                // Gọi phương thức cập nhật khách hàng
+                viewModel.updateCustomer();
+
+                // Nếu không có lỗi, thực hiện các hành động sau
+                checkStatusCustomer("Active");
+                dataGridViewCustomerInforCustomerForm.Rows.Clear();
+                this.LoadAllCustomer();
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ, hiển thị thông báo lỗi
+                MessageBox.Show("Có lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -314,15 +338,24 @@ namespace BankManagement
                 return;
             }
 
-            //lấy dữ liệu từ các textBox
-            this.UpdateViewModelFromForm();
+            try
+            {
+                // Lấy dữ liệu từ các TextBox
+                this.UpdateViewModelFromForm();
 
-            viewModel.deleteCustomer();
+                // Gọi hàm xóa khách hàng
+                viewModel.deleteCustomer();
 
-            //xóa tất cả các dữ liệu trong datagridview
-            checkStatusCustomer("Inactive");
-            dataGridViewCustomerInforCustomerForm.Rows.Clear();
-            this.LoadAllCustomer();
+                // Nếu không có lỗi, tiếp tục xóa tất cả dữ liệu trong DataGridView
+                checkStatusCustomer("Inactive");
+                dataGridViewCustomerInforCustomerForm.Rows.Clear();
+                this.LoadAllCustomer();
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu cần
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void checkStatusCustomer(string status)
         {

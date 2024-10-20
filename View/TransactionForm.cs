@@ -165,28 +165,37 @@ namespace BankManagement.View
             }
 			this.updateViewModelFromForm();
             DateTime time = DateTime.Now;
-			viewModel.addTransactionTransfer(time);
 
-            BillForm billForm = new BillForm(viewModel.Id, time, txtAccountNumberSendTransactionForm.Text, "", lbCustomerNameSendTransactionForm.Text, "", txtAmountTransactionForm.Text, txtContentTransactionForm.Text, "Chuyển tiền thành công!");
+            try
+            {
+                viewModel.addTransactionTransfer(time);
 
-            balance = decimal.Parse(txtBalanceTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
-            amount = decimal.Parse(txtAmountTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
+                BillForm billForm = new BillForm(viewModel.Id, time, txtAccountNumberSendTransactionForm.Text, txtAccountNumberReceiveTransactionForm.Text, lbCustomerNameSendTransactionForm.Text, lbCustomerNameReceiveTransactionForm.Text, txtAmountTransactionForm.Text, txtContentTransactionForm.Text, "Chuyển tiền thành công!");
 
-            // Thực hiện phép cộng
-            decimal total = balance - amount;
+                balance = decimal.Parse(txtBalanceTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
+                amount = decimal.Parse(txtAmountTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
 
-            // Định dạng lại và gán kết quả vào TextBox
-            txtBalanceTransactionForm.Text = total.ToString("#,0", new CultureInfo("vi-VN"));
+                // Thực hiện phép cộng
+                decimal total = balance - amount;
 
-            // Delay 500ms trước khi hiển thị BillForm
-            await Task.Delay(500);
-            billForm.ShowDialog();
+                // Định dạng lại và gán kết quả vào TextBox
+                txtBalanceTransactionForm.Text = total.ToString("#,0", new CultureInfo("vi-VN"));
 
-            // Kích hoạt lại nút sau khi hoàn thành
-            btnTransferTransactionForm.Enabled = true;
+                // Delay 500ms trước khi hiển thị BillForm
+                await Task.Delay(500);
+                billForm.ShowDialog();
 
-            // Reset textbox và label
-            this.reset();
+                // Kích hoạt lại nút sau khi hoàn thành
+                btnTransferTransactionForm.Enabled = true;
+
+                // Reset textbox và label
+                this.reset();
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu cần
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 		
@@ -417,28 +426,36 @@ namespace BankManagement.View
 
             this.updateViewModelFromForm();
             DateTime time = DateTime.Now;
-            viewModel.addTransactionDeposit(time);
-            BillForm billForm = new BillForm(viewModel.Id, time, txtAccountNumberSendTransactionForm.Text, "", lbCustomerNameSendTransactionForm.Text, "", txtAmountTransactionForm.Text, txtContentTransactionForm.Text, "Nạp tiền thành công!");
+            try
+            {
+                viewModel.addTransactionDeposit(time);
+                BillForm billForm = new BillForm(viewModel.Id, time, txtAccountNumberSendTransactionForm.Text, "", lbCustomerNameSendTransactionForm.Text, "", txtAmountTransactionForm.Text, txtContentTransactionForm.Text, "Nạp tiền thành công!");
 
-            decimal balance = decimal.Parse(txtBalanceTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
-            decimal amount = decimal.Parse(txtAmountTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
+                decimal balance = decimal.Parse(txtBalanceTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
+                decimal amount = decimal.Parse(txtAmountTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
 
-            // Thực hiện phép cộng
-            decimal total = balance + amount;
+                // Thực hiện phép cộng
+                decimal total = balance + amount;
 
-            // Định dạng lại và gán kết quả vào TextBox
-            txtBalanceTransactionForm.Text = total.ToString("#,0", new CultureInfo("vi-VN"));
+                // Định dạng lại và gán kết quả vào TextBox
+                txtBalanceTransactionForm.Text = total.ToString("#,0", new CultureInfo("vi-VN"));
 
-            // Delay 500ms trước khi hiển thị BillForm
-            await Task.Delay(500);
-            billForm.ShowDialog();
+                // Delay 500ms trước khi hiển thị BillForm
+                await Task.Delay(500);
+                billForm.ShowDialog();
 
-            // Kích hoạt lại nút sau khi hoàn thành
-            btnDepositTransactionForm.Enabled = true;
-            btnWithDrawTransactionForm.Enabled = true;
+                // Kích hoạt lại nút sau khi hoàn thành
+                btnDepositTransactionForm.Enabled = true;
+                btnWithDrawTransactionForm.Enabled = true;
 
-            // Reset textbox và label
-            this.reset();
+                // Reset textbox và label
+                this.reset();
+            }
+            catch (Exception ex)
+            {
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
         }
 
 
@@ -517,28 +534,37 @@ namespace BankManagement.View
             }
             this.updateViewModelFromForm();
             DateTime time = DateTime.Now;
-            viewModel.addTransactionWithdraw(time);
-            BillForm billForm = new BillForm(viewModel.Id, time, txtAccountNumberSendTransactionForm.Text, "", lbCustomerNameSendTransactionForm.Text, "", txtAmountTransactionForm.Text, txtContentTransactionForm.Text, "Rút tiền thành công!");
+            try
+            {
+                viewModel.addTransactionWithdraw(time);
+                BillForm billForm = new BillForm(viewModel.Id, time, txtAccountNumberSendTransactionForm.Text, "", lbCustomerNameSendTransactionForm.Text, "", txtAmountTransactionForm.Text, txtContentTransactionForm.Text, "Rút tiền thành công!");
 
-            balance = decimal.Parse(txtBalanceTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
-            amount = decimal.Parse(txtAmountTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
+                balance = decimal.Parse(txtBalanceTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
+                amount = decimal.Parse(txtAmountTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
 
-            // Thực hiện phép cộng
-            decimal total = balance - amount;
+                // Thực hiện phép cộng
+                decimal total = balance - amount;
 
-            // Định dạng lại và gán kết quả vào TextBox
-            txtBalanceTransactionForm.Text = total.ToString("#,0", new CultureInfo("vi-VN"));
+                // Định dạng lại và gán kết quả vào TextBox
+                txtBalanceTransactionForm.Text = total.ToString("#,0", new CultureInfo("vi-VN"));
 
-            // Delay 500ms trước khi hiển thị BillForm
-            await Task.Delay(500);
-            billForm.ShowDialog();
+                // Delay 500ms trước khi hiển thị BillForm
+                await Task.Delay(500);
+                billForm.ShowDialog();
 
-            // Kích hoạt lại nút sau khi hoàn thành
-            btnDepositTransactionForm.Enabled = true;
-            btnWithDrawTransactionForm.Enabled = true;
+                // Kích hoạt lại nút sau khi hoàn thành
+                btnDepositTransactionForm.Enabled = true;
+                btnWithDrawTransactionForm.Enabled = true;
 
-            // Reset textbox và label
-            this.reset();
+                // Reset textbox và label
+                this.reset();
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu cần
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
 

@@ -159,8 +159,7 @@ namespace BankManagement.ViewModel
             {
                 if (row["account_status"].ToString() == "Active")
                 {
-                    MessageBox.Show("Vẫn còn tài khoản của khách hàng tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    throw new Exception("Vẫn còn tài khoản của khách hàng tồn tại!");
                 }
             }
             customerInforRepository.deleteCustomer(this.cccd);
