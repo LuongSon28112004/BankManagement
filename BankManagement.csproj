@@ -229,6 +229,7 @@
     <None Include="Resources\avatar_customer_default.png" />
     <None Include="Resources\img_background_bill.png" />
     <None Include="Resources\img_export_pdf.png" />
+    <None Include="Resources\img_background_bill01.png" />
     <Content Include="Resources\maximize.png" />
     <None Include="Resources\notification_bell.png" />
     <None Include="Resources\staff.png" />

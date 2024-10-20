@@ -17,6 +17,8 @@ namespace BankManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //DateTime time = DateTime.Now;
+            //BillForm(0, time, null, null, null, null, null, null, null)
             Application.Run(new LoginForm());
         }
     }

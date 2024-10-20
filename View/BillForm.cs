@@ -75,7 +75,7 @@ namespace BankManagement.View
         //Load bill---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void BillForm_Load(object sender, EventArgs e)
         {
-            txtTimeBillForm.Text = this.time.ToString().Substring(0, txtTimeBillForm.Text.Length - 4);
+            txtTimeBillForm.Text = this.time.ToString("dd/MM/yyyy  HH:mm");
             string transactionCode = GenerateTransactionCode(this.id);
             txtTransactionCodeBillForm.Text = transactionCode;
             txtGiaoDichThanhCongBillForm.Text = "  " + this.typeTransaction;
@@ -141,7 +141,7 @@ namespace BankManagement.View
             Bitmap bitmap = new Bitmap(this.ClientSize.Width, heightToCapture);
             using (Graphics g = Graphics.FromImage(bitmap))
             {
-                g.CopyFromScreen(this.Location.X, this.Location.Y + 26, 0, 0, new Size(this.ClientSize.Width, heightToCapture));
+                g.CopyFromScreen(this.Location.X, this.Location.Y + 28, 0, 0, new Size(this.ClientSize.Width, heightToCapture));
             }
             return bitmap;
         }
@@ -178,10 +178,5 @@ namespace BankManagement.View
                 }
             }
         }
-
-
-
-
-
     }
 }
