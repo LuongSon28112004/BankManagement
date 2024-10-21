@@ -38,32 +38,6 @@
             this.txtSearchCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnSearchCustomerForm = new Guna.UI2.WinForms.Guna2Button();
             this.dataGridViewCustomerInforCustomerForm = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.panelDataGridViewCustomerForm = new Guna.UI2.WinForms.Guna2Panel();
-            this.lbStatusCustomerForm = new System.Windows.Forms.Label();
-            this.panelTop1CustomerForm = new Guna.UI2.WinForms.Guna2Panel();
-            this.lbGenderCustomerForm = new System.Windows.Forms.Label();
-            this.cbGenderCustomerForm = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btnActiveCustomerForm = new Guna.UI2.WinForms.Guna2Button();
-            this.txtNationalityCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtEmailCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtAddressCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtJobCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtDateOfBirthCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtPhoneNumberCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
-            this.panelTop2CustomefForm = new Guna.UI2.WinForms.Guna2Panel();
-            this.lbNationalityCustomerForm = new System.Windows.Forms.Label();
-            this.lbPhoneNumberCustomerForm = new System.Windows.Forms.Label();
-            this.lbEmailCustomerForm = new System.Windows.Forms.Label();
-            this.lbAddressCustomerForm = new System.Windows.Forms.Label();
-            this.lbJobCustomerForm = new System.Windows.Forms.Label();
-            this.lbDateOfBirthCustomerForm = new System.Windows.Forms.Label();
-            this.lbCustomerAccountCustomerAccountForm = new System.Windows.Forms.Label();
-            this.btnResetCustomerForm = new Guna.UI2.WinForms.Guna2Button();
-            this.btnAddCustomerForm = new Guna.UI2.WinForms.Guna2Button();
-            this.btnDeleteCustomerForm = new Guna.UI2.WinForms.Guna2Button();
-            this.imgCustomerCustomerForm = new Guna.UI2.WinForms.Guna2Button();
-            this.imgStatusCustomerForm = new System.Windows.Forms.PictureBox();
-            this.btnUpdateCustomerForm = new Guna.UI2.WinForms.Guna2Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cccd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,10 +50,36 @@
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Photo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelDataGridViewCustomerForm = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbStatusCustomerForm = new System.Windows.Forms.Label();
+            this.panelTop1CustomerForm = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbGenderCustomerForm = new System.Windows.Forms.Label();
+            this.imgCustomerCustomerForm = new Guna.UI2.WinForms.Guna2Button();
+            this.imgStatusCustomerForm = new System.Windows.Forms.PictureBox();
+            this.cbGenderCustomerForm = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.btnActiveCustomerForm = new Guna.UI2.WinForms.Guna2Button();
+            this.btnUpdateCustomerForm = new Guna.UI2.WinForms.Guna2Button();
+            this.txtNationalityCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtEmailCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtAddressCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtJobCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtDateOfBirthCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtPhoneNumberCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
+            this.panelTop2CustomefForm = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnResetCustomerForm = new Guna.UI2.WinForms.Guna2Button();
+            this.lbNationalityCustomerForm = new System.Windows.Forms.Label();
+            this.lbPhoneNumberCustomerForm = new System.Windows.Forms.Label();
+            this.lbEmailCustomerForm = new System.Windows.Forms.Label();
+            this.lbAddressCustomerForm = new System.Windows.Forms.Label();
+            this.lbJobCustomerForm = new System.Windows.Forms.Label();
+            this.lbDateOfBirthCustomerForm = new System.Windows.Forms.Label();
+            this.btnAddCustomerForm = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDeleteCustomerForm = new Guna.UI2.WinForms.Guna2Button();
+            this.lbCustomerAccountCustomerAccountForm = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomerInforCustomerForm)).BeginInit();
             this.panelTop1CustomerForm.SuspendLayout();
-            this.panelTop2CustomefForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgStatusCustomerForm)).BeginInit();
+            this.panelTop2CustomefForm.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCustomerNameCustomerForm
@@ -106,7 +106,7 @@
             this.txtCustomerNameCustomerForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.txtCustomerNameCustomerForm.PlaceholderText = "Customer Name";
             this.txtCustomerNameCustomerForm.SelectedText = "";
-            this.txtCustomerNameCustomerForm.Size = new System.Drawing.Size(200, 35);
+            this.txtCustomerNameCustomerForm.Size = new System.Drawing.Size(220, 35);
             this.txtCustomerNameCustomerForm.TabIndex = 0;
             // 
             // txtCCCDCustomerForm
@@ -270,6 +270,104 @@
             this.dataGridViewCustomerInforCustomerForm.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dataGridViewCustomerInforCustomerForm.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCustomerInforCustomerForm_CellClick);
             // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.id.Frozen = true;
+            this.id.HeaderText = "ID";
+            this.id.MinimumWidth = 70;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            this.id.Width = 70;
+            // 
+            // cccd
+            // 
+            this.cccd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.cccd.Frozen = true;
+            this.cccd.HeaderText = "CCCD";
+            this.cccd.MinimumWidth = 130;
+            this.cccd.Name = "cccd";
+            this.cccd.ReadOnly = true;
+            this.cccd.Width = 130;
+            // 
+            // customerName
+            // 
+            this.customerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.customerName.HeaderText = "Customer Name";
+            this.customerName.MinimumWidth = 155;
+            this.customerName.Name = "customerName";
+            this.customerName.ReadOnly = true;
+            // 
+            // Gender
+            // 
+            this.Gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Gender.HeaderText = "Gender ";
+            this.Gender.MinimumWidth = 100;
+            this.Gender.Name = "Gender";
+            this.Gender.ReadOnly = true;
+            // 
+            // dateOfBirth
+            // 
+            this.dateOfBirth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateOfBirth.HeaderText = "Date Of Birth";
+            this.dateOfBirth.MinimumWidth = 150;
+            this.dateOfBirth.Name = "dateOfBirth";
+            this.dateOfBirth.ReadOnly = true;
+            // 
+            // address
+            // 
+            this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.address.HeaderText = "Address";
+            this.address.MinimumWidth = 141;
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // phoneNumber
+            // 
+            this.phoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.phoneNumber.HeaderText = "Phone Number";
+            this.phoneNumber.MinimumWidth = 20;
+            this.phoneNumber.Name = "phoneNumber";
+            this.phoneNumber.ReadOnly = true;
+            this.phoneNumber.Visible = false;
+            // 
+            // nationality
+            // 
+            this.nationality.HeaderText = "Nationality";
+            this.nationality.Name = "nationality";
+            this.nationality.ReadOnly = true;
+            this.nationality.Visible = false;
+            // 
+            // job
+            // 
+            this.job.HeaderText = "Job";
+            this.job.Name = "job";
+            this.job.ReadOnly = true;
+            this.job.Visible = false;
+            // 
+            // email
+            // 
+            this.email.HeaderText = "Email";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.Visible = false;
+            // 
+            // Status
+            // 
+            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 80;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Photo
+            // 
+            this.Photo.HeaderText = "Photo";
+            this.Photo.Name = "Photo";
+            this.Photo.ReadOnly = true;
+            this.Photo.Visible = false;
+            // 
             // panelDataGridViewCustomerForm
             // 
             this.panelDataGridViewCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -323,11 +421,46 @@
             this.lbGenderCustomerForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
             this.lbGenderCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbGenderCustomerForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.lbGenderCustomerForm.Location = new System.Drawing.Point(368, 36);
+            this.lbGenderCustomerForm.Location = new System.Drawing.Point(380, 36);
             this.lbGenderCustomerForm.Name = "lbGenderCustomerForm";
             this.lbGenderCustomerForm.Size = new System.Drawing.Size(56, 18);
             this.lbGenderCustomerForm.TabIndex = 2;
             this.lbGenderCustomerForm.Text = "Gender";
+            // 
+            // imgCustomerCustomerForm
+            // 
+            this.imgCustomerCustomerForm.BackColor = System.Drawing.Color.Transparent;
+            this.imgCustomerCustomerForm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.imgCustomerCustomerForm.BorderRadius = 50;
+            this.imgCustomerCustomerForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.imgCustomerCustomerForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.imgCustomerCustomerForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.imgCustomerCustomerForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.imgCustomerCustomerForm.FillColor = System.Drawing.Color.Transparent;
+            this.imgCustomerCustomerForm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.imgCustomerCustomerForm.ForeColor = System.Drawing.Color.White;
+            this.imgCustomerCustomerForm.Image = global::BankManagement.Properties.Resources.avatar_customer_default;
+            this.imgCustomerCustomerForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.imgCustomerCustomerForm.ImageOffset = new System.Drawing.Point(-8, 0);
+            this.imgCustomerCustomerForm.ImageSize = new System.Drawing.Size(95, 95);
+            this.imgCustomerCustomerForm.Location = new System.Drawing.Point(26, 19);
+            this.imgCustomerCustomerForm.Name = "imgCustomerCustomerForm";
+            this.imgCustomerCustomerForm.ShadowDecoration.BorderRadius = 50;
+            this.imgCustomerCustomerForm.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.imgCustomerCustomerForm.ShadowDecoration.Enabled = true;
+            this.imgCustomerCustomerForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2);
+            this.imgCustomerCustomerForm.Size = new System.Drawing.Size(100, 100);
+            this.imgCustomerCustomerForm.TabIndex = 17;
+            this.imgCustomerCustomerForm.Click += new System.EventHandler(this.imgCustomerCustomerForm_Click);
+            // 
+            // imgStatusCustomerForm
+            // 
+            this.imgStatusCustomerForm.Location = new System.Drawing.Point(134, 102);
+            this.imgStatusCustomerForm.Name = "imgStatusCustomerForm";
+            this.imgStatusCustomerForm.Size = new System.Drawing.Size(14, 14);
+            this.imgStatusCustomerForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgStatusCustomerForm.TabIndex = 32;
+            this.imgStatusCustomerForm.TabStop = false;
             // 
             // cbGenderCustomerForm
             // 
@@ -344,7 +477,7 @@
             this.cbGenderCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbGenderCustomerForm.ForeColor = System.Drawing.Color.LightGray;
             this.cbGenderCustomerForm.ItemHeight = 30;
-            this.cbGenderCustomerForm.Location = new System.Drawing.Point(359, 28);
+            this.cbGenderCustomerForm.Location = new System.Drawing.Point(371, 28);
             this.cbGenderCustomerForm.Name = "cbGenderCustomerForm";
             this.cbGenderCustomerForm.Size = new System.Drawing.Size(106, 36);
             this.cbGenderCustomerForm.TabIndex = 2;
@@ -370,6 +503,27 @@
             this.btnActiveCustomerForm.Text = "Active";
             this.btnActiveCustomerForm.TextOffset = new System.Drawing.Point(1, -1);
             this.btnActiveCustomerForm.Click += new System.EventHandler(this.btnUpdateCustomerForm_Click);
+            // 
+            // btnUpdateCustomerForm
+            // 
+            this.btnUpdateCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateCustomerForm.BackColor = System.Drawing.Color.Transparent;
+            this.btnUpdateCustomerForm.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnUpdateCustomerForm.BorderRadius = 12;
+            this.btnUpdateCustomerForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnUpdateCustomerForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnUpdateCustomerForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUpdateCustomerForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUpdateCustomerForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(174)))), ((int)(((byte)(242)))));
+            this.btnUpdateCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateCustomerForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.btnUpdateCustomerForm.Image = global::BankManagement.Properties.Resources.employee;
+            this.btnUpdateCustomerForm.Location = new System.Drawing.Point(837, 86);
+            this.btnUpdateCustomerForm.Name = "btnUpdateCustomerForm";
+            this.btnUpdateCustomerForm.Size = new System.Drawing.Size(95, 35);
+            this.btnUpdateCustomerForm.TabIndex = 12;
+            this.btnUpdateCustomerForm.Text = "Update";
+            this.btnUpdateCustomerForm.Click += new System.EventHandler(this.btnUpdateCustomerForm_Click);
             // 
             // txtNationalityCustomerForm
             // 
@@ -564,6 +718,27 @@
             this.panelTop2CustomefForm.Size = new System.Drawing.Size(950, 215);
             this.panelTop2CustomefForm.TabIndex = 33;
             // 
+            // btnResetCustomerForm
+            // 
+            this.btnResetCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnResetCustomerForm.BorderRadius = 15;
+            this.btnResetCustomerForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnResetCustomerForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnResetCustomerForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnResetCustomerForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnResetCustomerForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.btnResetCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnResetCustomerForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.btnResetCustomerForm.Image = global::BankManagement.Properties.Resources.img_reset;
+            this.btnResetCustomerForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnResetCustomerForm.ImageOffset = new System.Drawing.Point(-4, 0);
+            this.btnResetCustomerForm.ImageSize = new System.Drawing.Size(28, 28);
+            this.btnResetCustomerForm.Location = new System.Drawing.Point(897, 13);
+            this.btnResetCustomerForm.Name = "btnResetCustomerForm";
+            this.btnResetCustomerForm.Size = new System.Drawing.Size(40, 40);
+            this.btnResetCustomerForm.TabIndex = 19;
+            this.btnResetCustomerForm.Click += new System.EventHandler(this.btnResetCustomerForm_Click_1);
+            // 
             // lbNationalityCustomerForm
             // 
             this.lbNationalityCustomerForm.AutoSize = true;
@@ -630,38 +805,6 @@
             this.lbDateOfBirthCustomerForm.TabIndex = 2;
             this.lbDateOfBirthCustomerForm.Text = "Date Of Birth";
             // 
-            // lbCustomerAccountCustomerAccountForm
-            // 
-            this.lbCustomerAccountCustomerAccountForm.AutoSize = true;
-            this.lbCustomerAccountCustomerAccountForm.Font = new System.Drawing.Font("Tw Cen MT", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCustomerAccountCustomerAccountForm.ForeColor = System.Drawing.Color.White;
-            this.lbCustomerAccountCustomerAccountForm.Location = new System.Drawing.Point(18, 9);
-            this.lbCustomerAccountCustomerAccountForm.Name = "lbCustomerAccountCustomerAccountForm";
-            this.lbCustomerAccountCustomerAccountForm.Size = new System.Drawing.Size(179, 28);
-            this.lbCustomerAccountCustomerAccountForm.TabIndex = 34;
-            this.lbCustomerAccountCustomerAccountForm.Text = "Customer Profile";
-            // 
-            // btnResetCustomerForm
-            // 
-            this.btnResetCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnResetCustomerForm.BorderRadius = 15;
-            this.btnResetCustomerForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnResetCustomerForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnResetCustomerForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnResetCustomerForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnResetCustomerForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.btnResetCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnResetCustomerForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.btnResetCustomerForm.Image = global::BankManagement.Properties.Resources.img_reset;
-            this.btnResetCustomerForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnResetCustomerForm.ImageOffset = new System.Drawing.Point(-4, 0);
-            this.btnResetCustomerForm.ImageSize = new System.Drawing.Size(28, 28);
-            this.btnResetCustomerForm.Location = new System.Drawing.Point(897, 13);
-            this.btnResetCustomerForm.Name = "btnResetCustomerForm";
-            this.btnResetCustomerForm.Size = new System.Drawing.Size(40, 40);
-            this.btnResetCustomerForm.TabIndex = 19;
-            this.btnResetCustomerForm.Click += new System.EventHandler(this.btnResetCustomerForm_Click_1);
-            // 
             // btnAddCustomerForm
             // 
             this.btnAddCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -700,159 +843,16 @@
             this.btnDeleteCustomerForm.Text = "Delete";
             this.btnDeleteCustomerForm.Click += new System.EventHandler(this.btnDeleteCustomerForm_Click);
             // 
-            // imgCustomerCustomerForm
+            // lbCustomerAccountCustomerAccountForm
             // 
-            this.imgCustomerCustomerForm.BackColor = System.Drawing.Color.Transparent;
-            this.imgCustomerCustomerForm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.imgCustomerCustomerForm.BorderRadius = 50;
-            this.imgCustomerCustomerForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.imgCustomerCustomerForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.imgCustomerCustomerForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.imgCustomerCustomerForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.imgCustomerCustomerForm.FillColor = System.Drawing.Color.Transparent;
-            this.imgCustomerCustomerForm.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.imgCustomerCustomerForm.ForeColor = System.Drawing.Color.White;
-            this.imgCustomerCustomerForm.Image = global::BankManagement.Properties.Resources.avatar_customer_default;
-            this.imgCustomerCustomerForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.imgCustomerCustomerForm.ImageOffset = new System.Drawing.Point(-8, 0);
-            this.imgCustomerCustomerForm.ImageSize = new System.Drawing.Size(95, 95);
-            this.imgCustomerCustomerForm.Location = new System.Drawing.Point(26, 19);
-            this.imgCustomerCustomerForm.Name = "imgCustomerCustomerForm";
-            this.imgCustomerCustomerForm.ShadowDecoration.BorderRadius = 50;
-            this.imgCustomerCustomerForm.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.imgCustomerCustomerForm.ShadowDecoration.Enabled = true;
-            this.imgCustomerCustomerForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2);
-            this.imgCustomerCustomerForm.Size = new System.Drawing.Size(100, 100);
-            this.imgCustomerCustomerForm.TabIndex = 17;
-            this.imgCustomerCustomerForm.Click += new System.EventHandler(this.imgCustomerCustomerForm_Click);
-            // 
-            // imgStatusCustomerForm
-            // 
-            this.imgStatusCustomerForm.Location = new System.Drawing.Point(134, 102);
-            this.imgStatusCustomerForm.Name = "imgStatusCustomerForm";
-            this.imgStatusCustomerForm.Size = new System.Drawing.Size(14, 14);
-            this.imgStatusCustomerForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgStatusCustomerForm.TabIndex = 32;
-            this.imgStatusCustomerForm.TabStop = false;
-            // 
-            // btnUpdateCustomerForm
-            // 
-            this.btnUpdateCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdateCustomerForm.BackColor = System.Drawing.Color.Transparent;
-            this.btnUpdateCustomerForm.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnUpdateCustomerForm.BorderRadius = 12;
-            this.btnUpdateCustomerForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnUpdateCustomerForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnUpdateCustomerForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnUpdateCustomerForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnUpdateCustomerForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(174)))), ((int)(((byte)(242)))));
-            this.btnUpdateCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateCustomerForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.btnUpdateCustomerForm.Image = global::BankManagement.Properties.Resources.employee;
-            this.btnUpdateCustomerForm.Location = new System.Drawing.Point(837, 86);
-            this.btnUpdateCustomerForm.Name = "btnUpdateCustomerForm";
-            this.btnUpdateCustomerForm.Size = new System.Drawing.Size(95, 35);
-            this.btnUpdateCustomerForm.TabIndex = 12;
-            this.btnUpdateCustomerForm.Text = "Update";
-            this.btnUpdateCustomerForm.Click += new System.EventHandler(this.btnUpdateCustomerForm_Click);
-            // 
-            // id
-            // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.id.Frozen = true;
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 70;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            this.id.Width = 70;
-            // 
-            // cccd
-            // 
-            this.cccd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.cccd.Frozen = true;
-            this.cccd.HeaderText = "CCCD";
-            this.cccd.MinimumWidth = 130;
-            this.cccd.Name = "cccd";
-            this.cccd.ReadOnly = true;
-            this.cccd.Width = 130;
-            // 
-            // customerName
-            // 
-            this.customerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.customerName.HeaderText = "Customer Name";
-            this.customerName.MinimumWidth = 155;
-            this.customerName.Name = "customerName";
-            this.customerName.ReadOnly = true;
-            // 
-            // Gender
-            // 
-            this.Gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Gender.HeaderText = "Gender ";
-            this.Gender.MinimumWidth = 100;
-            this.Gender.Name = "Gender";
-            this.Gender.ReadOnly = true;
-            // 
-            // dateOfBirth
-            // 
-            this.dateOfBirth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dateOfBirth.HeaderText = "Date Of Birth";
-            this.dateOfBirth.MinimumWidth = 150;
-            this.dateOfBirth.Name = "dateOfBirth";
-            this.dateOfBirth.ReadOnly = true;
-            // 
-            // address
-            // 
-            this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.address.HeaderText = "Address";
-            this.address.MinimumWidth = 141;
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // phoneNumber
-            // 
-            this.phoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.phoneNumber.HeaderText = "Phone Number";
-            this.phoneNumber.MinimumWidth = 20;
-            this.phoneNumber.Name = "phoneNumber";
-            this.phoneNumber.ReadOnly = true;
-            this.phoneNumber.Visible = false;
-            // 
-            // nationality
-            // 
-            this.nationality.HeaderText = "Nationality";
-            this.nationality.Name = "nationality";
-            this.nationality.ReadOnly = true;
-            this.nationality.Visible = false;
-            // 
-            // job
-            // 
-            this.job.HeaderText = "Job";
-            this.job.Name = "job";
-            this.job.ReadOnly = true;
-            this.job.Visible = false;
-            // 
-            // email
-            // 
-            this.email.HeaderText = "Email";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.Visible = false;
-            // 
-            // Status
-            // 
-            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 80;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // Photo
-            // 
-            this.Photo.HeaderText = "Photo";
-            this.Photo.Name = "Photo";
-            this.Photo.ReadOnly = true;
-            this.Photo.Visible = false;
+            this.lbCustomerAccountCustomerAccountForm.AutoSize = true;
+            this.lbCustomerAccountCustomerAccountForm.Font = new System.Drawing.Font("Tw Cen MT", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCustomerAccountCustomerAccountForm.ForeColor = System.Drawing.Color.White;
+            this.lbCustomerAccountCustomerAccountForm.Location = new System.Drawing.Point(18, 9);
+            this.lbCustomerAccountCustomerAccountForm.Name = "lbCustomerAccountCustomerAccountForm";
+            this.lbCustomerAccountCustomerAccountForm.Size = new System.Drawing.Size(179, 28);
+            this.lbCustomerAccountCustomerAccountForm.TabIndex = 34;
+            this.lbCustomerAccountCustomerAccountForm.Text = "Customer Profile";
             // 
             // CustomerForm
             // 
@@ -874,9 +874,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomerInforCustomerForm)).EndInit();
             this.panelTop1CustomerForm.ResumeLayout(false);
             this.panelTop1CustomerForm.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgStatusCustomerForm)).EndInit();
             this.panelTop2CustomefForm.ResumeLayout(false);
             this.panelTop2CustomefForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgStatusCustomerForm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

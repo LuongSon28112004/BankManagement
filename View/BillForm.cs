@@ -147,9 +147,15 @@ namespace BankManagement.View
         }
 
 
-        private void btnExportPdfBillForm_Click(object sender, EventArgs e)
+        private async void btnExportPdfBillForm_Click(object sender, EventArgs e)
         {
+            btnExportPdfBillForm.Visible = false;
+            lbExportPDFBillForm.Visible = false;
+            // Delay 500ms trước khi chụp
+            await Task.Delay(10);
             Bitmap bitmap = CaptureForm();
+            btnExportPdfBillForm.Visible = true;
+            lbExportPDFBillForm.Visible = true;
             // Mở hộp thoại chọn vị trí lưu
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {

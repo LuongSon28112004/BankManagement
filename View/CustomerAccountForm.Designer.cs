@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbCustomerAccountCustomerAccountForm = new System.Windows.Forms.Label();
             this.btnSearchCustomerForm = new Guna.UI2.WinForms.Guna2Button();
             this.panelCustomerInfCustomerAccountForm = new Guna.UI2.WinForms.Guna2Panel();
@@ -145,7 +145,7 @@
             this.panelCustomerInfCustomerAccountForm.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.panelCustomerInfCustomerAccountForm.ShadowDecoration.Depth = 50;
             this.panelCustomerInfCustomerAccountForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2, 2, 2, 4);
-            this.panelCustomerInfCustomerAccountForm.Size = new System.Drawing.Size(346, 405);
+            this.panelCustomerInfCustomerAccountForm.Size = new System.Drawing.Size(385, 405);
             this.panelCustomerInfCustomerAccountForm.TabIndex = 34;
             // 
             // imgCustomerCustomerAccountForm
@@ -164,7 +164,7 @@
             this.imgCustomerCustomerAccountForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.imgCustomerCustomerAccountForm.ImageOffset = new System.Drawing.Point(-8, 0);
             this.imgCustomerCustomerAccountForm.ImageSize = new System.Drawing.Size(95, 95);
-            this.imgCustomerCustomerAccountForm.Location = new System.Drawing.Point(28, 25);
+            this.imgCustomerCustomerAccountForm.Location = new System.Drawing.Point(23, 25);
             this.imgCustomerCustomerAccountForm.Name = "imgCustomerCustomerAccountForm";
             this.imgCustomerCustomerAccountForm.ShadowDecoration.BorderRadius = 50;
             this.imgCustomerCustomerAccountForm.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
@@ -190,7 +190,7 @@
             this.txtEmailCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmailCustomerAccountForm.ForeColor = System.Drawing.Color.White;
             this.txtEmailCustomerAccountForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmailCustomerAccountForm.Location = new System.Drawing.Point(28, 262);
+            this.txtEmailCustomerAccountForm.Location = new System.Drawing.Point(36, 262);
             this.txtEmailCustomerAccountForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmailCustomerAccountForm.Name = "txtEmailCustomerAccountForm";
             this.txtEmailCustomerAccountForm.PasswordChar = '\0';
@@ -198,7 +198,7 @@
             this.txtEmailCustomerAccountForm.PlaceholderText = "abc@gmail.com";
             this.txtEmailCustomerAccountForm.ReadOnly = true;
             this.txtEmailCustomerAccountForm.SelectedText = "";
-            this.txtEmailCustomerAccountForm.Size = new System.Drawing.Size(277, 35);
+            this.txtEmailCustomerAccountForm.Size = new System.Drawing.Size(312, 35);
             this.txtEmailCustomerAccountForm.TabIndex = 0;
             // 
             // txtAddressCustomerAccountForm
@@ -218,7 +218,7 @@
             this.txtAddressCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddressCustomerAccountForm.ForeColor = System.Drawing.Color.White;
             this.txtAddressCustomerAccountForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtAddressCustomerAccountForm.Location = new System.Drawing.Point(29, 341);
+            this.txtAddressCustomerAccountForm.Location = new System.Drawing.Point(36, 341);
             this.txtAddressCustomerAccountForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtAddressCustomerAccountForm.Name = "txtAddressCustomerAccountForm";
             this.txtAddressCustomerAccountForm.PasswordChar = '\0';
@@ -226,7 +226,7 @@
             this.txtAddressCustomerAccountForm.PlaceholderText = "Ward - District - City";
             this.txtAddressCustomerAccountForm.ReadOnly = true;
             this.txtAddressCustomerAccountForm.SelectedText = "";
-            this.txtAddressCustomerAccountForm.Size = new System.Drawing.Size(276, 35);
+            this.txtAddressCustomerAccountForm.Size = new System.Drawing.Size(312, 35);
             this.txtAddressCustomerAccountForm.TabIndex = 0;
             // 
             // txtDateOfBirthCustomerAccountForm
@@ -246,7 +246,7 @@
             this.txtDateOfBirthCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDateOfBirthCustomerAccountForm.ForeColor = System.Drawing.Color.White;
             this.txtDateOfBirthCustomerAccountForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDateOfBirthCustomerAccountForm.Location = new System.Drawing.Point(29, 182);
+            this.txtDateOfBirthCustomerAccountForm.Location = new System.Drawing.Point(36, 182);
             this.txtDateOfBirthCustomerAccountForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDateOfBirthCustomerAccountForm.Name = "txtDateOfBirthCustomerAccountForm";
             this.txtDateOfBirthCustomerAccountForm.PasswordChar = '\0';
@@ -254,7 +254,7 @@
             this.txtDateOfBirthCustomerAccountForm.PlaceholderText = "dd/mm/yyyy";
             this.txtDateOfBirthCustomerAccountForm.ReadOnly = true;
             this.txtDateOfBirthCustomerAccountForm.SelectedText = "";
-            this.txtDateOfBirthCustomerAccountForm.Size = new System.Drawing.Size(146, 35);
+            this.txtDateOfBirthCustomerAccountForm.Size = new System.Drawing.Size(165, 35);
             this.txtDateOfBirthCustomerAccountForm.TabIndex = 0;
             // 
             // txtGenderCustomerAccountForm
@@ -274,7 +274,7 @@
             this.txtGenderCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGenderCustomerAccountForm.ForeColor = System.Drawing.Color.White;
             this.txtGenderCustomerAccountForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtGenderCustomerAccountForm.Location = new System.Drawing.Point(209, 182);
+            this.txtGenderCustomerAccountForm.Location = new System.Drawing.Point(248, 182);
             this.txtGenderCustomerAccountForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtGenderCustomerAccountForm.Name = "txtGenderCustomerAccountForm";
             this.txtGenderCustomerAccountForm.PasswordChar = '\0';
@@ -290,7 +290,7 @@
             this.lbCustomerInfStatusCustomerAccountForm.AutoSize = true;
             this.lbCustomerInfStatusCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCustomerInfStatusCustomerAccountForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(190)))), ((int)(((byte)(40)))));
-            this.lbCustomerInfStatusCustomerAccountForm.Location = new System.Drawing.Point(151, 95);
+            this.lbCustomerInfStatusCustomerAccountForm.Location = new System.Drawing.Point(141, 95);
             this.lbCustomerInfStatusCustomerAccountForm.Name = "lbCustomerInfStatusCustomerAccountForm";
             this.lbCustomerInfStatusCustomerAccountForm.Size = new System.Drawing.Size(40, 13);
             this.lbCustomerInfStatusCustomerAccountForm.TabIndex = 31;
@@ -299,7 +299,7 @@
             // imgCustomerInfStatusCustomerAccountForm
             // 
             this.imgCustomerInfStatusCustomerAccountForm.Image = global::BankManagement.Properties.Resources._checked;
-            this.imgCustomerInfStatusCustomerAccountForm.Location = new System.Drawing.Point(137, 96);
+            this.imgCustomerInfStatusCustomerAccountForm.Location = new System.Drawing.Point(127, 96);
             this.imgCustomerInfStatusCustomerAccountForm.Name = "imgCustomerInfStatusCustomerAccountForm";
             this.imgCustomerInfStatusCustomerAccountForm.Size = new System.Drawing.Size(12, 12);
             this.imgCustomerInfStatusCustomerAccountForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -311,7 +311,7 @@
             this.lbEmailCustomerAccountForm.AutoSize = true;
             this.lbEmailCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbEmailCustomerAccountForm.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbEmailCustomerAccountForm.Location = new System.Drawing.Point(30, 240);
+            this.lbEmailCustomerAccountForm.Location = new System.Drawing.Point(37, 240);
             this.lbEmailCustomerAccountForm.Name = "lbEmailCustomerAccountForm";
             this.lbEmailCustomerAccountForm.Size = new System.Drawing.Size(46, 18);
             this.lbEmailCustomerAccountForm.TabIndex = 2;
@@ -322,7 +322,7 @@
             this.lbCCCDCustomerAccountForm.AutoSize = true;
             this.lbCCCDCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCCCDCustomerAccountForm.ForeColor = System.Drawing.Color.White;
-            this.lbCCCDCustomerAccountForm.Location = new System.Drawing.Point(135, 74);
+            this.lbCCCDCustomerAccountForm.Location = new System.Drawing.Point(125, 74);
             this.lbCCCDCustomerAccountForm.Name = "lbCCCDCustomerAccountForm";
             this.lbCCCDCustomerAccountForm.Size = new System.Drawing.Size(91, 16);
             this.lbCCCDCustomerAccountForm.TabIndex = 2;
@@ -333,7 +333,7 @@
             this.lbAddressCustomerAccountForm.AutoSize = true;
             this.lbAddressCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAddressCustomerAccountForm.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbAddressCustomerAccountForm.Location = new System.Drawing.Point(30, 318);
+            this.lbAddressCustomerAccountForm.Location = new System.Drawing.Point(39, 319);
             this.lbAddressCustomerAccountForm.Name = "lbAddressCustomerAccountForm";
             this.lbAddressCustomerAccountForm.Size = new System.Drawing.Size(64, 18);
             this.lbAddressCustomerAccountForm.TabIndex = 2;
@@ -344,7 +344,7 @@
             this.lbDateOfBirthCustomerAccountForm.AutoSize = true;
             this.lbDateOfBirthCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDateOfBirthCustomerAccountForm.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbDateOfBirthCustomerAccountForm.Location = new System.Drawing.Point(30, 160);
+            this.lbDateOfBirthCustomerAccountForm.Location = new System.Drawing.Point(36, 160);
             this.lbDateOfBirthCustomerAccountForm.Name = "lbDateOfBirthCustomerAccountForm";
             this.lbDateOfBirthCustomerAccountForm.Size = new System.Drawing.Size(95, 18);
             this.lbDateOfBirthCustomerAccountForm.TabIndex = 2;
@@ -355,7 +355,7 @@
             this.lbGenderCustomerAccountForm.AutoSize = true;
             this.lbGenderCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbGenderCustomerAccountForm.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbGenderCustomerAccountForm.Location = new System.Drawing.Point(208, 160);
+            this.lbGenderCustomerAccountForm.Location = new System.Drawing.Point(247, 160);
             this.lbGenderCustomerAccountForm.Name = "lbGenderCustomerAccountForm";
             this.lbGenderCustomerAccountForm.Size = new System.Drawing.Size(56, 18);
             this.lbGenderCustomerAccountForm.TabIndex = 2;
@@ -366,7 +366,7 @@
             this.lbCustomerNameCustomerAccountForm.AutoSize = true;
             this.lbCustomerNameCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCustomerNameCustomerAccountForm.ForeColor = System.Drawing.Color.White;
-            this.lbCustomerNameCustomerAccountForm.Location = new System.Drawing.Point(132, 47);
+            this.lbCustomerNameCustomerAccountForm.Location = new System.Drawing.Point(122, 47);
             this.lbCustomerNameCustomerAccountForm.Name = "lbCustomerNameCustomerAccountForm";
             this.lbCustomerNameCustomerAccountForm.Size = new System.Drawing.Size(147, 23);
             this.lbCustomerNameCustomerAccountForm.TabIndex = 2;
@@ -430,13 +430,13 @@
             this.panelAccount01CustomerAccountForm.Controls.Add(this.lbOpenDateCustomerAccountForm);
             this.panelAccount01CustomerAccountForm.Controls.Add(this.lbAccountNumberCustomerAccountForm);
             this.panelAccount01CustomerAccountForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.panelAccount01CustomerAccountForm.Location = new System.Drawing.Point(387, 93);
+            this.panelAccount01CustomerAccountForm.Location = new System.Drawing.Point(428, 93);
             this.panelAccount01CustomerAccountForm.Name = "panelAccount01CustomerAccountForm";
             this.panelAccount01CustomerAccountForm.ShadowDecoration.BorderRadius = 5;
             this.panelAccount01CustomerAccountForm.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.panelAccount01CustomerAccountForm.ShadowDecoration.Depth = 50;
             this.panelAccount01CustomerAccountForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2, 2, 2, 4);
-            this.panelAccount01CustomerAccountForm.Size = new System.Drawing.Size(577, 180);
+            this.panelAccount01CustomerAccountForm.Size = new System.Drawing.Size(536, 180);
             this.panelAccount01CustomerAccountForm.TabIndex = 38;
             // 
             // btnActiveCustomerAccountForm
@@ -450,7 +450,7 @@
             this.btnActiveCustomerAccountForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(174)))), ((int)(((byte)(242)))));
             this.btnActiveCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActiveCustomerAccountForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.btnActiveCustomerAccountForm.Location = new System.Drawing.Point(481, 131);
+            this.btnActiveCustomerAccountForm.Location = new System.Drawing.Point(440, 131);
             this.btnActiveCustomerAccountForm.Name = "btnActiveCustomerAccountForm";
             this.btnActiveCustomerAccountForm.Size = new System.Drawing.Size(80, 35);
             this.btnActiveCustomerAccountForm.TabIndex = 35;
@@ -484,7 +484,7 @@
             this.btnResetCustomerAccountForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnResetCustomerAccountForm.ImageOffset = new System.Drawing.Point(-4, 0);
             this.btnResetCustomerAccountForm.ImageSize = new System.Drawing.Size(28, 28);
-            this.btnResetCustomerAccountForm.Location = new System.Drawing.Point(521, 18);
+            this.btnResetCustomerAccountForm.Location = new System.Drawing.Point(480, 18);
             this.btnResetCustomerAccountForm.Name = "btnResetCustomerAccountForm";
             this.btnResetCustomerAccountForm.Size = new System.Drawing.Size(40, 40);
             this.btnResetCustomerAccountForm.TabIndex = 18;
@@ -591,13 +591,13 @@
             this.panelAccount02CustomerAccountForm.Controls.Add(this.btnDeleteCustomerAccountForm);
             this.panelAccount02CustomerAccountForm.Controls.Add(this.btnAddCustomerAccountForm);
             this.panelAccount02CustomerAccountForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.panelAccount02CustomerAccountForm.Location = new System.Drawing.Point(387, 293);
+            this.panelAccount02CustomerAccountForm.Location = new System.Drawing.Point(428, 293);
             this.panelAccount02CustomerAccountForm.Name = "panelAccount02CustomerAccountForm";
             this.panelAccount02CustomerAccountForm.ShadowDecoration.BorderRadius = 5;
             this.panelAccount02CustomerAccountForm.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.panelAccount02CustomerAccountForm.ShadowDecoration.Depth = 50;
             this.panelAccount02CustomerAccountForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2, 2, 2, 4);
-            this.panelAccount02CustomerAccountForm.Size = new System.Drawing.Size(577, 157);
+            this.panelAccount02CustomerAccountForm.Size = new System.Drawing.Size(536, 157);
             this.panelAccount02CustomerAccountForm.TabIndex = 38;
             // 
             // txtBalanceCustomerAccountForm
@@ -689,7 +689,7 @@
             this.btnDeleteCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteCustomerAccountForm.ForeColor = System.Drawing.Color.White;
             this.btnDeleteCustomerAccountForm.Image = global::BankManagement.Properties.Resources.trash_bin;
-            this.btnDeleteCustomerAccountForm.Location = new System.Drawing.Point(466, 106);
+            this.btnDeleteCustomerAccountForm.Location = new System.Drawing.Point(425, 106);
             this.btnDeleteCustomerAccountForm.Name = "btnDeleteCustomerAccountForm";
             this.btnDeleteCustomerAccountForm.Size = new System.Drawing.Size(95, 35);
             this.btnDeleteCustomerAccountForm.TabIndex = 13;
@@ -708,7 +708,7 @@
             this.btnAddCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnAddCustomerAccountForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnAddCustomerAccountForm.Image = global::BankManagement.Properties.Resources.user;
-            this.btnAddCustomerAccountForm.Location = new System.Drawing.Point(364, 106);
+            this.btnAddCustomerAccountForm.Location = new System.Drawing.Point(323, 106);
             this.btnAddCustomerAccountForm.Name = "btnAddCustomerAccountForm";
             this.btnAddCustomerAccountForm.Size = new System.Drawing.Size(80, 35);
             this.btnAddCustomerAccountForm.TabIndex = 15;
@@ -763,24 +763,24 @@
             // dataGridViewCustomerAccountForm
             // 
             this.dataGridViewCustomerAccountForm.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(62)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.dataGridViewCustomerAccountForm.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(62)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.dataGridViewCustomerAccountForm.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewCustomerAccountForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewCustomerAccountForm.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(25, 0, 0, 12);
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCustomerAccountForm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(25, 0, 0, 12);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCustomerAccountForm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewCustomerAccountForm.ColumnHeadersHeight = 38;
             this.dataGridViewCustomerAccountForm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dataGridViewCustomerAccountForm.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -798,14 +798,14 @@
             this.CustomerStatus,
             this.OpenDate,
             this.Balance});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCustomerAccountForm.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCustomerAccountForm.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewCustomerAccountForm.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
             this.dataGridViewCustomerAccountForm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataGridViewCustomerAccountForm.Location = new System.Drawing.Point(37, 520);
@@ -814,18 +814,18 @@
             this.dataGridViewCustomerAccountForm.Name = "dataGridViewCustomerAccountForm";
             this.dataGridViewCustomerAccountForm.ReadOnly = true;
             this.dataGridViewCustomerAccountForm.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.dataGridViewCustomerAccountForm.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.dataGridViewCustomerAccountForm.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewCustomerAccountForm.RowHeadersVisible = false;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(90)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewCustomerAccountForm.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(90)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewCustomerAccountForm.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewCustomerAccountForm.RowTemplate.Height = 40;
             this.dataGridViewCustomerAccountForm.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridViewCustomerAccountForm.Size = new System.Drawing.Size(917, 398);
