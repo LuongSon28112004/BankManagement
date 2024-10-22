@@ -31,37 +31,38 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panelTitleBarMain = new System.Windows.Forms.Panel();
+            this.btnStaffAvatarMain = new Guna.UI2.WinForms.Guna2Button();
+            this.btnNotifyMainForm = new Guna.UI2.WinForms.Guna2Button();
             this.lbStaffName = new System.Windows.Forms.Label();
+            this.btnMinimizeMain = new Guna.UI2.WinForms.Guna2Button();
+            this.btnMaximizeMain = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCloseMain = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lbBMS = new System.Windows.Forms.Label();
+            this.imgLogoMain = new System.Windows.Forms.PictureBox();
             this.guna2ResizeForm1 = new Guna.UI2.WinForms.Guna2ResizeForm(this.components);
             this.panelLeftBarMain = new System.Windows.Forms.Panel();
-            this.lbFeedbackMain = new System.Windows.Forms.Label();
-            this.lbClientServicesMain = new System.Windows.Forms.Label();
-            this.btnCustomer = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnSettingMainForm = new Guna.UI2.WinForms.Guna2Button();
             this.btnFeedbackMain = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLogMainForm = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCustomer = new Guna.UI2.WinForms.Guna2Button();
             this.btnHelpMain = new Guna.UI2.WinForms.Guna2Button();
             this.btnLoan = new Guna.UI2.WinForms.Guna2Button();
             this.btnAccount = new Guna.UI2.WinForms.Guna2Button();
             this.btnTransaction = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSettingMain = new Guna.UI2.WinForms.Guna2Button();
-            this.btnStaffAvatarMain = new Guna.UI2.WinForms.Guna2Button();
-            this.btnNotifyMain = new Guna.UI2.WinForms.Guna2Button();
-            this.btnMinimizeMain = new Guna.UI2.WinForms.Guna2Button();
-            this.btnMaximizeMain = new Guna.UI2.WinForms.Guna2Button();
-            this.btnCloseMain = new Guna.UI2.WinForms.Guna2Button();
-            this.imgLogoMain = new System.Windows.Forms.PictureBox();
+            this.lbClientServicesMain = new System.Windows.Forms.Label();
             this.panelTitleBarMain.SuspendLayout();
-            this.panelLeftBarMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoMain)).BeginInit();
+            this.panelLeftBarMain.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTitleBarMain
             // 
             this.panelTitleBarMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.panelTitleBarMain.Controls.Add(this.btnSettingMain);
             this.panelTitleBarMain.Controls.Add(this.btnStaffAvatarMain);
-            this.panelTitleBarMain.Controls.Add(this.btnNotifyMain);
+            this.panelTitleBarMain.Controls.Add(this.btnNotifyMainForm);
             this.panelTitleBarMain.Controls.Add(this.lbStaffName);
             this.panelTitleBarMain.Controls.Add(this.btnMinimizeMain);
             this.panelTitleBarMain.Controls.Add(this.btnMaximizeMain);
@@ -79,18 +80,119 @@
             this.panelTitleBarMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBarMain_MouseDown);
             this.panelTitleBarMain.MouseEnter += new System.EventHandler(this.panelTitleBarMain_MouseEnter);
             // 
+            // btnStaffAvatarMain
+            // 
+            this.btnStaffAvatarMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStaffAvatarMain.BorderRadius = 10;
+            this.btnStaffAvatarMain.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnStaffAvatarMain.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnStaffAvatarMain.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnStaffAvatarMain.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnStaffAvatarMain.FillColor = System.Drawing.Color.Transparent;
+            this.btnStaffAvatarMain.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnStaffAvatarMain.ForeColor = System.Drawing.Color.White;
+            this.btnStaffAvatarMain.Image = global::BankManagement.Properties.Resources.staff_woman;
+            this.btnStaffAvatarMain.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnStaffAvatarMain.ImageOffset = new System.Drawing.Point(-9, 0);
+            this.btnStaffAvatarMain.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnStaffAvatarMain.Location = new System.Drawing.Point(878, 11);
+            this.btnStaffAvatarMain.Name = "btnStaffAvatarMain";
+            this.btnStaffAvatarMain.Size = new System.Drawing.Size(32, 32);
+            this.btnStaffAvatarMain.TabIndex = 2;
+            this.btnStaffAvatarMain.Click += new System.EventHandler(this.btnStaffAvatarMain_Click);
+            // 
+            // btnNotifyMainForm
+            // 
+            this.btnNotifyMainForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNotifyMainForm.BackColor = System.Drawing.Color.Transparent;
+            this.btnNotifyMainForm.BorderRadius = 10;
+            this.btnNotifyMainForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNotifyMainForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNotifyMainForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNotifyMainForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNotifyMainForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.btnNotifyMainForm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnNotifyMainForm.ForeColor = System.Drawing.Color.White;
+            this.btnNotifyMainForm.Image = global::BankManagement.Properties.Resources.notification_bell;
+            this.btnNotifyMainForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnNotifyMainForm.ImageOffset = new System.Drawing.Point(-4, 0);
+            this.btnNotifyMainForm.Location = new System.Drawing.Point(1028, 12);
+            this.btnNotifyMainForm.Name = "btnNotifyMainForm";
+            this.btnNotifyMainForm.Size = new System.Drawing.Size(32, 32);
+            this.btnNotifyMainForm.TabIndex = 2;
+            this.btnNotifyMainForm.Click += new System.EventHandler(this.btnNotifyMain_Click);
+            // 
             // lbStaffName
             // 
             this.lbStaffName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbStaffName.AutoSize = true;
             this.lbStaffName.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStaffName.ForeColor = System.Drawing.Color.White;
-            this.lbStaffName.Location = new System.Drawing.Point(958, 20);
+            this.lbStaffName.Location = new System.Drawing.Point(914, 20);
             this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
             this.lbStaffName.Size = new System.Drawing.Size(88, 14);
             this.lbStaffName.TabIndex = 2;
             this.lbStaffName.Text = "Nguyen Anh Vy";
+            // 
+            // btnMinimizeMain
+            // 
+            this.btnMinimizeMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizeMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMinimizeMain.BorderColor = System.Drawing.Color.Transparent;
+            this.btnMinimizeMain.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMinimizeMain.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMinimizeMain.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMinimizeMain.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMinimizeMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.btnMinimizeMain.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMinimizeMain.ForeColor = System.Drawing.Color.White;
+            this.btnMinimizeMain.Image = global::BankManagement.Properties.Resources.minimize;
+            this.btnMinimizeMain.ImageSize = new System.Drawing.Size(12, 2);
+            this.btnMinimizeMain.Location = new System.Drawing.Point(1075, 10);
+            this.btnMinimizeMain.Name = "btnMinimizeMain";
+            this.btnMinimizeMain.Size = new System.Drawing.Size(35, 35);
+            this.btnMinimizeMain.TabIndex = 2;
+            this.btnMinimizeMain.Click += new System.EventHandler(this.btnMinimize_Click);
+            // 
+            // btnMaximizeMain
+            // 
+            this.btnMaximizeMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizeMain.BackColor = System.Drawing.Color.Transparent;
+            this.btnMaximizeMain.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMaximizeMain.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMaximizeMain.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMaximizeMain.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMaximizeMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.btnMaximizeMain.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnMaximizeMain.ForeColor = System.Drawing.Color.White;
+            this.btnMaximizeMain.Image = global::BankManagement.Properties.Resources.img_maximize;
+            this.btnMaximizeMain.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnMaximizeMain.ImageOffset = new System.Drawing.Point(1, 0);
+            this.btnMaximizeMain.ImageSize = new System.Drawing.Size(13, 10);
+            this.btnMaximizeMain.Location = new System.Drawing.Point(1116, 10);
+            this.btnMaximizeMain.Name = "btnMaximizeMain";
+            this.btnMaximizeMain.Size = new System.Drawing.Size(35, 35);
+            this.btnMaximizeMain.TabIndex = 2;
+            this.btnMaximizeMain.Click += new System.EventHandler(this.btnMaximize_Click);
+            // 
+            // btnCloseMain
+            // 
+            this.btnCloseMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCloseMain.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCloseMain.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCloseMain.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCloseMain.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCloseMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
+            this.btnCloseMain.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCloseMain.ForeColor = System.Drawing.Color.White;
+            this.btnCloseMain.Image = global::BankManagement.Properties.Resources.letter_x;
+            this.btnCloseMain.ImageSize = new System.Drawing.Size(11, 11);
+            this.btnCloseMain.Location = new System.Drawing.Point(1157, 10);
+            this.btnCloseMain.Name = "btnCloseMain";
+            this.btnCloseMain.Size = new System.Drawing.Size(35, 35);
+            this.btnCloseMain.TabIndex = 2;
+            this.btnCloseMain.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // label1
             // 
@@ -116,6 +218,17 @@
             this.lbBMS.TabIndex = 1;
             this.lbBMS.Text = "WorkPlace";
             // 
+            // imgLogoMain
+            // 
+            this.imgLogoMain.Image = global::BankManagement.Properties.Resources.logo;
+            this.imgLogoMain.Location = new System.Drawing.Point(13, 9);
+            this.imgLogoMain.Margin = new System.Windows.Forms.Padding(2);
+            this.imgLogoMain.Name = "imgLogoMain";
+            this.imgLogoMain.Size = new System.Drawing.Size(40, 40);
+            this.imgLogoMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgLogoMain.TabIndex = 0;
+            this.imgLogoMain.TabStop = false;
+            // 
             // guna2ResizeForm1
             // 
             this.guna2ResizeForm1.TargetForm = this;
@@ -123,9 +236,8 @@
             // panelLeftBarMain
             // 
             this.panelLeftBarMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.panelLeftBarMain.Controls.Add(this.lbFeedbackMain);
+            this.panelLeftBarMain.Controls.Add(this.guna2Panel1);
             this.panelLeftBarMain.Controls.Add(this.btnCustomer);
-            this.panelLeftBarMain.Controls.Add(this.btnFeedbackMain);
             this.panelLeftBarMain.Controls.Add(this.btnHelpMain);
             this.panelLeftBarMain.Controls.Add(this.btnLoan);
             this.panelLeftBarMain.Controls.Add(this.btnAccount);
@@ -138,29 +250,79 @@
             this.panelLeftBarMain.Size = new System.Drawing.Size(200, 640);
             this.panelLeftBarMain.TabIndex = 1;
             // 
-            // lbFeedbackMain
+            // guna2Panel1
             // 
-            this.lbFeedbackMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbFeedbackMain.AutoSize = true;
-            this.lbFeedbackMain.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFeedbackMain.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbFeedbackMain.Location = new System.Drawing.Point(58, 597);
-            this.lbFeedbackMain.Name = "lbFeedbackMain";
-            this.lbFeedbackMain.Size = new System.Drawing.Size(62, 16);
-            this.lbFeedbackMain.TabIndex = 2;
-            this.lbFeedbackMain.Text = "Feedback";
+            this.guna2Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.guna2Panel1.BorderRadius = 15;
+            this.guna2Panel1.Controls.Add(this.btnSettingMainForm);
+            this.guna2Panel1.Controls.Add(this.btnFeedbackMain);
+            this.guna2Panel1.Controls.Add(this.btnLogMainForm);
+            this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.guna2Panel1.Location = new System.Drawing.Point(13, 488);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(50, 140);
+            this.guna2Panel1.TabIndex = 3;
             // 
-            // lbClientServicesMain
+            // btnSettingMainForm
             // 
-            this.lbClientServicesMain.AutoSize = true;
-            this.lbClientServicesMain.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbClientServicesMain.ForeColor = System.Drawing.Color.White;
-            this.lbClientServicesMain.Location = new System.Drawing.Point(10, 15);
-            this.lbClientServicesMain.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbClientServicesMain.Name = "lbClientServicesMain";
-            this.lbClientServicesMain.Size = new System.Drawing.Size(139, 23);
-            this.lbClientServicesMain.TabIndex = 1;
-            this.lbClientServicesMain.Text = "Client Services";
+            this.btnSettingMainForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSettingMainForm.BackColor = System.Drawing.Color.Transparent;
+            this.btnSettingMainForm.BorderRadius = 10;
+            this.btnSettingMainForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSettingMainForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSettingMainForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSettingMainForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSettingMainForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.btnSettingMainForm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnSettingMainForm.ForeColor = System.Drawing.Color.White;
+            this.btnSettingMainForm.Image = global::BankManagement.Properties.Resources.setting;
+            this.btnSettingMainForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSettingMainForm.ImageOffset = new System.Drawing.Point(-4, 0);
+            this.btnSettingMainForm.Location = new System.Drawing.Point(9, 98);
+            this.btnSettingMainForm.Name = "btnSettingMainForm";
+            this.btnSettingMainForm.Size = new System.Drawing.Size(32, 32);
+            this.btnSettingMainForm.TabIndex = 2;
+            // 
+            // btnFeedbackMain
+            // 
+            this.btnFeedbackMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFeedbackMain.BackColor = System.Drawing.Color.Transparent;
+            this.btnFeedbackMain.BorderRadius = 8;
+            this.btnFeedbackMain.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFeedbackMain.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFeedbackMain.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFeedbackMain.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFeedbackMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.btnFeedbackMain.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFeedbackMain.ForeColor = System.Drawing.Color.White;
+            this.btnFeedbackMain.Image = global::BankManagement.Properties.Resources.img_btn_feedback;
+            this.btnFeedbackMain.ImageOffset = new System.Drawing.Point(1, 0);
+            this.btnFeedbackMain.ImageSize = new System.Drawing.Size(23, 23);
+            this.btnFeedbackMain.Location = new System.Drawing.Point(9, 54);
+            this.btnFeedbackMain.Name = "btnFeedbackMain";
+            this.btnFeedbackMain.Size = new System.Drawing.Size(32, 32);
+            this.btnFeedbackMain.TabIndex = 2;
+            // 
+            // btnLogMainForm
+            // 
+            this.btnLogMainForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogMainForm.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogMainForm.BorderRadius = 10;
+            this.btnLogMainForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogMainForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogMainForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogMainForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogMainForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.btnLogMainForm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnLogMainForm.ForeColor = System.Drawing.Color.White;
+            this.btnLogMainForm.Image = global::BankManagement.Properties.Resources.log;
+            this.btnLogMainForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogMainForm.ImageOffset = new System.Drawing.Point(-4, 0);
+            this.btnLogMainForm.Location = new System.Drawing.Point(9, 10);
+            this.btnLogMainForm.Name = "btnLogMainForm";
+            this.btnLogMainForm.Size = new System.Drawing.Size(32, 32);
+            this.btnLogMainForm.TabIndex = 3;
+            this.btnLogMainForm.Click += new System.EventHandler(this.btnLogMainForm_Click);
             // 
             // btnCustomer
             // 
@@ -189,25 +351,6 @@
             this.btnCustomer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCustomer.TextOffset = new System.Drawing.Point(0, -1);
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
-            // 
-            // btnFeedbackMain
-            // 
-            this.btnFeedbackMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnFeedbackMain.BorderRadius = 8;
-            this.btnFeedbackMain.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFeedbackMain.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFeedbackMain.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFeedbackMain.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFeedbackMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnFeedbackMain.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFeedbackMain.ForeColor = System.Drawing.Color.White;
-            this.btnFeedbackMain.Image = global::BankManagement.Properties.Resources.img_btn_feedback;
-            this.btnFeedbackMain.ImageOffset = new System.Drawing.Point(1, 0);
-            this.btnFeedbackMain.ImageSize = new System.Drawing.Size(27, 27);
-            this.btnFeedbackMain.Location = new System.Drawing.Point(15, 586);
-            this.btnFeedbackMain.Name = "btnFeedbackMain";
-            this.btnFeedbackMain.Size = new System.Drawing.Size(41, 39);
-            this.btnFeedbackMain.TabIndex = 2;
             // 
             // btnHelpMain
             // 
@@ -309,137 +452,17 @@
             this.btnTransaction.TextOffset = new System.Drawing.Point(4, -1);
             this.btnTransaction.Click += new System.EventHandler(this.btnTransaction_Click);
             // 
-            // btnSettingMain
+            // lbClientServicesMain
             // 
-            this.btnSettingMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSettingMain.BackColor = System.Drawing.Color.Transparent;
-            this.btnSettingMain.BorderRadius = 10;
-            this.btnSettingMain.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSettingMain.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSettingMain.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSettingMain.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSettingMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.btnSettingMain.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnSettingMain.ForeColor = System.Drawing.Color.White;
-            this.btnSettingMain.Image = global::BankManagement.Properties.Resources.setting;
-            this.btnSettingMain.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSettingMain.ImageOffset = new System.Drawing.Point(-4, 0);
-            this.btnSettingMain.Location = new System.Drawing.Point(879, 11);
-            this.btnSettingMain.Name = "btnSettingMain";
-            this.btnSettingMain.Size = new System.Drawing.Size(32, 32);
-            this.btnSettingMain.TabIndex = 2;
-            // 
-            // btnStaffAvatarMain
-            // 
-            this.btnStaffAvatarMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStaffAvatarMain.BorderRadius = 10;
-            this.btnStaffAvatarMain.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnStaffAvatarMain.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnStaffAvatarMain.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnStaffAvatarMain.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnStaffAvatarMain.FillColor = System.Drawing.Color.Transparent;
-            this.btnStaffAvatarMain.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnStaffAvatarMain.ForeColor = System.Drawing.Color.White;
-            this.btnStaffAvatarMain.Image = global::BankManagement.Properties.Resources.staff_woman;
-            this.btnStaffAvatarMain.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnStaffAvatarMain.ImageOffset = new System.Drawing.Point(-9, 0);
-            this.btnStaffAvatarMain.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnStaffAvatarMain.Location = new System.Drawing.Point(922, 11);
-            this.btnStaffAvatarMain.Name = "btnStaffAvatarMain";
-            this.btnStaffAvatarMain.Size = new System.Drawing.Size(32, 32);
-            this.btnStaffAvatarMain.TabIndex = 2;
-            this.btnStaffAvatarMain.Click += new System.EventHandler(this.btnStaffAvatarMain_Click);
-            // 
-            // btnNotifyMain
-            // 
-            this.btnNotifyMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNotifyMain.BackColor = System.Drawing.Color.Transparent;
-            this.btnNotifyMain.BorderRadius = 10;
-            this.btnNotifyMain.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNotifyMain.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNotifyMain.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNotifyMain.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNotifyMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.btnNotifyMain.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnNotifyMain.ForeColor = System.Drawing.Color.White;
-            this.btnNotifyMain.Image = global::BankManagement.Properties.Resources.notification_bell;
-            this.btnNotifyMain.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnNotifyMain.ImageOffset = new System.Drawing.Point(-4, 0);
-            this.btnNotifyMain.Location = new System.Drawing.Point(836, 11);
-            this.btnNotifyMain.Name = "btnNotifyMain";
-            this.btnNotifyMain.Size = new System.Drawing.Size(32, 32);
-            this.btnNotifyMain.TabIndex = 2;
-            this.btnNotifyMain.Click += new System.EventHandler(this.btnNotifyMain_Click);
-            // 
-            // btnMinimizeMain
-            // 
-            this.btnMinimizeMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizeMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnMinimizeMain.BorderColor = System.Drawing.Color.Transparent;
-            this.btnMinimizeMain.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMinimizeMain.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMinimizeMain.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMinimizeMain.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMinimizeMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.btnMinimizeMain.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnMinimizeMain.ForeColor = System.Drawing.Color.White;
-            this.btnMinimizeMain.Image = global::BankManagement.Properties.Resources.minimize;
-            this.btnMinimizeMain.ImageSize = new System.Drawing.Size(12, 2);
-            this.btnMinimizeMain.Location = new System.Drawing.Point(1075, 10);
-            this.btnMinimizeMain.Name = "btnMinimizeMain";
-            this.btnMinimizeMain.Size = new System.Drawing.Size(35, 35);
-            this.btnMinimizeMain.TabIndex = 2;
-            this.btnMinimizeMain.Click += new System.EventHandler(this.btnMinimize_Click);
-            // 
-            // btnMaximizeMain
-            // 
-            this.btnMaximizeMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizeMain.BackColor = System.Drawing.Color.Transparent;
-            this.btnMaximizeMain.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMaximizeMain.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMaximizeMain.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMaximizeMain.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMaximizeMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.btnMaximizeMain.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnMaximizeMain.ForeColor = System.Drawing.Color.White;
-            this.btnMaximizeMain.Image = global::BankManagement.Properties.Resources.img_maximize;
-            this.btnMaximizeMain.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnMaximizeMain.ImageOffset = new System.Drawing.Point(1, 0);
-            this.btnMaximizeMain.ImageSize = new System.Drawing.Size(13, 10);
-            this.btnMaximizeMain.Location = new System.Drawing.Point(1116, 10);
-            this.btnMaximizeMain.Name = "btnMaximizeMain";
-            this.btnMaximizeMain.Size = new System.Drawing.Size(35, 35);
-            this.btnMaximizeMain.TabIndex = 2;
-            this.btnMaximizeMain.Click += new System.EventHandler(this.btnMaximize_Click);
-            // 
-            // btnCloseMain
-            // 
-            this.btnCloseMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseMain.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCloseMain.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCloseMain.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCloseMain.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCloseMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(13)))), ((int)(((byte)(13)))));
-            this.btnCloseMain.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCloseMain.ForeColor = System.Drawing.Color.White;
-            this.btnCloseMain.Image = global::BankManagement.Properties.Resources.letter_x;
-            this.btnCloseMain.ImageSize = new System.Drawing.Size(11, 11);
-            this.btnCloseMain.Location = new System.Drawing.Point(1157, 10);
-            this.btnCloseMain.Name = "btnCloseMain";
-            this.btnCloseMain.Size = new System.Drawing.Size(35, 35);
-            this.btnCloseMain.TabIndex = 2;
-            this.btnCloseMain.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // imgLogoMain
-            // 
-            this.imgLogoMain.Image = global::BankManagement.Properties.Resources.logo;
-            this.imgLogoMain.Location = new System.Drawing.Point(13, 9);
-            this.imgLogoMain.Margin = new System.Windows.Forms.Padding(2);
-            this.imgLogoMain.Name = "imgLogoMain";
-            this.imgLogoMain.Size = new System.Drawing.Size(40, 40);
-            this.imgLogoMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgLogoMain.TabIndex = 0;
-            this.imgLogoMain.TabStop = false;
+            this.lbClientServicesMain.AutoSize = true;
+            this.lbClientServicesMain.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbClientServicesMain.ForeColor = System.Drawing.Color.White;
+            this.lbClientServicesMain.Location = new System.Drawing.Point(10, 15);
+            this.lbClientServicesMain.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbClientServicesMain.Name = "lbClientServicesMain";
+            this.lbClientServicesMain.Size = new System.Drawing.Size(139, 23);
+            this.lbClientServicesMain.TabIndex = 1;
+            this.lbClientServicesMain.Text = "Client Services";
             // 
             // MainForm
             // 
@@ -462,9 +485,10 @@
             this.Resize += new System.EventHandler(this.Main_Resize);
             this.panelTitleBarMain.ResumeLayout(false);
             this.panelTitleBarMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogoMain)).EndInit();
             this.panelLeftBarMain.ResumeLayout(false);
             this.panelLeftBarMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgLogoMain)).EndInit();
+            this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -485,12 +509,13 @@
 		private Guna.UI2.WinForms.Guna2Button btnMaximizeMain;
 		private Guna.UI2.WinForms.Guna2Button btnMinimizeMain;
         private Guna.UI2.WinForms.Guna2Button btnStaffAvatarMain;
-        private Guna.UI2.WinForms.Guna2Button btnNotifyMain;
+        private Guna.UI2.WinForms.Guna2Button btnNotifyMainForm;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2Button btnSettingMain;
+        private Guna.UI2.WinForms.Guna2Button btnSettingMainForm;
         private System.Windows.Forms.Label lbClientServicesMain;
         private Guna.UI2.WinForms.Guna2Button btnHelpMain;
         private Guna.UI2.WinForms.Guna2Button btnFeedbackMain;
-        private System.Windows.Forms.Label lbFeedbackMain;
+        private Guna.UI2.WinForms.Guna2Button btnLogMainForm;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }

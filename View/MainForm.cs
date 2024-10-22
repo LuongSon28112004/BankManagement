@@ -40,7 +40,7 @@ namespace BankManagement
 			//Đổi màu hover
 			btnCloseMain.HoverState.FillColor = Color.FromArgb(255, 90, 90); 
 			btnStaffAvatarMain.HoverState.FillColor = Color.FromArgb(200, 200, 200);
-			btnNotifyMain.HoverState.FillColor = Color.FromArgb(100, 100, 100);
+			btnNotifyMainForm.HoverState.FillColor = Color.FromArgb(100, 100, 100);
 
 			// Gọi trực tiếp phương thức xử lý sự kiện Click của btnCustomer để mặc địch Form CustomerForm được mở khi load MainForm
 			btnCustomer_Click(this, EventArgs.Empty);
@@ -70,7 +70,8 @@ namespace BankManagement
 			{
 				MessageBox.Show("Có lỗi khi tải ảnh: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-		}
+
+        }
 
 
 
@@ -191,7 +192,7 @@ namespace BankManagement
             //Mở form CustomerForm
             if (customerForm == null || customerForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
 			{
-				customerForm = new CustomerForm();
+				customerForm = new CustomerForm(this.staffId);
 				customerForm.StartPosition = FormStartPosition.Manual;
                 customerForm.Height = this.Height - 63; //Chỉnh độ cao của form CustomerForm
 				customerForm.Width = this.Width - panelLeftBarMain.Width - 3;
@@ -343,6 +344,7 @@ namespace BankManagement
 			UpdateCustomerAccountFormSizeAndPosition(); //Cập nhật CustomerAccountForm
             UpdateTransactionFormSizeAndPosition(); //Cập nhật TransactionForm
 
+
         }
 
 		private void Main_Resize(object sender, EventArgs e) //Cập nhật form con khi resize
@@ -351,7 +353,6 @@ namespace BankManagement
             UpdateCustomerFormSizeAndPosition(); //Cập nhật CustomerForm
 			UpdateCustomerAccountFormSizeAndPosition(); //Cập nhật CustomerAccountForm
             UpdateTransactionFormSizeAndPosition(); //Cập nhật TransactionForm
-
         }
 
 
@@ -403,6 +404,11 @@ namespace BankManagement
             }
         }
 
+
+
+
+
+
         private void btnNotifyMain_Click(object sender, EventArgs e)
         {
 
@@ -411,6 +417,43 @@ namespace BankManagement
         private void panelTitleBarMain_MouseEnter(object sender, EventArgs e)
         {
 			this.Cursor = Cursors.Default;
+        }
+
+
+
+
+
+        //Hiển thị LogForm-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        private LogForm logForm;
+        private void btnLogMainForm_Click(object sender, EventArgs e)
+        {
+            //Mở form CustomerForm
+            if (logForm == null || logForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
+            {
+                logForm = new LogForm(this.staffId);
+                // Đặt vị trí của InfoStaff ngay dưới nút btnStaffAvatar
+                logForm.StartPosition = FormStartPosition.Manual;
+
+                // Lấy tọa độ và điều chỉnh vị trí
+                var startPos = btnLogMainForm.PointToScreen(new System.Drawing.Point(50, btnLogMainForm.Height - 343));
+                logForm.Location = startPos;
+                logForm.Show();
+            }
+            else
+            {
+                UpdateLogFormSizeAndPosition();
+                logForm.UpdateFlowPanel();
+                logForm.Show();
+            }
+        }
+        private void UpdateLogFormSizeAndPosition()
+        {
+            if (logForm != null && !logForm.IsDisposed)
+            {
+                // Lấy tọa độ và điều chỉnh vị trí
+                var startPos = btnLogMainForm.PointToScreen(new System.Drawing.Point(50, btnLogMainForm.Height - 343));
+                logForm.Location = new Point(startPos.X, startPos.Y);
+            }
         }
     }
 }

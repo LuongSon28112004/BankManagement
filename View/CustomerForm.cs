@@ -1,5 +1,6 @@
 ﻿using BankManagement.Model;
 using BankManagement.Properties;
+using BankManagement.View;
 using BankManagement.ViewModel;
 using Guna.UI2.WinForms;
 using System;
@@ -24,13 +25,14 @@ namespace BankManagement
 	{
 		CustomerViewModel viewModel;
         string filePath;
+        private int staffId;
 
-
-		public CustomerForm()
+		public CustomerForm(int staffId)
 		{
 			InitializeComponent();
 			viewModel = new CustomerViewModel();
 			this.ShowInTaskbar = false; //Ẩn khỏi thanh taskbar
+            this.staffId = staffId;
 		}
 
 
@@ -305,6 +307,9 @@ namespace BankManagement
                 checkStatusCustomer("Active");
                 dataGridViewCustomerInforCustomerForm.Rows.Clear();
                 this.LoadAllCustomer();
+
+                if (viewModel.Status == "Active") viewModel.AddLog("Update thông tin khách hàng có CDDD: ");
+                if (viewModel.Status == "Inactive") viewModel.AddLog("Active khách hàng có CDDD: ");
             }
             catch (Exception ex)
             {
@@ -445,6 +450,8 @@ namespace BankManagement
         //Cập nhật các thông tin khách hàng từ form vào viewModel-------------------------------------------------------------------------------------
         private void UpdateViewModelFromForm()
         {
+            viewModel.Status = lbStatusCustomerForm.Text;
+            viewModel.StaffId = staffId;
             viewModel.Cccd = txtCCCDCustomerForm.Text;
             viewModel.Name = txtCustomerNameCustomerForm.Text;
             viewModel.Email = txtEmailCustomerForm.Text;

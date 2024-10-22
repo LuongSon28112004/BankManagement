@@ -14,9 +14,11 @@ namespace BankManagement.ViewModel
     {
         private CustomerInforRepository customerInforRepository;
         private CustomerAccountWithInforRepository customerAccountWithInforRepository;
+        private LogRepository logRepository;
 
         //Các thuộc tính bind với CustomerForm
         private int id;
+        private int staffId;
         private string cccd;
         private string name;
         private string email;
@@ -34,6 +36,7 @@ namespace BankManagement.ViewModel
         {
             customerInforRepository = new CustomerInforRepository();
             customerAccountWithInforRepository = new CustomerAccountWithInforRepository();
+            logRepository = new LogRepository();
         }
 
         // Getter và Setter cho từng thuộc tính
@@ -41,6 +44,12 @@ namespace BankManagement.ViewModel
         {
             get { return id; }
             set { id = value; }
+        }
+
+        public int StaffId
+        {
+            get { return staffId; }
+            set {  staffId = value; }
         }
 
         public string Cccd
@@ -184,6 +193,17 @@ namespace BankManagement.ViewModel
         public void LoadAllCustomer()
         {
             this.dataTableCustomerInfor = customerInforRepository.LoadAllCustomer();
+        }
+
+
+
+
+
+        //Thêm log-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public void AddLog(string act)
+        {
+            Log log = new Log(0, this.staffId, null, act + this.Cccd);
+            logRepository.AddLog(log);
         }
 
 

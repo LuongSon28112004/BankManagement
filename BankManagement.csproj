@@ -62,12 +62,15 @@
     <Compile Include="Model\CustomerAccountWithInforRepository.cs" />
     <Compile Include="Model\CustomerInfor.cs" />
     <Compile Include="Model\CustomerInforRepository.cs" />
+    <Compile Include="Model\Log.cs" />
+    <Compile Include="Model\LogRepository.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\TransactionReponsitory.cs" />
     <Compile Include="ViewModel\AccountViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\InfoStaffViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\LogViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\TransactionViewModel.cs" />
     <Compile Include="View\BillForm.cs">
@@ -94,6 +97,12 @@
     </Compile>
     <Compile Include="View\InfoStaffForm.Designer.cs">
       <DependentUpon>InfoStaffForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
@@ -135,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\InfoStaffForm.resx">
       <DependentUpon>InfoStaffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -230,6 +242,7 @@
     <None Include="Resources\img_background_bill.png" />
     <None Include="Resources\img_export_pdf.png" />
     <None Include="Resources\img_background_bill01.png" />
+    <None Include="Resources\log.png" />
     <Content Include="Resources\maximize.png" />
     <None Include="Resources\notification_bell.png" />
     <None Include="Resources\staff.png" />
