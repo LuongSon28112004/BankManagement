@@ -62,6 +62,7 @@
             this.txtDescriptionsFeedbackForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.txtDescriptionsFeedbackForm.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescriptionsFeedbackForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescriptionsFeedbackForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtDescriptionsFeedbackForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescriptionsFeedbackForm.Location = new System.Drawing.Point(32, 185);
             this.txtDescriptionsFeedbackForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -106,6 +107,7 @@
             this.txtTitleFeedbackForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.txtTitleFeedbackForm.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTitleFeedbackForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitleFeedbackForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtTitleFeedbackForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTitleFeedbackForm.Location = new System.Drawing.Point(32, 92);
             this.txtTitleFeedbackForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -129,7 +131,7 @@
             // 
             // panelTitleBarFeedbackForm
             // 
-            this.panelTitleBarFeedbackForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.panelTitleBarFeedbackForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(19)))), ((int)(((byte)(19)))));
             this.panelTitleBarFeedbackForm.Controls.Add(this.btnCloseFeedbackForm);
             this.panelTitleBarFeedbackForm.Controls.Add(this.btnFeedbackFeedbackForm);
             this.panelTitleBarFeedbackForm.Controls.Add(this.lbFeedbackFeedbackForm);
@@ -341,6 +343,7 @@
             this.Controls.Add(this.txtDescriptionsFeedbackForm);
             this.Controls.Add(this.panelTitleBarFeedbackForm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FeedbackForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FeedbackFormcs";

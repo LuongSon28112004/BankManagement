@@ -133,6 +133,12 @@
     <Compile Include="RoundControl.Designer.cs">
       <DependentUpon>RoundControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\NotifyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NotifyForm.Designer.cs">
+      <DependentUpon>NotifyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,9 @@
     <EmbeddedResource Include="RoundControl.resx">
       <DependentUpon>RoundControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\NotifyForm.resx">
+      <DependentUpon>NotifyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\TransactionForm.resx">
       <DependentUpon>TransactionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +221,8 @@
     <None Include="Resources\user_icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\more_v.png" />
+    <None Include="Resources\more.png" />
     <None Include="Resources\star_yellow.png" />
     <None Include="Resources\star_white.png" />
     <None Include="Resources\user.png" />

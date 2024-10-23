@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogForm));
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.flowPanelLogForm = new System.Windows.Forms.FlowLayoutPanel();
             this.txtSearchLogForm = new Guna.UI2.WinForms.Guna2TextBox();
@@ -116,11 +117,13 @@
             this.vsScrollBarLogForm.BorderRadius = 5;
             this.vsScrollBarLogForm.FillColor = System.Drawing.Color.Transparent;
             this.vsScrollBarLogForm.InUpdate = false;
-            this.vsScrollBarLogForm.LargeChange = 10;
+            this.vsScrollBarLogForm.LargeChange = 346;
             this.vsScrollBarLogForm.Location = new System.Drawing.Point(595, 83);
+            this.vsScrollBarLogForm.Maximum = 351;
             this.vsScrollBarLogForm.Name = "vsScrollBarLogForm";
             this.vsScrollBarLogForm.ScrollbarSize = 18;
             this.vsScrollBarLogForm.Size = new System.Drawing.Size(18, 346);
+            this.vsScrollBarLogForm.SmallChange = 5;
             this.vsScrollBarLogForm.TabIndex = 0;
             this.vsScrollBarLogForm.ThumbColor = System.Drawing.Color.Transparent;
             this.vsScrollBarLogForm.Visible = false;
@@ -177,6 +180,7 @@
             this.Controls.Add(this.txtSearchLogForm);
             this.Controls.Add(this.flowPanelLogForm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LogForm";
             this.Text = "LogForm";
             this.Deactivate += new System.EventHandler(this.LogForm_Deactivate);

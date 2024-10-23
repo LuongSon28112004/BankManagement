@@ -151,7 +151,7 @@ namespace BankManagement.View
         {
             btnExportPdfBillForm.Visible = false;
             lbExportPDFBillForm.Visible = false;
-            // Delay 500ms trước khi chụp
+            // Delay 10ms trước khi chụp
             await Task.Delay(10);
             Bitmap bitmap = CaptureForm();
             btnExportPdfBillForm.Visible = true;
