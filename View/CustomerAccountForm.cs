@@ -16,13 +16,14 @@ namespace BankManagement.View
     public partial class CustomerAccountForm : Form
     {
         AccountViewModel viewModel;
-
-        public CustomerAccountForm()
+        private int staffId;
+        public CustomerAccountForm(int staffId)
         {
             InitializeComponent();
             viewModel = new AccountViewModel();
             this.reset();
             this.ShowInTaskbar = false; //Ẩn khỏi thanh taskbar
+            this.staffId = staffId;
         }
 
 
@@ -155,6 +156,7 @@ namespace BankManagement.View
             try
             {
                 viewModel.AddCustomerAccount();
+                viewModel.AddLog("Thêm tài khoản có Account Number: ");
 
                 //Thay thế tất cả các dữ liệu trong dataGridView
                 this.reset();
@@ -197,6 +199,8 @@ namespace BankManagement.View
             try
             {
                 viewModel.deleteCustomerAccount();
+
+                viewModel.AddLog("Xoá tài khoản có Account Number: ");
 
                 //Thay thế tất cả các dữ liệu trong datagridview
                 checkStatusCustomerAccount("Inactive");
@@ -279,8 +283,14 @@ namespace BankManagement.View
             {
                 viewModel.updateStatusAccountCustomer();
 
-                //Thay thế tất cả các dữ liệu trong datagridview
+                viewModel.AddLog("Active tài khoản có Account Number: ");
+
+                
                 checkStatusCustomerAccount("Active");
+
+                btnActiveCustomerAccountForm.Visible = false;
+
+                //Thay thế tất cả các dữ liệu trong datagridview
                 dataGridViewCustomerAccountForm.Rows.Clear();
                 this.LoadAllAccount();
             }
@@ -435,6 +445,7 @@ namespace BankManagement.View
             {
                 viewModel.Account_number = accountNumber;
             }
+            viewModel.StaffId = staffId;
             viewModel.Username = txtUsernameCustomerAccountForm.Text;
             viewModel.Date_opened = DateTime.Parse(txtDateOfBirthCustomerAccountForm.Text);
             viewModel.Balance = Decimal.Parse(txtBalanceCustomerAccountForm.Text, new CultureInfo("vi-VN"));

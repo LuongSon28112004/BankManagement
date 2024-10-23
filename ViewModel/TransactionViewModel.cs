@@ -3,6 +3,7 @@ using BankManagement.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace BankManagement.ViewModel
 	{
 		private CustomerAccountWithInforRepository customerAccountWithInforRepository;
 		private TransactionReponsitory transactionReponsitory;
+		private LogRepository logRepository;
 
 
 		//các thuộc tính bind với transaction form
@@ -21,7 +23,7 @@ namespace BankManagement.ViewModel
 		private string note;
 		private int account_customer_send;
 		private int account_customer_receive;
-		private int staff_account_transfer_id;
+		private int staff_id;
 		private DataTable datatableAccountSend;
 		private DataTable datatableAccountReceive;
 		private int account_customer_send_id;
@@ -34,6 +36,7 @@ namespace BankManagement.ViewModel
 		{
 			customerAccountWithInforRepository = new CustomerAccountWithInforRepository();
 			transactionReponsitory = new TransactionReponsitory();
+			logRepository = new LogRepository();
 		}
 
 
@@ -42,7 +45,7 @@ namespace BankManagement.ViewModel
 		public string Note { get => note; set => note = value; }
 		public int Account_customer_send { get => account_customer_send; set => account_customer_send = value; }
 		public int Account_customer_receive { get => account_customer_receive; set => account_customer_receive = value; }
-		public int Staff_account_transfer_id { get => staff_account_transfer_id; set => staff_account_transfer_id = value; }
+		public int Staff_account_transfer_id { get => staff_id; set => staff_id = value; }
 		public DataTable DatatableAccountSend { get => datatableAccountSend; set => datatableAccountSend = value; }
 		public DataTable DatatableAccountReceive { get => datatableAccountReceive; set => datatableAccountReceive = value; }
 		public int Account_customer_send_id { get => account_customer_send_id; set => account_customer_send_id = value; }
@@ -56,7 +59,7 @@ namespace BankManagement.ViewModel
 		//thêm một transaction transfer vào trong cơ sở dữ liệu-------------------------------------------------------------------------------------------------------------------------------------
 		public void addTransactionTransfer(DateTime time)
 		{
-			Transaction transaction = new Transaction(0, this.amount, time, this.note, this.account_customer_send_id, this.account_customer_receive_id, this.staff_account_transfer_id);
+			Transaction transaction = new Transaction(0, this.amount, time, this.note, this.account_customer_send_id, this.account_customer_receive_id, this.staff_id);
 			try
 			{
                 transactionReponsitory.addTransactionTransfer(transaction);
@@ -80,7 +83,7 @@ namespace BankManagement.ViewModel
 		public void addTransactionDeposit(DateTime time)
 		{
 			//mặc định giao dịch là ngày hôm nay 
-			Transaction transaction = new Transaction(0, this.amount, time, this.note, this.account_customer_send_id, 0, this.staff_account_transfer_id);
+			Transaction transaction = new Transaction(0, this.amount, time, this.note, this.account_customer_send_id, 0, this.staff_id);
 			try
 			{
                 transactionReponsitory.addTransactionDeposit(transaction);
@@ -101,7 +104,7 @@ namespace BankManagement.ViewModel
 		//thêm một transaction withdraw vào trong cơ sở dữ liệu-------------------------------------------------------------------------------------------------------------------------------------
 		public void addTransactionWithdraw(DateTime time)
 		{ 
-			Transaction transaction = new Transaction(0, this.amount, time, this.note, this.account_customer_send_id, 0, this.staff_account_transfer_id);
+			Transaction transaction = new Transaction(0, this.amount, time, this.note, this.account_customer_send_id, 0, this.staff_id);
 			try
 			{
                 transactionReponsitory.addTransactionWithdraw(transaction);
@@ -136,6 +139,21 @@ namespace BankManagement.ViewModel
 			datatableAccountReceive = customerAccountWithInforRepository.SearchCustomerAccountByAccountNumber(accountNumber);
 		}
 
+
+
+
+
+		//Add log
+		public void AddLog(string act)
+		{
+			Log log = new Log(0, this.staff_id, null, this.account_customer_send + act + this.amount.ToString("#,0", new CultureInfo("vi-VN")) + " VNĐ");
+			logRepository.AddLog(log);
+		}
+		public void AddLogTransfer(string act)
+		{
+            Log log = new Log(0, this.staff_id, null, this.account_customer_send + act + this.account_customer_receive + " " + this.amount.ToString("#,0", new CultureInfo("vi-VN")) + " VNĐ");
+			logRepository.AddLog(log);
+        }
 
 	}
 }

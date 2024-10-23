@@ -17,8 +17,10 @@ namespace BankManagement.ViewModel
 
         CustomerAccountWithInforRepository customerAccountWithInforRepository;
         CustomerInforRepository customerInforRepository;
+        LogRepository logRepository;
 
         //Các thuộc tính bind với CustomerAccountForm
+        private int staffId;
         private int account_number;
         private string username;
         private string account_status;
@@ -31,10 +33,13 @@ namespace BankManagement.ViewModel
         {
             this.customerAccountWithInforRepository = new CustomerAccountWithInforRepository();
             this.customerInforRepository = new CustomerInforRepository();
+            this.logRepository = new LogRepository();
         }
        
         //Getter, setter
         public int Account_number { get => account_number; set => account_number = value; }
+
+        public int StaffId { get => staffId; set => staffId = value; }
         public string Username { get => username; set => username = value; }
         public string Account_status { get => account_status; set => account_status = value; }
         public DateTime Date_opened { get => date_opened; set => date_opened = value; }
@@ -142,6 +147,16 @@ namespace BankManagement.ViewModel
         public void updateStatusAccountCustomer()
         {
             customerAccountWithInforRepository.updateStatusAccountCustomer(this.Account_number);
+        }
+
+
+
+
+        //Add Log-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public void AddLog(string act)
+        {
+            Log log = new Log(0, this.staffId, null, act + this.account_number);
+            logRepository.AddLog(log);
         }
     }
 }

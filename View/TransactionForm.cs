@@ -170,6 +170,8 @@ namespace BankManagement.View
             {
                 viewModel.addTransactionTransfer(time);
 
+                viewModel.AddLogTransfer(" chuyển tiền đến ");
+
                 BillForm billForm = new BillForm(viewModel.Id, time, txtAccountNumberSendTransactionForm.Text, txtAccountNumberReceiveTransactionForm.Text, lbCustomerNameSendTransactionForm.Text, lbCustomerNameReceiveTransactionForm.Text, txtAmountTransactionForm.Text, txtContentTransactionForm.Text, "Chuyển tiền thành công!");
 
                 balance = decimal.Parse(txtBalanceTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
@@ -429,6 +431,9 @@ namespace BankManagement.View
             try
             {
                 viewModel.addTransactionDeposit(time);
+
+                viewModel.AddLog(" nạp tiền ");
+
                 BillForm billForm = new BillForm(viewModel.Id, time, txtAccountNumberSendTransactionForm.Text, "", lbCustomerNameSendTransactionForm.Text, "", txtAmountTransactionForm.Text, txtContentTransactionForm.Text, "Nạp tiền thành công!");
 
                 decimal balance = decimal.Parse(txtBalanceTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));
@@ -537,6 +542,9 @@ namespace BankManagement.View
             try
             {
                 viewModel.addTransactionWithdraw(time);
+
+                viewModel.AddLog(" rút tiền ");
+
                 BillForm billForm = new BillForm(viewModel.Id, time, txtAccountNumberSendTransactionForm.Text, "", lbCustomerNameSendTransactionForm.Text, "", txtAmountTransactionForm.Text, txtContentTransactionForm.Text, "Rút tiền thành công!");
 
                 balance = decimal.Parse(txtBalanceTransactionForm.Text, NumberStyles.Number, new CultureInfo("vi-VN"));

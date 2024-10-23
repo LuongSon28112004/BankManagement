@@ -33,10 +33,10 @@
             this.flowPanelLogForm = new System.Windows.Forms.FlowLayoutPanel();
             this.txtSearchLogForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbHistoryLogForm = new System.Windows.Forms.Label();
-            this.imgHistoryLogForm = new Guna.UI2.WinForms.Guna2Button();
             this.lbLineLogForm = new System.Windows.Forms.Label();
             this.vsScrollBarLogForm = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.btnSearchByCCCDCustomerAccountForm = new Guna.UI2.WinForms.Guna2Button();
+            this.imgHistoryLogForm = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -44,6 +44,8 @@
             this.guna2BorderlessForm1.BorderRadius = 20;
             this.guna2BorderlessForm1.ContainerControl = this;
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.DragForm = false;
+            this.guna2BorderlessForm1.ResizeForm = false;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // flowPanelLogForm
@@ -87,32 +89,12 @@
             // 
             this.lbHistoryLogForm.AutoSize = true;
             this.lbHistoryLogForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHistoryLogForm.ForeColor = System.Drawing.Color.White;
-            this.lbHistoryLogForm.Location = new System.Drawing.Point(60, 22);
+            this.lbHistoryLogForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(180)))), ((int)(((byte)(25)))));
+            this.lbHistoryLogForm.Location = new System.Drawing.Point(60, 19);
             this.lbHistoryLogForm.Name = "lbHistoryLogForm";
             this.lbHistoryLogForm.Size = new System.Drawing.Size(71, 23);
             this.lbHistoryLogForm.TabIndex = 0;
             this.lbHistoryLogForm.Text = "History";
-            // 
-            // imgHistoryLogForm
-            // 
-            this.imgHistoryLogForm.BackColor = System.Drawing.Color.Transparent;
-            this.imgHistoryLogForm.BorderRadius = 10;
-            this.imgHistoryLogForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.imgHistoryLogForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.imgHistoryLogForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.imgHistoryLogForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.imgHistoryLogForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.imgHistoryLogForm.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.imgHistoryLogForm.ForeColor = System.Drawing.Color.White;
-            this.imgHistoryLogForm.Image = global::BankManagement.Properties.Resources.log;
-            this.imgHistoryLogForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.imgHistoryLogForm.ImageOffset = new System.Drawing.Point(-4, 0);
-            this.imgHistoryLogForm.ImageSize = new System.Drawing.Size(25, 25);
-            this.imgHistoryLogForm.Location = new System.Drawing.Point(18, 15);
-            this.imgHistoryLogForm.Name = "imgHistoryLogForm";
-            this.imgHistoryLogForm.Size = new System.Drawing.Size(39, 37);
-            this.imgHistoryLogForm.TabIndex = 46;
             // 
             // lbLineLogForm
             // 
@@ -150,7 +132,7 @@
             this.btnSearchByCCCDCustomerAccountForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSearchByCCCDCustomerAccountForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnSearchByCCCDCustomerAccountForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSearchByCCCDCustomerAccountForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(165)))), ((int)(((byte)(20)))));
+            this.btnSearchByCCCDCustomerAccountForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(180)))), ((int)(((byte)(25)))));
             this.btnSearchByCCCDCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchByCCCDCustomerAccountForm.ForeColor = System.Drawing.Color.Black;
             this.btnSearchByCCCDCustomerAccountForm.Image = global::BankManagement.Properties.Resources.img_search;
@@ -160,6 +142,26 @@
             this.btnSearchByCCCDCustomerAccountForm.Name = "btnSearchByCCCDCustomerAccountForm";
             this.btnSearchByCCCDCustomerAccountForm.Size = new System.Drawing.Size(37, 33);
             this.btnSearchByCCCDCustomerAccountForm.TabIndex = 49;
+            // 
+            // imgHistoryLogForm
+            // 
+            this.imgHistoryLogForm.BackColor = System.Drawing.Color.Transparent;
+            this.imgHistoryLogForm.BorderRadius = 10;
+            this.imgHistoryLogForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.imgHistoryLogForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.imgHistoryLogForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.imgHistoryLogForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.imgHistoryLogForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.imgHistoryLogForm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.imgHistoryLogForm.ForeColor = System.Drawing.Color.White;
+            this.imgHistoryLogForm.Image = global::BankManagement.Properties.Resources.log;
+            this.imgHistoryLogForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.imgHistoryLogForm.ImageOffset = new System.Drawing.Point(-4, 0);
+            this.imgHistoryLogForm.ImageSize = new System.Drawing.Size(25, 25);
+            this.imgHistoryLogForm.Location = new System.Drawing.Point(15, 12);
+            this.imgHistoryLogForm.Name = "imgHistoryLogForm";
+            this.imgHistoryLogForm.Size = new System.Drawing.Size(39, 37);
+            this.imgHistoryLogForm.TabIndex = 46;
             // 
             // LogForm
             // 

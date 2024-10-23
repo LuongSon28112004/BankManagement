@@ -161,6 +161,9 @@ namespace BankManagement
                 //add customer form viewModel
                 viewModel.addCustomer();
 
+                //Add log
+                viewModel.AddLog("Thêm khách hàng có CCCD: ");
+
                 //Thay thế tất cả các dữ liệu trong datagridview
                 dataGridViewCustomerInforCustomerForm.Rows.Clear();
                 this.LoadAllCustomer();
@@ -350,6 +353,9 @@ namespace BankManagement
 
                 // Gọi hàm xóa khách hàng
                 viewModel.deleteCustomer();
+
+                // Add log
+                viewModel.AddLog("Xoá khách hàng có CCCD: ");
 
                 // Nếu không có lỗi, tiếp tục xóa tất cả dữ liệu trong DataGridView
                 checkStatusCustomer("Inactive");

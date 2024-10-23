@@ -302,6 +302,7 @@
             this.btnFeedbackMain.Name = "btnFeedbackMain";
             this.btnFeedbackMain.Size = new System.Drawing.Size(32, 32);
             this.btnFeedbackMain.TabIndex = 2;
+            this.btnFeedbackMain.Click += new System.EventHandler(this.btnFeedbackMain_Click);
             // 
             // btnLogMainForm
             // 

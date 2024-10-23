@@ -97,7 +97,7 @@ namespace BankManagement
         {
 			ReleaseCapture(); //Nếu không có hàm này thì mọi sự kiện chuột ("kéo thả") vẫn sẽ được gửi đến title bar
 			SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0); //Gửi thông điệp đến hđh để bắt đầu di chuyển form
-		//End - Hỗ trợ kéo thả khi giữ click vào thanh title
+		    //End - Hỗ trợ kéo thả khi giữ click vào thanh title
 
 
 
@@ -236,7 +236,7 @@ namespace BankManagement
             //Mở form CustomerAccountForm
             if (customerAccountForm == null || customerAccountForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
             {
-                customerAccountForm = new CustomerAccountForm();
+                customerAccountForm = new CustomerAccountForm(staffId);
                 customerAccountForm.StartPosition = FormStartPosition.Manual;
                 customerAccountForm.Height = this.Height - 63; //Chỉnh độ cao của form CustomerAccountForm
                 customerAccountForm.Width = this.Width - panelLeftBarMain.Width - 3;
@@ -454,6 +454,29 @@ namespace BankManagement
                 var startPos = btnLogMainForm.PointToScreen(new System.Drawing.Point(50, btnLogMainForm.Height - 343));
                 logForm.Location = new Point(startPos.X, startPos.Y);
             }
+        }
+
+
+
+
+
+        //Hiển thị FeedbackForm-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        FeedbackForm feedbackForm;
+        private void btnFeedbackMain_Click(object sender, EventArgs e)
+        {
+            //Mở form FeedbackForm
+            if (feedbackForm == null || feedbackForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
+            {
+                feedbackForm = new FeedbackForm();
+                feedbackForm.Show(this);
+            }
+            else
+            {
+                // Nếu form đã mở, chỉ cần kích hoạt và đưa nó lên trên cùng
+                feedbackForm.BringToFront();
+                feedbackForm.Activate();
+            }
+
         }
     }
 }
