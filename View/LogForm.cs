@@ -66,7 +66,13 @@ namespace BankManagement.View
 
         private void LogForm_Deactivate(object sender, EventArgs e)
         {
+            this.reset();
             this.Hide();
+        }
+
+        public void reset()
+        {
+            txtSearchLogForm.Text = "";
         }
 
         public void UpdateFlowPanel()
@@ -87,5 +93,31 @@ namespace BankManagement.View
                 AddItem("  " + formattedTime + "  " + content);
             }
         }
+
+        private void btnSearchByAnyThingLogFormForm_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearchLogForm.Text.Trim().ToLower(); // Lấy từ khóa tìm kiếm, chuyển về chữ thường
+
+            // Duyệt qua tất cả các Control (TextBox) trong flowPanelLogForm
+            foreach (Control control in flowPanelLogForm.Controls)
+            {
+                if (control is Guna2TextBox txtLog) // Kiểm tra nếu control là Guna2TextBox
+                {
+                    string logContent = txtLog.Text.ToLower(); // Lấy nội dung thông báo và chuyển về chữ thường
+
+                    // Nếu nội dung chứa từ khóa tìm kiếm, hiển thị TextBox; ngược lại, ẩn TextBox
+                    if (logContent.Contains(keyword))
+                    {
+                        txtLog.Visible = true; // Hiển thị
+                    }
+                    else
+                    {
+                        txtLog.Visible = false; // Ẩn
+                    }
+                }
+            }
+        }
+
+      
     }
 }

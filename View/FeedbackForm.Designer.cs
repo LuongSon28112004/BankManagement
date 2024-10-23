@@ -212,6 +212,7 @@
             this.btnSendFeedbackForm.TabIndex = 6;
             this.btnSendFeedbackForm.Text = "Send Feedback";
             this.btnSendFeedbackForm.TextOffset = new System.Drawing.Point(0, -1);
+            this.btnSendFeedbackForm.Click += new System.EventHandler(this.btnSendFeedbackForm_Click);
             // 
             // lbRattingFeedbackForm
             // 

@@ -467,7 +467,7 @@ namespace BankManagement
             //Mở form FeedbackForm
             if (feedbackForm == null || feedbackForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
             {
-                feedbackForm = new FeedbackForm();
+                feedbackForm = new FeedbackForm(staffId);
                 feedbackForm.Show(this);
             }
             else

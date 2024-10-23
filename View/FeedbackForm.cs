@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BankManagement.Model;
+using BankManagement.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +15,12 @@ namespace BankManagement.View
 {
     public partial class FeedbackForm : Form
     {
-        public FeedbackForm()
+        FeedBackViewModel viewModel;
+        int StaffId;
+        public FeedbackForm(int StaffId)
         {
+            viewModel = new FeedBackViewModel();
+            this.StaffId = StaffId;
             InitializeComponent();
         }
 
@@ -54,11 +60,12 @@ namespace BankManagement.View
 
 
         //Sự kiện ratting
+        int n = 0;
         private void btnStarFeedbackForm_Click(object sender, EventArgs e)
         {
             // Ép kiểu sender về Button
             Guna.UI2.WinForms.Guna2Button clickedButton = sender as Guna.UI2.WinForms.Guna2Button;
-            int n = int.Parse(clickedButton.Name[7].ToString());
+            n = int.Parse(clickedButton.Name[7].ToString());
 
             for (int i = 1; i < n + 1; i++)
             {
@@ -90,6 +97,34 @@ namespace BankManagement.View
                     button.Image = Image.FromFile("..\\..\\Resources\\star_white.png");
                 }
             }
+        }
+
+
+        // sự kiện click vào nút sendFeedBack để thêm thêm một feedBack vào cơ sở dữ liệu
+        private void btnSendFeedbackForm_Click(object sender, EventArgs e)
+        {
+            if(txtTitleFeedbackForm.Text == "" || txtDescriptionsFeedbackForm.Text == "")
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if(n == 0)
+            {
+                MessageBox.Show("Vui lòng đánh giá chất lượng dịch vụ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            this.updateViewModelFromForm();
+            viewModel.addFeedBack();
+        }
+
+
+        //lấy thông tin từ form sang viewmodel
+        private void updateViewModelFromForm()
+        {
+            viewModel.Title = txtTitleFeedbackForm.Text;
+            viewModel.Description = txtDescriptionsFeedbackForm.Text;
+            viewModel.StaffId = StaffId;
+            viewModel.Rating = n;
         }
     }
 }

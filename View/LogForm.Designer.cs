@@ -36,7 +36,7 @@
             this.lbHistoryLogForm = new System.Windows.Forms.Label();
             this.lbLineLogForm = new System.Windows.Forms.Label();
             this.vsScrollBarLogForm = new Guna.UI2.WinForms.Guna2VScrollBar();
-            this.btnSearchByCCCDCustomerAccountForm = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSearchByAnyThingLogFormForm = new Guna.UI2.WinForms.Guna2Button();
             this.imgHistoryLogForm = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
@@ -117,34 +117,33 @@
             this.vsScrollBarLogForm.BorderRadius = 5;
             this.vsScrollBarLogForm.FillColor = System.Drawing.Color.Transparent;
             this.vsScrollBarLogForm.InUpdate = false;
-            this.vsScrollBarLogForm.LargeChange = 346;
+            this.vsScrollBarLogForm.LargeChange = 10;
             this.vsScrollBarLogForm.Location = new System.Drawing.Point(595, 83);
-            this.vsScrollBarLogForm.Maximum = 351;
             this.vsScrollBarLogForm.Name = "vsScrollBarLogForm";
             this.vsScrollBarLogForm.ScrollbarSize = 18;
             this.vsScrollBarLogForm.Size = new System.Drawing.Size(18, 346);
-            this.vsScrollBarLogForm.SmallChange = 5;
             this.vsScrollBarLogForm.TabIndex = 0;
             this.vsScrollBarLogForm.ThumbColor = System.Drawing.Color.Transparent;
             this.vsScrollBarLogForm.Visible = false;
             // 
-            // btnSearchByCCCDCustomerAccountForm
+            // btnSearchByAnyThingLogFormForm
             // 
-            this.btnSearchByCCCDCustomerAccountForm.BorderRadius = 10;
-            this.btnSearchByCCCDCustomerAccountForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSearchByCCCDCustomerAccountForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSearchByCCCDCustomerAccountForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSearchByCCCDCustomerAccountForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSearchByCCCDCustomerAccountForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(180)))), ((int)(((byte)(25)))));
-            this.btnSearchByCCCDCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchByCCCDCustomerAccountForm.ForeColor = System.Drawing.Color.Black;
-            this.btnSearchByCCCDCustomerAccountForm.Image = global::BankManagement.Properties.Resources.img_search;
-            this.btnSearchByCCCDCustomerAccountForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSearchByCCCDCustomerAccountForm.ImageOffset = new System.Drawing.Point(-2, 0);
-            this.btnSearchByCCCDCustomerAccountForm.Location = new System.Drawing.Point(559, 17);
-            this.btnSearchByCCCDCustomerAccountForm.Name = "btnSearchByCCCDCustomerAccountForm";
-            this.btnSearchByCCCDCustomerAccountForm.Size = new System.Drawing.Size(37, 33);
-            this.btnSearchByCCCDCustomerAccountForm.TabIndex = 49;
+            this.btnSearchByAnyThingLogFormForm.BorderRadius = 10;
+            this.btnSearchByAnyThingLogFormForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSearchByAnyThingLogFormForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSearchByAnyThingLogFormForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSearchByAnyThingLogFormForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSearchByAnyThingLogFormForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(180)))), ((int)(((byte)(25)))));
+            this.btnSearchByAnyThingLogFormForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchByAnyThingLogFormForm.ForeColor = System.Drawing.Color.Black;
+            this.btnSearchByAnyThingLogFormForm.Image = global::BankManagement.Properties.Resources.img_search;
+            this.btnSearchByAnyThingLogFormForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSearchByAnyThingLogFormForm.ImageOffset = new System.Drawing.Point(-2, 0);
+            this.btnSearchByAnyThingLogFormForm.Location = new System.Drawing.Point(559, 17);
+            this.btnSearchByAnyThingLogFormForm.Name = "btnSearchByAnyThingLogFormForm";
+            this.btnSearchByAnyThingLogFormForm.Size = new System.Drawing.Size(37, 33);
+            this.btnSearchByAnyThingLogFormForm.TabIndex = 49;
+            this.btnSearchByAnyThingLogFormForm.Click += new System.EventHandler(this.btnSearchByAnyThingLogFormForm_Click);
             // 
             // imgHistoryLogForm
             // 
@@ -173,7 +172,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(613, 441);
             this.Controls.Add(this.vsScrollBarLogForm);
-            this.Controls.Add(this.btnSearchByCCCDCustomerAccountForm);
+            this.Controls.Add(this.btnSearchByAnyThingLogFormForm);
             this.Controls.Add(this.lbLineLogForm);
             this.Controls.Add(this.imgHistoryLogForm);
             this.Controls.Add(this.lbHistoryLogForm);
@@ -199,6 +198,6 @@
         private Guna.UI2.WinForms.Guna2Button imgHistoryLogForm;
         private System.Windows.Forms.Label lbLineLogForm;
         private Guna.UI2.WinForms.Guna2VScrollBar vsScrollBarLogForm;
-        private Guna.UI2.WinForms.Guna2Button btnSearchByCCCDCustomerAccountForm;
+        private Guna.UI2.WinForms.Guna2Button btnSearchByAnyThingLogFormForm;
     }
 }
