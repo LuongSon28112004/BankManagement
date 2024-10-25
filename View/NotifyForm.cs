@@ -27,30 +27,61 @@ namespace BankManagement.View
 
         private void NotifyForm_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < 15; i++) 
-            {
-                AddItem("Thông báo Toàn thể nhân viên được nghỉ 20/10! Thông báo Toàn thể nhân viên được nghỉ 20/10! Thông báo Toàn thể nhân viên được nghỉ 20/10! Thông báo Toàn thể nhân viên được nghỉ 20/10 Thông báo Toàn thể nhân viên được nghỉ 20/10! Thông báo Toàn thể nhân viên được nghỉ 20/10! Thông báo Toàn thể nhân viên được nghỉ 20/10! Thông báo Toàn thể nhân viên được nghỉ 20/10!");
-            }
-        }
-        private void AddItem(string content)
+            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 1);
+            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 1);
+            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+        } 
+        private void AddItem(string title, string message, int status)
         {
-            Guna2TextBox txtLog = new Guna2TextBox
+            Color txtColor = Color.FromArgb(255, 255, 255);
+            if (status == 1) txtColor = Color.FromArgb(34, 204, 159);
+            Guna2Button btn = new Guna2Button
             {
                 Font = new Font("Bahnschrift SemiBold", 11),
-                Text = content,
+                Text = title, // Nội dung sẽ hiển thị trên nút
                 Width = flowPanelNotifyForm.Width - 20, // Đặt chiều rộng gần bằng chiều rộng của FlowLayoutPanel
-                Height = 40, // Độ cao của TextBox
-                Margin = new Padding(0, 0, 0, 10), // Khoảng cách giữa các thông báo
+                Height = 76, // Độ cao của Button
+                Margin = new Padding(0, 0, 0, 7), // Khoảng cách giữa các nút thông báo
                 TextAlign = HorizontalAlignment.Left, // Căn lề trái
-                ForeColor = Color.White,
-                FillColor = Color.FromArgb(43, 43, 43), // Màu nền
+                ForeColor = txtColor, // Màu chữ
+                FillColor = Color.FromArgb(43, 43, 43), // Màu nền nút
                 BorderRadius = 10, // Bo góc
-                ReadOnly = true, // Đặt là chỉ đọc để không thể chỉnh sửa
-                Cursor = Cursors.Default, // Đổi con trỏ thành dạng mặc định
                 BorderThickness = 0, // Không có đường viền
-                Padding = new Padding(5)// Điều chỉnh padding nếu cần
+                TabStop = false, // Không cho phép focus bằng Tab
+                Padding = new Padding(5, 0, 5, 0)
             };
-            flowPanelNotifyForm.Controls.Add(txtLog);
+
+            // Đăng ký sự kiện Click cho nút btn
+            DetailedNoticeForm detailsForm;
+            btn.Click += (s, e) =>
+            {
+                detailsForm = new DetailedNoticeForm(title, message);
+                detailsForm.StartPosition = FormStartPosition.Manual; // Đặt vị trí khởi động
+                detailsForm.Location = this.Location; // Đặt vị trí của form mới bằng vị trí của form hiện tại
+                this.Hide();
+                detailsForm.ShowDialog();
+            };
+
+            // Thêm nút vào FlowLayoutPanel
+            flowPanelNotifyForm.Controls.Add(btn);
+        }
+
+        private void NotifyForm_Deactivate(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void btnCloseNotifyForm_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

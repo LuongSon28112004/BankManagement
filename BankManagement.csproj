@@ -95,6 +95,12 @@
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\GraphicsExtension.cs" />
+    <Compile Include="View\DetailedNoticeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DetailedNoticeForm.Designer.cs">
+      <DependentUpon>DetailedNoticeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FeedbackForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DetailedNoticeForm.resx">
+      <DependentUpon>DetailedNoticeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FeedbackForm.resx">
       <DependentUpon>FeedbackForm.cs</DependentUpon>
@@ -268,6 +277,7 @@
     <None Include="Resources\img_export_pdf.png" />
     <None Include="Resources\img_background_bill01.png" />
     <None Include="Resources\log.png" />
+    <None Include="Resources\left-chevron.png" />
     <Content Include="Resources\maximize.png" />
     <None Include="Resources\notification_bell.png" />
     <None Include="Resources\staff.png" />

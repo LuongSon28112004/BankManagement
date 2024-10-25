@@ -115,6 +115,7 @@ namespace BankManagement.View
             }
             this.updateViewModelFromForm();
             viewModel.addFeedBack();
+            this.Close();
         }
 
 

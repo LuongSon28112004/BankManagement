@@ -408,12 +408,41 @@ namespace BankManagement
 
 
 
-
+        //Btn thông báo------------------------------------------------------------------------------------------------------------------------------------------------------------
+        NotifyForm notifyForm;
         private void btnNotifyMain_Click(object sender, EventArgs e)
         {
-
+            //Mở form NotifyForm
+            if (notifyForm == null || notifyForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
+            {
+                notifyForm = new NotifyForm();
+                notifyForm.StartPosition = FormStartPosition.Manual;
+                var startPos = btnNotifyMainForm.PointToScreen(new System.Drawing.Point(-430, btnNotifyMainForm.Height + 25));
+                notifyForm.Location = startPos;
+                notifyForm.Show();
+                notifyForm.BringToFront();
+            }
+            else
+            {
+                UpdateNotifyFormSizeAndPosition();
+                //notifyForm.UpdateFlowPanel();
+                notifyForm.Show();
+                notifyForm.BringToFront();
+            }
+        }
+        private void UpdateNotifyFormSizeAndPosition()
+        {
+            if (notifyForm != null && !notifyForm.IsDisposed)
+            {
+                // Lấy tọa độ và điều chỉnh vị trí
+                var startPos =  btnNotifyMainForm.PointToScreen(new System.Drawing.Point(-430, btnNotifyMainForm.Height + 25));
+                notifyForm.Location = new Point(startPos.X, startPos.Y);
+            }
         }
 
+
+
+        //Con trỏ khi lướt qua TitleBar
         private void panelTitleBarMain_MouseEnter(object sender, EventArgs e)
         {
 			this.Cursor = Cursors.Default;

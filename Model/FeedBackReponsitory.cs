@@ -37,8 +37,8 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi nếu có
-                Console.WriteLine("Error: " + ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
         }
     }
