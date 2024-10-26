@@ -395,7 +395,7 @@
             this.btnLoan.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnLoan.Size = new System.Drawing.Size(180, 45);
             this.btnLoan.TabIndex = 0;
-            this.btnLoan.Text = "Loan";
+            this.btnLoan.Text = "Loan ";
             this.btnLoan.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLoan.TextOffset = new System.Drawing.Point(5, -1);
             this.btnLoan.Click += new System.EventHandler(this.btnLoan_Click);

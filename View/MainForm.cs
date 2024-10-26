@@ -216,6 +216,10 @@ namespace BankManagement
             {
                 transactionForm.Close();
             }
+            if (loanForm != null && !loanForm.IsDisposed)
+            {
+                loanForm.Close();
+            }
 
         }
 
@@ -260,6 +264,10 @@ namespace BankManagement
             {
                 transactionForm.Close();
             }
+            if (loanForm != null && !loanForm.IsDisposed)
+            {
+                loanForm.Close();
+            }
         }
 
 
@@ -301,19 +309,43 @@ namespace BankManagement
             {
                 customerForm.Close();
             }
+            if (loanForm != null && !loanForm.IsDisposed)
+            {
+                loanForm.Close();
+            }
         }
 
 
 
 
 
-		//Sự kiện click btn Loan---------------------------------------------------------------------------------------------------------------------------------------------------
+        //Sự kiện click btn Loan---------------------------------------------------------------------------------------------------------------------------------------------------
+        private LoanFrom loanForm;
         private void btnLoan_Click(object sender, EventArgs e)
         {
 			btnCustomer.FillColor = initialButtonColor;
             btnAccount.FillColor = initialButtonColor;
             btnTransaction.FillColor = initialButtonColor;
             btnLoan.FillColor = clickedButtonColor; //Đổi màu khi click, set màu các btn khác về ban đầu
+
+
+            //Mở form LoanForm
+            if (loanForm == null || loanForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
+            {
+                loanForm = new LoanFrom(staffId);
+                loanForm.StartPosition = FormStartPosition.Manual;
+                loanForm.Height = this.Height - 63; //Chỉnh độ cao của form CustomerAccountForm
+                loanForm.Width = this.Width - panelLeftBarMain.Width - 3;
+                loanForm.Location = new Point(this.Location.X + panelLeftBarMain.Width + (this.Width - panelLeftBarMain.Width - loanForm.Width) / 2, this.Location.Y + 60);
+                loanForm.Show(this);
+            }
+            else
+            {
+                // Nếu form đã mở, chỉ cần kích hoạt và đưa nó lên trên cùng
+                loanForm.BringToFront();
+                loanForm.Activate();
+            }
+
 
             //Đóng các form khác
             if (customerAccountForm != null && !customerAccountForm.IsDisposed)
@@ -343,8 +375,7 @@ namespace BankManagement
             UpdateCustomerFormSizeAndPosition(); //Cập nhật CustomerForm
 			UpdateCustomerAccountFormSizeAndPosition(); //Cập nhật CustomerAccountForm
             UpdateTransactionFormSizeAndPosition(); //Cập nhật TransactionForm
-
-
+            UpdateLoanFormSizeAndPosition(); //Cập nhật LoanForm
         }
 
 		private void Main_Resize(object sender, EventArgs e) //Cập nhật form con khi resize
@@ -353,6 +384,7 @@ namespace BankManagement
             UpdateCustomerFormSizeAndPosition(); //Cập nhật CustomerForm
 			UpdateCustomerAccountFormSizeAndPosition(); //Cập nhật CustomerAccountForm
             UpdateTransactionFormSizeAndPosition(); //Cập nhật TransactionForm
+            UpdateLoanFormSizeAndPosition(); //Cập nhật LoanForm
         }
 
 
@@ -401,6 +433,22 @@ namespace BankManagement
                 transactionForm.Height = this.Height - 63; //Chỉnh độ cao của form CustomerForm
                 transactionForm.Width = this.Width - panelLeftBarMain.Width - 3;
                 transactionForm.Location = new Point(this.Location.X + panelLeftBarMain.Width + (this.Width - panelLeftBarMain.Width - transactionForm.Width) / 2, this.Location.Y + 60);
+            }
+        }
+
+
+
+
+
+        //Hàm cập nhật trạng thái LoanForm
+        private void UpdateLoanFormSizeAndPosition()
+        {
+            if (loanForm != null && !loanForm.IsDisposed)
+            {
+                // Đặt vị trí của Form con và chỉnh size
+                loanForm.Height = this.Height - 63; //Chỉnh độ cao của form CustomerForm
+                loanForm.Width = this.Width - panelLeftBarMain.Width - 3;
+                loanForm.Location = new Point(this.Location.X + panelLeftBarMain.Width + (this.Width - panelLeftBarMain.Width - loanForm.Width) / 2, this.Location.Y + 60);
             }
         }
 
