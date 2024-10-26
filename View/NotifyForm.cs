@@ -83,5 +83,10 @@ namespace BankManagement.View
         {
             this.Hide();
         }
+
+        private void flowPanelNotifyForm_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

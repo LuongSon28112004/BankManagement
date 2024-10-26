@@ -66,6 +66,7 @@
             this.flowPanelNotifyForm.Name = "flowPanelNotifyForm";
             this.flowPanelNotifyForm.Size = new System.Drawing.Size(571, 326);
             this.flowPanelNotifyForm.TabIndex = 2;
+            this.flowPanelNotifyForm.Paint += new System.Windows.Forms.PaintEventHandler(this.flowPanelNotifyForm_Paint);
             // 
             // vsScrollBarNotifyForm
             // 
