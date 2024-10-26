@@ -41,8 +41,8 @@ namespace BankManagement.View
         } 
         private void AddItem(string title, string message, int status)
         {
-            Color txtColor = Color.FromArgb(255, 255, 255);
-            if (status == 1) txtColor = Color.FromArgb(34, 204, 159);
+            Color txtColor = Color.FromArgb(215, 215, 215);
+            if (status == 1) txtColor = Color.FromArgb(50, 230, 170);
             Guna2Button btn = new Guna2Button
             {
                 Font = new Font("Bahnschrift SemiBold", 11),
