@@ -473,7 +473,7 @@ namespace BankManagement
             else
             {
                 UpdateNotifyFormSizeAndPosition();
-                //notifyForm.UpdateFlowPanel();
+                notifyForm.updateFlowPannel();
                 notifyForm.Show();
                 notifyForm.BringToFront();
             }

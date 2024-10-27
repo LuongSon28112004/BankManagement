@@ -35,6 +35,7 @@
             this.txtTitleDetailedNoticeForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtContentDetailedNoticeForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnCloseDetailedNoticeForm = new Guna.UI2.WinForms.Guna2Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // lbNotificationsLogForm
@@ -45,7 +46,7 @@
             this.lbNotificationsLogForm.Location = new System.Drawing.Point(13, 11);
             this.lbNotificationsLogForm.Name = "lbNotificationsLogForm";
             this.lbNotificationsLogForm.Size = new System.Drawing.Size(129, 25);
-            this.lbNotificationsLogForm.TabIndex = 2;
+            this.lbNotificationsLogForm.TabIndex = 0;
             this.lbNotificationsLogForm.Text = "Notifications";
             // 
             // guna2BorderlessForm1
@@ -53,7 +54,6 @@
             this.guna2BorderlessForm1.BorderRadius = 20;
             this.guna2BorderlessForm1.ContainerControl = this;
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.DragForm = false;
             this.guna2BorderlessForm1.ResizeForm = false;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
@@ -81,7 +81,8 @@
             this.txtTitleDetailedNoticeForm.ReadOnly = true;
             this.txtTitleDetailedNoticeForm.SelectedText = "";
             this.txtTitleDetailedNoticeForm.Size = new System.Drawing.Size(550, 76);
-            this.txtTitleDetailedNoticeForm.TabIndex = 3;
+            this.txtTitleDetailedNoticeForm.TabIndex = 0;
+            this.txtTitleDetailedNoticeForm.TabStop = false;
             // 
             // txtContentDetailedNoticeForm
             // 
@@ -105,9 +106,11 @@
             this.txtContentDetailedNoticeForm.PasswordChar = '\0';
             this.txtContentDetailedNoticeForm.PlaceholderText = "";
             this.txtContentDetailedNoticeForm.ReadOnly = true;
+            this.txtContentDetailedNoticeForm.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtContentDetailedNoticeForm.SelectedText = "";
             this.txtContentDetailedNoticeForm.Size = new System.Drawing.Size(550, 416);
-            this.txtContentDetailedNoticeForm.TabIndex = 3;
+            this.txtContentDetailedNoticeForm.TabIndex = 1;
+            this.txtContentDetailedNoticeForm.TabStop = false;
             // 
             // btnCloseDetailedNoticeForm
             // 
@@ -128,12 +131,21 @@
             this.btnCloseDetailedNoticeForm.TabIndex = 4;
             this.btnCloseDetailedNoticeForm.Click += new System.EventHandler(this.btnCloseDetailedNoticeForm_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.panel1.Location = new System.Drawing.Point(546, 156);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(17, 408);
+            this.panel1.TabIndex = 5;
+            // 
             // DetailedNoticeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(595, 591);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCloseDetailedNoticeForm);
             this.Controls.Add(this.txtContentDetailedNoticeForm);
             this.Controls.Add(this.txtTitleDetailedNoticeForm);
@@ -143,6 +155,7 @@
             this.Name = "DetailedNoticeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailedNoticeForm";
+            this.Load += new System.EventHandler(this.DetailedNoticeForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +168,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtTitleDetailedNoticeForm;
         private Guna.UI2.WinForms.Guna2TextBox txtContentDetailedNoticeForm;
         private Guna.UI2.WinForms.Guna2Button btnCloseDetailedNoticeForm;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -23,5 +23,10 @@ namespace BankManagement.View
         {
             this.Close();
         }
+
+        private void DetailedNoticeForm_Load(object sender, EventArgs e)
+        {
+            lbNotificationsLogForm.Focus();
+        }
     }
 }

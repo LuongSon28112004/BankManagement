@@ -45,10 +45,12 @@ namespace BankManagement.View
             //AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
             this.updateFlowPannel();
         } 
-        private void AddItem(string title, string message, int status)
+        private void AddItem(int staffId, int notificationId, string title, string message, int status)
         {
+            message = message.Replace(@"\r\n", Environment.NewLine);
+            title = title.Replace(@"\r\n", Environment.NewLine);
             Color txtColor = Color.FromArgb(215, 215, 215);
-            if (status == 1) txtColor = Color.FromArgb(50, 230, 170);
+            if (status == 0) txtColor = Color.FromArgb(50, 230, 170);
             Guna2Button btn = new Guna2Button
             {
                 Font = new Font("Bahnschrift SemiBold", 11),
@@ -70,36 +72,57 @@ namespace BankManagement.View
             btn.Click += (s, e) =>
             {
                 detailsForm = new DetailedNoticeForm(title, message);
-                detailsForm.StartPosition = FormStartPosition.Manual; // Đặt vị trí khởi động
-                detailsForm.Location = this.Location; // Đặt vị trí của form mới bằng vị trí của form hiện tại
+                //detailsForm.StartPosition = FormStartPosition.Manual; // Đặt vị trí khởi động
+                //detailsForm.Location = this.Location; // Đặt vị trí của form mới bằng vị trí của form hiện tại
                 this.Hide();
                 detailsForm.ShowDialog();
+                try
+                {
+                    viewModel.markAsRead(staffId, notificationId);
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ nếu cần
+                    MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             };
 
             // Thêm nút vào FlowLayoutPanel
             flowPanelNotifyForm.Controls.Add(btn);
         }
 
-        private void updateFlowPannel()
+        public void updateFlowPannel()
         {
-            flowPanelNotifyForm.Controls.Clear();
-            viewModel.getAllNotifyByStaffId(this.StaffId);
-            foreach (DataRow row in viewModel.NotifyTable.Rows)
+            try
             {
-                // Chuyển đổi "time" thành kiểu DateTime trước
-                DateTime time = DateTime.Parse(row["DateCreated"].ToString());
+                viewModel.getAllNotifyByStaffId(this.StaffId);
+                flowPanelNotifyForm.Controls.Clear();
+                foreach (DataRow row in viewModel.NotifyTable.Rows)
+                {
+                    // Chuyển đổi "time" thành kiểu DateTime trước
+                    DateTime time = DateTime.Parse(row["DateCreated"].ToString());
 
-                // Định dạng DateTime thành chuỗi theo định dạng mong muốn: "dd/MM/yyyy HH:mm"
-                string formattedTime = time.ToString("dd/MM/yyyy HH:mm");
+                    // Định dạng DateTime thành chuỗi theo định dạng mong muốn: "dd/MM/yyyy HH:mm"
+                    string formattedTime = time.ToString("dd/MM/yyyy HH:mm");
 
-                // Lấy nội dung title
-                string title = row["title"].ToString();
-                // lấy nội dung của cột message
-                string message = row["message"].ToString();
-                int status = Convert.ToInt32(row["isRead"]);
+                    // Lấy id
+                    int notification_id = Convert.ToInt32(row["notification_id"]);
+                    int staff_id = Convert.ToInt32(row["staff_id"]);
 
-                AddItem(title + "\r\n" + message + "\r\n" + formattedTime, "Cập Nhật Mới Nhất!" + "\r\n" + message, status);
+                    // Lấy nội dung title
+                    string title = row["title"].ToString();
+                    // lấy nội dung của cột message
+                    string message = row["message"].ToString();
+                    int status = Convert.ToInt32(row["isRead"]);
+
+                    AddItem(staff_id, notification_id, title + "\r\n" + formattedTime, message, status);
+                }
             }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu cần
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }  
         }
 
         private void NotifyForm_Deactivate(object sender, EventArgs e)

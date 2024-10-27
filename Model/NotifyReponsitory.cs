@@ -17,7 +17,7 @@ namespace BankManagement.Model
         {
             DataTable dt = new DataTable();
             // Thêm ORDER BY để sắp xếp thông báo theo thời gian tạo mới nhất đến sớm nhất
-            string query = "SELECT title, message, DateCreated, isRead FROM staff_account sa JOIN staff_notification sn ON sa.id = sn.staff_id JOIN notifications n ON sn.notification_id = n.notificationID WHERE sa.id = @Id ORDER BY DateCreated DESC;";
+            string query = "SELECT staff_id, notification_id, title, message, DateCreated, isRead FROM staff_account sa JOIN staff_notification sn ON sa.id = sn.staff_id JOIN notifications n ON sn.notification_id = n.notificationID WHERE sa.id = @Id ORDER BY DateCreated DESC;";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -36,11 +36,37 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
 			{
-                // Xử lý lỗi nếu có
-                Console.WriteLine("Error: " + ex.Message);
-                throw;
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
             return dt;
+        }
+
+        public void markAsRead(int staffId, int notificationId)
+        {
+            string query = "UPDATE staff_notification SET isRead = 1 WHERE staff_id = @staffId AND notification_id = @notificationId;";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        // Thêm tham số vào câu truy vấn
+                        cmd.Parameters.Add("@staffId", SqlDbType.Int).Value = staffId;
+                        cmd.Parameters.Add("@notificationId", SqlDbType.Int).Value = notificationId;
+
+                        // Thực thi câu lệnh
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu có
+                throw new Exception("Lỗi khi đánh dấu là đã đọc: " + ex.Message, ex);
+            }
         }
     }
 }

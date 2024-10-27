@@ -19,9 +19,14 @@ namespace BankManagement.ViewModel
 
         public DataTable NotifyTable { get => notifyTable; set => notifyTable = value; }
 
-        public void getAllNotifyByStaffId(int SatffId)
+        public void getAllNotifyByStaffId(int staffId)
         {
-            notifyTable = notifyReponsitory.getAllNotifyByStaffId(SatffId);
+            notifyTable = notifyReponsitory.getAllNotifyByStaffId(staffId);
+        }
+
+        public void markAsRead(int staffId, int notificationId)
+        {
+            notifyReponsitory.markAsRead(staffId, notificationId);
         }
     }
 }
