@@ -66,6 +66,8 @@
     <Compile Include="Model\FeedBackReponsitory.cs" />
     <Compile Include="Model\Log.cs" />
     <Compile Include="Model\LogRepository.cs" />
+    <Compile Include="Model\Notify.cs" />
+    <Compile Include="Model\NotifyReponsitory.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\TransactionReponsitory.cs" />
     <Compile Include="ViewModel\AccountViewModel.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\LogViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\NotifyViewModel.cs" />
     <Compile Include="ViewModel\TransactionViewModel.cs" />
     <Compile Include="View\BillForm.cs">
       <SubType>Form</SubType>

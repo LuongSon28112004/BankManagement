@@ -463,7 +463,7 @@ namespace BankManagement
             //Mở form NotifyForm
             if (notifyForm == null || notifyForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
             {
-                notifyForm = new NotifyForm();
+                notifyForm = new NotifyForm(staffId);
                 notifyForm.StartPosition = FormStartPosition.Manual;
                 var startPos = btnNotifyMainForm.PointToScreen(new System.Drawing.Point(-430, btnNotifyMainForm.Height + 25));
                 notifyForm.Location = startPos;

@@ -1,4 +1,5 @@
-﻿using Guna.UI2.WinForms;
+﻿using BankManagement.ViewModel;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,14 @@ namespace BankManagement.View
 {
     public partial class NotifyForm : Form
     {
-        public NotifyForm()
+        private int StaffId;
+        private NotifyViewModel viewModel;
+        public NotifyForm(int staffId)
         {
             InitializeComponent();
+            viewModel = new NotifyViewModel();
             SetupForm();
+            this.StaffId = staffId;
         }
 
         private void SetupForm()
@@ -27,17 +32,18 @@ namespace BankManagement.View
 
         private void NotifyForm_Load(object sender, EventArgs e)
         {
-            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 1);
-            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 1);
-            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
-            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
-            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
-            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
-            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
-            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
-            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
-            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
-            AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            //AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 1);
+            //AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 1);
+            //AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            //AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            //AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            //AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            //AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            //AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            //AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            //AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            //AddItem("CHÍNH SÁCH LÀM VIỆC MỚI!\r\nThông báo về việc thay đổi hệ số lương tăng ca\r\n25/10/2024 19:56", "Cập nhật mới nhất!\r\nThông báo về việc thay đổi hệ số lương tăng ca...", 0);
+            this.updateFlowPannel();
         } 
         private void AddItem(string title, string message, int status)
         {
@@ -72,6 +78,28 @@ namespace BankManagement.View
 
             // Thêm nút vào FlowLayoutPanel
             flowPanelNotifyForm.Controls.Add(btn);
+        }
+
+        private void updateFlowPannel()
+        {
+            flowPanelNotifyForm.Controls.Clear();
+            viewModel.getAllNotifyByStaffId(this.StaffId);
+            foreach (DataRow row in viewModel.NotifyTable.Rows)
+            {
+                // Chuyển đổi "time" thành kiểu DateTime trước
+                DateTime time = DateTime.Parse(row["DateCreated"].ToString());
+
+                // Định dạng DateTime thành chuỗi theo định dạng mong muốn: "dd/MM/yyyy HH:mm"
+                string formattedTime = time.ToString("dd/MM/yyyy HH:mm");
+
+                // Lấy nội dung title
+                string title = row["title"].ToString();
+                // lấy nội dung của cột message
+                string message = row["message"].ToString();
+                int status = Convert.ToInt32(row["isRead"]);
+
+                AddItem(title + "\r\n" + message + "\r\n" + formattedTime, "Cập Nhật Mới Nhất!" + "\r\n" + message, status);
+            }
         }
 
         private void NotifyForm_Deactivate(object sender, EventArgs e)
