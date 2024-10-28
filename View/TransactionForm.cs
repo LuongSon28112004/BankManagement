@@ -251,7 +251,6 @@ namespace BankManagement.View
             if(viewModel.DatatableAccountSend.Rows.Count == 1)
             {
                 this.updateCustomerAccountSend(viewModel.DatatableAccountSend);
-				txtContentTransactionForm.Text = viewModel.DatatableAccountSend.Rows[0]["name"].ToString(); 
             }
             txtAmountTransactionForm.Text = "";
         }
@@ -314,7 +313,7 @@ namespace BankManagement.View
                 this.updateCustomerAccountReceive(viewModel.DatatableAccountReceive);
 				if (lbCustomerNameSendTransactionForm.Text != "Customer Name" && lbCustomerNameReceiveTransactionForm.Text != "Customer Name")
 				{
-                    txtContentTransactionForm.Text += " chuyen tien den " + viewModel.DatatableAccountReceive.Rows[0]["name"].ToString();
+                    txtContentTransactionForm.Text = txtContentTransactionForm.Text = viewModel.DatatableAccountSend.Rows[0]["name"].ToString() + " chuyen tien den " + viewModel.DatatableAccountReceive.Rows[0]["name"].ToString();
                 }
             }
         }

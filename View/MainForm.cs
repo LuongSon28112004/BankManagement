@@ -555,5 +555,34 @@ namespace BankManagement
             }
 
         }
+
+
+
+
+
+        //Mở HelpForm--------------------------------------------------------------------------------------------------------------------------------------------------------------
+        HelpForm helpForm;
+        private void btnHelpMain_Click(object sender, EventArgs e)
+        {
+            //Mở HelpForm
+            if (helpForm == null || helpForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
+            {
+                helpForm = new HelpForm();
+
+                helpForm.StartPosition = FormStartPosition.Manual;
+                helpForm.Location = new Point(this.Location.X + panelLeftBarMain.Width + 7, this.Location.Y + 60 + 7);
+                helpForm.Show();
+            }
+            else
+            {
+                UpdateHelpFormSizeAndPosition();
+                helpForm.Show();
+                helpForm.BringToFront();
+            }
+        }
+        private void UpdateHelpFormSizeAndPosition()
+        {  
+            helpForm.Location = new Point(this.Location.X + panelLeftBarMain.Width + 7, this.Location.Y + 60 + 7);  
+        }
     }
 }
