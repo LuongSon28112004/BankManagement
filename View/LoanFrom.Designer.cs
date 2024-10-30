@@ -321,6 +321,7 @@
             this.btnSearchByAccountNumberLoanForm.Size = new System.Drawing.Size(80, 33);
             this.btnSearchByAccountNumberLoanForm.TabIndex = 39;
             this.btnSearchByAccountNumberLoanForm.Text = "Search";
+            this.btnSearchByAccountNumberLoanForm.Click += new System.EventHandler(this.btnSearchByAccountNumberLoanForm_Click);
             // 
             // txtSearchByAccountNumberLoanForm
             // 
@@ -492,6 +493,7 @@
             this.btnCreateLoanForm.Size = new System.Drawing.Size(80, 33);
             this.btnCreateLoanForm.TabIndex = 39;
             this.btnCreateLoanForm.Text = "Create";
+            this.btnCreateLoanForm.Click += new System.EventHandler(this.btnCreateLoanForm_Click);
             // 
             // txtAmountLoanForm
             // 

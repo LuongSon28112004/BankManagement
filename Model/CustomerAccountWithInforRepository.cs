@@ -15,10 +15,6 @@ namespace BankManagement.Model
         //Chuỗi kết nối database
         private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
 
-        public CustomerAccountWithInforRepository()
-        {
-        }
-
 
 
 
@@ -28,7 +24,7 @@ namespace BankManagement.Model
         {
             DataTable dataTableCustomerAccountInfor = new DataTable();
 
-            string query = "SELECT a.id ,b.cccd ,b.name ,b.gender ,a.account_number, a.username, a.account_status," +
+            string query = "SELECT a.id ,b.cccd , b.phone_number ,b.name ,b.gender ,a.account_number, a.username, a.account_status," +
                 " b.date_of_birth, b.address, b.email, b.photo, b.status, a.date_opened, a.balance " +
                 "FROM customer_account a inner join customer_infor b ON a.customer_id = b.id " +
                 "Where cast(account_number as nvarchar) LIKE @Account_number ";

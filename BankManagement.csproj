@@ -64,6 +64,8 @@
     <Compile Include="Model\CustomerInforRepository.cs" />
     <Compile Include="Model\FeedBack.cs" />
     <Compile Include="Model\FeedBackReponsitory.cs" />
+    <Compile Include="Model\Loan.cs" />
+    <Compile Include="Model\LoanRepository.cs" />
     <Compile Include="Model\Log.cs" />
     <Compile Include="Model\LogRepository.cs" />
     <Compile Include="Model\Notify.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\FeedBackViewModel.cs" />
     <Compile Include="ViewModel\InfoStaffViewModel.cs" />
+    <Compile Include="ViewModel\LoanViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\LogViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
