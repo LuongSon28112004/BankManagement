@@ -157,46 +157,91 @@ namespace BankManagement.View
 
         private void updateLoanInfor(DataTable dt)
         {
-            DataRow row = dt.Rows[0]; // Lấy hàng đầu tiên (index 0)
+            // Lấy hàng đầu tiên từ DataTable
+            DataRow row = dt.Rows[0];
 
+            // Cập nhật các TextBox với giá trị từ hàng
             txtAmountLoanForm.Text = row["principal_amount"].ToString();
             txtInterestRateLoanForm.Text = row["interest_rate"].ToString();
+
+            // Định dạng ngày cho loan_date
             DateTime loan_date = DateTime.Parse(row["loan_date"].ToString());
-            string loanDateFormat = loan_date.ToString("dd/MM/yyyy");
-            txtLoanDateLoanForm.Text = loanDateFormat;
+            txtLoanDateLoanForm.Text = loan_date.ToString("dd/MM/yyyy");
+
+            // Cập nhật các thông tin khác
             txtLoanTermLoanForm.Text = row["loan_Term"].ToString();
             txtLoanPurposeLoanForm.Text = row["note"].ToString();
+
+            // Định dạng ngày cho last_payment_date
             DateTime last_payment_date = DateTime.Parse(row["last_payment_date"].ToString());
-            string lastPaymentDateFormat = last_payment_date.ToString("dd/MM/yyyy");
-            txtLastPaymentDateLoanForm.Text = lastPaymentDateFormat;
+            txtLastPaymentDateLoanForm.Text = last_payment_date.ToString("dd/MM/yyyy");
 
-            float total = tinhlai(loan_date, last_payment_date, float.Parse(row["interest_rate"].ToString()) / 100, 0.05f, float.Parse(row["principal_amount"].ToString()));
-            txtTotalLoanForm.Text = total.ToString();
-        }
+            // Xác định ngày đến hạn tiếp theo cho khoản vay
+            int daysInCurrentMonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
+            int loanDay = loan_date.Day;
 
-        private float tinhlai(DateTime ngayBatDau, DateTime ngayCuoiCungDong, float laiSuat, float tienphat, float tienGoc)
-        {
-            int soThang = ((DateTime.Today.Year - ngayBatDau.Year) * 12) + DateTime.Today.Month - ngayBatDau.Month;
-            float tienLai = 0;
+            // Kiểm tra nếu ngày trong loan_date lớn hơn số ngày trong tháng hiện tại
+            int dueDay = loanDay > daysInCurrentMonth ? daysInCurrentMonth : loanDay;
 
-           
-            int a = ngayBatDau.Day;
-            int b = ngayCuoiCungDong.Day;
-            if (checkngay(a, b))
+            // Xác định tháng và năm cho ngày đến hạn tiếp theo
+            int dueMonth = DateTime.Today.Month;
+            int dueYear = DateTime.Today.Year;
+
+            // Nếu ngày đến hạn nhỏ hơn ngày hôm nay, chuyển sang tháng sau
+            if (dueDay < DateTime.Today.Day)
             {
-                tienLai = tienGoc * laiSuat + (tienGoc * laiSuat + (tienGoc * laiSuat * tienphat)) * soThang;
+                dueMonth += 1;
+                if (dueMonth > 12)
+                {
+                    dueMonth = 1;
+                    dueYear += 1;
+                }
             }
-            else tienLai = tienGoc * laiSuat +(tienGoc * laiSuat + (tienGoc * laiSuat * tienphat)) * (soThang-1);
 
-            return tienLai;
+            // Tạo DateTime cho ngày đến hạn tiếp theo
+            DateTime nextInterestDueDate = new DateTime(dueYear, dueMonth, dueDay);
+            txtNextInterestDueDateLoanForm.Text = nextInterestDueDate.ToString("dd/MM/yyyy");
 
+            // Tính tổng số tiền phải trả (bao gồm tiền lãi và phạt)
+            float total = CalculateTotalInterest(nextInterestDueDate, last_payment_date,
+                float.Parse(row["interest_rate"].ToString()) / 12 / 100, 0.05f, float.Parse(row["principal_amount"].ToString()));
+
+            txtTotalLoanForm.Text = total.ToString();
+
+            // Kiểm tra có phạt hay không, nếu có thì cập nhật phí phạt
+            float monthlyInterest = float.Parse(row["principal_amount"].ToString()) * (float.Parse(row["interest_rate"].ToString()) / 12 / 100);
+            txtPenaltyFeeLoanForm.Text = total > monthlyInterest ? "5%" : "0%";
         }
 
-        public bool checkngay(int a , int b)
+        private float CalculateTotalInterest(DateTime startDate, DateTime lastPaymentDate, float interestRate, float penaltyRate, float principalAmount)
         {
-            if(a< b) return true;
-            else return false;
+            // Tính số tháng giữa ngày hôm nay và ngày thanh toán cuối cùng
+            int monthsDifference = ((DateTime.Today.Year - lastPaymentDate.Year) * 12) + DateTime.Today.Month - lastPaymentDate.Month;
+            float totalInterest = 0;
+
+            // Kiểm tra nếu ngày hiện tại lớn hơn hoặc bằng ngày bắt đầu khoản vay
+            if (IsCurrentDayGreaterOrEqual(startDate.Day))
+            {
+                // Tính tiền lãi với phạt
+                totalInterest = principalAmount * interestRate
+                              + (principalAmount * interestRate * (1 + penaltyRate)) * monthsDifference;
+            }
+            else
+            {
+                // Nếu không, tính tiền lãi cho tháng trước
+                totalInterest = principalAmount * interestRate
+                              + (principalAmount * interestRate * (1 + penaltyRate)) * (monthsDifference - 1);
+            }
+
+            return totalInterest;
         }
+
+        // Kiểm tra nếu ngày hiện tại lớn hơn hoặc bằng ngày cho trước
+        public bool IsCurrentDayGreaterOrEqual(int loanDay)
+        {
+            return DateTime.Today.Day >= loanDay;
+        }
+
 
 
         //Hiển thị thông tin của Customer trên Form
