@@ -155,6 +155,24 @@ namespace BankManagement.View
 
         }
 
+        void updateStatusLoan(bool status)
+        {
+            if(status)
+            {
+                imgLoanStatusLoanForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
+                lbLoanStatusLoanForm.Text = "isCompleted";
+                lbLoanStatusLoanForm.ForeColor = Color.FromArgb(78, 167, 46);
+                btnPaymentLoanForm.Visible = false;
+            }
+            else
+            {
+                imgLoanStatusLoanForm.Image = Image.FromFile("..\\..\\Resources\\x-button.png");
+                lbLoanStatusLoanForm.Text = "Within Term";
+                lbLoanStatusLoanForm.ForeColor = Color.FromArgb(203, 57, 53);
+                btnPaymentLoanForm.Visible = true;
+            }
+        }
+
         private void updateLoanInfor(DataTable dt)
         {
             // Lấy hàng đầu tiên từ DataTable
@@ -163,6 +181,8 @@ namespace BankManagement.View
             // Cập nhật các TextBox với giá trị từ hàng
             txtAmountLoanForm.Text = row["principal_amount"].ToString();
             txtInterestRateLoanForm.Text = row["interest_rate"].ToString();
+            //status
+            this.updateStatusLoan(bool.Parse(row["paid_status"].ToString()));
 
             // Định dạng ngày cho loan_date
             DateTime loan_date = DateTime.Parse(row["loan_date"].ToString());
@@ -175,6 +195,9 @@ namespace BankManagement.View
             // Định dạng ngày cho last_payment_date
             DateTime last_payment_date = DateTime.Parse(row["last_payment_date"].ToString());
             txtLastPaymentDateLoanForm.Text = last_payment_date.ToString("dd/MM/yyyy");
+
+            //truyen id loan vao view model
+            viewModel.Id = int.Parse(row["id"].ToString());
 
             // Xác định ngày đến hạn tiếp theo cho khoản vay
             int daysInCurrentMonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
@@ -321,7 +344,7 @@ namespace BankManagement.View
         private void updateViewModelFromForm()
         {
             viewModel.Principal_amount = decimal.Parse(txtAmountLoanForm.Text);
-            viewModel.Loan_date = DateTime.Now;
+            viewModel.Loan_date = DateTime.Parse(txtLoanDateLoanForm.Text);
             string interestRateText = txtInterestRateLoanForm.Text;
             if (!string.IsNullOrEmpty(interestRateText))
             {
@@ -334,6 +357,19 @@ namespace BankManagement.View
             viewModel.LastPaymentDate = DateTime.Now;
             viewModel.Paid_status = false;
             viewModel.LoanTerm = int.Parse(txtLoanTermLoanForm.Text);
+        }
+
+        private void btnPaymentLoanForm_Click(object sender, EventArgs e)
+        {
+            this.updateViewModelFromForm();
+
+            // Cộng thêm 12 tháng vào loan_date
+            if (DateTime.Today >= viewModel.Loan_date.AddMonths(12))
+            {
+                viewModel.Paid_status = true;
+            }
+
+            viewModel.updateLoan();
         }
     }
 }

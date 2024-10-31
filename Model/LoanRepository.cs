@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -89,6 +90,33 @@ namespace BankManagement.Model
                 throw new Exception("Lỗi: " + ex.Message, ex);
             }
             return dt;
+        }
+
+        public void updateLoan(DateTime lastPaymentDate, bool status , int loanId)
+        {
+            string query = "UPDATE loan SET last_payment_date = @LastPaymentDate, paid_status = @Status WHERE id = @LoanId";
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@LastPaymentDate", SqlDbType.Date) { Value = lastPaymentDate });
+                        cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.Bit) { Value = status });
+                        cmd.Parameters.Add(new SqlParameter("@LoanId", SqlDbType.Int) { Value = loanId }); // Đảm bảo loanId có giá trị trước khi gọi hàm
+
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
         }
 
     }

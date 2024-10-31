@@ -842,6 +842,7 @@
             this.btnPaymentLoanForm.Size = new System.Drawing.Size(90, 33);
             this.btnPaymentLoanForm.TabIndex = 39;
             this.btnPaymentLoanForm.Text = "Payment";
+            this.btnPaymentLoanForm.Click += new System.EventHandler(this.btnPaymentLoanForm_Click);
             // 
             // lbNextInterestDueDateLoanForm
             // 

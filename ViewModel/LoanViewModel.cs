@@ -15,6 +15,7 @@ namespace BankManagement.ViewModel
         private LoanRepository loanRepository;
 
         //cac thuoc tinh bind voi LoanForm
+        private int id;
         private decimal principal_amount;
         private DateTime loan_date;
         private float interest_Rate;
@@ -44,6 +45,7 @@ namespace BankManagement.ViewModel
         public int LoanTerm { get => loanTerm; set => loanTerm = value; }
         public DataTable DataTableAccount { get => dataTableAccount; set => dataTableAccount = value; }
         public DataTable DataTableLoan { get => dataTableLoan; set => dataTableLoan = value; }
+        public int Id { get => id; set => id = value; }
 
         public void searchAccountInfor(int account_number)
         {
@@ -88,6 +90,18 @@ namespace BankManagement.ViewModel
             try
             {
                 dataTableLoan = loanRepository.getLoanByIdAccount(this.customerAccountId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void updateLoan()
+        {
+            try
+            {
+                loanRepository.updateLoan(this.LastPaymentDate, this.paid_status, this.id);
             }
             catch (Exception ex)
             {
