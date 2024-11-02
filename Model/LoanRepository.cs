@@ -15,6 +15,8 @@ namespace BankManagement.Model
         //Chuỗi kết nối database
         private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
 
+
+        //Tạo 1 khoản vay
         public void addLoan(Loan loan)
         {
             string query = "insert into Loan(principal_amount, loan_date, interest_rate, note, account_customer_loan_id, staff_account_loan_id, last_payment_date, paid_status, loan_term) " +
@@ -48,9 +50,14 @@ namespace BankManagement.Model
             }
         }
 
-        public bool checkAcountId(int id)
+
+
+
+
+        //Kiểm tra xem tài khoản này có đang phải trả khoản vay nào không
+        public bool InPaymentPeriod(int id)
         {
-            string query = "select count(*) from Loan where account_customer_loan_id = @Id";
+            string query = "select count(*) from Loan where account_customer_loan_id = @Id AND paid_status = 0";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))

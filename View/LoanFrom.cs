@@ -58,6 +58,8 @@ namespace BankManagement.View
             txtTotalLoanForm.Text = "";
             txtSearchByAccountNumberLoanForm.Text = "";
         }
+
+
         //set status của tài khoản gửi 
         private void SetAccountSendStatus(string status)
         {
@@ -303,43 +305,81 @@ namespace BankManagement.View
             }
         }
 
+
+
+
+
+        //Tạo 1 khoản vay mới--------------------------------------------------------------------------------------------------------------------------------------------------
         private void btnCreateLoanForm_Click(object sender, EventArgs e)
         {
-            if(viewModel.checkAccountId())
+            //Kiểm tra xem tài khoản này có đang phải trả khoản vay nào không
+            if (viewModel.InPaymentPeriod())
             {
-                MessageBox.Show("Khách Hàng này đang vay tiền, không thể vay thêm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Khách Hàng này đang vay tiền, không thể vay thêm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if(lbAccountStatusLoanForm.Text == "Inactive")
             {
-                MessageBox.Show("tài khoản này không còn tồn tại trong hệ thống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tài khoản này không còn tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if(txtAmountLoanForm.Text == "")
             {
-                MessageBox.Show("Vui Lòng Nhập Số Tiền Cần Vay", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập số tiền cần vay!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if(txtLoanTermLoanForm.Text == "")
             {
-                MessageBox.Show("Vui Lòng Nhập Số Tháng Cần Vay", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập thời hạn vay!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if(txtLoanPurposeLoanForm.Text == "")
             {
-                MessageBox.Show("Vui Lòng Nhập Lý Do Cần Vay", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập mục đích vay!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-
             this.updateViewModelFromForm();
             viewModel.addLoan();
-
         }
+        //Chỉ cho nhập số
+        private void txtAmountLoanForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem ký tự nhập vào có phải là chữ số hay không
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Ngăn các ký tự không phải là chữ số
+                e.Handled = true;
+            }
+        }
+        private void txtLoanTermLoanForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem ký tự nhập vào có phải là chữ số hay không
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Ngăn các ký tự không phải là chữ số
+                e.Handled = true;
+            }
+        }
+        //Không thể nhập quá 420 tháng
+        private void txtLoanTermLoanForm_TextChanged(object sender, EventArgs e)
+        {
+            // Kiểm tra nếu giá trị nhập vào vượt quá 420
+            if (int.TryParse(txtLoanTermLoanForm.Text, out int value) && value > 420)
+            {
+                // Đặt lại giá trị về 420 nếu nhập vượt quá giới hạn
+                txtLoanTermLoanForm.Text = "420";
+                // Đưa con trỏ chuột về cuối
+                txtLoanTermLoanForm.SelectionStart = txtLoanTermLoanForm.Text.Length;
+            }
+        }
+
+
+
+
 
         private void updateViewModelFromForm()
         {
@@ -371,5 +411,7 @@ namespace BankManagement.View
 
             viewModel.updateLoan();
         }
+
+        
     }
 }

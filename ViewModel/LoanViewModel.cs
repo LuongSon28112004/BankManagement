@@ -72,11 +72,13 @@ namespace BankManagement.ViewModel
             }
         }
 
-        public bool checkAccountId()
+
+        //Kiểm tra xem tài khoản này có đang phải trả khoản vay nào không
+        public bool InPaymentPeriod()
         {
             try
             {
-                return loanRepository.checkAcountId(this.customerAccountId);
+                return loanRepository.InPaymentPeriod(this.customerAccountId);
             }
             catch (Exception ex)
             {

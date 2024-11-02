@@ -521,6 +521,7 @@
             this.txtAmountLoanForm.SelectedText = "";
             this.txtAmountLoanForm.Size = new System.Drawing.Size(200, 35);
             this.txtAmountLoanForm.TabIndex = 35;
+            this.txtAmountLoanForm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmountLoanForm_KeyPress);
             // 
             // lbLoanPurposeLoanForm
             // 
@@ -601,6 +602,8 @@
             this.txtLoanTermLoanForm.SelectedText = "";
             this.txtLoanTermLoanForm.Size = new System.Drawing.Size(116, 35);
             this.txtLoanTermLoanForm.TabIndex = 35;
+            this.txtLoanTermLoanForm.TextChanged += new System.EventHandler(this.txtLoanTermLoanForm_TextChanged);
+            this.txtLoanTermLoanForm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLoanTermLoanForm_KeyPress);
             // 
             // lbLoanTermLoanForm
             // 
