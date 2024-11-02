@@ -79,7 +79,7 @@ namespace BankManagement.Model
         public DataTable getLoanByIdAccount(int idAccount)
         {
             DataTable dt = new DataTable();
-            string query = "select * from Loan where account_customer_loan_id = @IdAccount";
+            string query = "select * from Loan where account_customer_loan_id = @IdAccount and paid_status = 0";
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -99,9 +99,9 @@ namespace BankManagement.Model
             return dt;
         }
 
-        public void updateLoan(DateTime lastPaymentDate, bool status , int loanId)
+        public void updateLoan(DateTime lastPaymentDate, bool paid_status , bool isPaid , int loanId)
         {
-            string query = "UPDATE loan SET last_payment_date = @LastPaymentDate, paid_status = @Status WHERE id = @LoanId";
+            string query = "UPDATE loan SET last_payment_date = @LastPaymentDate, paid_status = @Status , isPaid = @IsPaid WHERE id = @LoanId";
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -110,7 +110,8 @@ namespace BankManagement.Model
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.Add(new SqlParameter("@LastPaymentDate", SqlDbType.Date) { Value = lastPaymentDate });
-                        cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.Bit) { Value = status });
+                        cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.Bit) { Value = paid_status });
+                        cmd.Parameters.Add(new SqlParameter("@IsPaid", SqlDbType.Bit) { Value = isPaid });
                         cmd.Parameters.Add(new SqlParameter("@LoanId", SqlDbType.Int) { Value = loanId }); // Đảm bảo loanId có giá trị trước khi gọi hàm
 
                         if (cmd.ExecuteNonQuery() > 0)
@@ -121,6 +122,29 @@ namespace BankManagement.Model
                 }
             }
             catch (Exception ex)
+            {
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
+        }
+
+        //cap nhat xem nau da dong lai dung han thi cho column isPaid = true;
+        public void updateIsPaid(bool isPaid , int loanId)
+        {
+            string query = "UPDATE loan set isPaid = @IsPaid WHERE id = @LoanId";
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open() ;
+                    using (SqlCommand cmd = new SqlCommand(query,con))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@IsPaid", SqlDbType.Bit) { Value = isPaid });
+                        cmd.Parameters.Add(new SqlParameter("@LoanId", SqlDbType.Int) { Value = loanId }); // Đảm bảo loanId có giá trị trước khi gọi hàm
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }catch (Exception ex)
             {
                 throw new Exception("Lỗi: " + ex.Message, ex);
             }

@@ -23,6 +23,7 @@ namespace BankManagement.ViewModel
         private int customerAccountId;
         private int staffAccountId;
         private DateTime lastPaymentDate;
+        private bool isPaid;
         private bool paid_status;
         private int loanTerm;
         DataTable dataTableAccount;
@@ -46,6 +47,7 @@ namespace BankManagement.ViewModel
         public DataTable DataTableAccount { get => dataTableAccount; set => dataTableAccount = value; }
         public DataTable DataTableLoan { get => dataTableLoan; set => dataTableLoan = value; }
         public int Id { get => id; set => id = value; }
+        public bool IsPaid { get => isPaid; set => isPaid = value; }
 
         public void searchAccountInfor(int account_number)
         {
@@ -63,7 +65,7 @@ namespace BankManagement.ViewModel
         {
             try
             {
-               Loan loan = new Loan(0,this.principal_amount,this.Loan_date,this.interest_Rate,this.note,this.customerAccountId,this.staffAccountId,this.lastPaymentDate,this.paid_status,this.loanTerm);
+               Loan loan = new Loan(0,this.principal_amount,this.Loan_date,this.interest_Rate,this.note,this.customerAccountId,this.staffAccountId,this.lastPaymentDate,this.IsPaid,this.paid_status,this.loanTerm);
                 loanRepository.addLoan(loan);
             }
             catch (Exception ex)
@@ -103,9 +105,20 @@ namespace BankManagement.ViewModel
         {
             try
             {
-                loanRepository.updateLoan(this.LastPaymentDate, this.paid_status, this.id);
+                loanRepository.updateLoan(this.LastPaymentDate, this.paid_status,this.isPaid, this.id);
             }
             catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void updateIsPaid()
+        {
+            try
+            {
+                loanRepository.updateIsPaid(this.IsPaid,this.id);
+            }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

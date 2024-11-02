@@ -194,12 +194,12 @@ namespace BankManagement.View
             txtLoanTermLoanForm.Text = row["loan_Term"].ToString();
             txtLoanPurposeLoanForm.Text = row["note"].ToString();
 
-            // Định dạng ngày cho last_payment_date
-            DateTime last_payment_date = DateTime.Parse(row["last_payment_date"].ToString());
-            txtLastPaymentDateLoanForm.Text = last_payment_date.ToString("dd/MM/yyyy");
 
             //truyen id loan vao view model
             viewModel.Id = int.Parse(row["id"].ToString());
+
+            // Định dạng ngày cho last_payment_date
+            DateTime last_payment_date = DateTime.Parse(row["last_payment_date"].ToString());
 
             // Xác định ngày đến hạn tiếp theo cho khoản vay
             int daysInCurrentMonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
@@ -223,8 +223,28 @@ namespace BankManagement.View
                 }
             }
 
-            // Tạo DateTime cho ngày đến hạn tiếp theo
+            // Tạo DateTime cho ngày đến hạn tiếp theo neu ngay tao = ngay tra
             DateTime nextInterestDueDate = new DateTime(dueYear, dueMonth, dueDay);
+            if (nextInterestDueDate.ToString("dd/MM/yyyy") == loan_date.ToString("dd/MM/yyyy"))
+            {
+                nextInterestDueDate = nextInterestDueDate.AddMonths(1); // Gán lại giá trị mới
+            }
+            if(nextInterestDueDate > last_payment_date)
+            {
+                viewModel.IsPaid = true;
+                viewModel.updateIsPaid();
+                btnPaymentLoanForm.Enabled = true;
+            }
+            if (bool.Parse(row["isPaid"].ToString()) == true)
+            {
+                MessageBox.Show("Khách Hàng Này Đã Đóng Lãi Rồi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnPaymentLoanForm.Enabled = false;
+                return;
+            }
+            txtLastPaymentDateLoanForm.Text = last_payment_date.ToString("dd/MM/yyyy");
+
+            
+            
             txtNextInterestDueDateLoanForm.Text = nextInterestDueDate.ToString("dd/MM/yyyy");
 
             // Tính tổng số tiền phải trả (bao gồm tiền lãi và phạt)
@@ -408,8 +428,12 @@ namespace BankManagement.View
             {
                 viewModel.Paid_status = true;
             }
+            viewModel.IsPaid = true;
 
             viewModel.updateLoan();
+
+            //reset lai all textbox and label
+            this.reset();
         }
 
         
