@@ -28,11 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCustomerNameCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCCCDCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSearchCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
@@ -128,6 +128,7 @@
             this.txtCCCDCustomerForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtCCCDCustomerForm.Location = new System.Drawing.Point(133, 68);
             this.txtCCCDCustomerForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCCCDCustomerForm.MaxLength = 20;
             this.txtCCCDCustomerForm.Name = "txtCCCDCustomerForm";
             this.txtCCCDCustomerForm.PasswordChar = '\0';
             this.txtCCCDCustomerForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
@@ -135,6 +136,7 @@
             this.txtCCCDCustomerForm.SelectedText = "";
             this.txtCCCDCustomerForm.Size = new System.Drawing.Size(150, 28);
             this.txtCCCDCustomerForm.TabIndex = 1;
+            this.txtCCCDCustomerForm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCCCDCustomerForm_KeyPress);
             // 
             // txtSearchCustomerForm
             // 
@@ -155,12 +157,14 @@
             this.txtSearchCustomerForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearchCustomerForm.Location = new System.Drawing.Point(20, 51);
             this.txtSearchCustomerForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSearchCustomerForm.MaxLength = 20;
             this.txtSearchCustomerForm.Name = "txtSearchCustomerForm";
             this.txtSearchCustomerForm.PasswordChar = '\0';
             this.txtSearchCustomerForm.PlaceholderText = "Search by CCCD";
             this.txtSearchCustomerForm.SelectedText = "";
             this.txtSearchCustomerForm.Size = new System.Drawing.Size(300, 35);
             this.txtSearchCustomerForm.TabIndex = 0;
+            this.txtSearchCustomerForm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchCustomerForm_KeyPress);
             // 
             // btnSearchCustomerForm
             // 
@@ -182,24 +186,24 @@
             // dataGridViewCustomerInforCustomerForm
             // 
             this.dataGridViewCustomerInforCustomerForm.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(62)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.dataGridViewCustomerInforCustomerForm.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(62)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.dataGridViewCustomerInforCustomerForm.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewCustomerInforCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewCustomerInforCustomerForm.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(20, 0, 0, 12);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCustomerInforCustomerForm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(20, 0, 0, 12);
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCustomerInforCustomerForm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewCustomerInforCustomerForm.ColumnHeadersHeight = 38;
             this.dataGridViewCustomerInforCustomerForm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dataGridViewCustomerInforCustomerForm.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -215,14 +219,14 @@
             this.email,
             this.Status,
             this.Photo});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCustomerInforCustomerForm.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCustomerInforCustomerForm.DefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewCustomerInforCustomerForm.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
             this.dataGridViewCustomerInforCustomerForm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataGridViewCustomerInforCustomerForm.Location = new System.Drawing.Point(37, 478);
@@ -231,18 +235,18 @@
             this.dataGridViewCustomerInforCustomerForm.Name = "dataGridViewCustomerInforCustomerForm";
             this.dataGridViewCustomerInforCustomerForm.ReadOnly = true;
             this.dataGridViewCustomerInforCustomerForm.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.dataGridViewCustomerInforCustomerForm.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.dataGridViewCustomerInforCustomerForm.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewCustomerInforCustomerForm.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(90)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewCustomerInforCustomerForm.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(90)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewCustomerInforCustomerForm.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewCustomerInforCustomerForm.RowTemplate.Height = 40;
             this.dataGridViewCustomerInforCustomerForm.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridViewCustomerInforCustomerForm.Size = new System.Drawing.Size(917, 398);
@@ -679,6 +683,7 @@
             this.txtPhoneNumberCustomerForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPhoneNumberCustomerForm.Location = new System.Drawing.Point(31, 100);
             this.txtPhoneNumberCustomerForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPhoneNumberCustomerForm.MaxLength = 15;
             this.txtPhoneNumberCustomerForm.Name = "txtPhoneNumberCustomerForm";
             this.txtPhoneNumberCustomerForm.PasswordChar = '\0';
             this.txtPhoneNumberCustomerForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
@@ -686,6 +691,7 @@
             this.txtPhoneNumberCustomerForm.SelectedText = "";
             this.txtPhoneNumberCustomerForm.Size = new System.Drawing.Size(164, 35);
             this.txtPhoneNumberCustomerForm.TabIndex = 1;
+            this.txtPhoneNumberCustomerForm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhoneNumberCustomerForm_KeyPress);
             // 
             // panelTop2CustomefForm
             // 

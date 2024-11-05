@@ -336,8 +336,9 @@ namespace BankManagement.Model
 			}
 			catch (Exception ex)
 			{
-                return false;
-			}
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
 		}
 
 

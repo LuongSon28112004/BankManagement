@@ -257,6 +257,8 @@
     <None Include="Resources\user_icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\process.png" />
+    <None Include="Resources\within_term.png" />
     <None Include="Resources\more_v.png" />
     <None Include="Resources\more.png" />
     <None Include="Resources\star_yellow.png" />

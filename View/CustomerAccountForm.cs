@@ -195,6 +195,11 @@ namespace BankManagement.View
                 MessageBox.Show("Chưa có tài khoản nào được chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }    
+            if (lbAccountStatusCustomerAccountForm.Text == "Inactive")
+            {
+                MessageBox.Show("Tài khoản này đã bị xoá rồi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             this.updateViewModelFromForm();
             try
             {
@@ -477,6 +482,16 @@ namespace BankManagement.View
                 string formattedDateOpened = date_opened.ToString("dd/MM/yyyy");
                 Decimal balance = Decimal.Parse(row["balance"].ToString(), new CultureInfo("vi-VN"));
                 dataGridViewCustomerAccountForm.Rows.Add(id, cccd, name, gender, account_number, username, account_status, formattedDateOfBirth, address, email, photo, customer_status, formattedDateOpened, balance);
+            }
+        }
+
+        private void txtSearchByCCCDCustomerAccountForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem ký tự nhập vào có phải là chữ số hay không
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Ngăn các ký tự không phải là chữ số
+                e.Handled = true;
             }
         }
     }

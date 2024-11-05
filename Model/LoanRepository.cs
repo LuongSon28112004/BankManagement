@@ -76,6 +76,11 @@ namespace BankManagement.Model
             }
         }
 
+
+
+
+
+        //Tìm kiếm 1 khoản vay
         public DataTable getLoanByIdAccount(int idAccount)
         {
             DataTable dt = new DataTable();
@@ -99,56 +104,35 @@ namespace BankManagement.Model
             return dt;
         }
 
-        public void updateLoan(DateTime lastPaymentDate, bool paid_status , bool isPaid , int loanId)
+
+
+
+
+        //Thanh toán khoản vay 
+        public void payment(int id, bool paid_status)
         {
-            string query = "UPDATE loan SET last_payment_date = @LastPaymentDate, paid_status = @Status , isPaid = @IsPaid WHERE id = @LoanId";
+            string query = "UPDATE Loan SET last_payment_date = @Last_payment_date, paid_status = @Paid_status WHERE id = @Loan_id;";
+            DateTime time = DateTime.Today;
             try
             {
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.Add(new SqlParameter("@LastPaymentDate", SqlDbType.Date) { Value = lastPaymentDate });
-                        cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.Bit) { Value = paid_status });
-                        cmd.Parameters.Add(new SqlParameter("@IsPaid", SqlDbType.Bit) { Value = isPaid });
-                        cmd.Parameters.Add(new SqlParameter("@LoanId", SqlDbType.Int) { Value = loanId }); // Đảm bảo loanId có giá trị trước khi gọi hàm
-
-                        if (cmd.ExecuteNonQuery() > 0)
-                        {
-                            MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        cmd.Parameters.Add(new SqlParameter("@Last_payment_date", SqlDbType.Date) { Value = time });
+                        cmd.Parameters.Add(new SqlParameter("@Paid_status", SqlDbType.Bit) { Value = paid_status });
+                        cmd.Parameters.Add(new SqlParameter("@Loan_id", SqlDbType.Int) { Value = id });
+                        cmd.ExecuteNonQuery();
                     }
+                    MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
+                // Ném lại ngoại lệ để form cha có thể xử lý
                 throw new Exception("Lỗi: " + ex.Message, ex);
             }
         }
-
-        //cap nhat xem nau da dong lai dung han thi cho column isPaid = true;
-        public void updateIsPaid(bool isPaid , int loanId)
-        {
-            string query = "UPDATE loan set isPaid = @IsPaid WHERE id = @LoanId";
-            try
-            {
-                using (SqlConnection con = new SqlConnection(connectionString))
-                {
-                    con.Open() ;
-                    using (SqlCommand cmd = new SqlCommand(query,con))
-                    {
-                        cmd.Parameters.Add(new SqlParameter("@IsPaid", SqlDbType.Bit) { Value = isPaid });
-                        cmd.Parameters.Add(new SqlParameter("@LoanId", SqlDbType.Int) { Value = loanId }); // Đảm bảo loanId có giá trị trước khi gọi hàm
-
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-            }catch (Exception ex)
-            {
-                throw new Exception("Lỗi: " + ex.Message, ex);
-            }
-        }
-
     }
 }

@@ -348,6 +348,11 @@ namespace BankManagement
 
             try
             {
+                if (lbStatusCustomerForm.Text == "Inactive")
+                {
+                    MessageBox.Show("Khách hàng không còn hoạt động!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 // Lấy dữ liệu từ các TextBox
                 this.UpdateViewModelFromForm();
 
@@ -542,6 +547,34 @@ namespace BankManagement
                 }
         }
 
-        
+        private void txtSearchCustomerForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem ký tự nhập vào có phải là chữ số hay không
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Ngăn các ký tự không phải là chữ số
+                e.Handled = true;
+            }
+        }
+
+        private void txtCCCDCustomerForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem ký tự nhập vào có phải là chữ số hay không
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Ngăn các ký tự không phải là chữ số
+                e.Handled = true;
+            }
+        }
+
+        private void txtPhoneNumberCustomerForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem ký tự nhập vào có phải là chữ số hay không
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Ngăn các ký tự không phải là chữ số
+                e.Handled = true;
+            }
+        }
     }
 }

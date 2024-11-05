@@ -33,6 +33,7 @@
             this.btnSearchByAccountSendNumberTransactionForm = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearchAccountNumberSendTransactionForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.panelCustomerSendTransactionForm = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnResetTransactionForm = new Guna.UI2.WinForms.Guna2Button();
             this.btnWithDrawTransactionForm = new Guna.UI2.WinForms.Guna2Button();
             this.btnDepositTransactionForm = new Guna.UI2.WinForms.Guna2Button();
             this.txtAmountTransactionForm = new Guna.UI2.WinForms.Guna2TextBox();
@@ -43,29 +44,28 @@
             this.lbBalanceTransactionForm = new System.Windows.Forms.Label();
             this.txtAccountNumberSendTransactionForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbAccountNumberSendTransactionForm = new System.Windows.Forms.Label();
+            this.imgCustomerSendTracsactionForm = new Guna.UI2.WinForms.Guna2Button();
             this.lbCustomerSendStatusTransactionForm = new System.Windows.Forms.Label();
+            this.imgCustomerSendStatusTransactionForm = new System.Windows.Forms.PictureBox();
             this.lbCCCDCustomerSendTransactionForm = new System.Windows.Forms.Label();
             this.lbCustomerNameSendTransactionForm = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDepositWithdrawTaskBarTransactionForm = new Guna.UI2.WinForms.Guna2Button();
             this.panelCustomerReceiveTransactionForm = new Guna.UI2.WinForms.Guna2Panel();
             this.btnTransferTransactionForm = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSearchByAccountNumberReceiveTransactionForm = new Guna.UI2.WinForms.Guna2Button();
             this.txtAccountNumberReceiveTransactionForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbAccountNumberReceiveTransactionForm = new System.Windows.Forms.Label();
+            this.imgCustomerReceiveTransactionForm = new Guna.UI2.WinForms.Guna2Button();
             this.lbCustomerReceiveStatusTransactionForm = new System.Windows.Forms.Label();
+            this.imgCustomerReceiveStatusTransactionForm = new System.Windows.Forms.PictureBox();
             this.lbCCCDCustomerReceiveTransactionForm = new System.Windows.Forms.Label();
             this.lbCustomerNameReceiveTransactionForm = new System.Windows.Forms.Label();
             this.btnTransferTaskBarTransactionForm = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSearchByAccountNumberReceiveTransactionForm = new Guna.UI2.WinForms.Guna2Button();
-            this.imgCustomerReceiveTransactionForm = new Guna.UI2.WinForms.Guna2Button();
-            this.imgCustomerReceiveStatusTransactionForm = new System.Windows.Forms.PictureBox();
-            this.btnResetTransactionForm = new Guna.UI2.WinForms.Guna2Button();
-            this.imgCustomerSendTracsactionForm = new Guna.UI2.WinForms.Guna2Button();
-            this.imgCustomerSendStatusTransactionForm = new System.Windows.Forms.PictureBox();
             this.panelCustomerSendTransactionForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCustomerSendStatusTransactionForm)).BeginInit();
             this.panelCustomerReceiveTransactionForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgCustomerReceiveStatusTransactionForm)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCustomerSendStatusTransactionForm)).BeginInit();
             this.SuspendLayout();
             // 
             // lbTransactionTransactionForm
@@ -115,12 +115,14 @@
             this.txtSearchAccountNumberSendTransactionForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearchAccountNumberSendTransactionForm.Location = new System.Drawing.Point(23, 118);
             this.txtSearchAccountNumberSendTransactionForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSearchAccountNumberSendTransactionForm.MaxLength = 15;
             this.txtSearchAccountNumberSendTransactionForm.Name = "txtSearchAccountNumberSendTransactionForm";
             this.txtSearchAccountNumberSendTransactionForm.PasswordChar = '\0';
             this.txtSearchAccountNumberSendTransactionForm.PlaceholderText = "Account number";
             this.txtSearchAccountNumberSendTransactionForm.SelectedText = "";
             this.txtSearchAccountNumberSendTransactionForm.Size = new System.Drawing.Size(200, 33);
             this.txtSearchAccountNumberSendTransactionForm.TabIndex = 43;
+            this.txtSearchAccountNumberSendTransactionForm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchAccountNumberSendTransactionForm_KeyPress);
             // 
             // panelCustomerSendTransactionForm
             // 
@@ -154,6 +156,27 @@
             this.panelCustomerSendTransactionForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2, 2, 2, 4);
             this.panelCustomerSendTransactionForm.Size = new System.Drawing.Size(526, 477);
             this.panelCustomerSendTransactionForm.TabIndex = 45;
+            // 
+            // btnResetTransactionForm
+            // 
+            this.btnResetTransactionForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnResetTransactionForm.BorderRadius = 15;
+            this.btnResetTransactionForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnResetTransactionForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnResetTransactionForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnResetTransactionForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnResetTransactionForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.btnResetTransactionForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnResetTransactionForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.btnResetTransactionForm.Image = global::BankManagement.Properties.Resources.img_reset;
+            this.btnResetTransactionForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnResetTransactionForm.ImageOffset = new System.Drawing.Point(-4, 0);
+            this.btnResetTransactionForm.ImageSize = new System.Drawing.Size(28, 28);
+            this.btnResetTransactionForm.Location = new System.Drawing.Point(474, 10);
+            this.btnResetTransactionForm.Name = "btnResetTransactionForm";
+            this.btnResetTransactionForm.Size = new System.Drawing.Size(40, 40);
+            this.btnResetTransactionForm.TabIndex = 39;
+            this.btnResetTransactionForm.Click += new System.EventHandler(this.btnResetTransactionForm_Click);
             // 
             // btnWithDrawTransactionForm
             // 
@@ -213,6 +236,7 @@
             this.txtAmountTransactionForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtAmountTransactionForm.Location = new System.Drawing.Point(298, 252);
             this.txtAmountTransactionForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAmountTransactionForm.MaxLength = 25;
             this.txtAmountTransactionForm.Name = "txtAmountTransactionForm";
             this.txtAmountTransactionForm.PasswordChar = '\0';
             this.txtAmountTransactionForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
@@ -354,6 +378,31 @@
             this.lbAccountNumberSendTransactionForm.TabIndex = 34;
             this.lbAccountNumberSendTransactionForm.Text = "Account Number";
             // 
+            // imgCustomerSendTracsactionForm
+            // 
+            this.imgCustomerSendTracsactionForm.BackColor = System.Drawing.Color.Transparent;
+            this.imgCustomerSendTracsactionForm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.imgCustomerSendTracsactionForm.BorderRadius = 50;
+            this.imgCustomerSendTracsactionForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.imgCustomerSendTracsactionForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.imgCustomerSendTracsactionForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.imgCustomerSendTracsactionForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.imgCustomerSendTracsactionForm.FillColor = System.Drawing.Color.Transparent;
+            this.imgCustomerSendTracsactionForm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.imgCustomerSendTracsactionForm.ForeColor = System.Drawing.Color.White;
+            this.imgCustomerSendTracsactionForm.Image = global::BankManagement.Properties.Resources.avatar_customer_default;
+            this.imgCustomerSendTracsactionForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.imgCustomerSendTracsactionForm.ImageOffset = new System.Drawing.Point(-8, 0);
+            this.imgCustomerSendTracsactionForm.ImageSize = new System.Drawing.Size(95, 95);
+            this.imgCustomerSendTracsactionForm.Location = new System.Drawing.Point(28, 25);
+            this.imgCustomerSendTracsactionForm.Name = "imgCustomerSendTracsactionForm";
+            this.imgCustomerSendTracsactionForm.ShadowDecoration.BorderRadius = 50;
+            this.imgCustomerSendTracsactionForm.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.imgCustomerSendTracsactionForm.ShadowDecoration.Enabled = true;
+            this.imgCustomerSendTracsactionForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2);
+            this.imgCustomerSendTracsactionForm.Size = new System.Drawing.Size(100, 100);
+            this.imgCustomerSendTracsactionForm.TabIndex = 17;
+            // 
             // lbCustomerSendStatusTransactionForm
             // 
             this.lbCustomerSendStatusTransactionForm.AutoSize = true;
@@ -364,6 +413,16 @@
             this.lbCustomerSendStatusTransactionForm.Size = new System.Drawing.Size(40, 13);
             this.lbCustomerSendStatusTransactionForm.TabIndex = 31;
             this.lbCustomerSendStatusTransactionForm.Text = "Status";
+            // 
+            // imgCustomerSendStatusTransactionForm
+            // 
+            this.imgCustomerSendStatusTransactionForm.Image = global::BankManagement.Properties.Resources._checked;
+            this.imgCustomerSendStatusTransactionForm.Location = new System.Drawing.Point(137, 96);
+            this.imgCustomerSendStatusTransactionForm.Name = "imgCustomerSendStatusTransactionForm";
+            this.imgCustomerSendStatusTransactionForm.Size = new System.Drawing.Size(12, 12);
+            this.imgCustomerSendStatusTransactionForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgCustomerSendStatusTransactionForm.TabIndex = 32;
+            this.imgCustomerSendStatusTransactionForm.TabStop = false;
             // 
             // lbCCCDCustomerSendTransactionForm
             // 
@@ -461,6 +520,25 @@
             this.btnTransferTransactionForm.TextOffset = new System.Drawing.Point(2, 0);
             this.btnTransferTransactionForm.Click += new System.EventHandler(this.btnTransferTransactionForm_Click);
             // 
+            // btnSearchByAccountNumberReceiveTransactionForm
+            // 
+            this.btnSearchByAccountNumberReceiveTransactionForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearchByAccountNumberReceiveTransactionForm.BorderRadius = 12;
+            this.btnSearchByAccountNumberReceiveTransactionForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSearchByAccountNumberReceiveTransactionForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSearchByAccountNumberReceiveTransactionForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSearchByAccountNumberReceiveTransactionForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSearchByAccountNumberReceiveTransactionForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(140)))), ((int)(((byte)(100)))));
+            this.btnSearchByAccountNumberReceiveTransactionForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnSearchByAccountNumberReceiveTransactionForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.btnSearchByAccountNumberReceiveTransactionForm.Image = global::BankManagement.Properties.Resources.img_search;
+            this.btnSearchByAccountNumberReceiveTransactionForm.ImageOffset = new System.Drawing.Point(1, 0);
+            this.btnSearchByAccountNumberReceiveTransactionForm.Location = new System.Drawing.Point(320, 177);
+            this.btnSearchByAccountNumberReceiveTransactionForm.Name = "btnSearchByAccountNumberReceiveTransactionForm";
+            this.btnSearchByAccountNumberReceiveTransactionForm.Size = new System.Drawing.Size(40, 35);
+            this.btnSearchByAccountNumberReceiveTransactionForm.TabIndex = 35;
+            this.btnSearchByAccountNumberReceiveTransactionForm.Click += new System.EventHandler(this.btnSearchByAccountNumberReceiveTransactionForm_Click);
+            // 
             // txtAccountNumberReceiveTransactionForm
             // 
             this.txtAccountNumberReceiveTransactionForm.BackColor = System.Drawing.Color.Transparent;
@@ -480,6 +558,7 @@
             this.txtAccountNumberReceiveTransactionForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtAccountNumberReceiveTransactionForm.Location = new System.Drawing.Point(27, 177);
             this.txtAccountNumberReceiveTransactionForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAccountNumberReceiveTransactionForm.MaxLength = 15;
             this.txtAccountNumberReceiveTransactionForm.Name = "txtAccountNumberReceiveTransactionForm";
             this.txtAccountNumberReceiveTransactionForm.PasswordChar = '\0';
             this.txtAccountNumberReceiveTransactionForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
@@ -487,6 +566,7 @@
             this.txtAccountNumberReceiveTransactionForm.SelectedText = "";
             this.txtAccountNumberReceiveTransactionForm.Size = new System.Drawing.Size(287, 35);
             this.txtAccountNumberReceiveTransactionForm.TabIndex = 33;
+            this.txtAccountNumberReceiveTransactionForm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAccountNumberReceiveTransactionForm_KeyPress);
             // 
             // lbAccountNumberReceiveTransactionForm
             // 
@@ -499,6 +579,31 @@
             this.lbAccountNumberReceiveTransactionForm.TabIndex = 34;
             this.lbAccountNumberReceiveTransactionForm.Text = "Account Number";
             // 
+            // imgCustomerReceiveTransactionForm
+            // 
+            this.imgCustomerReceiveTransactionForm.BackColor = System.Drawing.Color.Transparent;
+            this.imgCustomerReceiveTransactionForm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.imgCustomerReceiveTransactionForm.BorderRadius = 50;
+            this.imgCustomerReceiveTransactionForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.imgCustomerReceiveTransactionForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.imgCustomerReceiveTransactionForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.imgCustomerReceiveTransactionForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.imgCustomerReceiveTransactionForm.FillColor = System.Drawing.Color.Transparent;
+            this.imgCustomerReceiveTransactionForm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.imgCustomerReceiveTransactionForm.ForeColor = System.Drawing.Color.White;
+            this.imgCustomerReceiveTransactionForm.Image = global::BankManagement.Properties.Resources.avatar_customer_default;
+            this.imgCustomerReceiveTransactionForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.imgCustomerReceiveTransactionForm.ImageOffset = new System.Drawing.Point(-8, 0);
+            this.imgCustomerReceiveTransactionForm.ImageSize = new System.Drawing.Size(95, 95);
+            this.imgCustomerReceiveTransactionForm.Location = new System.Drawing.Point(21, 23);
+            this.imgCustomerReceiveTransactionForm.Name = "imgCustomerReceiveTransactionForm";
+            this.imgCustomerReceiveTransactionForm.ShadowDecoration.BorderRadius = 50;
+            this.imgCustomerReceiveTransactionForm.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.imgCustomerReceiveTransactionForm.ShadowDecoration.Enabled = true;
+            this.imgCustomerReceiveTransactionForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2);
+            this.imgCustomerReceiveTransactionForm.Size = new System.Drawing.Size(100, 100);
+            this.imgCustomerReceiveTransactionForm.TabIndex = 17;
+            // 
             // lbCustomerReceiveStatusTransactionForm
             // 
             this.lbCustomerReceiveStatusTransactionForm.AutoSize = true;
@@ -509,6 +614,16 @@
             this.lbCustomerReceiveStatusTransactionForm.Size = new System.Drawing.Size(40, 13);
             this.lbCustomerReceiveStatusTransactionForm.TabIndex = 31;
             this.lbCustomerReceiveStatusTransactionForm.Text = "Status";
+            // 
+            // imgCustomerReceiveStatusTransactionForm
+            // 
+            this.imgCustomerReceiveStatusTransactionForm.Image = global::BankManagement.Properties.Resources._checked;
+            this.imgCustomerReceiveStatusTransactionForm.Location = new System.Drawing.Point(130, 94);
+            this.imgCustomerReceiveStatusTransactionForm.Name = "imgCustomerReceiveStatusTransactionForm";
+            this.imgCustomerReceiveStatusTransactionForm.Size = new System.Drawing.Size(12, 12);
+            this.imgCustomerReceiveStatusTransactionForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgCustomerReceiveStatusTransactionForm.TabIndex = 32;
+            this.imgCustomerReceiveStatusTransactionForm.TabStop = false;
             // 
             // lbCCCDCustomerReceiveTransactionForm
             // 
@@ -552,116 +667,6 @@
             this.btnTransferTaskBarTransactionForm.TextOffset = new System.Drawing.Point(2, -1);
             this.btnTransferTaskBarTransactionForm.Click += new System.EventHandler(this.btnTransferTaskBarTransactionForm_Click);
             // 
-            // btnSearchByAccountNumberReceiveTransactionForm
-            // 
-            this.btnSearchByAccountNumberReceiveTransactionForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearchByAccountNumberReceiveTransactionForm.BorderRadius = 12;
-            this.btnSearchByAccountNumberReceiveTransactionForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSearchByAccountNumberReceiveTransactionForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSearchByAccountNumberReceiveTransactionForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSearchByAccountNumberReceiveTransactionForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSearchByAccountNumberReceiveTransactionForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(140)))), ((int)(((byte)(100)))));
-            this.btnSearchByAccountNumberReceiveTransactionForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnSearchByAccountNumberReceiveTransactionForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.btnSearchByAccountNumberReceiveTransactionForm.Image = global::BankManagement.Properties.Resources.img_search;
-            this.btnSearchByAccountNumberReceiveTransactionForm.ImageOffset = new System.Drawing.Point(1, 0);
-            this.btnSearchByAccountNumberReceiveTransactionForm.Location = new System.Drawing.Point(320, 177);
-            this.btnSearchByAccountNumberReceiveTransactionForm.Name = "btnSearchByAccountNumberReceiveTransactionForm";
-            this.btnSearchByAccountNumberReceiveTransactionForm.Size = new System.Drawing.Size(40, 35);
-            this.btnSearchByAccountNumberReceiveTransactionForm.TabIndex = 35;
-            this.btnSearchByAccountNumberReceiveTransactionForm.Click += new System.EventHandler(this.btnSearchByAccountNumberReceiveTransactionForm_Click);
-            // 
-            // imgCustomerReceiveTransactionForm
-            // 
-            this.imgCustomerReceiveTransactionForm.BackColor = System.Drawing.Color.Transparent;
-            this.imgCustomerReceiveTransactionForm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.imgCustomerReceiveTransactionForm.BorderRadius = 50;
-            this.imgCustomerReceiveTransactionForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.imgCustomerReceiveTransactionForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.imgCustomerReceiveTransactionForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.imgCustomerReceiveTransactionForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.imgCustomerReceiveTransactionForm.FillColor = System.Drawing.Color.Transparent;
-            this.imgCustomerReceiveTransactionForm.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.imgCustomerReceiveTransactionForm.ForeColor = System.Drawing.Color.White;
-            this.imgCustomerReceiveTransactionForm.Image = global::BankManagement.Properties.Resources.avatar_customer_default;
-            this.imgCustomerReceiveTransactionForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.imgCustomerReceiveTransactionForm.ImageOffset = new System.Drawing.Point(-8, 0);
-            this.imgCustomerReceiveTransactionForm.ImageSize = new System.Drawing.Size(95, 95);
-            this.imgCustomerReceiveTransactionForm.Location = new System.Drawing.Point(21, 23);
-            this.imgCustomerReceiveTransactionForm.Name = "imgCustomerReceiveTransactionForm";
-            this.imgCustomerReceiveTransactionForm.ShadowDecoration.BorderRadius = 50;
-            this.imgCustomerReceiveTransactionForm.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.imgCustomerReceiveTransactionForm.ShadowDecoration.Enabled = true;
-            this.imgCustomerReceiveTransactionForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2);
-            this.imgCustomerReceiveTransactionForm.Size = new System.Drawing.Size(100, 100);
-            this.imgCustomerReceiveTransactionForm.TabIndex = 17;
-            // 
-            // imgCustomerReceiveStatusTransactionForm
-            // 
-            this.imgCustomerReceiveStatusTransactionForm.Image = global::BankManagement.Properties.Resources._checked;
-            this.imgCustomerReceiveStatusTransactionForm.Location = new System.Drawing.Point(130, 94);
-            this.imgCustomerReceiveStatusTransactionForm.Name = "imgCustomerReceiveStatusTransactionForm";
-            this.imgCustomerReceiveStatusTransactionForm.Size = new System.Drawing.Size(12, 12);
-            this.imgCustomerReceiveStatusTransactionForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgCustomerReceiveStatusTransactionForm.TabIndex = 32;
-            this.imgCustomerReceiveStatusTransactionForm.TabStop = false;
-            // 
-            // btnResetTransactionForm
-            // 
-            this.btnResetTransactionForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnResetTransactionForm.BorderRadius = 15;
-            this.btnResetTransactionForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnResetTransactionForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnResetTransactionForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnResetTransactionForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnResetTransactionForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.btnResetTransactionForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnResetTransactionForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.btnResetTransactionForm.Image = global::BankManagement.Properties.Resources.img_reset;
-            this.btnResetTransactionForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnResetTransactionForm.ImageOffset = new System.Drawing.Point(-4, 0);
-            this.btnResetTransactionForm.ImageSize = new System.Drawing.Size(28, 28);
-            this.btnResetTransactionForm.Location = new System.Drawing.Point(474, 10);
-            this.btnResetTransactionForm.Name = "btnResetTransactionForm";
-            this.btnResetTransactionForm.Size = new System.Drawing.Size(40, 40);
-            this.btnResetTransactionForm.TabIndex = 39;
-            this.btnResetTransactionForm.Click += new System.EventHandler(this.btnResetTransactionForm_Click);
-            // 
-            // imgCustomerSendTracsactionForm
-            // 
-            this.imgCustomerSendTracsactionForm.BackColor = System.Drawing.Color.Transparent;
-            this.imgCustomerSendTracsactionForm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.imgCustomerSendTracsactionForm.BorderRadius = 50;
-            this.imgCustomerSendTracsactionForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.imgCustomerSendTracsactionForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.imgCustomerSendTracsactionForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.imgCustomerSendTracsactionForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.imgCustomerSendTracsactionForm.FillColor = System.Drawing.Color.Transparent;
-            this.imgCustomerSendTracsactionForm.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.imgCustomerSendTracsactionForm.ForeColor = System.Drawing.Color.White;
-            this.imgCustomerSendTracsactionForm.Image = global::BankManagement.Properties.Resources.avatar_customer_default;
-            this.imgCustomerSendTracsactionForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.imgCustomerSendTracsactionForm.ImageOffset = new System.Drawing.Point(-8, 0);
-            this.imgCustomerSendTracsactionForm.ImageSize = new System.Drawing.Size(95, 95);
-            this.imgCustomerSendTracsactionForm.Location = new System.Drawing.Point(28, 25);
-            this.imgCustomerSendTracsactionForm.Name = "imgCustomerSendTracsactionForm";
-            this.imgCustomerSendTracsactionForm.ShadowDecoration.BorderRadius = 50;
-            this.imgCustomerSendTracsactionForm.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.imgCustomerSendTracsactionForm.ShadowDecoration.Enabled = true;
-            this.imgCustomerSendTracsactionForm.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(2);
-            this.imgCustomerSendTracsactionForm.Size = new System.Drawing.Size(100, 100);
-            this.imgCustomerSendTracsactionForm.TabIndex = 17;
-            // 
-            // imgCustomerSendStatusTransactionForm
-            // 
-            this.imgCustomerSendStatusTransactionForm.Image = global::BankManagement.Properties.Resources._checked;
-            this.imgCustomerSendStatusTransactionForm.Location = new System.Drawing.Point(137, 96);
-            this.imgCustomerSendStatusTransactionForm.Name = "imgCustomerSendStatusTransactionForm";
-            this.imgCustomerSendStatusTransactionForm.Size = new System.Drawing.Size(12, 12);
-            this.imgCustomerSendStatusTransactionForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgCustomerSendStatusTransactionForm.TabIndex = 32;
-            this.imgCustomerSendStatusTransactionForm.TabStop = false;
-            // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -682,10 +687,10 @@
             this.Load += new System.EventHandler(this.TransactionForm_Load);
             this.panelCustomerSendTransactionForm.ResumeLayout(false);
             this.panelCustomerSendTransactionForm.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCustomerSendStatusTransactionForm)).EndInit();
             this.panelCustomerReceiveTransactionForm.ResumeLayout(false);
             this.panelCustomerReceiveTransactionForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgCustomerReceiveStatusTransactionForm)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgCustomerSendStatusTransactionForm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

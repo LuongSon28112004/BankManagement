@@ -221,7 +221,7 @@ namespace BankManagement.View
             else
             {
                 // Xử lý trường hợp giá trị không hợp lệ
-                MessageBox.Show("Giá trị không hợp lệ. Vui lòng kiểm tra lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Giá trị không hợp lệ, vui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             viewModel.Note = txtContentTransactionForm.Text == "" ?  "" : txtContentTransactionForm.Text;
 			viewModel.Account_customer_send = txtAccountNumberSendTransactionForm.Text == "" ? 0 : int.Parse(txtAccountNumberSendTransactionForm.Text);
@@ -660,6 +660,26 @@ namespace BankManagement.View
                 // Đặt con trỏ vào cuối TextBox
                 txtAmountTransactionForm.SelectionStart = txtAmountTransactionForm.Text.Length;
                 isUpdating = false; // Kết thúc cập nhật
+            }
+        }
+
+        private void txtSearchAccountNumberSendTransactionForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem ký tự nhập vào có phải là chữ số hay không
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Ngăn các ký tự không phải là chữ số
+                e.Handled = true;
+            }
+        }
+
+        private void txtAccountNumberReceiveTransactionForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem ký tự nhập vào có phải là chữ số hay không
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Ngăn các ký tự không phải là chữ số
+                e.Handled = true;
             }
         }
     }

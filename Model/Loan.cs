@@ -16,11 +16,10 @@ namespace BankManagement.Model
         private int customerAccountId;
         private int staffAccountId;
         private DateTime lastPaymentDate;
-        private bool isPaid;
         private bool paid_status;
         private int loanTerm;
 
-        public Loan(int id, decimal principal_amount, DateTime loan_date, float interest_Rate, string note, int customerAccount, int staffAccount, DateTime lastPaymentDate,bool isPaid, bool paid_status, int loanTerm)
+        public Loan(int id, decimal principal_amount, DateTime loan_date, float interest_Rate, string note, int customerAccount, int staffAccount, DateTime lastPaymentDate, bool paid_status, int loanTerm)
         {
             this.id = id;
             this.principal_amount = principal_amount;
@@ -30,7 +29,6 @@ namespace BankManagement.Model
             this.customerAccountId = customerAccount;
             this.staffAccountId = staffAccount;
             this.lastPaymentDate = lastPaymentDate;
-            this.isPaid = isPaid;
             this.paid_status = paid_status;
             this.loanTerm = loanTerm;
         }
@@ -45,6 +43,5 @@ namespace BankManagement.Model
         public DateTime LastPaymentDate { get => lastPaymentDate; set => lastPaymentDate = value; }
         public bool Paid_status { get => paid_status; set => paid_status = value; }
         public int LoanTerm { get => loanTerm; set => loanTerm = value; }
-        public bool IsPaid { get => isPaid; set => isPaid = value; }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace BankManagement.View
             this.staffId = staffId;
             viewModel = new LoanViewModel();    
             this.ShowInTaskbar = false;
-            
+            DateTime time = DateTime.Today;
         }
 
 
@@ -30,33 +31,6 @@ namespace BankManagement.View
             btnCreateTaskBarLoanForm_Click(this, EventArgs.Empty);
             btnCreateTaskBarLoanForm.HoverState.FillColor = Color.FromArgb(50, 50, 50);
             btnPaymentTaskBarLoanForm.HoverState.FillColor = Color.FromArgb(50, 50, 50);
-        }
-
-
-
-
-
-        //Reset cac component-----------------------------------------------------------------------------------------------------------------------------------------------
-        private void reset()
-        {
-            imgCustomerLoanForm.Image = System.Drawing.Image.FromFile($"..\\..\\Resources\\avatar_customer_default.png");
-            txtSearchByAccountNumberLoanForm.Text = "";
-            lbCustomerNameLoanForm.Text = "Customer Name";
-            lbAccountNumberLoanForm.Text = "101xxxxxxx";
-            this.SetAccountSendStatus("Status");
-            txtCCCDLoanForm.Text = "";
-            txtPhoneNumberLoanForm.Text = "";
-            txtEmailLoanForm.Text = "";
-            txtAmountLoanForm.Text = "";
-            txtLoanDateLoanForm.Text = "";
-            txtLoanTermLoanForm.Text = "";
-            txtLoanPurposeLoanForm.Text = "";
-            txtNextInterestDueDateLoanForm.Text = "";
-            txtLastPaymentDateLoanForm.Text = "";
-            txtInterestDueAmountLoanForm.Text = "";
-            txtPenaltyFeeLoanForm.Text = "";
-            txtTotalLoanForm.Text = "";
-            txtSearchByAccountNumberLoanForm.Text = "";
         }
 
 
@@ -120,7 +94,7 @@ namespace BankManagement.View
             btnCreateTaskBarLoanForm.CustomBorderThickness = new Padding(0, 0, 0, 0);
             btnCreateTaskBarLoanForm.CustomBorderColor = Color.Aquamarine;
 
-            btnResetLoanForm.Visible = false;
+            btnResetLoanForm.Visible = true;
             btnCreateLoanForm.Visible = false;
             panelPaymentLoanForm.Visible = true;
 
@@ -133,159 +107,121 @@ namespace BankManagement.View
 
 
 
+        //Reset cac view-----------------------------------------------------------------------------------------------------------------------------------------------
+        private void reset()
+        {
+            imgCustomerLoanForm.Image = System.Drawing.Image.FromFile($"..\\..\\Resources\\avatar_customer_default.png");
+            lbCustomerNameLoanForm.Text = "Customer Name";
+            lbAccountNumberLoanForm.Text = "101xxxxxxx";
+            this.SetAccountSendStatus("Status");
+            txtCCCDLoanForm.Text = "";
+            txtPhoneNumberLoanForm.Text = "";
+            txtEmailLoanForm.Text = "";
+            txtAmountLoanForm.Text = "";
+            txtLoanDateLoanForm.Text = "";
+            txtLoanTermLoanForm.Text = "";
+            txtLoanPurposeLoanForm.Text = "";
+            txtNextInterestDueDateLoanForm.Text = "";
+            txtLastPaymentDateLoanForm.Text = "";
+            txtInterestDueAmountLoanForm.Text = "";
+            txtPenaltyFeeLoanForm.Text = "";
+            txtTotalLoanForm.Text = "";
+            btnPaymentLoanForm.Enabled = false;
+            lbLoanStatusLoanForm.Visible = false;
+            imgLoanStatusLoanForm.Visible= false;
+        }
         //Btn reset-------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void btnResetLoanForm_Click(object sender, EventArgs e)
         {
             this.reset();
-            DateTime time = DateTime.Today;
-            txtLoanDateLoanForm.Text = time.ToString("dd/MM/yyyy");
+            if (panelPaymentLoanForm.Visible == false)
+            {
+                DateTime time = DateTime.Today;
+                txtLoanDateLoanForm.Text = time.ToString("dd/MM/yyyy");
+            }
         }
 
+
+
+
+
+        //Tìm kiếm một khoản vay
         private void btnSearchByAccountNumberLoanForm_Click(object sender, EventArgs e)
         {
-            if (txtSearchByAccountNumberLoanForm.Text == "") return;
-            viewModel.searchAccountInfor(int.Parse(txtSearchByAccountNumberLoanForm.Text));
-            if (viewModel.DataTableAccount.Rows.Count != 1) return;
-            this.updateCustomerInfor(viewModel.DataTableAccount);
-            if(panelPaymentLoanForm.Visible == true)
+            try
             {
-                viewModel.getLoanByIdAccount();
-                if(viewModel.DataTableLoan.Rows.Count != 1) return;
-                this.updateLoanInfor(viewModel.DataTableLoan);
+                btnResetLoanForm_Click(null, EventArgs.Empty);
+                if (txtSearchByAccountNumberLoanForm.Text == "") return;
+                viewModel.CustomerAccountId = int.Parse(txtSearchByAccountNumberLoanForm.Text);
+                viewModel.searchAccountInfor(int.Parse(txtSearchByAccountNumberLoanForm.Text));
+                if (viewModel.DataTableAccount.Rows.Count != 1) return;
+                this.updateCustomerInfor(viewModel.DataTableAccount);
 
+                if (panelPaymentLoanForm.Visible == true)
+                {
+                    viewModel.getLoanByIdAccount();
+                    if (viewModel.DataTableLoan.Rows.Count != 1)
+                    {
+                        return;
+                    }
+                    this.updateLoanInfor();
+                }
             }
-
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu cần
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        private void updateLoanInfor()
+        {
+            txtAmountLoanForm.Text = viewModel.Principal_amount.ToString("#,##0", new CultureInfo("vi-VN"));
+            txtLoanDateLoanForm.Text = viewModel.Loan_date.Date.ToString("dd/MM/yyyy");
+            txtLoanTermLoanForm.Text= viewModel.LoanTerm.ToString();
+            txtLoanPurposeLoanForm.Text = viewModel.Note;
+            txtLastPaymentDateLoanForm.Text = viewModel.LastPaymentDate.ToString("dd/MM/yyyy");
+            txtNextInterestDueDateLoanForm.Text = viewModel.NextInterestDueDate.ToString("dd/MM/yyyy");
+            txtInterestDueAmountLoanForm.Text = viewModel.InterestDueAmount.ToString("#,##0", new CultureInfo("vi-VN"));
+            txtPenaltyFeeLoanForm.Text = viewModel.PenaltyFee.ToString("#,##0", new CultureInfo("vi-VN"));
+            txtTotalLoanForm.Text = viewModel.Total.ToString("#,##0", new CultureInfo("vi-VN"));
+            updateStatusLoan(viewModel.Paid_status);
+
+            DateTime time = DateTime.Today;
+            DateTime aMonthAgo = viewModel.NextInterestDueDate.AddMonths(-1);
+            //Nếu trong 1 tháng từ NextInterestDueDate trở lại
+            if (time > aMonthAgo && time <= viewModel.NextInterestDueDate)
+            {
+                btnPaymentLoanForm.Enabled = true;
+            }
+            else
+            {
+                btnPaymentLoanForm.Enabled= false;
+            }
+        }
+
+        //Cập nhật view với từng trạng thái
         void updateStatusLoan(bool status)
         {
-            if(status)
+            if (status)
             {
                 imgLoanStatusLoanForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
                 lbLoanStatusLoanForm.Text = "isCompleted";
                 lbLoanStatusLoanForm.ForeColor = Color.FromArgb(78, 167, 46);
-                btnPaymentLoanForm.Visible = false;
-            }
-            else
-            {
-                imgLoanStatusLoanForm.Image = Image.FromFile("..\\..\\Resources\\x-button.png");
-                lbLoanStatusLoanForm.Text = "Within Term";
-                lbLoanStatusLoanForm.ForeColor = Color.FromArgb(203, 57, 53);
-                btnPaymentLoanForm.Visible = true;
-            }
-        }
-
-        private void updateLoanInfor(DataTable dt)
-        {
-            // Lấy hàng đầu tiên từ DataTable
-            DataRow row = dt.Rows[0];
-
-            // Cập nhật các TextBox với giá trị từ hàng
-            txtAmountLoanForm.Text = row["principal_amount"].ToString();
-            txtInterestRateLoanForm.Text = row["interest_rate"].ToString();
-            //status
-            this.updateStatusLoan(bool.Parse(row["paid_status"].ToString()));
-
-            // Định dạng ngày cho loan_date
-            DateTime loan_date = DateTime.Parse(row["loan_date"].ToString());
-            txtLoanDateLoanForm.Text = loan_date.ToString("dd/MM/yyyy");
-
-            // Cập nhật các thông tin khác
-            txtLoanTermLoanForm.Text = row["loan_Term"].ToString();
-            txtLoanPurposeLoanForm.Text = row["note"].ToString();
-
-
-            //truyen id loan vao view model
-            viewModel.Id = int.Parse(row["id"].ToString());
-
-            // Định dạng ngày cho last_payment_date
-            DateTime last_payment_date = DateTime.Parse(row["last_payment_date"].ToString());
-
-            // Xác định ngày đến hạn tiếp theo cho khoản vay
-            int daysInCurrentMonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
-            int loanDay = loan_date.Day;
-
-            // Kiểm tra nếu ngày trong loan_date lớn hơn số ngày trong tháng hiện tại
-            int dueDay = loanDay > daysInCurrentMonth ? daysInCurrentMonth : loanDay;
-
-            // Xác định tháng và năm cho ngày đến hạn tiếp theo
-            int dueMonth = DateTime.Today.Month;
-            int dueYear = DateTime.Today.Year;
-
-            // Nếu ngày đến hạn nhỏ hơn ngày hôm nay, chuyển sang tháng sau
-            if (dueDay < DateTime.Today.Day)
-            {
-                dueMonth += 1;
-                if (dueMonth > 12)
-                {
-                    dueMonth = 1;
-                    dueYear += 1;
-                }
-            }
-
-            // Tạo DateTime cho ngày đến hạn tiếp theo neu ngay tao = ngay tra
-            DateTime nextInterestDueDate = new DateTime(dueYear, dueMonth, dueDay);
-            if (nextInterestDueDate.ToString("dd/MM/yyyy") == loan_date.ToString("dd/MM/yyyy"))
-            {
-                nextInterestDueDate = nextInterestDueDate.AddMonths(1); // Gán lại giá trị mới
-            }
-            if(nextInterestDueDate > last_payment_date)
-            {
-                viewModel.IsPaid = true;
-                viewModel.updateIsPaid();
-                btnPaymentLoanForm.Enabled = true;
-            }
-            if (bool.Parse(row["isPaid"].ToString()) == true)
-            {
-                MessageBox.Show("Khách Hàng Này Đã Đóng Lãi Rồi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnPaymentLoanForm.Enabled = false;
-                return;
-            }
-            txtLastPaymentDateLoanForm.Text = last_payment_date.ToString("dd/MM/yyyy");
-
-            
-            
-            txtNextInterestDueDateLoanForm.Text = nextInterestDueDate.ToString("dd/MM/yyyy");
-
-            // Tính tổng số tiền phải trả (bao gồm tiền lãi và phạt)
-            float total = CalculateTotalInterest(nextInterestDueDate, last_payment_date,
-                float.Parse(row["interest_rate"].ToString()) / 12 / 100, 0.05f, float.Parse(row["principal_amount"].ToString()));
-
-            txtTotalLoanForm.Text = total.ToString();
-
-            // Kiểm tra có phạt hay không, nếu có thì cập nhật phí phạt
-            float monthlyInterest = float.Parse(row["principal_amount"].ToString()) * (float.Parse(row["interest_rate"].ToString()) / 12 / 100);
-            txtPenaltyFeeLoanForm.Text = total > monthlyInterest ? "5%" : "0%";
-        }
-
-        private float CalculateTotalInterest(DateTime startDate, DateTime lastPaymentDate, float interestRate, float penaltyRate, float principalAmount)
-        {
-            // Tính số tháng giữa ngày hôm nay và ngày thanh toán cuối cùng
-            int monthsDifference = ((DateTime.Today.Year - lastPaymentDate.Year) * 12) + DateTime.Today.Month - lastPaymentDate.Month;
-            float totalInterest = 0;
-
-            // Kiểm tra nếu ngày hiện tại lớn hơn hoặc bằng ngày bắt đầu khoản vay
-            if (IsCurrentDayGreaterOrEqual(startDate.Day))
-            {
-                // Tính tiền lãi với phạt
-                totalInterest = principalAmount * interestRate
-                              + (principalAmount * interestRate * (1 + penaltyRate)) * monthsDifference;
             }
             else
             {
-                // Nếu không, tính tiền lãi cho tháng trước
-                totalInterest = principalAmount * interestRate
-                              + (principalAmount * interestRate * (1 + penaltyRate)) * (monthsDifference - 1);
+                imgLoanStatusLoanForm.Image = Image.FromFile("..\\..\\Resources\\process.png");
+                lbLoanStatusLoanForm.Text = "Within Term";
+                lbLoanStatusLoanForm.ForeColor = Color.FromArgb(255, 100, 30);
+                btnPaymentLoanForm.Enabled = true;
+                lbLoanStatusLoanForm.Visible = true;
+                imgLoanStatusLoanForm.Visible = true;
             }
-
-            return totalInterest;
         }
+        
 
-        // Kiểm tra nếu ngày hiện tại lớn hơn hoặc bằng ngày cho trước
-        public bool IsCurrentDayGreaterOrEqual(int loanDay)
-        {
-            return DateTime.Today.Day >= loanDay;
-        }
 
 
 
@@ -363,9 +299,27 @@ namespace BankManagement.View
                 return;
             }
             this.updateViewModelFromForm();
-            viewModel.addLoan();
+            try
+            {
+                viewModel.addLoan();
+                viewModel.AddLog($"Tạo khoản vay với Account Number: {lbAccountNumberLoanForm.Text}", staffId);
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu cần
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         //Chỉ cho nhập số
+        private void txtSearchByAccountNumberLoanForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem ký tự nhập vào có phải là chữ số hay không
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Ngăn các ký tự không phải là chữ số
+                e.Handled = true;
+            }
+        }
         private void txtAmountLoanForm_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Kiểm tra xem ký tự nhập vào có phải là chữ số hay không
@@ -396,14 +350,41 @@ namespace BankManagement.View
                 txtLoanTermLoanForm.SelectionStart = txtLoanTermLoanForm.Text.Length;
             }
         }
+        //Chuyển đổi khi nhập 50000 -> 50.000
+        private bool isUpdating = false;
+        private void txtAmountLoanForm_TextChanged(object sender, EventArgs e)
+        {
+            if (isUpdating) return; // Nếu đang cập nhật thì bỏ qua
+
+            // Lưu giá trị tạm thời
+            string input = txtAmountLoanForm.Text;
+
+            // Thay thế dấu phẩy thành dấu chấm (nếu có)
+            input = input.Replace(',', '.');
+
+            // Xóa các ký tự không phải số
+            input = new string(input.Where(char.IsDigit).ToArray());
+
+            // Thử chuyển đổi sang decimal
+            if (Decimal.TryParse(input, out decimal amount))
+            {
+                // Định dạng lại thành chuỗi với dấu phân cách hàng nghìn
+                isUpdating = true; // Đánh dấu là đang cập nhật
+                txtAmountLoanForm.Text = amount.ToString("#,0", new CultureInfo("vi-VN"));
+
+                // Đặt con trỏ vào cuối TextBox
+                txtAmountLoanForm.SelectionStart = txtAmountLoanForm.Text.Length;
+                isUpdating = false; // Kết thúc cập nhật
+            }
+        }
 
 
 
 
-
+        //Cập nhật các view vào viewModel
         private void updateViewModelFromForm()
         {
-            viewModel.Principal_amount = decimal.Parse(txtAmountLoanForm.Text);
+            viewModel.Principal_amount = Decimal.Parse(txtAmountLoanForm.Text, new CultureInfo("vi-VN"));
             viewModel.Loan_date = DateTime.Parse(txtLoanDateLoanForm.Text);
             string interestRateText = txtInterestRateLoanForm.Text;
             if (!string.IsNullOrEmpty(interestRateText))
@@ -419,23 +400,26 @@ namespace BankManagement.View
             viewModel.LoanTerm = int.Parse(txtLoanTermLoanForm.Text);
         }
 
+
+
+
+
+        //Thanh toán khoản vay theo kỳ
         private void btnPaymentLoanForm_Click(object sender, EventArgs e)
         {
-            this.updateViewModelFromForm();
-
-            // Cộng thêm 12 tháng vào loan_date
-            if (DateTime.Today >= viewModel.Loan_date.AddMonths(12))
+            try
             {
-                viewModel.Paid_status = true;
+                viewModel.payment();
+                viewModel.AddLog($"Đóng lãi cho Account Number: {lbAccountNumberLoanForm.Text}", staffId);
+                btnPaymentLoanForm.Enabled = false;
+                viewModel.CustomerAccountId.ToString();
+                btnSearchByAccountNumberLoanForm_Click(null, EventArgs.Empty);
             }
-            viewModel.IsPaid = true;
-
-            viewModel.updateLoan();
-
-            //reset lai all textbox and label
-            this.reset();
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu cần
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
-        
     }
 }

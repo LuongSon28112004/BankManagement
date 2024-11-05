@@ -342,12 +342,14 @@
             this.txtSearchByAccountNumberLoanForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearchByAccountNumberLoanForm.Location = new System.Drawing.Point(23, 118);
             this.txtSearchByAccountNumberLoanForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSearchByAccountNumberLoanForm.MaxLength = 15;
             this.txtSearchByAccountNumberLoanForm.Name = "txtSearchByAccountNumberLoanForm";
             this.txtSearchByAccountNumberLoanForm.PasswordChar = '\0';
             this.txtSearchByAccountNumberLoanForm.PlaceholderText = "Account number";
             this.txtSearchByAccountNumberLoanForm.SelectedText = "";
             this.txtSearchByAccountNumberLoanForm.Size = new System.Drawing.Size(200, 33);
             this.txtSearchByAccountNumberLoanForm.TabIndex = 38;
+            this.txtSearchByAccountNumberLoanForm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchByAccountNumberLoanForm_KeyPress);
             // 
             // panelCreateLoanForm
             // 
@@ -514,6 +516,7 @@
             this.txtAmountLoanForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtAmountLoanForm.Location = new System.Drawing.Point(28, 63);
             this.txtAmountLoanForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAmountLoanForm.MaxLength = 22;
             this.txtAmountLoanForm.Name = "txtAmountLoanForm";
             this.txtAmountLoanForm.PasswordChar = '\0';
             this.txtAmountLoanForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
@@ -521,6 +524,7 @@
             this.txtAmountLoanForm.SelectedText = "";
             this.txtAmountLoanForm.Size = new System.Drawing.Size(200, 35);
             this.txtAmountLoanForm.TabIndex = 35;
+            this.txtAmountLoanForm.TextChanged += new System.EventHandler(this.txtAmountLoanForm_TextChanged);
             this.txtAmountLoanForm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmountLoanForm_KeyPress);
             // 
             // lbLoanPurposeLoanForm
@@ -566,7 +570,7 @@
             this.txtLoanPurposeLoanForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtLoanPurposeLoanForm.Location = new System.Drawing.Point(28, 249);
             this.txtLoanPurposeLoanForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtLoanPurposeLoanForm.MaxLength = 100;
+            this.txtLoanPurposeLoanForm.MaxLength = 200;
             this.txtLoanPurposeLoanForm.Multiline = true;
             this.txtLoanPurposeLoanForm.Name = "txtLoanPurposeLoanForm";
             this.txtLoanPurposeLoanForm.PasswordChar = '\0';
@@ -595,6 +599,7 @@
             this.txtLoanTermLoanForm.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtLoanTermLoanForm.Location = new System.Drawing.Point(297, 156);
             this.txtLoanTermLoanForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtLoanTermLoanForm.MaxLength = 3;
             this.txtLoanTermLoanForm.Name = "txtLoanTermLoanForm";
             this.txtLoanTermLoanForm.PasswordChar = '\0';
             this.txtLoanTermLoanForm.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
@@ -811,8 +816,8 @@
             this.lbLoanStatusLoanForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbLoanStatusLoanForm.AutoSize = true;
             this.lbLoanStatusLoanForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLoanStatusLoanForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
-            this.lbLoanStatusLoanForm.Location = new System.Drawing.Point(854, 15);
+            this.lbLoanStatusLoanForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(100)))), ((int)(((byte)(30)))));
+            this.lbLoanStatusLoanForm.Location = new System.Drawing.Point(853, 19);
             this.lbLoanStatusLoanForm.Name = "lbLoanStatusLoanForm";
             this.lbLoanStatusLoanForm.Size = new System.Drawing.Size(74, 16);
             this.lbLoanStatusLoanForm.TabIndex = 31;
@@ -821,10 +826,10 @@
             // imgLoanStatusLoanForm
             // 
             this.imgLoanStatusLoanForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgLoanStatusLoanForm.Image = global::BankManagement.Properties.Resources.x_button;
-            this.imgLoanStatusLoanForm.Location = new System.Drawing.Point(834, 13);
+            this.imgLoanStatusLoanForm.Image = global::BankManagement.Properties.Resources.process;
+            this.imgLoanStatusLoanForm.Location = new System.Drawing.Point(824, 13);
             this.imgLoanStatusLoanForm.Name = "imgLoanStatusLoanForm";
-            this.imgLoanStatusLoanForm.Size = new System.Drawing.Size(20, 20);
+            this.imgLoanStatusLoanForm.Size = new System.Drawing.Size(28, 28);
             this.imgLoanStatusLoanForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgLoanStatusLoanForm.TabIndex = 32;
             this.imgLoanStatusLoanForm.TabStop = false;

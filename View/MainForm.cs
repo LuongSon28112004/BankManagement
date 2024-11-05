@@ -63,7 +63,7 @@ namespace BankManagement
 				}
 				else
 				{
-					MessageBox.Show("Không tìm thấy file ảnh.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Không tìm thấy file ảnh!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			catch (Exception ex)
