@@ -83,7 +83,7 @@ namespace BankManagement.Model
         {
             DataTable dataTableCustomerInfor = new DataTable();
             // Tạo truy vấn SQL sử dụng LIKE để tìm kiếm chuỗi tương tự
-            string query = "SELECT id, name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo , status , gender " + "FROM customer_infor " +"WHERE cccd LIKE @Cccd";
+            string query = "SELECT TOP 50 id, name, cccd, phone_number, email, job, nationality, address, date_of_birth, photo , status , gender " + "FROM customer_infor " +"WHERE cccd LIKE @Cccd";
 
             try
             {

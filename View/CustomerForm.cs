@@ -45,7 +45,7 @@ namespace BankManagement
             //reset các textbox và combo box
             this.reset();
             //Load danh sach tat ca cac customer khi form duoc load len
-            this.LoadAllCustomer();
+            //this.LoadAllCustomer();
 
             //Hover IMG customer none
             imgCustomerCustomerForm.HoverState.FillColor = Color.FromArgb(40, 42, 45);

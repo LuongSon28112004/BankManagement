@@ -19,6 +19,7 @@ namespace BankManagement.ViewModel
         CustomerAccountWithInforRepository customerAccountWithInforRepository;
         CustomerInforRepository customerInforRepository;
         LogRepository logRepository;
+        TransactionReponsitory TransactionReponsitory;
 
         //Các thuộc tính bind với CustomerAccountForm
         private int staffId;
@@ -29,12 +30,16 @@ namespace BankManagement.ViewModel
         private Decimal balance;
         private DataTable dataTableAccountInfor; //Danh sách dữ liệu chứa thông tin khách hàng
         private DataTable dataTableCustomerInfor; //Danh sách dữ liệu chứa cả thông tin khách hàng và tài khoản
+        private DataTable dataTableAllTransfer;
+        private DataTable datatableAllDeposit;
+        private DataTable datatableAllWithdraw;
 
         public AccountViewModel()
         {
             this.customerAccountWithInforRepository = new CustomerAccountWithInforRepository();
             this.customerInforRepository = new CustomerInforRepository();
             this.logRepository = new LogRepository();
+            this.TransactionReponsitory = new TransactionReponsitory();
         }
        
         //Getter, setter
@@ -47,6 +52,9 @@ namespace BankManagement.ViewModel
         public decimal Balance { get => balance; set => balance = value; }
         public DataTable DataTableAccountInfor { get => dataTableAccountInfor; set => dataTableAccountInfor = value; }
         public DataTable DataTableCustomerInfor { get => dataTableCustomerInfor; set => dataTableCustomerInfor = value; }
+        public DataTable DataTableAllTransfer { get => dataTableAllTransfer; set => dataTableAllTransfer = value; }
+        public DataTable DatatableAllDeposit { get => datatableAllDeposit; set => datatableAllDeposit = value; }
+        public DataTable DatatableAllWithdraw { get => datatableAllWithdraw; set => datatableAllWithdraw = value; }
 
 
 
@@ -158,6 +166,47 @@ namespace BankManagement.ViewModel
         {
             Log log = new Log(0, this.staffId, null, act + this.account_number);
             logRepository.AddLog(log);
+        }
+
+        // lấy all giao dịch giữa 2 tài khoản bằng id tài khoản 
+        public void getAllTransferByIdAccount(int accountId)
+        {
+            try
+            {
+                this.dataTableAllTransfer = TransactionReponsitory.getAllTransferByIdAccount(accountId);
+            }catch (Exception ex) 
+            {
+                 // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
+        }
+
+        //lấy all giao dịch chuyển tiền bởi tài khoản bằng id tài khoản
+        public void getAllDepositByIdAccount(int accountId)
+        {
+            try
+            {
+                this.datatableAllDeposit = TransactionReponsitory.getAllDepositByIdAccount(accountId);
+            }
+            catch (Exception ex)
+            {
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
+        }
+
+        //lấy all giao dịch chuyển tiền bởi tài khoản bằng id tài khoản
+        public void getAllWithDrawByIdAccount(int accountId)
+        {
+            try
+            {
+                this.datatableAllWithdraw = TransactionReponsitory.getAllWithDrawByIdAccount(accountId);
+            }
+            catch (Exception ex)
+            {
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
         }
     }
 }

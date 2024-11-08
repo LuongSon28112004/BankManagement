@@ -138,7 +138,92 @@ namespace BankManagement.Model
                 // Ném lại ngoại lệ để form cha có thể xử lý
                 throw new Exception("Lỗi: " + ex.Message, ex);
             }
-
         }
-	}
+
+        //lấy all giao dich rút tiền bởi id tài khoản
+        public DataTable getAllWithDrawByIdAccount(int account_id)
+        {
+            DataTable dt = new DataTable();
+            string query = "SELECT * FROM transaction_withdraw WHERE account_customer_withdraw_id = @Account_customer_withdraw_id";
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@Account_customer_withdraw_id", SqlDbType.Int) { Value = account_id });
+                        using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd))
+                        {
+                            sqlDataAdapter.Fill(dt);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
+            return dt;
+        }
+
+        //lấy all giao dich nao tiền bởi id tài khoản
+        public DataTable getAllDepositByIdAccount(int account_id)
+        {
+            DataTable dt = new DataTable();
+            string query = "SELECT * FROM transaction_deposit WHERE account_customer_deposit_id = @Account_customer_deposit_id";
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@Account_customer_deposit_id", SqlDbType.Int) { Value = account_id });
+                        using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd))
+                        {
+                            sqlDataAdapter.Fill(dt);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
+            return dt;
+        }
+        //lấy all giao dịch giữa 2 tài khoản bằng id tài khoản
+        public DataTable getAllTransferByIdAccount(int account_id)
+        {
+            DataTable dt = new DataTable();
+            string query = "SELECT * FROM transaction_transfer WHERE account_customer_send = @Account_customer_send";
+            try
+            {
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@Account_customer_send", SqlDbType.Int) { Value = account_id });
+                        using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd))
+                        {
+                            sqlDataAdapter.Fill(dt);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
+            }
+            return dt;
+        }
+    }
 }

@@ -11,12 +11,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Excel = Microsoft.Office.Interop.Excel;
+
 namespace BankManagement.View
 {
     public partial class CustomerAccountForm : Form
     {
         AccountViewModel viewModel;
         private int staffId;
+        private int accountCustomerId;
+
         public CustomerAccountForm(int staffId)
         {
             InitializeComponent();
@@ -112,6 +116,7 @@ namespace BankManagement.View
         {
             DataRow row = dt.Rows[0]; // Lấy hàng đầu tiên (index 0)
 
+            this.accountCustomerId = int.Parse(row["id"].ToString());
             lbCustomerNameCustomerAccountForm.Text = row["name"].ToString();
 
             imgCustomerCustomerAccountForm.Image = Image.FromFile($"..\\..\\Image\\CustomerImage\\{row["photo"].ToString()}");
@@ -323,6 +328,8 @@ namespace BankManagement.View
                 if (selectedRow.Cells["cccd"].Value != null)
                 {
                     // Lấy dữ liệu từ các cột trong hàng với kiểm tra null
+                    //lay thong tin id account
+                    this.accountCustomerId = int.Parse(selectedRow.Cells["accountId"].Value.ToString());
                     string cccd = selectedRow.Cells["cccd"].Value.ToString();
                     string name = selectedRow.Cells["customerName"].Value.ToString();
                     string dateOfBirth = selectedRow.Cells["dateOfBirth"].Value.ToString();
@@ -336,6 +343,7 @@ namespace BankManagement.View
                     string date_opened = selectedRow.Cells["OpenDate"].Value.ToString();
                     string username = selectedRow.Cells["Username"].Value.ToString();
                     string balanceString = selectedRow.Cells["Balance"].Value.ToString();
+
 
                     // Chuyển đổi chuỗi thành decimal
                     if (Decimal.TryParse(balanceString, NumberStyles.Any, new CultureInfo("vi-VN"), out decimal balance))
@@ -494,5 +502,148 @@ namespace BankManagement.View
                 e.Handled = true;
             }
         }
+
+        private void BtnStatementCustomerAccountForm_Click(object sender, EventArgs e)
+        {
+            if(txtAccountNumberCustomerAccountForm.Text == "")
+            {
+                CustomMessageBox.ShowBox("Vui Lòng Chọn Số Tài Khoản Để Sao Kê" , "Error");
+                return;
+            }
+            viewModel.getAllTransferByIdAccount(this.accountCustomerId);
+            viewModel.getAllDepositByIdAccount(this.accountCustomerId);
+            viewModel.getAllWithDrawByIdAccount(this.accountCustomerId);
+            this.ExportToExcel(viewModel.DataTableAllTransfer,viewModel.DatatableAllDeposit,viewModel.DatatableAllWithdraw);
+        }
+
+        private void ExportToExcel(DataTable transfer, DataTable deposit, DataTable withdraw)
+        {
+            // Khởi tạo ứng dụng Excel
+            Excel.Application excelApp = new Excel.Application();
+            Excel.Workbook workbook = excelApp.Workbooks.Add(Type.Missing);
+            Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets[1];
+
+            // Thiết lập thông tin tiêu đề chung
+            Excel.Range titleRange = worksheet.Range["A1", "F1"];
+            titleRange.Merge();
+            titleRange.Value = "Lịch Sử Giao Dịch Của Khách Hàng";
+            titleRange.Font.Bold = true;
+            titleRange.Font.Size = 18;
+            titleRange.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            titleRange.Interior.Color = Excel.XlRgbColor.rgbLightSteelBlue;
+
+            // Thêm tiêu đề "Lịch Sử Chuyển Tiền"
+            Excel.Range titleTransfer = worksheet.Range["A2", "F2"];
+            titleTransfer.Merge();
+            titleTransfer.Value = "Lịch Sử Chuyển Tiền";
+            titleTransfer.Font.Bold = true;
+            titleTransfer.Font.Size = 16;
+
+            // Thêm tiêu đề cột cho bảng transfer
+            for (int i = 0; i < transfer.Columns.Count; i++)
+            {
+                worksheet.Cells[3, i + 1] = transfer.Columns[i].ColumnName;
+                Excel.Range cell = (Excel.Range)worksheet.Cells[3, i + 1];
+                cell.Font.Bold = true;
+                cell.Interior.Color = Excel.XlRgbColor.rgbLightGray;
+                cell.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            }
+
+            // Thêm dữ liệu từ bảng transfer
+            int currentRow = 4;
+            for (int k = 0; k < transfer.Rows.Count; k++)
+            {
+                for (int j = 0; j < transfer.Columns.Count; j++)
+                {
+                    Excel.Range cell = (Excel.Range)worksheet.Cells[currentRow, j + 1];
+                    cell.Value = transfer.Rows[k][j]?.ToString() ?? "";
+                    cell.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                }
+                currentRow++;
+            }
+
+            // Thêm tiêu đề "Lịch Sử Nạp Tiền"
+            Excel.Range titleDeposit = worksheet.Range[$"A{currentRow + 1}", $"F{currentRow + 1}"];
+            titleDeposit.Merge();
+            titleDeposit.Value = "Lịch Sử Nạp Tiền";
+            titleDeposit.Font.Bold = true;
+            titleDeposit.Font.Size = 16;
+
+            // Thêm tiêu đề cột cho bảng deposit
+            currentRow += 2;
+            for (int i = 0; i < deposit.Columns.Count; i++)
+            {
+                worksheet.Cells[currentRow, i + 1] = deposit.Columns[i].ColumnName;
+                Excel.Range cell = (Excel.Range)worksheet.Cells[currentRow, i + 1];
+                cell.Font.Bold = true;
+                cell.Interior.Color = Excel.XlRgbColor.rgbLightGray;
+                cell.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            }
+
+            // Thêm dữ liệu từ bảng deposit
+            currentRow++;
+            for (int k = 0; k < deposit.Rows.Count; k++)
+            {
+                for (int j = 0; j < deposit.Columns.Count; j++)
+                {
+                    Excel.Range cell = (Excel.Range)worksheet.Cells[currentRow, j + 1];
+                    cell.Value = deposit.Rows[k][j]?.ToString() ?? "";
+                    cell.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                }
+                currentRow++;
+            }
+
+            // Thêm tiêu đề "Lịch Sử Rút Tiền"
+            Excel.Range titleWithdraw = worksheet.Range[$"A{currentRow + 1}", $"F{currentRow + 1}"];
+            titleWithdraw.Merge();
+            titleWithdraw.Value = "Lịch Sử Rút Tiền";
+            titleWithdraw.Font.Bold = true;
+            titleWithdraw.Font.Size = 16;
+
+            // Thêm tiêu đề cột cho bảng withdraw
+            currentRow += 2;
+            for (int i = 0; i < withdraw.Columns.Count; i++)
+            {
+                worksheet.Cells[currentRow, i + 1] = withdraw.Columns[i].ColumnName;
+                Excel.Range cell = (Excel.Range)worksheet.Cells[currentRow, i + 1];
+                cell.Font.Bold = true;
+                cell.Interior.Color = Excel.XlRgbColor.rgbLightGray;
+                cell.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            }
+
+            // Thêm dữ liệu từ bảng withdraw
+            currentRow++;
+            for (int k = 0; k < withdraw.Rows.Count; k++)
+            {
+                for (int j = 0; j < withdraw.Columns.Count; j++)
+                {
+                    Excel.Range cell = (Excel.Range)worksheet.Cells[currentRow, j + 1];
+                    cell.Value = withdraw.Rows[k][j]?.ToString() ?? "";
+                    cell.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    cell.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                }
+                currentRow++;
+            }
+
+            // Căn chỉnh cột và tự động điều chỉnh kích thước
+            worksheet.Columns.AutoFit();
+
+            // Hiển thị Excel
+            excelApp.Visible = true;
+
+            // Giải phóng tài nguyên
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(worksheet);
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(workbook);
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
+
+            GC.Collect();
+        }
+
+
     }
 }
