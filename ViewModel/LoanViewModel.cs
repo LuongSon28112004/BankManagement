@@ -68,7 +68,8 @@ namespace BankManagement.ViewModel
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
         }
 
@@ -86,7 +87,8 @@ namespace BankManagement.ViewModel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Lỗi: " + ex.Message, ex);
             }
         }
 
@@ -97,15 +99,7 @@ namespace BankManagement.ViewModel
         //Kiểm tra xem tài khoản này có đang phải trả khoản vay nào không---------------------------------------------------------------------------------------------------------
         public bool InPaymentPeriod()
         {
-            try
-            {
-                return loanRepository.InPaymentPeriod(this.customerAccountId);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
-            }
+            return loanRepository.InPaymentPeriod(this.customerAccountId);
         }
 
 
@@ -115,17 +109,10 @@ namespace BankManagement.ViewModel
         //Lấy ra một khoản vay theo account number và tính toán lãi suất...-----------------------------------------------------------------------------------------------------------------
         public void getLoanByIdAccount()
         {
-            try
+            dataTableLoan = loanRepository.getLoanByIdAccount(this.customerAccountId);
+            if (dataTableLoan.Rows.Count != 0)
             {
-                dataTableLoan = loanRepository.getLoanByIdAccount(this.customerAccountId);
-                if (dataTableLoan.Rows.Count != 0)
-                {
-                    LoadLoanInfor(dataTableLoan);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                LoadLoanInfor(dataTableLoan);
             }
         }
         public void LoadLoanInfor(DataTable dataTableLoan)

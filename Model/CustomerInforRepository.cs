@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using System.Windows.Forms;
 using System.Data;
 using System.Diagnostics;
+using BankManagement.View;
 
 namespace BankManagement.Model
 {
@@ -186,7 +187,7 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                 }
-                MessageBox.Show("Thêm khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Thêm khách hàng thành công!", "Success");
             }
             catch (Exception ex)
             {
@@ -217,6 +218,7 @@ namespace BankManagement.Model
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Xóa khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CustomMessageBox.ShowBox("Xoá khách hàng thành công!", "Success");
                         }
                     }
                 }
@@ -271,8 +273,7 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                 }
-
-                MessageBox.Show("Cập nhật khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Cập nhật khách hàng thành công!", "Success");
             }
             catch (Exception ex)
             {

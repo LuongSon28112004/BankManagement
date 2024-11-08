@@ -125,7 +125,7 @@ namespace BankManagement
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ hoặc hiển thị thông báo lỗi
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
         }
 
@@ -150,7 +150,7 @@ namespace BankManagement
 
             if (error != "0")
             {
-                MessageBox.Show($"{error}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox($"{error}", "Error");
                 return;
             }
             //Lấy các thông tin từ các textBox
@@ -171,7 +171,7 @@ namespace BankManagement
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ ở đây
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
         }
 
@@ -281,7 +281,7 @@ namespace BankManagement
 
             if (error != "0")
             {
-                MessageBox.Show($"{error}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox($"{error}", "Error");
                 return;
             }
 
@@ -299,7 +299,7 @@ namespace BankManagement
                 viewModel.SearchCustomer(viewModel.Cccd);
                 if (viewModel.DataTableCustomerInfor.Rows.Count == 0)
                 {
-                    MessageBox.Show("Vui lòng nhập một tài khoản có sẵn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomMessageBox.ShowBox("Vui lòng nhập đúng thông tin khách hàng!", "Error");
                     return;
                 }
 
@@ -317,7 +317,7 @@ namespace BankManagement
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ, hiển thị thông báo lỗi
-                MessageBox.Show("Có lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
         }
 
@@ -342,7 +342,7 @@ namespace BankManagement
 
             if (error != "0")
             {
-                MessageBox.Show($"{error}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox($"{error}", "Error");
                 return;
             }
 
@@ -350,7 +350,7 @@ namespace BankManagement
             {
                 if (lbStatusCustomerForm.Text == "Inactive")
                 {
-                    MessageBox.Show("Khách hàng không còn hoạt động!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomMessageBox.ShowBox("Khách hàng không còn hoạt động!", "Error");
                     return;
                 }
                 // Lấy dữ liệu từ các TextBox
@@ -370,7 +370,7 @@ namespace BankManagement
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
         }
         private void checkStatusCustomer(string status)
@@ -543,8 +543,8 @@ namespace BankManagement
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi khi lưu ảnh: " + ex.Message);
-                }
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+            }
         }
 
         private void txtSearchCustomerForm_KeyPress(object sender, KeyPressEventArgs e)

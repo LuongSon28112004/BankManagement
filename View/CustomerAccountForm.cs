@@ -86,7 +86,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             } 
         }
 
@@ -137,20 +137,20 @@ namespace BankManagement.View
         {
             if (lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Vui lòng điền đầy đủ thông tin!", "Error");
                 return;
             }
             //Khi khách hàng không còn tồn tại trong hệ thống
             if (lbCustomerInfStatusCustomerAccountForm.Text == "Inactive") 
             {
-                MessageBox.Show("Khách hàng này không còn tồn tại trong hệ thống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Khách hàng này không còn tồn tại trong hệ thống!", "Error");
                 return;
             }
 
             this.updateViewModelFromForm();
             if(txtUsernameCustomerAccountForm.Text == "")
             {
-                MessageBox.Show("Vui lòng điền Username!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Vui lòng điền Username!", "Error");
                 return;
             }
             try
@@ -166,7 +166,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
         }
 
@@ -192,12 +192,12 @@ namespace BankManagement.View
         {
             if (txtAccountNumberCustomerAccountForm.Text == "0000000000" || lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
             {
-                MessageBox.Show("Chưa có tài khoản nào được chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Vui lòng chọn tài khoản cần xoá!", "Error");
                 return;
             }    
             if (lbAccountStatusCustomerAccountForm.Text == "Inactive")
             {
-                MessageBox.Show("Tài khoản này đã bị xoá rồi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Tài khoản này đã bị xoá rồi!", "Error");
                 return;
             }
             this.updateViewModelFromForm();
@@ -215,7 +215,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
         }
 
@@ -274,12 +274,12 @@ namespace BankManagement.View
         {
             if (txtAccountNumberCustomerAccountForm.Text == "000xxxxxxx" || lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
             {
-                MessageBox.Show("Chưa có tài khoản nào được chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Vui lòng chọn một tài khoản!", "Error");
                 return;
             }
             if (lbCustomerInfStatusCustomerAccountForm.Text == "Inactive")
             {
-                MessageBox.Show("Không thể kích hoạt tài khoản do khách hàng này không còn hoạt động!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Không thể kích hoạt tài khoản này do khách hàng không còn hoạt động!", "Error");
                 return;
             }
 
@@ -302,7 +302,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
         }
 

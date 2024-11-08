@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankManagement.View;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -34,6 +35,7 @@ namespace BankManagement.Model
                     }
                 }
                 MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Gửi phản hồi thành công!", "Success");
             }
             catch (Exception ex)
             {

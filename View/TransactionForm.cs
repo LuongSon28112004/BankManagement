@@ -99,31 +99,31 @@ namespace BankManagement.View
 
             if (lbCustomerNameSendTransactionForm.Text == "Customer Name" || lbCustomerNameReceiveTransactionForm.Text == "Customer Name")
 			{
-				MessageBox.Show("Vui lòng nhập đầy đủ các thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Vui lòng nhập đầy đủ thông tin!", "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
 			}
             if(txtAccountNumberSendTransactionForm.Text == txtAccountNumberReceiveTransactionForm.Text)
             {
-                MessageBox.Show("Không thể chuyển tiền giữa 2 tài khoản giống nhau!" , "Thông báo", MessageBoxButtons.OK  ,MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Không thể chuyển tiền giữa 2 tài khoản giống nhau!", "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
             }
 			if(txtAmountTransactionForm.Text == "")
 			{
-				MessageBox.Show("Vui lòng nhập số tiền cần chuyển!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Vui lòng nhập số tiền cần chuyển!", "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
 			}
 			if(lbCustomerSendStatusTransactionForm.Text == "Inactive")
 			{
-				MessageBox.Show("Tài khoản gửi tiền không còn tồn tại trong hệ thống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Tài khoản gửi tiền không còn tồn tại trong hệ thống!", "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
 			}
 			if(lbCustomerReceiveStatusTransactionForm.Text == "Inactive")
 			{
-				MessageBox.Show("Tài khoản nhận tiền không còn tồn tại trong hệ thống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Tài khoản nhận tiền không còn tồn tại trong hệ thống!", "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
 			}
@@ -133,7 +133,7 @@ namespace BankManagement.View
             {
                 if (checkAmount < 10000)
                 {
-                    MessageBox.Show("Số tiền giao dịch quá nhỏ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomMessageBox.ShowBox("Số tiền giao dịch tối thiểu 10.000 VNĐ", "Error");
                     btnTransferTransactionForm.Enabled = true;
                     return;
                 }
@@ -152,14 +152,14 @@ namespace BankManagement.View
             {
                 if (balance < amount)
                 {
-                    MessageBox.Show("Không đủ tiền để chuyển!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomMessageBox.ShowBox("Tài khoản không đủ tiền để giao dịch!", "Error");
                     btnTransferTransactionForm.Enabled = true;
                     return;
                 }
             }
             if (txtContentTransactionForm.Text == "")
 			{
-                MessageBox.Show("Vui lòng nhập nội dung giao dịch!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Vui lòng nhập nội dung giao dịch!", "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
             }
@@ -196,7 +196,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
         }
 
@@ -221,7 +221,7 @@ namespace BankManagement.View
             else
             {
                 // Xử lý trường hợp giá trị không hợp lệ
-                MessageBox.Show("Giá trị không hợp lệ, vui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CustomMessageBox.ShowBox("Giá trị tiền không hợp lệ!", "Error");
             }
             viewModel.Note = txtContentTransactionForm.Text == "" ?  "" : txtContentTransactionForm.Text;
 			viewModel.Account_customer_send = txtAccountNumberSendTransactionForm.Text == "" ? 0 : int.Parse(txtAccountNumberSendTransactionForm.Text);
@@ -292,7 +292,7 @@ namespace BankManagement.View
 			if (txtAccountNumberReceiveTransactionForm.Text == "") return;
 			if (txtAccountNumberSendTransactionForm.Text == "")
 			{
-                MessageBox.Show("Vui lòng nhập tài khoản chuyển!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Vui lòng nhập tài khoản chuyển!", "Error");
                 return;
             }
 
@@ -382,7 +382,7 @@ namespace BankManagement.View
 
             if (lbCustomerNameSendTransactionForm.Text == "Customer Name")
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ các thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Vui lòng nhập đầy đủ thông tin! ", "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -390,7 +390,7 @@ namespace BankManagement.View
 
             if (txtAmountTransactionForm.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập số tiền cần gửi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Vui lòng nhập số tiền cần gửi!", "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -398,7 +398,7 @@ namespace BankManagement.View
 
             if (lbCustomerSendStatusTransactionForm.Text == "Inactive")
             {
-                MessageBox.Show("Tài khoản gửi tiền không còn tồn tại trong hệ thống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Tài khoản gửi tiền không còn tồn tại trong hệ thống!", "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -406,7 +406,7 @@ namespace BankManagement.View
 
             if (txtContentTransactionForm.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập nội dung giao dịch!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Vui lòng nhập nội dung giao dich!", "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -418,7 +418,7 @@ namespace BankManagement.View
             {
                 if (checkAmount < 10000)
                 {
-                    MessageBox.Show("Số tiền giao dịch quá nhỏ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomMessageBox.ShowBox("Số tiền giao dịch tối thiểu 10.000 VNĐ", "Error");
                     btnDepositTransactionForm.Enabled = true;
                     btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                     return;
@@ -476,7 +476,7 @@ namespace BankManagement.View
 
             if (lbCustomerNameSendTransactionForm.Text == "Customer Name")
 			{
-				MessageBox.Show("Vui lòng nhập đầy đủ các thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Vui lòng nhập đầy đủ thông tin!", "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true;
                 return;
@@ -484,21 +484,21 @@ namespace BankManagement.View
 
 			if (txtAmountTransactionForm.Text == "")
 			{
-				MessageBox.Show("Vui lòng nhập số tiền cần rút!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Vui lòng nhập số tiền cần rút!", "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true;
                 return;
 			}
 			if (lbCustomerSendStatusTransactionForm.Text == "Inactive")
 			{
-				MessageBox.Show("Tài khoản rút tiền không còn tồn tại trong hệ thống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Tài khoản rút tiền không còn tồn tại trong hệ thống!", "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true;
                 return;
 			}
             if (txtContentTransactionForm.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập nội dung giao dịch!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Vui lòng nhập nội dung giao dịch!", "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -510,7 +510,7 @@ namespace BankManagement.View
             {
                 if (checkAmount < 10000)
                 {
-                    MessageBox.Show("Số tiền giao dịch quá nhỏ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomMessageBox.ShowBox("Số tiền giao dịch tối thiểu 10.000 VNĐ", "Error");
                     btnDepositTransactionForm.Enabled = true;
                     btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                     return;
@@ -530,7 +530,7 @@ namespace BankManagement.View
             {
                 if (balance < amount)
                 {
-                    MessageBox.Show("Không đủ tiền để rút!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomMessageBox.ShowBox("Tài khoản không đủ tiền để rút!", "Error");
                     btnDepositTransactionForm.Enabled = true;
                     btnWithDrawTransactionForm.Enabled = true;
                     return;
@@ -569,7 +569,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
 
         }

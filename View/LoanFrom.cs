@@ -170,7 +170,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
         }
 
@@ -271,32 +271,31 @@ namespace BankManagement.View
             //Kiểm tra xem tài khoản này có đang phải trả khoản vay nào không
             if (viewModel.InPaymentPeriod())
             {
-                MessageBox.Show("Khách Hàng này đang vay tiền, không thể vay thêm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Khách hàng này đang trong kỳ vay, không thể vay thêm!", "Error");
                 return;
             }
 
             if(lbAccountStatusLoanForm.Text == "Inactive")
             {
-                MessageBox.Show("Tài khoản này không còn tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Tài khoản này không còn tồn tại", "Error");
                 return;
             }
 
             if(txtAmountLoanForm.Text == "")
             {
-                CustomMessageBox.ShowBox("Vui lòng nhập số tiền cần vay!");
-               // MessageBox.Show("Vui lòng nhập số tiền cần vay!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Vui lòng nhập số tiền cần vay!", "Error");
                 return;
             }
 
             if(txtLoanTermLoanForm.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập thời hạn vay!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Vui lòng nhập thời hạn vay!", "Error");
                 return;
             }
 
             if(txtLoanPurposeLoanForm.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập mục đích vay!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Vui lòng nhập mục đích vay!", "Error");
                 return;
             }
             this.updateViewModelFromForm();
@@ -308,7 +307,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
         }
         //Chỉ cho nhập số
@@ -419,7 +418,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
         }
     }

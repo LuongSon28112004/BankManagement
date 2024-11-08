@@ -1,4 +1,5 @@
 ﻿using BankManagement.Model;
+using BankManagement.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -97,7 +98,7 @@ namespace BankManagement.ViewModel
             //Kiểm tra xem UserName đã tồn tại chưa
             if(customerAccountWithInforRepository.getCustomerAccountByUserName(this.username) != null)
             {
-                MessageBox.Show("Đã có Username này trong hệ thống!","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Username này đã tồn tại!", "Error");
                 return;
             }
 

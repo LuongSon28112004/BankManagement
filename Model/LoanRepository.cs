@@ -42,7 +42,7 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                     //MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CustomMessageBox.ShowBox("Thêm thành công!");
+                    CustomMessageBox.ShowBox("Tạo khoản vay thành công!", "Success");
                 }
             }
             catch (Exception ex)
@@ -127,7 +127,7 @@ namespace BankManagement.Model
                         cmd.Parameters.Add(new SqlParameter("@Loan_id", SqlDbType.Int) { Value = id });
                         cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CustomMessageBox.ShowBox("Thanh toán thành công!", "Success");
                 }
             }
             catch (Exception ex)

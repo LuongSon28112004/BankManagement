@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using BankManagement.View;
 
 namespace BankManagement.Model
 {
@@ -159,7 +160,7 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                      }
                 }
-                MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Tạo tài khoản thành công! ", "Success");
             }
             catch (Exception ex)
             {
@@ -261,7 +262,7 @@ namespace BankManagement.Model
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CustomMessageBox.ShowBox("Xoá tài khoản thành công!", "Success");
                         }
                     }
                 }
@@ -294,7 +295,7 @@ namespace BankManagement.Model
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Khôi phục tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CustomMessageBox.ShowBox("Khôi phục tài khoản thành công!", "Success");
                         }
                     }
                 }

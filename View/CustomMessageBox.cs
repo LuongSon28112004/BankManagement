@@ -28,11 +28,23 @@ namespace BankManagement.View
             return Button_id;
         }
 
-        public static string ShowBox(string txtMessage, string txtTitle)
+        public static string ShowBox(string txtMessage, string icon)
         {
             newMessageBox = new CustomMessageBox();
+            if (icon == "Error")
+            {
+                newMessageBox.imgIcon.Image = Image.FromFile("..\\..\\Resources\\warning_icon.png");
+                newMessageBox.lbTitle.Text = "Something went wrong!";
+                newMessageBox.btnOk.FillColor = Color.FromArgb(255, 50, 70);
+            }
+            if (icon == "Success")
+            {
+                newMessageBox.imgIcon.Image = Image.FromFile("..\\..\\Resources\\success_icon.png");
+                newMessageBox.lbTitle.Text = "Success!";
+                newMessageBox.btnOk.FillColor = Color.FromArgb(70, 180, 110);
+            }
+
             newMessageBox.txtMessage.Text = txtMessage;
-            newMessageBox.Text = txtTitle;
             newMessageBox.ShowDialog();
             return Button_id;
         }

@@ -523,6 +523,16 @@ namespace BankManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap success_icon {
+            get {
+                object obj = ResourceManager.GetObject("success_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap transaction {
             get {
                 object obj = ResourceManager.GetObject("transaction", resourceCulture);
@@ -586,6 +596,16 @@ namespace BankManagement.Properties {
         internal static System.Drawing.Bitmap userLogin {
             get {
                 object obj = ResourceManager.GetObject("userLogin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warning_icon {
+            get {
+                object obj = ResourceManager.GetObject("warning_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

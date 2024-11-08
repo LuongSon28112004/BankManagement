@@ -266,6 +266,8 @@
     <None Include="Resources\user_icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\success_icon.png" />
+    <None Include="Resources\warning_icon.png" />
     <None Include="Resources\process.png" />
     <None Include="Resources\within_term.png" />
     <None Include="Resources\more_v.png" />

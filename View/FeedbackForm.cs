@@ -105,12 +105,12 @@ namespace BankManagement.View
         {
             if(txtTitleFeedbackForm.Text == "" || txtDescriptionsFeedbackForm.Text == "")
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Vui lòng điền đầy đủ thông tin!", "Error");
                 return;
             }
             if(n == 0)
             {
-                MessageBox.Show("Vui lòng đánh giá chất lượng dịch vụ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.ShowBox("Vui lòng chọn từ 1 đến 5 sao để đánh giá trải nghiệm của bạn!", "Error");
                 return;
             }
             this.updateViewModelFromForm();

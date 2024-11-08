@@ -83,7 +83,7 @@ namespace BankManagement.View
                 catch (Exception ex)
                 {
                     // Xử lý ngoại lệ nếu cần
-                    MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
                 }
             };
 
@@ -121,7 +121,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }  
         }
 

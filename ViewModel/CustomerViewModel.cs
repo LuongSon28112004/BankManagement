@@ -1,4 +1,5 @@
 ﻿using BankManagement.Model;
+using BankManagement.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -135,7 +136,7 @@ namespace BankManagement.ViewModel
             CustomerInfor customerInfor = customerInforRepository.getCustomerInforByCccd(this.Cccd);
             if (customerInfor != null)
             {
-                MessageBox.Show("Đã có Khách Hàng này trong hệ thống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Đã có khách hàng này trong hệ thống!", "Error");
                 return;
             }
             else if (customerInfor == null)
@@ -239,7 +240,7 @@ namespace BankManagement.ViewModel
             // Tên chỉ được phép là chữ cái in hoa
             if (!txtCustomerNameCustomerForm.All(c => char.IsUpper(c) || char.IsWhiteSpace(c)))
             {
-                error = "Vui lòng nhập tên khách hàng đúng định dạng!\nVD: DINH NGOC THE";
+                error = "Vui lòng nhập tên khách hàng đúng định dạng! VD: DINH NGOC THE";
                 return error;
             }
 
