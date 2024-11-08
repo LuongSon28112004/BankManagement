@@ -101,6 +101,12 @@
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\GraphicsExtension.cs" />
+    <Compile Include="View\CustomMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CustomMessageBox.Designer.cs">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\DetailedNoticeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CustomMessageBox.resx">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\DetailedNoticeForm.resx">
       <DependentUpon>DetailedNoticeForm.cs</DependentUpon>

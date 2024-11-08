@@ -283,7 +283,8 @@ namespace BankManagement.View
 
             if(txtAmountLoanForm.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập số tiền cần vay!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.ShowBox("Vui lòng nhập số tiền cần vay!");
+               // MessageBox.Show("Vui lòng nhập số tiền cần vay!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

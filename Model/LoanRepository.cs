@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankManagement.View;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -40,7 +41,8 @@ namespace BankManagement.Model
 
                         cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CustomMessageBox.ShowBox("Thêm thành công!");
                 }
             }
             catch (Exception ex)
