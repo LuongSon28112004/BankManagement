@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using System.Data;
 using System.Diagnostics;
 using BankManagement.View;
+using BankManagement.Language;
+using System.Web.Configuration;
 
 namespace BankManagement.Model
 {
@@ -19,13 +21,22 @@ namespace BankManagement.Model
         //Chuỗi kết nối database
         private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
 
+        LangHelper langHelper;
+        public CustomerInforRepository()
+        {
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
+        }
 
         //Lấy ra thông tin của một khách hàng bằng CCCD----------------------------------------------------------------------------------------------------------------------------
         public CustomerInfor getCustomerInforByCccd(string customerInforCccd)//moi lan truy van chi duoc 1 customer
         {
             CustomerInfor customerInfor = null;
 
-            string query = "SELECT id, name, cccd, phone_number, email, job, nationality , address, date_of_birth, photo , status , gender FROM customer_infor WHERE cccd = @Cccd";
+            string query = "SELECT TOP 50 id, name, cccd, phone_number, email, job, nationality , address, date_of_birth, photo , status , gender FROM customer_infor WHERE cccd = @Cccd";
 
             try
             {
@@ -68,12 +79,11 @@ namespace BankManagement.Model
             catch (Exception ex)
             {
                 // Xử lý lỗi nếu có
-                Console.WriteLine("Error: " + ex.Message);
+                throw new Exception("Error: " + ex.Message, ex);
             }
 
             return customerInfor; // Trả về đối tượng CustomerInfor hoặc null nếu không tìm thấy
         }
-
 
 
 
@@ -108,7 +118,7 @@ namespace BankManagement.Model
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
 
             // Trả về DataTable chứa các bản ghi tìm kiếm được
@@ -123,7 +133,7 @@ namespace BankManagement.Model
         public DataTable LoadAllCustomer()
         {
             DataTable dt = new DataTable();
-            string query = "SELECT * FROM customer_infor";
+            string query = "SELECT TOP 50 * FROM customer_infor";
 
             try
             {
@@ -143,7 +153,7 @@ namespace BankManagement.Model
             catch (Exception ex)
             {
                 // Xử lý các ngoại lệ khác
-                Console.WriteLine("Error: " + ex.Message);
+                throw new Exception("Error: " + ex.Message, ex);
             }
 
             return dt;
@@ -187,12 +197,12 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                 }
-                CustomMessageBox.ShowBox("Thêm khách hàng thành công!", "Success");
+                CustomMessageBox.ShowBox(langHelper.GetString("Added customer successfully!"), "Success"); 
             }
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
 
@@ -217,8 +227,7 @@ namespace BankManagement.Model
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Xóa khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            CustomMessageBox.ShowBox("Xoá khách hàng thành công!", "Success");
+                            CustomMessageBox.ShowBox(langHelper.GetString("Customer deleted successfully!"), "Success");
                         }
                     }
                 }
@@ -226,7 +235,7 @@ namespace BankManagement.Model
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
 
@@ -273,12 +282,12 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                 }
-                CustomMessageBox.ShowBox("Cập nhật khách hàng thành công!", "Success");
+                CustomMessageBox.ShowBox(langHelper.GetString("Update successful!"), "Success");
             }
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
     }

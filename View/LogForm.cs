@@ -1,18 +1,26 @@
-﻿using BankManagement.ViewModel;
+﻿using BankManagement.Language;
+using BankManagement.ViewModel;
 using Guna.UI2.WinForms;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement.View
 {
     public partial class LogForm : Form
     {
+        LangHelper langHelper;
         private LogViewModel viewModel;
         private int id;
         public LogForm(int id)
         {
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
             InitializeComponent();
             SetupForm();
             viewModel = new LogViewModel();
@@ -27,6 +35,8 @@ namespace BankManagement.View
 
         private void LogForm_Load(object sender, EventArgs e)
         {
+            lbHistoryLogForm.Text = langHelper.GetString("History");
+            txtSearchLogForm.PlaceholderText = langHelper.GetString("Search anything");
             viewModel.searchLogByStaffId(this.id);
             foreach (DataRow row in viewModel.LogTable.Rows)
             {

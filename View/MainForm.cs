@@ -1,4 +1,5 @@
-﻿using BankManagement.View;
+﻿using BankManagement.Language;
+using BankManagement.View;
 using BankManagement.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,15 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement
 {
     public partial class MainForm : Form
     {
+        LangHelper langHelper;
 		private int staffId; //Nhận dữ liệu truyền từ LoginForm
-
 		private MainViewModel viewModel;
 
 		public Color initialButtonColor = Color.FromArgb(31, 31, 31); //Màu của các btn không được chọn
@@ -27,6 +29,11 @@ namespace BankManagement
         public MainForm(int staffId)
         {
             InitializeComponent();
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
             this.Load += Main_Load;
 
 			this.staffId = staffId;//Nhận dữ liệu từ LoginForm
@@ -34,8 +41,9 @@ namespace BankManagement
 		}
 		private void Main_Load(object sender, EventArgs e)
 		{
-			// Lưu trữ kích thước và vị trí ban đầu của form
-			normalBounds = this.Bounds;
+            ChangeLanguage();
+            // Lưu trữ kích thước và vị trí ban đầu của form
+            normalBounds = this.Bounds;
 
 			//Đổi màu hover
 			btnCloseMain.HoverState.FillColor = Color.FromArgb(255, 90, 90); 
@@ -71,6 +79,14 @@ namespace BankManagement
                 CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
             }
 
+        }
+        void ChangeLanguage()
+        {
+            lbClientServicesMain.Text = langHelper.GetString("Client Services");
+            btnCustomer.Text = langHelper.GetString("Customer");
+            btnAccount.Text = langHelper.GetString("Account");
+            btnTransaction.Text = langHelper.GetString("Transaction");
+            btnLoan.Text = langHelper.GetString("Loan");
         }
 
 
@@ -538,7 +554,7 @@ namespace BankManagement
 
 
         //Hiển thị FeedbackForm-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-        FeedbackForm feedbackForm;
+        private FeedbackForm feedbackForm;
         private void btnFeedbackMain_Click(object sender, EventArgs e)
         {
             //Mở form FeedbackForm
@@ -583,6 +599,47 @@ namespace BankManagement
         private void UpdateHelpFormSizeAndPosition()
         {  
             helpForm.Location = new Point(this.Location.X + panelLeftBarMain.Width + 7, this.Location.Y + 60 + 7);  
+        }
+
+
+
+
+
+
+        //Mở SettingForm--------------------------------------------------------------------------------------------------------------------------------------------------------------
+        private SettingForm settingForm;
+        private void btnSettingMainForm_Click(object sender, EventArgs e)
+        {
+            if (settingForm == null || settingForm.IsDisposed) // Kiểm tra nếu form chưa được khởi tạo hoặc đã bị đóng
+            {
+                settingForm = new SettingForm(this.staffId);
+                // Đặt vị trí của InfoStaff ngay dưới nút btnStaffAvatar
+                settingForm.StartPosition = FormStartPosition.Manual;
+
+                // Lấy tọa độ và điều chỉnh vị trí
+                var startPos = btnSettingMainForm.PointToScreen(new System.Drawing.Point(panelLeftBarMain.Width - 20, btnSettingMainForm.Height - 600));
+                settingForm.Location = startPos;
+                settingForm.ShowDialog();
+            }
+            else
+            {
+                UpdateSettingFormSizeAndPosition();
+                settingForm.ShowDialog();
+            }
+        }
+        private void UpdateSettingFormSizeAndPosition()
+        {
+            if (settingForm != null && !settingForm.IsDisposed)
+            {
+                // Lấy tọa độ và điều chỉnh vị trí
+                var startPos = btnSettingMainForm.PointToScreen(new System.Drawing.Point(panelLeftBarMain.Width - 20, btnSettingMainForm.Height - 600));
+                settingForm.Location = new Point(startPos.X, startPos.Y);
+            }
+        }
+
+        private void panelLeftBarMain_MouseHover(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
         }
     }
 }

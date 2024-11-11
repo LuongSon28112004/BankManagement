@@ -313,6 +313,16 @@ namespace BankManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap img_panel_profile {
+            get {
+                object obj = ResourceManager.GetObject("img_panel_profile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap img_reset {
             get {
                 object obj = ResourceManager.GetObject("img_reset", resourceCulture);
@@ -326,6 +336,16 @@ namespace BankManagement.Properties {
         internal static System.Drawing.Bitmap img_search {
             get {
                 object obj = ResourceManager.GetObject("img_search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_setting {
+            get {
+                object obj = ResourceManager.GetObject("img_setting", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -553,6 +573,16 @@ namespace BankManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap united_kingdom {
+            get {
+                object obj = ResourceManager.GetObject("united-kingdom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap update_user {
             get {
                 object obj = ResourceManager.GetObject("update-user", resourceCulture);
@@ -596,6 +626,16 @@ namespace BankManagement.Properties {
         internal static System.Drawing.Bitmap userLogin {
             get {
                 object obj = ResourceManager.GetObject("userLogin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vietnam {
+            get {
+                object obj = ResourceManager.GetObject("vietnam", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

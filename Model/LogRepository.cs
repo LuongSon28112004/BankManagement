@@ -24,7 +24,7 @@ namespace BankManagement.Model
             SELECT id, staff_id, content, time 
             FROM log 
             WHERE staff_id = @staffId 
-            AND time >= DATEADD(day, -7, GETDATE()) 
+            AND time >= DATEADD(month, -1, GETDATE()) 
             ORDER BY time DESC"; // Sắp xếp theo thời gian từ sớm nhất đến lâu nhất
 
             try
@@ -50,7 +50,7 @@ namespace BankManagement.Model
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
 
             // Trả về DataTable chứa các bản ghi tìm kiếm được
@@ -83,7 +83,7 @@ namespace BankManagement.Model
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
     }

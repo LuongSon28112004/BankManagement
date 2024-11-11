@@ -1,4 +1,5 @@
-﻿using BankManagement.Model;
+﻿using BankManagement.Language;
+using BankManagement.Model;
 using BankManagement.View;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement.ViewModel
@@ -15,7 +17,7 @@ namespace BankManagement.ViewModel
     {
         //Độ dài mật khẩu mặc định khi tạo mới tài khoản
         const int PASSWORD_LENGH = 12;
-
+        LangHelper langHelper;
         CustomerAccountWithInforRepository customerAccountWithInforRepository;
         CustomerInforRepository customerInforRepository;
         LogRepository logRepository;
@@ -36,6 +38,11 @@ namespace BankManagement.ViewModel
 
         public AccountViewModel()
         {
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
             this.customerAccountWithInforRepository = new CustomerAccountWithInforRepository();
             this.customerInforRepository = new CustomerInforRepository();
             this.logRepository = new LogRepository();
@@ -106,7 +113,7 @@ namespace BankManagement.ViewModel
             //Kiểm tra xem UserName đã tồn tại chưa
             if(customerAccountWithInforRepository.getCustomerAccountByUserName(this.username) != null)
             {
-                CustomMessageBox.ShowBox("Username này đã tồn tại!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("This username already exists!"), "Error");
                 return;
             }
 
@@ -177,7 +184,7 @@ namespace BankManagement.ViewModel
             }catch (Exception ex) 
             {
                  // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
 
@@ -191,7 +198,7 @@ namespace BankManagement.ViewModel
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
 
@@ -205,7 +212,7 @@ namespace BankManagement.ViewModel
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
     }

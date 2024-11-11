@@ -38,7 +38,7 @@
             this.panelTitleBarFeedbackForm = new System.Windows.Forms.Panel();
             this.btnCloseFeedbackForm = new Guna.UI2.WinForms.Guna2Button();
             this.btnFeedbackFeedbackForm = new Guna.UI2.WinForms.Guna2Button();
-            this.lbDescriptionesFeedbackForm = new System.Windows.Forms.Label();
+            this.lbDescriptionsFeedbackForm = new System.Windows.Forms.Label();
             this.btnSendFeedbackForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.lbRattingFeedbackForm = new System.Windows.Forms.Label();
             this.btnStar3FeedbackForm = new Guna.UI2.WinForms.Guna2Button();
@@ -125,9 +125,9 @@
             this.lbTitleFeedbackForm.ForeColor = System.Drawing.Color.White;
             this.lbTitleFeedbackForm.Location = new System.Drawing.Point(33, 63);
             this.lbTitleFeedbackForm.Name = "lbTitleFeedbackForm";
-            this.lbTitleFeedbackForm.Size = new System.Drawing.Size(56, 23);
+            this.lbTitleFeedbackForm.Size = new System.Drawing.Size(46, 23);
             this.lbTitleFeedbackForm.TabIndex = 4;
-            this.lbTitleFeedbackForm.Text = "Title  ";
+            this.lbTitleFeedbackForm.Text = "Title";
             // 
             // panelTitleBarFeedbackForm
             // 
@@ -183,16 +183,16 @@
             this.btnFeedbackFeedbackForm.Size = new System.Drawing.Size(33, 33);
             this.btnFeedbackFeedbackForm.TabIndex = 3;
             // 
-            // lbDescriptionesFeedbackForm
+            // lbDescriptionsFeedbackForm
             // 
-            this.lbDescriptionesFeedbackForm.AutoSize = true;
-            this.lbDescriptionesFeedbackForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDescriptionesFeedbackForm.ForeColor = System.Drawing.Color.White;
-            this.lbDescriptionesFeedbackForm.Location = new System.Drawing.Point(33, 157);
-            this.lbDescriptionesFeedbackForm.Name = "lbDescriptionesFeedbackForm";
-            this.lbDescriptionesFeedbackForm.Size = new System.Drawing.Size(116, 23);
-            this.lbDescriptionesFeedbackForm.TabIndex = 4;
-            this.lbDescriptionesFeedbackForm.Text = "Descriptions";
+            this.lbDescriptionsFeedbackForm.AutoSize = true;
+            this.lbDescriptionsFeedbackForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDescriptionsFeedbackForm.ForeColor = System.Drawing.Color.White;
+            this.lbDescriptionsFeedbackForm.Location = new System.Drawing.Point(33, 157);
+            this.lbDescriptionsFeedbackForm.Name = "lbDescriptionsFeedbackForm";
+            this.lbDescriptionsFeedbackForm.Size = new System.Drawing.Size(116, 23);
+            this.lbDescriptionsFeedbackForm.TabIndex = 4;
+            this.lbDescriptionsFeedbackForm.Text = "Descriptions";
             // 
             // btnSendFeedbackForm
             // 
@@ -217,11 +217,11 @@
             // lbRattingFeedbackForm
             // 
             this.lbRattingFeedbackForm.AutoSize = true;
-            this.lbRattingFeedbackForm.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRattingFeedbackForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRattingFeedbackForm.ForeColor = System.Drawing.Color.White;
-            this.lbRattingFeedbackForm.Location = new System.Drawing.Point(54, 444);
+            this.lbRattingFeedbackForm.Location = new System.Drawing.Point(70, 444);
             this.lbRattingFeedbackForm.Name = "lbRattingFeedbackForm";
-            this.lbRattingFeedbackForm.Size = new System.Drawing.Size(375, 20);
+            this.lbRattingFeedbackForm.Size = new System.Drawing.Size(346, 18);
             this.lbRattingFeedbackForm.TabIndex = 4;
             this.lbRattingFeedbackForm.Text = "How would you rate your experience with this app?";
             // 
@@ -337,7 +337,7 @@
             this.Controls.Add(this.btnStar4FeedbackForm);
             this.Controls.Add(this.btnStar3FeedbackForm);
             this.Controls.Add(this.btnSendFeedbackForm);
-            this.Controls.Add(this.lbDescriptionesFeedbackForm);
+            this.Controls.Add(this.lbDescriptionsFeedbackForm);
             this.Controls.Add(this.lbRattingFeedbackForm);
             this.Controls.Add(this.lbTitleFeedbackForm);
             this.Controls.Add(this.txtTitleFeedbackForm);
@@ -348,6 +348,7 @@
             this.Name = "FeedbackForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FeedbackFormcs";
+            this.Load += new System.EventHandler(this.FeedbackForm_Load);
             this.panelTitleBarFeedbackForm.ResumeLayout(false);
             this.panelTitleBarFeedbackForm.PerformLayout();
             this.ResumeLayout(false);
@@ -366,7 +367,7 @@
         private System.Windows.Forms.Panel panelTitleBarFeedbackForm;
         private Guna.UI2.WinForms.Guna2Button btnCloseFeedbackForm;
         private Guna.UI2.WinForms.Guna2GradientButton btnSendFeedbackForm;
-        private System.Windows.Forms.Label lbDescriptionesFeedbackForm;
+        private System.Windows.Forms.Label lbDescriptionsFeedbackForm;
         private System.Windows.Forms.Label lbRattingFeedbackForm;
         private Guna.UI2.WinForms.Guna2Button btnStar3FeedbackForm;
         private Guna.UI2.WinForms.Guna2Button btnStar5FeedbackForm;

@@ -28,11 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCustomerNameCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCCCDCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSearchCustomerForm = new Guna.UI2.WinForms.Guna2TextBox();
@@ -75,7 +75,7 @@
             this.lbDateOfBirthCustomerForm = new System.Windows.Forms.Label();
             this.btnAddCustomerForm = new Guna.UI2.WinForms.Guna2Button();
             this.btnDeleteCustomerForm = new Guna.UI2.WinForms.Guna2Button();
-            this.lbCustomerAccountCustomerAccountForm = new System.Windows.Forms.Label();
+            this.lbCustomerInformationCustomerAccountForm = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomerInforCustomerForm)).BeginInit();
             this.panelTop1CustomerForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgStatusCustomerForm)).BeginInit();
@@ -186,24 +186,24 @@
             // dataGridViewCustomerInforCustomerForm
             // 
             this.dataGridViewCustomerInforCustomerForm.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(62)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.dataGridViewCustomerInforCustomerForm.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(62)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.dataGridViewCustomerInforCustomerForm.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewCustomerInforCustomerForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewCustomerInforCustomerForm.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(20, 0, 0, 12);
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCustomerInforCustomerForm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(20, 0, 0, 12);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCustomerInforCustomerForm.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewCustomerInforCustomerForm.ColumnHeadersHeight = 38;
             this.dataGridViewCustomerInforCustomerForm.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dataGridViewCustomerInforCustomerForm.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -219,14 +219,14 @@
             this.email,
             this.Status,
             this.Photo});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCustomerInforCustomerForm.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(130)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCustomerInforCustomerForm.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCustomerInforCustomerForm.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
             this.dataGridViewCustomerInforCustomerForm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataGridViewCustomerInforCustomerForm.Location = new System.Drawing.Point(37, 478);
@@ -235,18 +235,18 @@
             this.dataGridViewCustomerInforCustomerForm.Name = "dataGridViewCustomerInforCustomerForm";
             this.dataGridViewCustomerInforCustomerForm.ReadOnly = true;
             this.dataGridViewCustomerInforCustomerForm.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.dataGridViewCustomerInforCustomerForm.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.dataGridViewCustomerInforCustomerForm.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewCustomerInforCustomerForm.RowHeadersVisible = false;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(90)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewCustomerInforCustomerForm.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(90)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewCustomerInforCustomerForm.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewCustomerInforCustomerForm.RowTemplate.Height = 40;
             this.dataGridViewCustomerInforCustomerForm.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridViewCustomerInforCustomerForm.Size = new System.Drawing.Size(917, 398);
@@ -500,9 +500,9 @@
             this.btnActiveCustomerForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(174)))), ((int)(((byte)(242)))));
             this.btnActiveCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActiveCustomerForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.btnActiveCustomerForm.Location = new System.Drawing.Point(740, 86);
+            this.btnActiveCustomerForm.Location = new System.Drawing.Point(702, 86);
             this.btnActiveCustomerForm.Name = "btnActiveCustomerForm";
-            this.btnActiveCustomerForm.Size = new System.Drawing.Size(80, 35);
+            this.btnActiveCustomerForm.Size = new System.Drawing.Size(105, 35);
             this.btnActiveCustomerForm.TabIndex = 12;
             this.btnActiveCustomerForm.Text = "Active";
             this.btnActiveCustomerForm.TextOffset = new System.Drawing.Point(1, -1);
@@ -522,9 +522,9 @@
             this.btnUpdateCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateCustomerForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnUpdateCustomerForm.Image = global::BankManagement.Properties.Resources.employee;
-            this.btnUpdateCustomerForm.Location = new System.Drawing.Point(837, 86);
+            this.btnUpdateCustomerForm.Location = new System.Drawing.Point(832, 86);
             this.btnUpdateCustomerForm.Name = "btnUpdateCustomerForm";
-            this.btnUpdateCustomerForm.Size = new System.Drawing.Size(95, 35);
+            this.btnUpdateCustomerForm.Size = new System.Drawing.Size(105, 35);
             this.btnUpdateCustomerForm.TabIndex = 12;
             this.btnUpdateCustomerForm.Text = "Update";
             this.btnUpdateCustomerForm.Click += new System.EventHandler(this.btnUpdateCustomerForm_Click);
@@ -763,9 +763,9 @@
             this.lbPhoneNumberCustomerForm.ForeColor = System.Drawing.Color.Gainsboro;
             this.lbPhoneNumberCustomerForm.Location = new System.Drawing.Point(33, 78);
             this.lbPhoneNumberCustomerForm.Name = "lbPhoneNumberCustomerForm";
-            this.lbPhoneNumberCustomerForm.Size = new System.Drawing.Size(107, 18);
+            this.lbPhoneNumberCustomerForm.Size = new System.Drawing.Size(104, 18);
             this.lbPhoneNumberCustomerForm.TabIndex = 2;
-            this.lbPhoneNumberCustomerForm.Text = "Phone Number";
+            this.lbPhoneNumberCustomerForm.Text = "Phone number";
             // 
             // lbEmailCustomerForm
             // 
@@ -807,9 +807,9 @@
             this.lbDateOfBirthCustomerForm.ForeColor = System.Drawing.Color.Gainsboro;
             this.lbDateOfBirthCustomerForm.Location = new System.Drawing.Point(33, 10);
             this.lbDateOfBirthCustomerForm.Name = "lbDateOfBirthCustomerForm";
-            this.lbDateOfBirthCustomerForm.Size = new System.Drawing.Size(95, 18);
+            this.lbDateOfBirthCustomerForm.Size = new System.Drawing.Size(91, 18);
             this.lbDateOfBirthCustomerForm.TabIndex = 2;
-            this.lbDateOfBirthCustomerForm.Text = "Date Of Birth";
+            this.lbDateOfBirthCustomerForm.Text = "Date of birth";
             // 
             // btnAddCustomerForm
             // 
@@ -823,9 +823,9 @@
             this.btnAddCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnAddCustomerForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.btnAddCustomerForm.Image = global::BankManagement.Properties.Resources.user;
-            this.btnAddCustomerForm.Location = new System.Drawing.Point(740, 168);
+            this.btnAddCustomerForm.Location = new System.Drawing.Point(702, 168);
             this.btnAddCustomerForm.Name = "btnAddCustomerForm";
-            this.btnAddCustomerForm.Size = new System.Drawing.Size(80, 35);
+            this.btnAddCustomerForm.Size = new System.Drawing.Size(105, 35);
             this.btnAddCustomerForm.TabIndex = 15;
             this.btnAddCustomerForm.Text = "Add";
             this.btnAddCustomerForm.Click += new System.EventHandler(this.btnAddCustomerForm_Click);
@@ -842,23 +842,23 @@
             this.btnDeleteCustomerForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteCustomerForm.ForeColor = System.Drawing.Color.White;
             this.btnDeleteCustomerForm.Image = global::BankManagement.Properties.Resources.trash_bin;
-            this.btnDeleteCustomerForm.Location = new System.Drawing.Point(837, 168);
+            this.btnDeleteCustomerForm.Location = new System.Drawing.Point(832, 168);
             this.btnDeleteCustomerForm.Name = "btnDeleteCustomerForm";
-            this.btnDeleteCustomerForm.Size = new System.Drawing.Size(95, 35);
+            this.btnDeleteCustomerForm.Size = new System.Drawing.Size(105, 35);
             this.btnDeleteCustomerForm.TabIndex = 13;
             this.btnDeleteCustomerForm.Text = "Delete";
             this.btnDeleteCustomerForm.Click += new System.EventHandler(this.btnDeleteCustomerForm_Click);
             // 
-            // lbCustomerAccountCustomerAccountForm
+            // lbCustomerInformationCustomerAccountForm
             // 
-            this.lbCustomerAccountCustomerAccountForm.AutoSize = true;
-            this.lbCustomerAccountCustomerAccountForm.Font = new System.Drawing.Font("Tw Cen MT", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCustomerAccountCustomerAccountForm.ForeColor = System.Drawing.Color.White;
-            this.lbCustomerAccountCustomerAccountForm.Location = new System.Drawing.Point(18, 9);
-            this.lbCustomerAccountCustomerAccountForm.Name = "lbCustomerAccountCustomerAccountForm";
-            this.lbCustomerAccountCustomerAccountForm.Size = new System.Drawing.Size(179, 28);
-            this.lbCustomerAccountCustomerAccountForm.TabIndex = 34;
-            this.lbCustomerAccountCustomerAccountForm.Text = "Customer Profile";
+            this.lbCustomerInformationCustomerAccountForm.AutoSize = true;
+            this.lbCustomerInformationCustomerAccountForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCustomerInformationCustomerAccountForm.ForeColor = System.Drawing.Color.White;
+            this.lbCustomerInformationCustomerAccountForm.Location = new System.Drawing.Point(18, 9);
+            this.lbCustomerInformationCustomerAccountForm.Name = "lbCustomerInformationCustomerAccountForm";
+            this.lbCustomerInformationCustomerAccountForm.Size = new System.Drawing.Size(249, 29);
+            this.lbCustomerInformationCustomerAccountForm.TabIndex = 34;
+            this.lbCustomerInformationCustomerAccountForm.Text = "Customer Information";
             // 
             // CustomerForm
             // 
@@ -866,7 +866,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
             this.ClientSize = new System.Drawing.Size(990, 895);
-            this.Controls.Add(this.lbCustomerAccountCustomerAccountForm);
+            this.Controls.Add(this.lbCustomerInformationCustomerAccountForm);
             this.Controls.Add(this.panelTop2CustomefForm);
             this.Controls.Add(this.panelTop1CustomerForm);
             this.Controls.Add(this.dataGridViewCustomerInforCustomerForm);
@@ -918,7 +918,7 @@
         private System.Windows.Forms.Label lbEmailCustomerForm;
         private System.Windows.Forms.Label lbAddressCustomerForm;
         private System.Windows.Forms.Label lbJobCustomerForm;
-        private System.Windows.Forms.Label lbCustomerAccountCustomerAccountForm;
+        private System.Windows.Forms.Label lbCustomerInformationCustomerAccountForm;
         private Guna.UI2.WinForms.Guna2Button btnResetCustomerForm;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn cccd;

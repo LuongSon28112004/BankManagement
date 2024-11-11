@@ -1,4 +1,5 @@
-﻿using BankManagement.ViewModel;
+﻿using BankManagement.Language;
+using BankManagement.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
@@ -18,13 +20,19 @@ namespace BankManagement.View
 {
     public partial class TransactionForm : Form
     {
+        LangHelper langHelper;
         TransactionViewModel viewModel;
 		int staffId;
 
 		//constructor
         public TransactionForm(int staffId)
         {
-			this.staffId = staffId;
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
+            this.staffId = staffId;
             InitializeComponent();
             viewModel = new TransactionViewModel();
             this.ShowInTaskbar = false;
@@ -36,10 +44,36 @@ namespace BankManagement.View
         {
             btnDepositWithdrawTaskBarTransactionForm.HoverState.FillColor = Color.FromArgb(50, 50, 50);
             btnTransferTaskBarTransactionForm.HoverState.FillColor = Color.FromArgb(50, 50, 50);
+
+            ChangeLanguage();
+        }
+        void ChangeLanguage()
+        {
+            lbTransactionTransactionForm.Text = langHelper.GetString("Transaction");
+            btnTransferTaskBarTransactionForm.Text = langHelper.GetString("Transfer");
+            btnDepositWithdrawTaskBarTransactionForm.Text = langHelper.GetString("Deposit") + "/" + langHelper.GetString("Withdraw");
+            txtSearchAccountNumberSendTransactionForm.PlaceholderText = langHelper.GetString("Account Number");
+            btnSearchByAccountSendNumberTransactionForm.Text = langHelper.GetString("Search");
+            lbCustomerNameSendTransactionForm.Text = langHelper.GetString("Customer Name");
+            lbAccountNumberSendTransactionForm.Text = langHelper.GetString("Account Number");
+            lbBalanceTransactionForm.Text = langHelper.GetString("Balance");
+            lbAmountTransactionForm.Text = langHelper.GetString("Amount");
+            lbContentTransactionForm.Text = langHelper.GetString("Content");
+            txtContentTransactionForm.PlaceholderText = langHelper.GetString("Customer Name transfer to...");
+            btnDepositTransactionForm.Text = langHelper.GetString("Deposit");
+            btnWithDrawTransactionForm.Text = langHelper.GetString("Withdraw");
+            lbCustomerNameReceiveTransactionForm.Text = langHelper.GetString("Customer Name");
+            lbAccountNumberReceiveTransactionForm.Text = langHelper.GetString("Account Number");
+            btnTransferTransactionForm.Text = langHelper.GetString("Transfer");
+        }
+
+        private void TransactionForm_Resize(object sender, EventArgs e)
+        {
+            panelCustomerReceiveTransactionForm.Location = new Point(panelCustomerSendTransactionForm.Location.X + panelCustomerSendTransactionForm.Width + 30, panelCustomerSendTransactionForm.Location.Y);
         }
 
 
-		//event click button depositWithdraw----------------------------------------------------------------------------------------------------------------------------
+        //event click button depositWithdraw----------------------------------------------------------------------------------------------------------------------------
         private void btnDepositWithdrawTaskBarTransactionForm_Click(object sender, EventArgs e)
         {
 			//reset lai cac label va textbox
@@ -55,8 +89,7 @@ namespace BankManagement.View
 			btnDepositTransactionForm.Visible = true;
 			btnWithDrawTransactionForm.Visible = true;
 			//reset content
-			txtContentTransactionForm.PlaceholderText = "Customer Name deposit/withdraw...";
-
+			txtContentTransactionForm.PlaceholderText = langHelper.GetString("Customer Name") + " " + langHelper.GetString("Deposit") + "/" + langHelper.GetString("Withdraw") + "...";
 		}
 
 
@@ -84,7 +117,7 @@ namespace BankManagement.View
             btnWithDrawTransactionForm.Visible = false;
 
 			//reset content
-			txtContentTransactionForm.PlaceholderText = "Customer Name transfer to...";
+			txtContentTransactionForm.PlaceholderText = langHelper.GetString("Customer Name transfer to...");
 		}
 
 
@@ -97,33 +130,33 @@ namespace BankManagement.View
             // Vô hiệu hóa nút để tránh click nhiều lần
             btnTransferTransactionForm.Enabled = false;
 
-            if (lbCustomerNameSendTransactionForm.Text == "Customer Name" || lbCustomerNameReceiveTransactionForm.Text == "Customer Name")
+            if (lbCustomerNameSendTransactionForm.Text == langHelper.GetString("") || lbCustomerNameReceiveTransactionForm.Text == "Customer Name")
 			{
-                CustomMessageBox.ShowBox("Vui lòng nhập đầy đủ thông tin!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please fill in all information!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
 			}
             if(txtAccountNumberSendTransactionForm.Text == txtAccountNumberReceiveTransactionForm.Text)
             {
-                CustomMessageBox.ShowBox("Không thể chuyển tiền giữa 2 tài khoản giống nhau!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Cannot transfer money between 2 same accounts!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
             }
 			if(txtAmountTransactionForm.Text == "")
 			{
-                CustomMessageBox.ShowBox("Vui lòng nhập số tiền cần chuyển!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please enter the amount to transfer!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
 			}
 			if(lbCustomerSendStatusTransactionForm.Text == "Inactive")
 			{
-                CustomMessageBox.ShowBox("Tài khoản gửi tiền không còn tồn tại trong hệ thống!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("The deposit account no longer exists in the system!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
 			}
 			if(lbCustomerReceiveStatusTransactionForm.Text == "Inactive")
 			{
-                CustomMessageBox.ShowBox("Tài khoản nhận tiền không còn tồn tại trong hệ thống!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("The receiving account no longer exists in the system!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
 			}
@@ -133,7 +166,7 @@ namespace BankManagement.View
             {
                 if (checkAmount < 10000)
                 {
-                    CustomMessageBox.ShowBox("Số tiền giao dịch tối thiểu 10.000 VNĐ", "Error");
+                    CustomMessageBox.ShowBox(langHelper.GetString("Minimum transaction amount 10,000 VNĐ"), "Error");
                     btnTransferTransactionForm.Enabled = true;
                     return;
                 }
@@ -152,14 +185,14 @@ namespace BankManagement.View
             {
                 if (balance < amount)
                 {
-                    CustomMessageBox.ShowBox("Tài khoản không đủ tiền để giao dịch!", "Error");
+                    CustomMessageBox.ShowBox(langHelper.GetString("Account does not have enough funds to trade!"), "Error");
                     btnTransferTransactionForm.Enabled = true;
                     return;
                 }
             }
             if (txtContentTransactionForm.Text == "")
 			{
-                CustomMessageBox.ShowBox("Vui lòng nhập nội dung giao dịch!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please enter transaction content!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
             }
@@ -196,7 +229,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
         }
 
@@ -221,7 +254,7 @@ namespace BankManagement.View
             else
             {
                 // Xử lý trường hợp giá trị không hợp lệ
-                CustomMessageBox.ShowBox("Giá trị tiền không hợp lệ!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Invalid currency value!"), "Error");
             }
             viewModel.Note = txtContentTransactionForm.Text == "" ?  "" : txtContentTransactionForm.Text;
 			viewModel.Account_customer_send = txtAccountNumberSendTransactionForm.Text == "" ? 0 : int.Parse(txtAccountNumberSendTransactionForm.Text);
@@ -292,7 +325,7 @@ namespace BankManagement.View
 			if (txtAccountNumberReceiveTransactionForm.Text == "") return;
 			if (txtAccountNumberSendTransactionForm.Text == "")
 			{
-                CustomMessageBox.ShowBox("Vui lòng nhập tài khoản chuyển!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please enter transfer account!"), "Error");
                 return;
             }
 
@@ -311,9 +344,9 @@ namespace BankManagement.View
             if(viewModel.DatatableAccountReceive.Rows.Count == 1)
             {
                 this.updateCustomerAccountReceive(viewModel.DatatableAccountReceive);
-				if (lbCustomerNameSendTransactionForm.Text != "Customer Name" && lbCustomerNameReceiveTransactionForm.Text != "Customer Name")
+				if (lbCustomerNameSendTransactionForm.Text != langHelper.GetString("Customer Name") && lbCustomerNameReceiveTransactionForm.Text != langHelper.GetString("Customer Name"))
 				{
-                    txtContentTransactionForm.Text = txtContentTransactionForm.Text = viewModel.DatatableAccountSend.Rows[0]["name"].ToString() + " chuyen tien den " + viewModel.DatatableAccountReceive.Rows[0]["name"].ToString();
+                    txtContentTransactionForm.Text = txtContentTransactionForm.Text = viewModel.DatatableAccountSend.Rows[0]["name"].ToString() + " chuyen tien toi " + viewModel.DatatableAccountReceive.Rows[0]["name"].ToString();
                 }
             }
         }
@@ -380,9 +413,9 @@ namespace BankManagement.View
             btnDepositTransactionForm.Enabled = false;
             btnWithDrawTransactionForm.Enabled = false;
 
-            if (lbCustomerNameSendTransactionForm.Text == "Customer Name")
+            if (lbCustomerNameSendTransactionForm.Text == langHelper.GetString("Customer Name"))
             {
-                CustomMessageBox.ShowBox("Vui lòng nhập đầy đủ thông tin! ", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please fill in all information!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -390,7 +423,7 @@ namespace BankManagement.View
 
             if (txtAmountTransactionForm.Text == "")
             {
-                CustomMessageBox.ShowBox("Vui lòng nhập số tiền cần gửi!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please enter the amount to deposit!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -398,7 +431,7 @@ namespace BankManagement.View
 
             if (lbCustomerSendStatusTransactionForm.Text == "Inactive")
             {
-                CustomMessageBox.ShowBox("Tài khoản gửi tiền không còn tồn tại trong hệ thống!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Deposit account no longer exists in the system!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -406,7 +439,7 @@ namespace BankManagement.View
 
             if (txtContentTransactionForm.Text == "")
             {
-                CustomMessageBox.ShowBox("Vui lòng nhập nội dung giao dich!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please enter transaction content!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -418,7 +451,7 @@ namespace BankManagement.View
             {
                 if (checkAmount < 10000)
                 {
-                    CustomMessageBox.ShowBox("Số tiền giao dịch tối thiểu 10.000 VNĐ", "Error");
+                    CustomMessageBox.ShowBox(langHelper.GetString("Minimum transaction amount 10,000 VNĐ"), "Error");
                     btnDepositTransactionForm.Enabled = true;
                     btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                     return;
@@ -458,7 +491,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
 
@@ -476,7 +509,7 @@ namespace BankManagement.View
 
             if (lbCustomerNameSendTransactionForm.Text == "Customer Name")
 			{
-                CustomMessageBox.ShowBox("Vui lòng nhập đầy đủ thông tin!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please fill in all information!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true;
                 return;
@@ -484,21 +517,21 @@ namespace BankManagement.View
 
 			if (txtAmountTransactionForm.Text == "")
 			{
-                CustomMessageBox.ShowBox("Vui lòng nhập số tiền cần rút!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please enter the amount to withdraw!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true;
                 return;
 			}
 			if (lbCustomerSendStatusTransactionForm.Text == "Inactive")
 			{
-                CustomMessageBox.ShowBox("Tài khoản rút tiền không còn tồn tại trong hệ thống!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("The withdrawal account no longer exists in the system!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true;
                 return;
 			}
             if (txtContentTransactionForm.Text == "")
             {
-                CustomMessageBox.ShowBox("Vui lòng nhập nội dung giao dịch!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please enter transaction content!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -510,7 +543,7 @@ namespace BankManagement.View
             {
                 if (checkAmount < 10000)
                 {
-                    CustomMessageBox.ShowBox("Số tiền giao dịch tối thiểu 10.000 VNĐ", "Error");
+                    CustomMessageBox.ShowBox(langHelper.GetString("Minimum transaction amount 10,000 VNĐ"), "Error");
                     btnDepositTransactionForm.Enabled = true;
                     btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                     return;
@@ -530,7 +563,7 @@ namespace BankManagement.View
             {
                 if (balance < amount)
                 {
-                    CustomMessageBox.ShowBox("Tài khoản không đủ tiền để rút!", "Error");
+                    CustomMessageBox.ShowBox(langHelper.GetString("Account does not have enough funds to withdraw!"), "Error");
                     btnDepositTransactionForm.Enabled = true;
                     btnWithDrawTransactionForm.Enabled = true;
                     return;
@@ -569,7 +602,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
 
         }
@@ -589,7 +622,7 @@ namespace BankManagement.View
             imgCustomerSendTracsactionForm.Image = System.Drawing.Image.FromFile($"..\\..\\Resources\\avatar_customer_default.png");
             imgCustomerReceiveTransactionForm.Image = System.Drawing.Image.FromFile($"..\\..\\Resources\\avatar_customer_default.png");
             txtSearchAccountNumberSendTransactionForm.Text = "";
-            lbCustomerNameSendTransactionForm.Text = "Customer Name";
+            lbCustomerNameSendTransactionForm.Text = langHelper.GetString("Customer Name");
             lbCCCDCustomerSendTransactionForm.Text = "024xxxxxxxxx";
             this.SetAccountSendStatus("Status");
             txtAccountNumberSendTransactionForm.Text = "";
@@ -682,5 +715,7 @@ namespace BankManagement.View
                 e.Handled = true;
             }
         }
+
+        
     }
 }

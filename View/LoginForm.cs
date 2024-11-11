@@ -13,27 +13,43 @@ using System.Data.SqlClient;
 using System.Security.Cryptography;
 using BankManagement.ViewModel;
 using BankManagement.Model;
+using BankManagement.Language;
+using BankManagement.View;
+using System.Web.Configuration;
 
 
 namespace BankManagement
 {
     public partial class LoginForm : Form
     {
+		LangHelper langHelper;
 		private LoginViewModel viewModel;
 		public LoginForm()
         {
             InitializeComponent();
+            viewModel = new LoginViewModel();
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
             //this.BackColor = ColorTranslator.FromHtml("#34AB53");
             btnCloseLogin.HoverState.FillColor = Color.FromArgb(255, 90, 90); //Thuộc tính hover btnClose "đỏ"
-			btnMinimizeLogin.HoverState.FillColor = Color.FromArgb(50, 50, 73); //Thuộc tính hover btnMinimize
+            btnMinimizeLogin.HoverState.FillColor = Color.FromArgb(50, 50, 73); //Thuộc tính hover btnMinimize
 
-            viewModel = new LoginViewModel();
+			lbAdminLogin.Text = langHelper.GetString("Admin Login");
+			lbUserName.Text = langHelper.GetString("Username");
+			lbPassword.Text = langHelper.GetString("Password");
+			btnLogin.Text = langHelper.GetString("Login");
         }
 
 
-
-		//Btn đóng, thu nhỏ ứng dụng
-		private void btnLoginClose_Click(object sender, EventArgs e)
+        //Btn đóng, thu nhỏ ứng dụng
+        private void btnLoginClose_Click(object sender, EventArgs e)
 		{
             Application.Exit(); //Đóng ứng dụng
 		}
@@ -80,13 +96,13 @@ namespace BankManagement
 
 			if (username == "")
 			{
-				lblWarningLogin.Text = "Enter username and password!";
+				lblWarningLogin.Text = langHelper.GetString("Enter username and password!");
 				txtUsername.Focus();
 				return;
 			}
 			if (password == "")
 			{
-                lblWarningLogin.Text = "Enter username and password!";
+                lblWarningLogin.Text = langHelper.GetString("Enter username and password!");
                 txtPassword.Focus();
                 return;
             }
@@ -102,15 +118,17 @@ namespace BankManagement
 				}
 				else
 				{
-					lblWarningLogin.Text = "Wrong username or password!";
+					lblWarningLogin.Text = langHelper.GetString("Wrong username or password!");
                     txtPassword.Focus();
                 }
 			}
 			catch (Exception ex)
 			{
 				// Xử lý lỗi và hiển thị thông báo
-				lblWarningLogin.Text = "Lỗi: " + ex.Message;
+				CustomMessageBox.ShowBox("Error" + ex.Message, "Error");
 			}
 		}
+
+        
     }
 }

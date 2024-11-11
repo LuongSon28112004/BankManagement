@@ -33,7 +33,6 @@ namespace BankManagement.Model
 		public string GetPassword() { return password; }
 		public string GetWorkingBranch() { return workingBranch; }
 		public string GetJobPosition() { return jobPosition; }
-
 		public string GetPhotoPath() { return photoPath; }
 	}
 }

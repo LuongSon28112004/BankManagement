@@ -1,4 +1,5 @@
-﻿using BankManagement.Model;
+﻿using BankManagement.Language;
+using BankManagement.Model;
 using BankManagement.View;
 using BankManagement.ViewModel;
 using System;
@@ -10,17 +11,24 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement
 {
     public partial class InfoStaffForm : Form
     {
+        LangHelper langHelper;
         private int staffId;
         private InfoStaffViewModel viewModel;
         public InfoStaffForm(int staffId)
         {
             InitializeComponent();
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
             this.staffId = staffId; //Nhận dữ liệu từ Main
 
             this.ShowInTaskbar = false; // Ẩn form khỏi thanh taskbar 
@@ -39,8 +47,9 @@ namespace BankManagement
             //Cập nhật các thuộc tính bind với form
             lbStaffNameInfoStaffForm.Text = viewModel.GetStaffName();
             lbUserNameInfoStaffForm.Text = viewModel.GetUserName();
-            lbBranchInfoStaffForm.Text = "Chi nhánh: " + viewModel.GetWorkingBranch();
-            lbJobPositionInfoStaffForm.Text = "Vị trí: " + viewModel.GetJobPosition();
+            lbBranchInfoStaffForm.Text = langHelper.GetString("Branch") + ": " + viewModel.GetWorkingBranch();
+            lbJobPositionInfoStaffForm.Text = langHelper.GetString("Position") + ": " + viewModel.GetJobPosition();
+            btnLogOutInfoStaffForm.Text = langHelper.GetString("Log out");
 
 
 			// Cập nhật ảnh của PictureBox từ file
@@ -56,12 +65,12 @@ namespace BankManagement
 				}
 				else
 				{
-                    CustomMessageBox.ShowBox("Lỗi không tìm thấy file ảnh!", "Error");
+                    CustomMessageBox.ShowBox(langHelper.GetString("Error image file not found!"), "Error");
                 }
 			}
 			catch (Exception ex)
 			{
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
 		}
 

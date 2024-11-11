@@ -71,11 +71,11 @@
             // lbTransactionTransactionForm
             // 
             this.lbTransactionTransactionForm.AutoSize = true;
-            this.lbTransactionTransactionForm.Font = new System.Drawing.Font("Tw Cen MT", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTransactionTransactionForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTransactionTransactionForm.ForeColor = System.Drawing.Color.White;
             this.lbTransactionTransactionForm.Location = new System.Drawing.Point(18, 9);
             this.lbTransactionTransactionForm.Name = "lbTransactionTransactionForm";
-            this.lbTransactionTransactionForm.Size = new System.Drawing.Size(129, 28);
+            this.lbTransactionTransactionForm.Size = new System.Drawing.Size(137, 29);
             this.lbTransactionTransactionForm.TabIndex = 3;
             this.lbTransactionTransactionForm.Text = "Transaction";
             // 
@@ -469,11 +469,11 @@
             this.btnDepositWithdrawTaskBarTransactionForm.FillColor = System.Drawing.Color.Transparent;
             this.btnDepositWithdrawTaskBarTransactionForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDepositWithdrawTaskBarTransactionForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.btnDepositWithdrawTaskBarTransactionForm.Location = new System.Drawing.Point(117, 58);
+            this.btnDepositWithdrawTaskBarTransactionForm.Location = new System.Drawing.Point(127, 58);
             this.btnDepositWithdrawTaskBarTransactionForm.Name = "btnDepositWithdrawTaskBarTransactionForm";
-            this.btnDepositWithdrawTaskBarTransactionForm.Size = new System.Drawing.Size(149, 30);
+            this.btnDepositWithdrawTaskBarTransactionForm.Size = new System.Drawing.Size(160, 30);
             this.btnDepositWithdrawTaskBarTransactionForm.TabIndex = 37;
-            this.btnDepositWithdrawTaskBarTransactionForm.Text = "Deposit/withdraw";
+            this.btnDepositWithdrawTaskBarTransactionForm.Text = "Deposit/Withdraw";
             this.btnDepositWithdrawTaskBarTransactionForm.TextOffset = new System.Drawing.Point(2, -1);
             this.btnDepositWithdrawTaskBarTransactionForm.Click += new System.EventHandler(this.btnDepositWithdrawTaskBarTransactionForm_Click);
             // 
@@ -493,6 +493,7 @@
             this.panelCustomerReceiveTransactionForm.Controls.Add(this.lbCustomerNameReceiveTransactionForm);
             this.panelCustomerReceiveTransactionForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.panelCustomerReceiveTransactionForm.Location = new System.Drawing.Point(581, 164);
+            this.panelCustomerReceiveTransactionForm.Margin = new System.Windows.Forms.Padding(50);
             this.panelCustomerReceiveTransactionForm.Name = "panelCustomerReceiveTransactionForm";
             this.panelCustomerReceiveTransactionForm.ShadowDecoration.BorderRadius = 13;
             this.panelCustomerReceiveTransactionForm.ShadowDecoration.Color = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -512,9 +513,9 @@
             this.btnTransferTransactionForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(213)))), ((int)(((byte)(127)))));
             this.btnTransferTransactionForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnTransferTransactionForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.btnTransferTransactionForm.Location = new System.Drawing.Point(270, 231);
+            this.btnTransferTransactionForm.Location = new System.Drawing.Point(255, 231);
             this.btnTransferTransactionForm.Name = "btnTransferTransactionForm";
-            this.btnTransferTransactionForm.Size = new System.Drawing.Size(90, 35);
+            this.btnTransferTransactionForm.Size = new System.Drawing.Size(105, 35);
             this.btnTransferTransactionForm.TabIndex = 39;
             this.btnTransferTransactionForm.Text = "Transfer";
             this.btnTransferTransactionForm.TextOffset = new System.Drawing.Point(2, 0);
@@ -661,7 +662,7 @@
             this.btnTransferTaskBarTransactionForm.ForeColor = System.Drawing.Color.White;
             this.btnTransferTaskBarTransactionForm.Location = new System.Drawing.Point(21, 58);
             this.btnTransferTaskBarTransactionForm.Name = "btnTransferTaskBarTransactionForm";
-            this.btnTransferTaskBarTransactionForm.Size = new System.Drawing.Size(94, 30);
+            this.btnTransferTaskBarTransactionForm.Size = new System.Drawing.Size(105, 30);
             this.btnTransferTaskBarTransactionForm.TabIndex = 37;
             this.btnTransferTaskBarTransactionForm.Text = "Transfer";
             this.btnTransferTaskBarTransactionForm.TextOffset = new System.Drawing.Point(2, -1);
@@ -685,6 +686,7 @@
             this.Name = "TransactionForm";
             this.Text = "TransactionForm";
             this.Load += new System.EventHandler(this.TransactionForm_Load);
+            this.Resize += new System.EventHandler(this.TransactionForm_Resize);
             this.panelCustomerSendTransactionForm.ResumeLayout(false);
             this.panelCustomerSendTransactionForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgCustomerSendStatusTransactionForm)).EndInit();

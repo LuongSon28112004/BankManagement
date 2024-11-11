@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailedNoticeForm));
-            this.lbNotificationsLogForm = new System.Windows.Forms.Label();
+            this.lbNotifications = new System.Windows.Forms.Label();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.txtTitleDetailedNoticeForm = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtContentDetailedNoticeForm = new Guna.UI2.WinForms.Guna2TextBox();
@@ -38,16 +38,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // lbNotificationsLogForm
+            // lbNotifications
             // 
-            this.lbNotificationsLogForm.AutoSize = true;
-            this.lbNotificationsLogForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNotificationsLogForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(180)))), ((int)(((byte)(25)))));
-            this.lbNotificationsLogForm.Location = new System.Drawing.Point(13, 11);
-            this.lbNotificationsLogForm.Name = "lbNotificationsLogForm";
-            this.lbNotificationsLogForm.Size = new System.Drawing.Size(129, 25);
-            this.lbNotificationsLogForm.TabIndex = 0;
-            this.lbNotificationsLogForm.Text = "Notifications";
+            this.lbNotifications.AutoSize = true;
+            this.lbNotifications.Font = new System.Drawing.Font("Bahnschrift SemiBold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNotifications.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(180)))), ((int)(((byte)(25)))));
+            this.lbNotifications.Location = new System.Drawing.Point(13, 11);
+            this.lbNotifications.Name = "lbNotifications";
+            this.lbNotifications.Size = new System.Drawing.Size(129, 25);
+            this.lbNotifications.TabIndex = 0;
+            this.lbNotifications.Text = "Notifications";
             // 
             // guna2BorderlessForm1
             // 
@@ -149,7 +149,7 @@
             this.Controls.Add(this.btnCloseDetailedNoticeForm);
             this.Controls.Add(this.txtContentDetailedNoticeForm);
             this.Controls.Add(this.txtTitleDetailedNoticeForm);
-            this.Controls.Add(this.lbNotificationsLogForm);
+            this.Controls.Add(this.lbNotifications);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DetailedNoticeForm";
@@ -163,7 +163,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbNotificationsLogForm;
+        private System.Windows.Forms.Label lbNotifications;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2TextBox txtTitleDetailedNoticeForm;
         private Guna.UI2.WinForms.Guna2TextBox txtContentDetailedNoticeForm;

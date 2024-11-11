@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using BankManagement.View;
+using BankManagement.Language;
+using System.Web.Configuration;
 
 namespace BankManagement.Model
 {
@@ -15,7 +17,15 @@ namespace BankManagement.Model
     {
         //Chuỗi kết nối database
         private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
-
+        LangHelper langHelper;
+        public CustomerAccountWithInforRepository()
+        {
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
+        }
 
 
 
@@ -25,7 +35,7 @@ namespace BankManagement.Model
         {
             DataTable dataTableCustomerAccountInfor = new DataTable();
 
-            string query = "SELECT a.id ,b.cccd , b.phone_number ,b.name ,b.gender ,a.account_number, a.username, a.account_status," +
+            string query = "SELECT TOP 50 a.id ,b.cccd , b.phone_number ,b.name ,b.gender ,a.account_number, a.username, a.account_status," +
                 " b.date_of_birth, b.address, b.email, b.photo, b.status, a.date_opened, a.balance " +
                 "FROM customer_account a inner join customer_infor b ON a.customer_id = b.id " +
                 "Where cast(account_number as nvarchar) LIKE @Account_number ";
@@ -51,7 +61,7 @@ namespace BankManagement.Model
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
 
             return dataTableCustomerAccountInfor; // Trả về danh sách thông tin khách hàng và tài khoản tương ứng
@@ -66,7 +76,7 @@ namespace BankManagement.Model
         {
             DataTable dataTableCustomerAccountInfor = new DataTable();
 
-            string query = "SELECT a.id ,b.cccd ,b.name ,b.gender ,a.account_number, a.username, a.account_status," +
+            string query = "SELECT TOP 50 a.id ,b.cccd ,b.name ,b.gender ,a.account_number, a.username, a.account_status," +
                 " b.date_of_birth, b.address, b.email, b.photo, b.status, a.date_opened, a.balance " +
                 "FROM customer_account a INNER JOIN customer_infor b ON a.customer_id = b.id " +
                 "WHERE b.cccd LIKE @Cccd";
@@ -91,8 +101,8 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi nếu có
-                Console.WriteLine("Error: " + ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Error: " + ex.Message, ex);
             }
 
             return dataTableCustomerAccountInfor; // Trả về danh sách thông tin khách hàng và tài khoản tương ứng
@@ -107,7 +117,7 @@ namespace BankManagement.Model
         public DataTable LoadAllAccount()
         {
             DataTable dataTableAccount = new DataTable();
-            string query = "select a.id, b.cccd, b.name, b.gender, a.account_number, a.username, a.account_status, b.date_of_birth, b.address, b.email, b.photo, b.status, a.date_opened, a.balance " +
+            string query = "select TOP 50 a.id, b.cccd, b.name, b.gender, a.account_number, a.username, a.account_status, b.date_of_birth, b.address, b.email, b.photo, b.status, a.date_opened, a.balance " +
                 "FROM customer_account a inner join customer_infor b ON a.customer_id = b.id";
 
             try
@@ -127,7 +137,8 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Error: " + ex.Message, ex);
             }
             return dataTableAccount;
         }
@@ -139,6 +150,7 @@ namespace BankManagement.Model
         //Thêm một tài khoản----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         public void AddCustomerAccount(CustomerAccount customerAccount)
         {
+            
             string query = "INSERT INTO customer_account (username, password, balance, date_opened, customer_id, account_status, account_number)" +
                 " VALUES (@Username, @Password, @Balance, @Date_opened, @Customer_id, @Account_status ,@Account_number);";
 
@@ -160,12 +172,12 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                      }
                 }
-                CustomMessageBox.ShowBox("Tạo tài khoản thành công! ", "Success");
+                CustomMessageBox.ShowBox(langHelper.GetString("Account created successfully!"), "Success");
             }
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
         //Lấy ra số tài khoản lớn nhất
@@ -192,7 +204,7 @@ namespace BankManagement.Model
             catch (Exception ex)
             {
                 // Xử lý lỗi nếu có
-                Console.WriteLine("Error: " + ex.Message);
+                throw new Exception("Error: " + ex.Message, ex);
             }
 
             return maxAccountNumber;
@@ -206,7 +218,7 @@ namespace BankManagement.Model
         public CustomerAccount getCustomerAccountByUserName(string user_name)
         {
             CustomerAccount customerAccount = null;
-            string query = "SELECT * from customer_account where username = @Username";
+            string query = "SELECT TOP 50 * from customer_account where username = @Username";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -236,7 +248,7 @@ namespace BankManagement.Model
             catch(Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
             return customerAccount;
         }
@@ -262,7 +274,7 @@ namespace BankManagement.Model
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            CustomMessageBox.ShowBox("Xoá tài khoản thành công!", "Success");
+                            CustomMessageBox.ShowBox(langHelper.GetString("Account deleted successfully!"), "Success");
                         }
                     }
                 }
@@ -270,7 +282,7 @@ namespace BankManagement.Model
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
 
@@ -295,7 +307,7 @@ namespace BankManagement.Model
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            CustomMessageBox.ShowBox("Khôi phục tài khoản thành công!", "Success");
+                            CustomMessageBox.ShowBox(langHelper.GetString("Account recovery successful!"), "Success");
                         }
                     }
                 }
@@ -303,7 +315,7 @@ namespace BankManagement.Model
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
 
@@ -338,7 +350,7 @@ namespace BankManagement.Model
 			catch (Exception ex)
 			{
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
 		}
 

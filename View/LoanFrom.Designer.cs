@@ -88,11 +88,11 @@
             // lbLoanLoanForm
             // 
             this.lbLoanLoanForm.AutoSize = true;
-            this.lbLoanLoanForm.Font = new System.Drawing.Font("Tw Cen MT", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLoanLoanForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLoanLoanForm.ForeColor = System.Drawing.Color.White;
             this.lbLoanLoanForm.Location = new System.Drawing.Point(19, 9);
             this.lbLoanLoanForm.Name = "lbLoanLoanForm";
-            this.lbLoanLoanForm.Size = new System.Drawing.Size(61, 28);
+            this.lbLoanLoanForm.Size = new System.Drawing.Size(66, 29);
             this.lbLoanLoanForm.TabIndex = 4;
             this.lbLoanLoanForm.Text = "Loan";
             // 
@@ -417,9 +417,9 @@
             this.lbLoanDateLoanForm.ForeColor = System.Drawing.Color.Gainsboro;
             this.lbLoanDateLoanForm.Location = new System.Drawing.Point(30, 134);
             this.lbLoanDateLoanForm.Name = "lbLoanDateLoanForm";
-            this.lbLoanDateLoanForm.Size = new System.Drawing.Size(76, 18);
+            this.lbLoanDateLoanForm.Size = new System.Drawing.Size(74, 18);
             this.lbLoanDateLoanForm.TabIndex = 42;
-            this.lbLoanDateLoanForm.Text = "Loan Date";
+            this.lbLoanDateLoanForm.Text = "Loan date";
             // 
             // btnResetLoanForm
             // 
@@ -534,9 +534,9 @@
             this.lbLoanPurposeLoanForm.ForeColor = System.Drawing.Color.Gainsboro;
             this.lbLoanPurposeLoanForm.Location = new System.Drawing.Point(30, 227);
             this.lbLoanPurposeLoanForm.Name = "lbLoanPurposeLoanForm";
-            this.lbLoanPurposeLoanForm.Size = new System.Drawing.Size(100, 18);
+            this.lbLoanPurposeLoanForm.Size = new System.Drawing.Size(99, 18);
             this.lbLoanPurposeLoanForm.TabIndex = 36;
-            this.lbLoanPurposeLoanForm.Text = "Loan Purpose";
+            this.lbLoanPurposeLoanForm.Text = "Loan purpose";
             // 
             // lbAmountLoanForm
             // 
@@ -617,9 +617,9 @@
             this.lbLoanTermLoanForm.ForeColor = System.Drawing.Color.Gainsboro;
             this.lbLoanTermLoanForm.Location = new System.Drawing.Point(300, 134);
             this.lbLoanTermLoanForm.Name = "lbLoanTermLoanForm";
-            this.lbLoanTermLoanForm.Size = new System.Drawing.Size(78, 18);
+            this.lbLoanTermLoanForm.Size = new System.Drawing.Size(77, 18);
             this.lbLoanTermLoanForm.TabIndex = 36;
-            this.lbLoanTermLoanForm.Text = "Loan Term";
+            this.lbLoanTermLoanForm.Text = "Loan term";
             // 
             // txtInterestRateLoanForm
             // 
@@ -656,9 +656,9 @@
             this.lbInterestRateLoanForm.ForeColor = System.Drawing.Color.Gainsboro;
             this.lbInterestRateLoanForm.Location = new System.Drawing.Point(300, 41);
             this.lbInterestRateLoanForm.Name = "lbInterestRateLoanForm";
-            this.lbInterestRateLoanForm.Size = new System.Drawing.Size(95, 18);
+            this.lbInterestRateLoanForm.Size = new System.Drawing.Size(91, 18);
             this.lbInterestRateLoanForm.TabIndex = 36;
-            this.lbInterestRateLoanForm.Text = "Interest Rate";
+            this.lbInterestRateLoanForm.Text = "Interest rate";
             // 
             // btnCreateTaskBarLoanForm
             // 
@@ -674,7 +674,7 @@
             this.btnCreateTaskBarLoanForm.ForeColor = System.Drawing.Color.White;
             this.btnCreateTaskBarLoanForm.Location = new System.Drawing.Point(23, 58);
             this.btnCreateTaskBarLoanForm.Name = "btnCreateTaskBarLoanForm";
-            this.btnCreateTaskBarLoanForm.Size = new System.Drawing.Size(85, 30);
+            this.btnCreateTaskBarLoanForm.Size = new System.Drawing.Size(90, 30);
             this.btnCreateTaskBarLoanForm.TabIndex = 47;
             this.btnCreateTaskBarLoanForm.Text = "Create";
             this.btnCreateTaskBarLoanForm.TextOffset = new System.Drawing.Point(2, -1);
@@ -691,9 +691,9 @@
             this.btnPaymentTaskBarLoanForm.FillColor = System.Drawing.Color.Transparent;
             this.btnPaymentTaskBarLoanForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPaymentTaskBarLoanForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.btnPaymentTaskBarLoanForm.Location = new System.Drawing.Point(111, 58);
+            this.btnPaymentTaskBarLoanForm.Location = new System.Drawing.Point(112, 58);
             this.btnPaymentTaskBarLoanForm.Name = "btnPaymentTaskBarLoanForm";
-            this.btnPaymentTaskBarLoanForm.Size = new System.Drawing.Size(100, 30);
+            this.btnPaymentTaskBarLoanForm.Size = new System.Drawing.Size(110, 30);
             this.btnPaymentTaskBarLoanForm.TabIndex = 48;
             this.btnPaymentTaskBarLoanForm.Text = "Payment";
             this.btnPaymentTaskBarLoanForm.TextOffset = new System.Drawing.Point(2, -1);
@@ -807,9 +807,9 @@
             this.lbLastPaymentDateLoanForm.ForeColor = System.Drawing.Color.Gainsboro;
             this.lbLastPaymentDateLoanForm.Location = new System.Drawing.Point(308, 18);
             this.lbLastPaymentDateLoanForm.Name = "lbLastPaymentDateLoanForm";
-            this.lbLastPaymentDateLoanForm.Size = new System.Drawing.Size(135, 18);
+            this.lbLastPaymentDateLoanForm.Size = new System.Drawing.Size(132, 18);
             this.lbLastPaymentDateLoanForm.TabIndex = 42;
-            this.lbLastPaymentDateLoanForm.Text = "Last Payment Date";
+            this.lbLastPaymentDateLoanForm.Text = "Last payment date";
             // 
             // lbLoanStatusLoanForm
             // 
@@ -817,17 +817,17 @@
             this.lbLoanStatusLoanForm.AutoSize = true;
             this.lbLoanStatusLoanForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLoanStatusLoanForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(100)))), ((int)(((byte)(30)))));
-            this.lbLoanStatusLoanForm.Location = new System.Drawing.Point(853, 19);
+            this.lbLoanStatusLoanForm.Location = new System.Drawing.Point(838, 19);
             this.lbLoanStatusLoanForm.Name = "lbLoanStatusLoanForm";
-            this.lbLoanStatusLoanForm.Size = new System.Drawing.Size(74, 16);
+            this.lbLoanStatusLoanForm.Size = new System.Drawing.Size(73, 16);
             this.lbLoanStatusLoanForm.TabIndex = 31;
-            this.lbLoanStatusLoanForm.Text = "Within Term";
+            this.lbLoanStatusLoanForm.Text = "Within term";
             // 
             // imgLoanStatusLoanForm
             // 
             this.imgLoanStatusLoanForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.imgLoanStatusLoanForm.Image = global::BankManagement.Properties.Resources.process;
-            this.imgLoanStatusLoanForm.Location = new System.Drawing.Point(824, 13);
+            this.imgLoanStatusLoanForm.Location = new System.Drawing.Point(809, 13);
             this.imgLoanStatusLoanForm.Name = "imgLoanStatusLoanForm";
             this.imgLoanStatusLoanForm.Size = new System.Drawing.Size(28, 28);
             this.imgLoanStatusLoanForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -845,9 +845,9 @@
             this.btnPaymentLoanForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(220)))), ((int)(((byte)(160)))));
             this.btnPaymentLoanForm.Font = new System.Drawing.Font("Bahnschrift SemiBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPaymentLoanForm.ForeColor = System.Drawing.Color.Black;
-            this.btnPaymentLoanForm.Location = new System.Drawing.Point(835, 123);
+            this.btnPaymentLoanForm.Location = new System.Drawing.Point(820, 123);
             this.btnPaymentLoanForm.Name = "btnPaymentLoanForm";
-            this.btnPaymentLoanForm.Size = new System.Drawing.Size(90, 33);
+            this.btnPaymentLoanForm.Size = new System.Drawing.Size(105, 33);
             this.btnPaymentLoanForm.TabIndex = 39;
             this.btnPaymentLoanForm.Text = "Payment";
             this.btnPaymentLoanForm.Click += new System.EventHandler(this.btnPaymentLoanForm_Click);
@@ -859,9 +859,9 @@
             this.lbNextInterestDueDateLoanForm.ForeColor = System.Drawing.Color.Gainsboro;
             this.lbNextInterestDueDateLoanForm.Location = new System.Drawing.Point(38, 18);
             this.lbNextInterestDueDateLoanForm.Name = "lbNextInterestDueDateLoanForm";
-            this.lbNextInterestDueDateLoanForm.Size = new System.Drawing.Size(161, 18);
+            this.lbNextInterestDueDateLoanForm.Size = new System.Drawing.Size(157, 18);
             this.lbNextInterestDueDateLoanForm.TabIndex = 42;
-            this.lbNextInterestDueDateLoanForm.Text = "Next Interest Due Date";
+            this.lbNextInterestDueDateLoanForm.Text = "Next interest due date";
             // 
             // guna2Button2
             // 
@@ -1013,9 +1013,9 @@
             this.lbInterestDueAmountLoanForm.ForeColor = System.Drawing.Color.Gainsboro;
             this.lbInterestDueAmountLoanForm.Location = new System.Drawing.Point(38, 100);
             this.lbInterestDueAmountLoanForm.Name = "lbInterestDueAmountLoanForm";
-            this.lbInterestDueAmountLoanForm.Size = new System.Drawing.Size(146, 18);
+            this.lbInterestDueAmountLoanForm.Size = new System.Drawing.Size(142, 18);
             this.lbInterestDueAmountLoanForm.TabIndex = 36;
-            this.lbInterestDueAmountLoanForm.Text = "Interest Due Amount";
+            this.lbInterestDueAmountLoanForm.Text = "Interest due amount";
             // 
             // LoanFrom
             // 

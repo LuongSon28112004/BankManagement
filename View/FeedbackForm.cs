@@ -1,4 +1,5 @@
-﻿using BankManagement.Model;
+﻿using BankManagement.Language;
+using BankManagement.Model;
 using BankManagement.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -9,20 +10,44 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement.View
 {
     public partial class FeedbackForm : Form
     {
+        LangHelper langHelper;
         FeedBackViewModel viewModel;
         int StaffId;
         public FeedbackForm(int StaffId)
         {
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
             viewModel = new FeedBackViewModel();
             this.StaffId = StaffId;
             InitializeComponent();
         }
+
+
+        private void FeedbackForm_Load(object sender, EventArgs e)
+        {
+            ChangeLanguage();
+        }
+        void ChangeLanguage()
+        {
+            lbFeedbackFeedbackForm.Text = langHelper.GetString("Feedback");
+            lbTitleFeedbackForm.Text = langHelper.GetString("Title");
+            txtTitleFeedbackForm.PlaceholderText = langHelper.GetString("Summary of the problem");
+            lbDescriptionsFeedbackForm.Text = langHelper.GetString("Descriptiones");
+            txtDescriptionsFeedbackForm.PlaceholderText = langHelper.GetString("Describe in detail the problems, requirements...");
+            lbRattingFeedbackForm.Text = langHelper.GetString("How would you rate your experience with this app?");
+            btnSendFeedbackForm.Text = langHelper.GetString("Send Feedback");
+        }
+
 
         //Hỗ trợ kéo thả khi giữ click vào thanh title -------------------------------------------------------------------------------------------------------------------------
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -105,12 +130,12 @@ namespace BankManagement.View
         {
             if(txtTitleFeedbackForm.Text == "" || txtDescriptionsFeedbackForm.Text == "")
             {
-                CustomMessageBox.ShowBox("Vui lòng điền đầy đủ thông tin!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please fill in all information!"), "Error");
                 return;
             }
             if(n == 0)
             {
-                CustomMessageBox.ShowBox("Vui lòng chọn từ 1 đến 5 sao để đánh giá trải nghiệm của bạn!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please select from 1 to 5 stars to rate your experience!"), "Error");
                 return;
             }
             this.updateViewModelFromForm();
@@ -127,5 +152,7 @@ namespace BankManagement.View
             viewModel.StaffId = StaffId;
             viewModel.Rating = n;
         }
+
+        
     }
 }

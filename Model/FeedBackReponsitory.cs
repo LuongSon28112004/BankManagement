@@ -1,4 +1,5 @@
-﻿using BankManagement.View;
+﻿using BankManagement.Language;
+using BankManagement.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement.Model
@@ -14,7 +16,15 @@ namespace BankManagement.Model
     {
         //Chuỗi kết nối database
         private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
-
+        LangHelper langHelper;
+        public FeedBackReponsitory()
+        {
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
+        }
 
         //thêm một feedback vaò cơ sở dự liệu
         public void addFeedBack(FeedBack feedBack)
@@ -34,13 +44,12 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                 }
-                MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CustomMessageBox.ShowBox("Gửi phản hồi thành công!", "Success");
+                CustomMessageBox.ShowBox(langHelper.GetString("Feedback sent successfully!"), "Success");
             }
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
     }

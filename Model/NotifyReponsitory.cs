@@ -17,7 +17,7 @@ namespace BankManagement.Model
         {
             DataTable dt = new DataTable();
             // Thêm ORDER BY để sắp xếp thông báo theo thời gian tạo mới nhất đến sớm nhất
-            string query = "SELECT staff_id, notification_id, title, message, DateCreated, isRead FROM staff_account sa JOIN staff_notification sn ON sa.id = sn.staff_id JOIN notifications n ON sn.notification_id = n.notificationID WHERE sa.id = @Id ORDER BY DateCreated DESC;";
+            string query = "SELECT TOP 100 staff_id, notification_id, title, message, DateCreated, isRead FROM staff_account sa JOIN staff_notification sn ON sa.id = sn.staff_id JOIN notifications n ON sn.notification_id = n.notificationID WHERE sa.id = @Id ORDER BY DateCreated DESC;";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -37,7 +37,7 @@ namespace BankManagement.Model
             catch (Exception ex)
 			{
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
             return dt;
         }
@@ -65,7 +65,7 @@ namespace BankManagement.Model
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu có
-                throw new Exception("Lỗi khi đánh dấu là đã đọc: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
     }

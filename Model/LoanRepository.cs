@@ -1,4 +1,5 @@
-﻿using BankManagement.View;
+﻿using BankManagement.Language;
+using BankManagement.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement.Model
@@ -15,7 +17,15 @@ namespace BankManagement.Model
     {
         //Chuỗi kết nối database
         private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
-
+        LangHelper langHelper;
+        public LoanRepository()
+        {
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
+        }
 
         //Tạo 1 khoản vay
         public void addLoan(Loan loan)
@@ -42,13 +52,13 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                     //MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CustomMessageBox.ShowBox("Tạo khoản vay thành công!", "Success");
+                    CustomMessageBox.ShowBox(langHelper.GetString("Loan created successfully!"), "Success");
                 }
             }
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
 
@@ -74,7 +84,7 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi: " + ex.Message, ex); // Chỉ ném ngoại lệ mà không trả về false
+                throw new Exception("Error: " + ex.Message, ex); // Chỉ ném ngoại lệ mà không trả về false
             }
         }
 
@@ -86,7 +96,7 @@ namespace BankManagement.Model
         public DataTable getLoanByIdAccount(int idAccount)
         {
             DataTable dt = new DataTable();
-            string query = "select * from Loan where account_customer_loan_id = @IdAccount and paid_status = 0";
+            string query = "select TOP 50 * from Loan where account_customer_loan_id = @IdAccount and paid_status = 0";
             try
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -101,7 +111,7 @@ namespace BankManagement.Model
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
             return dt;
         }
@@ -127,13 +137,13 @@ namespace BankManagement.Model
                         cmd.Parameters.Add(new SqlParameter("@Loan_id", SqlDbType.Int) { Value = id });
                         cmd.ExecuteNonQuery();
                     }
-                    CustomMessageBox.ShowBox("Thanh toán thành công!", "Success");
+                    CustomMessageBox.ShowBox(langHelper.GetString("Payment successful!"), "Success");
                 }
             }
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ để form cha có thể xử lý
-                throw new Exception("Lỗi: " + ex.Message, ex);
+                throw new Exception("Error: " + ex.Message, ex);
             }
         }
     }

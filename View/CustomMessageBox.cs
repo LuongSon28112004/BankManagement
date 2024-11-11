@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankManagement.Language;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,19 +7,24 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement.View
 {
     public partial class CustomMessageBox : Form
     {
+        static CustomMessageBox newMessageBox;
+        static string Button_id;
         public CustomMessageBox()
         {
             InitializeComponent();
         }
 
-        static CustomMessageBox newMessageBox;
-        static string Button_id;
+        private void CustomMessageBox_Load(object sender, EventArgs e)
+        {
+
+        }
 
         public static string ShowBox(string txtMessage)
         {
@@ -30,17 +36,23 @@ namespace BankManagement.View
 
         public static string ShowBox(string txtMessage, string icon)
         {
+            LangHelper langHelper;
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
             newMessageBox = new CustomMessageBox();
             if (icon == "Error")
             {
                 newMessageBox.imgIcon.Image = Image.FromFile("..\\..\\Resources\\warning_icon.png");
-                newMessageBox.lbTitle.Text = "Something went wrong!";
+                newMessageBox.lbTitle.Text = langHelper.GetString("Warning!");
                 newMessageBox.btnOk.FillColor = Color.FromArgb(255, 50, 70);
             }
             if (icon == "Success")
             {
                 newMessageBox.imgIcon.Image = Image.FromFile("..\\..\\Resources\\success_icon.png");
-                newMessageBox.lbTitle.Text = "Success!";
+                newMessageBox.lbTitle.Text = langHelper.GetString("Success!");
                 newMessageBox.btnOk.FillColor = Color.FromArgb(70, 180, 110);
             }
 
@@ -52,6 +64,22 @@ namespace BankManagement.View
         private void btnOk_Click(object sender, EventArgs e)
         {
             Button_id = "1";
+            newMessageBox.Dispose();
+        }
+
+        private void txtMessage_MouseHover(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+        private void txtMessage_MouseEnter(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Button_id = "0";
             newMessageBox.Dispose();
         }
     }

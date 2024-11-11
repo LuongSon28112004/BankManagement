@@ -1,4 +1,5 @@
-﻿using BankManagement.Model;
+﻿using BankManagement.Language;
+using BankManagement.Model;
 using BankManagement.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 using Excel = Microsoft.Office.Interop.Excel;
@@ -17,6 +19,7 @@ namespace BankManagement.View
 {
     public partial class CustomerAccountForm : Form
     {
+        LangHelper langHelper;
         AccountViewModel viewModel;
         private int staffId;
         private int accountCustomerId;
@@ -24,6 +27,11 @@ namespace BankManagement.View
         public CustomerAccountForm(int staffId)
         {
             InitializeComponent();
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
             viewModel = new AccountViewModel();
             this.reset();
             this.ShowInTaskbar = false; //Ẩn khỏi thanh taskbar
@@ -35,8 +43,34 @@ namespace BankManagement.View
         {
             //Đăng ký sự kiện ScrollBar vertical của dataGridView
             dataGridViewCustomerAccountForm.MouseWheel += dataGridViewCustomerAccountForm_MouseWheel;
+            ChangeLanguage();
         }
 
+
+
+
+        //Thay đổi ngôn ngữ------------------------------------------------------------------------------------------------------------------------------------------------
+        void ChangeLanguage()
+        {
+            lbCustomerAccountCustomerAccountForm.Text = langHelper.GetString("Customer Account");
+            txtSearchByCCCDCustomerAccountForm.PlaceholderText = langHelper.GetString("Search by CCCD");
+            btnSearchByCCCDCustomerAccountForm.Text = langHelper.GetString("Search");
+            lbCustomerNameCustomerAccountForm.Text = langHelper.GetString("Customer Name");
+            lbDateOfBirthCustomerAccountForm.Text = langHelper.GetString("Date of birth");
+            lbAddressCustomerAccountForm.Text = langHelper.GetString("Address");
+            txtAddressCustomerAccountForm.PlaceholderText = langHelper.GetString("Ward - District - City");
+            lbAccountNumberCustomerAccountForm.Text = langHelper.GetString("Account Number");
+            lbOpenDateCustomerAccountForm.Text = langHelper.GetString("Open date");
+            lbUsernameCustomerAccountForm.Text = langHelper.GetString("Username");
+            txtUsernameCustomerAccountForm.PlaceholderText = langHelper.GetString("Customise");
+            lbBalanceCustomerAccountForm.Text = langHelper.GetString("Balance");
+            btnActiveCustomerAccountForm.Text = langHelper.GetString("Active");
+            btnStatementCustomerAccountForm.Text = langHelper.GetString("Statement");
+            btnAddCustomerAccountForm.Text = langHelper.GetString("Add");
+            btnDeleteCustomerAccountForm.Text = langHelper.GetString("Delete");
+            btnSearchByAccountNumberCustomerAccountForm.Text = langHelper.GetString("Search");
+            txtSearchAccountNumberAccountCustomerForm.PlaceholderText = langHelper.GetString("Account Number");
+        }
 
 
 
@@ -67,6 +101,7 @@ namespace BankManagement.View
         //Tìm kiếm theo account number và trả về danh sách các tài khoản---------------------------------------------------------------------------------------------------
         private void btnSearchByAccountNumberCustomerAccountForm_Click(object sender, EventArgs e)
         {
+            if (txtSearchAccountNumberAccountCustomerForm.Text == "") return;
             int accountNumber;
 
             // Thử chuyển đổi giá trị từ txtSearchAccountNumberSendTransactionForm
@@ -90,7 +125,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             } 
         }
 
@@ -101,6 +136,7 @@ namespace BankManagement.View
         //Tìm kiếm thông tin khách hàng bằng CCCD và cập nhật Panel chứa thông tin khách hàng-----------------------------------------------------------------
         private void btnSearchByCCCDCustomerAccountForm_Click(object sender, EventArgs e)
         {
+            if (txtSearchByCCCDCustomerAccountForm.Text == "") return;
             viewModel.searchCustomerInforByCccd(txtSearchByCCCDCustomerAccountForm.Text); //Trả về một DataTable
             if (viewModel.DataTableCustomerInfor.Rows.Count == 1) //Nếu có 1 bản ghi duy nhất thì cập nhật thông tin khách hàng
             {
@@ -125,7 +161,6 @@ namespace BankManagement.View
             DateTime dateOfBirth = DateTime.Parse(row["date_of_birth"].ToString());
             string formattedDateOfBirth = dateOfBirth.ToString("dd/MM/yyyy");
             txtDateOfBirthCustomerAccountForm.Text = formattedDateOfBirth;
-
             txtGenderCustomerAccountForm.Text = row["gender"].ToString();
             txtEmailCustomerAccountForm.Text = row["email"].ToString();
             txtAddressCustomerAccountForm.Text = row["address"].ToString();
@@ -142,20 +177,20 @@ namespace BankManagement.View
         {
             if (lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
             {
-                CustomMessageBox.ShowBox("Vui lòng điền đầy đủ thông tin!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please fill in all information!"), "Error"); 
                 return;
             }
             //Khi khách hàng không còn tồn tại trong hệ thống
             if (lbCustomerInfStatusCustomerAccountForm.Text == "Inactive") 
             {
-                CustomMessageBox.ShowBox("Khách hàng này không còn tồn tại trong hệ thống!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("This customer no longer exists in the system!"), "Error");
                 return;
             }
 
             this.updateViewModelFromForm();
             if(txtUsernameCustomerAccountForm.Text == "")
             {
-                CustomMessageBox.ShowBox("Vui lòng điền Username!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please enter username!"), "Error");
                 return;
             }
             try
@@ -171,7 +206,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
         }
 
@@ -197,12 +232,12 @@ namespace BankManagement.View
         {
             if (txtAccountNumberCustomerAccountForm.Text == "0000000000" || lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
             {
-                CustomMessageBox.ShowBox("Vui lòng chọn tài khoản cần xoá!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please select the account to delete!"), "Error");
                 return;
             }    
             if (lbAccountStatusCustomerAccountForm.Text == "Inactive")
             {
-                CustomMessageBox.ShowBox("Tài khoản này đã bị xoá rồi!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("This account has been deleted!"), "Error");
                 return;
             }
             this.updateViewModelFromForm();
@@ -220,7 +255,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
         }
 
@@ -238,7 +273,7 @@ namespace BankManagement.View
             txtUsernameCustomerAccountForm.ReadOnly = false;
             txtAccountNumberCustomerAccountForm.Text = "000xxxxxxx";
             txtSearchByCCCDCustomerAccountForm.Text = "";
-            lbCustomerNameCustomerAccountForm.Text = "Customer Name";
+            lbCustomerNameCustomerAccountForm.Text = langHelper.GetString("Customer Name");
             lbCCCDCustomerAccountForm.Text = "024xxxxxxxxx";
             txtDateOfBirthCustomerAccountForm.Text = "";
             txtGenderCustomerAccountForm.Text = "";
@@ -279,12 +314,12 @@ namespace BankManagement.View
         {
             if (txtAccountNumberCustomerAccountForm.Text == "000xxxxxxx" || lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
             {
-                CustomMessageBox.ShowBox("Vui lòng chọn một tài khoản!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please select an account!"), "Error");
                 return;
             }
             if (lbCustomerInfStatusCustomerAccountForm.Text == "Inactive")
             {
-                CustomMessageBox.ShowBox("Không thể kích hoạt tài khoản này do khách hàng không còn hoạt động!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("This account cannot be activated because the customer is no longer active!"), "Error");
                 return;
             }
 
@@ -307,7 +342,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
         }
 
@@ -364,8 +399,6 @@ namespace BankManagement.View
                     txtOpenDateCustomerAccountForm.Text = date_opened;
                     txtUsernameCustomerAccountForm.Text = username;
                     
-                    
-
                     try
                     {
                         if (photo != "")
@@ -443,8 +476,8 @@ namespace BankManagement.View
         //Load thông tin tất cả các khách hàng và tài khoản tương ứng--------------------------------------------------------------------------------------------------------------------------------------------
         private void LoadAllAccount()
         {
-            viewModel.LoadAllCustomerAccount();
-            this.updateDataGridView(viewModel.DataTableAccountInfor);
+            //viewModel.LoadAllCustomerAccount();
+            //this.updateDataGridView(viewModel.DataTableAccountInfor);
         }
         
 
@@ -505,9 +538,9 @@ namespace BankManagement.View
 
         private void BtnStatementCustomerAccountForm_Click(object sender, EventArgs e)
         {
-            if(txtAccountNumberCustomerAccountForm.Text == "")
+            if(lbCustomerNameCustomerAccountForm.Text == langHelper.GetString("Customer Name"))
             {
-                CustomMessageBox.ShowBox("Vui Lòng Chọn Số Tài Khoản Để Sao Kê" , "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please select the account you want to statement!") , "Error");
                 return;
             }
             viewModel.getAllTransferByIdAccount(this.accountCustomerId);
@@ -644,6 +677,9 @@ namespace BankManagement.View
             GC.Collect();
         }
 
+        private void imgCustomerCustomerAccountForm_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

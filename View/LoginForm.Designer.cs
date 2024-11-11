@@ -33,9 +33,9 @@
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.btnMinimizeLogin = new Guna.UI2.WinForms.Guna2Button();
             this.btnCloseLogin = new Guna.UI2.WinForms.Guna2Button();
-            this.lblAdminLogin = new System.Windows.Forms.Label();
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
+            this.lbAdminLogin = new System.Windows.Forms.Label();
+            this.lbUserName = new System.Windows.Forms.Label();
+            this.lbPassword = new System.Windows.Forms.Label();
             this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnLogin = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -111,44 +111,46 @@
             this.btnCloseLogin.TabIndex = 11;
             this.btnCloseLogin.Click += new System.EventHandler(this.btnLoginClose_Click);
             // 
-            // lblAdminLogin
+            // lbAdminLogin
             // 
-            this.lblAdminLogin.AutoSize = true;
-            this.lblAdminLogin.BackColor = System.Drawing.Color.White;
-            this.lblAdminLogin.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.lblAdminLogin.Location = new System.Drawing.Point(247, 194);
-            this.lblAdminLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAdminLogin.Name = "lblAdminLogin";
-            this.lblAdminLogin.Size = new System.Drawing.Size(116, 23);
-            this.lblAdminLogin.TabIndex = 6;
-            this.lblAdminLogin.Text = "Admin Login";
+            this.lbAdminLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbAdminLogin.AutoSize = true;
+            this.lbAdminLogin.BackColor = System.Drawing.Color.White;
+            this.lbAdminLogin.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAdminLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.lbAdminLogin.Location = new System.Drawing.Point(247, 194);
+            this.lbAdminLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbAdminLogin.Name = "lbAdminLogin";
+            this.lbAdminLogin.Size = new System.Drawing.Size(116, 23);
+            this.lbAdminLogin.TabIndex = 6;
+            this.lbAdminLogin.Text = "Admin Login";
             // 
-            // lblUserName
+            // lbUserName
             // 
-            this.lblUserName.AutoSize = true;
-            this.lblUserName.BackColor = System.Drawing.Color.White;
-            this.lblUserName.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.lblUserName.Location = new System.Drawing.Point(208, 231);
-            this.lblUserName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(68, 16);
-            this.lblUserName.TabIndex = 6;
-            this.lblUserName.Text = "Username";
+            this.lbUserName.AutoSize = true;
+            this.lbUserName.BackColor = System.Drawing.Color.White;
+            this.lbUserName.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.lbUserName.Location = new System.Drawing.Point(208, 231);
+            this.lbUserName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbUserName.Name = "lbUserName";
+            this.lbUserName.Size = new System.Drawing.Size(68, 16);
+            this.lbUserName.TabIndex = 6;
+            this.lbUserName.Text = "Username";
             // 
-            // lblPassword
+            // lbPassword
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.BackColor = System.Drawing.Color.White;
-            this.lblPassword.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.lblPassword.Location = new System.Drawing.Point(208, 301);
-            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(66, 16);
-            this.lblPassword.TabIndex = 6;
-            this.lblPassword.Text = "Password";
+            this.lbPassword.AutoSize = true;
+            this.lbPassword.BackColor = System.Drawing.Color.White;
+            this.lbPassword.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.lbPassword.Location = new System.Drawing.Point(208, 301);
+            this.lbPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPassword.Name = "lbPassword";
+            this.lbPassword.Size = new System.Drawing.Size(66, 16);
+            this.lbPassword.TabIndex = 6;
+            this.lbPassword.Text = "Password";
             // 
             // txtUsername
             // 
@@ -215,10 +217,10 @@
             this.btnLogin.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(207)))), ((int)(((byte)(208)))));
             this.btnLogin.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(253, 387);
+            this.btnLogin.Location = new System.Drawing.Point(248, 387);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(104, 35);
+            this.btnLogin.Size = new System.Drawing.Size(115, 35);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.TextOffset = new System.Drawing.Point(1, -1);
@@ -313,9 +315,9 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.imgLoginForm);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.lblUserName);
-            this.Controls.Add(this.lblAdminLogin);
+            this.Controls.Add(this.lbPassword);
+            this.Controls.Add(this.lbUserName);
+            this.Controls.Add(this.lbAdminLogin);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.roundControl1);
             this.Controls.Add(this.lblUTCBank);
@@ -329,6 +331,7 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.panelTitleBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgLoginForm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -343,10 +346,10 @@
         private System.Windows.Forms.Label lblUTCBank;
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblAdminLogin;
+        private System.Windows.Forms.Label lbAdminLogin;
         private System.Windows.Forms.PictureBox imgLoginForm;
-        private System.Windows.Forms.Label lblUserName;
-        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Label lbUserName;
+        private System.Windows.Forms.Label lbPassword;
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2GradientButton btnLogin;

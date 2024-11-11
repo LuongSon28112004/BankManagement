@@ -74,7 +74,7 @@
             this.btnLogOutInfoStaffForm.ForeColor = System.Drawing.Color.White;
             this.btnLogOutInfoStaffForm.Image = global::BankManagement.Properties.Resources.logout;
             this.btnLogOutInfoStaffForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btnLogOutInfoStaffForm.ImageOffset = new System.Drawing.Point(38, 1);
+            this.btnLogOutInfoStaffForm.ImageOffset = new System.Drawing.Point(34, 1);
             this.btnLogOutInfoStaffForm.ImageSize = new System.Drawing.Size(18, 18);
             this.btnLogOutInfoStaffForm.Location = new System.Drawing.Point(21, 152);
             this.btnLogOutInfoStaffForm.Margin = new System.Windows.Forms.Padding(2);

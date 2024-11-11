@@ -1,4 +1,5 @@
-﻿using BankManagement.ViewModel;
+﻿using BankManagement.Language;
+using BankManagement.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,16 +9,23 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement.View
 {
     public partial class LoanFrom : Form
     {
+        LangHelper langHelper;
         private int staffId;
         private LoanViewModel viewModel;
         public LoanFrom(int staffId)
         {
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
             InitializeComponent();
             this.staffId = staffId;
             viewModel = new LoanViewModel();    
@@ -31,7 +39,34 @@ namespace BankManagement.View
             btnCreateTaskBarLoanForm_Click(this, EventArgs.Empty);
             btnCreateTaskBarLoanForm.HoverState.FillColor = Color.FromArgb(50, 50, 50);
             btnPaymentTaskBarLoanForm.HoverState.FillColor = Color.FromArgb(50, 50, 50);
+
+            ChangeLanguage();
         }
+        void ChangeLanguage()
+        {
+            lbLoanLoanForm.Text = langHelper.GetString("Loan");
+            btnCreateTaskBarLoanForm.Text = langHelper.GetString("Create");
+            btnPaymentTaskBarLoanForm.Text = langHelper.GetString("Payment");
+            txtSearchByAccountNumberLoanForm.PlaceholderText = langHelper.GetString("Account Number");
+            btnSearchByAccountNumberLoanForm.Text = langHelper.GetString("Search");
+            lbCustomerNameLoanForm.Text = langHelper.GetString("Customer Name");
+            lbPhoneNumberLoanForm.Text = langHelper.GetString("Phone number");
+            lbAmountLoanForm.Text = langHelper.GetString("Amount");
+            lbInterestRateLoanForm.Text = langHelper.GetString("Interest rate");
+            lbLoanDateLoanForm.Text = langHelper.GetString("Loan date");
+            lbLoanTermLoanForm.Text = langHelper.GetString("Loan term");
+            txtLoanTermLoanForm.PlaceholderText = langHelper.GetString("Month");
+            lbLoanPurposeLoanForm.Text = langHelper.GetString("Loan purpose");
+            txtLoanPurposeLoanForm.PlaceholderText = langHelper.GetString("Borrow money to...");
+            btnCreateLoanForm.Text = langHelper.GetString("Create");
+            lbNextInterestDueDateLoanForm.Text = langHelper.GetString("Next interest due date");
+            lbLastPaymentDateLoanForm.Text = langHelper.GetString("Last payment date");
+            lbInterestDueAmountLoanForm.Text = langHelper.GetString("Interest due amount");
+            lbPenaltyFeeLoanForm.Text = langHelper.GetString("Penalty fee");
+            lbTotalLoanForm.Text = langHelper.GetString("Total");
+            btnPaymentLoanForm.Text = langHelper.GetString("Payment");
+        }
+
 
 
         //set status của tài khoản gửi 
@@ -111,7 +146,7 @@ namespace BankManagement.View
         private void reset()
         {
             imgCustomerLoanForm.Image = System.Drawing.Image.FromFile($"..\\..\\Resources\\avatar_customer_default.png");
-            lbCustomerNameLoanForm.Text = "Customer Name";
+            lbCustomerNameLoanForm.Text = langHelper.GetString("Customer Name");
             lbAccountNumberLoanForm.Text = "101xxxxxxx";
             this.SetAccountSendStatus("Status");
             txtCCCDLoanForm.Text = "";
@@ -170,7 +205,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
         }
 
@@ -271,31 +306,31 @@ namespace BankManagement.View
             //Kiểm tra xem tài khoản này có đang phải trả khoản vay nào không
             if (viewModel.InPaymentPeriod())
             {
-                CustomMessageBox.ShowBox("Khách hàng này đang trong kỳ vay, không thể vay thêm!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("This customer is in a loan period and cannot borrow more!"), "Error");
                 return;
             }
 
             if(lbAccountStatusLoanForm.Text == "Inactive")
             {
-                CustomMessageBox.ShowBox("Tài khoản này không còn tồn tại", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("This account has been deleted!"), "Error");
                 return;
             }
 
             if(txtAmountLoanForm.Text == "")
             {
-                CustomMessageBox.ShowBox("Vui lòng nhập số tiền cần vay!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please enter the amount you need to borrow!"), "Error");
                 return;
             }
 
             if(txtLoanTermLoanForm.Text == "")
             {
-                CustomMessageBox.ShowBox("Vui lòng nhập thời hạn vay!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please enter loan term!"), "Error");
                 return;
             }
 
             if(txtLoanPurposeLoanForm.Text == "")
             {
-                CustomMessageBox.ShowBox("Vui lòng nhập mục đích vay!", "Error");
+                CustomMessageBox.ShowBox(langHelper.GetString("Please enter loan purpose!"), "Error");
                 return;
             }
             this.updateViewModelFromForm();
@@ -307,7 +342,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
         }
         //Chỉ cho nhập số
@@ -418,7 +453,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
         }
     }

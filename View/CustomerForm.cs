@@ -1,4 +1,5 @@
-﻿using BankManagement.Model;
+﻿using BankManagement.Language;
+using BankManagement.Model;
 using BankManagement.Properties;
 using BankManagement.View;
 using BankManagement.ViewModel;
@@ -12,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
@@ -23,6 +25,7 @@ namespace BankManagement
 {
 	public partial class CustomerForm : Form
 	{
+        LangHelper langHelper;
 		CustomerViewModel viewModel;
         string filePath;
         private int staffId;
@@ -30,7 +33,12 @@ namespace BankManagement
 		public CustomerForm(int staffId)
 		{
 			InitializeComponent();
-			viewModel = new CustomerViewModel();
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
+            viewModel = new CustomerViewModel();
 			this.ShowInTaskbar = false; //Ẩn khỏi thanh taskbar
             this.staffId = staffId;
 		}
@@ -52,8 +60,29 @@ namespace BankManagement
 
             //Đăng ký sự kiện ScrollBar vertical của dataGridView
             dataGridViewCustomerInforCustomerForm.MouseWheel += dataGridViewCustomerInforCustomerForm_MouseWheel;
-        }
 
+            //Đổi ngôn ngữ
+            ChangeLanguage();
+        }
+        void ChangeLanguage()
+        {
+            lbCustomerInformationCustomerAccountForm.Text = langHelper.GetString("Customer Information");
+            txtSearchCustomerForm.PlaceholderText = langHelper.GetString("Search by CCCD");
+            btnSearchCustomerForm.Text = langHelper.GetString("Search");
+            txtCustomerNameCustomerForm.PlaceholderText = langHelper.GetString("Customer Name");
+            lbGenderCustomerForm.Text = langHelper.GetString("Gender");
+            btnActiveCustomerForm.Text = langHelper.GetString("Active");
+            btnUpdateCustomerForm.Text = langHelper.GetString("Update");
+            lbDateOfBirthCustomerForm.Text = langHelper.GetString("Date of birth");
+            lbJobCustomerForm.Text = langHelper.GetString("Job");
+            lbPhoneNumberCustomerForm.Text = langHelper.GetString("Phone number");
+            txtPhoneNumberCustomerForm.PlaceholderText = langHelper.GetString("Only digits");
+            lbAddressCustomerForm.Text = langHelper.GetString("Address");
+            txtAddressCustomerForm.PlaceholderText = langHelper.GetString("Ward - District - City");
+            lbNationalityCustomerForm.Text = langHelper.GetString("Nationality");
+            btnAddCustomerForm.Text = langHelper.GetString("Add");
+            btnDeleteCustomerForm.Text = langHelper.GetString("Delete");
+        }
 
 
 
@@ -125,7 +154,7 @@ namespace BankManagement
             catch (Exception ex)
             {
                 // Ném lại ngoại lệ hoặc hiển thị thông báo lỗi
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
         }
 
@@ -171,7 +200,7 @@ namespace BankManagement
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ ở đây
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
         }
 
@@ -299,7 +328,7 @@ namespace BankManagement
                 viewModel.SearchCustomer(viewModel.Cccd);
                 if (viewModel.DataTableCustomerInfor.Rows.Count == 0)
                 {
-                    CustomMessageBox.ShowBox("Vui lòng nhập đúng thông tin khách hàng!", "Error");
+                    CustomMessageBox.ShowBox(langHelper.GetString("Please enter correct customer information!"), "Error");
                     return;
                 }
 
@@ -317,7 +346,7 @@ namespace BankManagement
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ, hiển thị thông báo lỗi
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
         }
 
@@ -350,7 +379,7 @@ namespace BankManagement
             {
                 if (lbStatusCustomerForm.Text == "Inactive")
                 {
-                    CustomMessageBox.ShowBox("Khách hàng không còn hoạt động!", "Error");
+                    CustomMessageBox.ShowBox(langHelper.GetString("Customer is no longer active!"), "Error");
                     return;
                 }
                 // Lấy dữ liệu từ các TextBox
@@ -370,7 +399,7 @@ namespace BankManagement
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
         }
         private void checkStatusCustomer(string status)
@@ -426,9 +455,9 @@ namespace BankManagement
         //Cập nhật toàn bộ khách hàng lên dataGridView--------------------------------------------------------------------------------------------------
         public void LoadAllCustomer()
         {
-            viewModel.LoadAllCustomer();
+            //viewModel.LoadAllCustomer();
             //duyệt datatable để lấy các thông tin hiển thị lên datagridview
-            this.UpdateDataGridView(viewModel.DataTableCustomerInfor);
+            //this.UpdateDataGridView(viewModel.DataTableCustomerInfor);
 
         }
         private void UpdateDataGridView(DataTable dataTable)
@@ -543,7 +572,7 @@ namespace BankManagement
                 }
                 catch (Exception ex)
                 {
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
         }
 

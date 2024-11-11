@@ -34,6 +34,7 @@
             this.txtMessage = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbTitle = new System.Windows.Forms.Label();
             this.imgIcon = new System.Windows.Forms.PictureBox();
+            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,6 +91,8 @@
             this.txtMessage.SelectedText = "";
             this.txtMessage.Size = new System.Drawing.Size(335, 58);
             this.txtMessage.TabIndex = 48;
+            this.txtMessage.MouseEnter += new System.EventHandler(this.txtMessage_MouseEnter);
+            this.txtMessage.MouseHover += new System.EventHandler(this.txtMessage_MouseHover);
             // 
             // lbTitle
             // 
@@ -112,6 +115,26 @@
             this.imgIcon.TabIndex = 49;
             this.imgIcon.TabStop = false;
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BorderRadius = 8;
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.FillColor = System.Drawing.Color.Transparent;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Image = global::BankManagement.Properties.Resources.letter_x;
+            this.btnClose.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnClose.ImageSize = new System.Drawing.Size(11, 11);
+            this.btnClose.Location = new System.Drawing.Point(358, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(31, 30);
+            this.btnClose.TabIndex = 51;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // CustomMessageBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,6 +142,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(394, 150);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.imgIcon);
@@ -129,6 +153,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomMessageBox";
+            this.Load += new System.EventHandler(this.CustomMessageBox_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -141,5 +166,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtMessage;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.PictureBox imgIcon;
+        private Guna.UI2.WinForms.Guna2Button btnClose;
     }
 }

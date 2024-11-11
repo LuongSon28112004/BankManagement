@@ -81,7 +81,7 @@
             this.txtSearchLogForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearchLogForm.Name = "txtSearchLogForm";
             this.txtSearchLogForm.PasswordChar = '\0';
-            this.txtSearchLogForm.PlaceholderText = "Find anything";
+            this.txtSearchLogForm.PlaceholderText = "Search anything";
             this.txtSearchLogForm.SelectedText = "";
             this.txtSearchLogForm.Size = new System.Drawing.Size(237, 33);
             this.txtSearchLogForm.TabIndex = 0;

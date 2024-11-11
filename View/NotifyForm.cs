@@ -1,4 +1,5 @@
-﻿using BankManagement.ViewModel;
+﻿using BankManagement.Language;
+using BankManagement.ViewModel;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -8,17 +9,25 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement.View
 {
     public partial class NotifyForm : Form
     {
+        LangHelper langHelper;
         private int StaffId;
         private NotifyViewModel viewModel;
         public NotifyForm(int staffId)
         {
             InitializeComponent();
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
+            lbNotificationsLogForm.Text = langHelper.GetString("Notifications");
             viewModel = new NotifyViewModel();
             SetupForm();
             this.StaffId = staffId;
@@ -83,7 +92,7 @@ namespace BankManagement.View
                 catch (Exception ex)
                 {
                     // Xử lý ngoại lệ nếu cần
-                    CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                    CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
                 }
             };
 
@@ -121,7 +130,7 @@ namespace BankManagement.View
             catch (Exception ex)
             {
                 // Xử lý ngoại lệ nếu cần
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }  
         }
 
