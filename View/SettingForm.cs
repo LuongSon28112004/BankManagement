@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Configuration;
 using System.Windows.Forms;
 using System.Configuration;
+using BankManagement.ViewModel;
 
 namespace BankManagement.View
 {
@@ -17,6 +18,8 @@ namespace BankManagement.View
     {
         private int staffId;
         LangHelper langHelper;
+        private SettingViewModel viewModel;
+
         public SettingForm(int staffId)
         {
             InitializeComponent();
@@ -26,6 +29,7 @@ namespace BankManagement.View
                 langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
             }
             this.staffId = staffId;
+            viewModel = new SettingViewModel();
             this.ShowInTaskbar = false;
         }
 
@@ -33,14 +37,43 @@ namespace BankManagement.View
         {
             if (WebConfigurationManager.AppSettings["Language"] == "vi") radVietnamese.Checked = true;
             if (WebConfigurationManager.AppSettings["Language"] == "") radEnglish.Checked = true;
+            ChangeLanguage();
+            //Lấy ra thông tin nhân viên
+            try
+            {
+                viewModel.GetStaffById(staffId);
+                txtStaffName.Text = viewModel.Name;
+                txtUsername.Text = viewModel.Username;
+                txtPosition.Text = viewModel.Position;
+                txtWorkingBranch.Text = viewModel.Branch;
+                txtEmail.Text = viewModel.Email;
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
+            }
         }
-
+        void ChangeLanguage()
+        {
+            lbMyProfile.Text = langHelper.GetString("My Profile");
+            lbUsername.Text = langHelper.GetString("Username");
+            lbPosition.Text = langHelper.GetString("Position");
+            lbWorkingBranch.Text = langHelper.GetString("Branch");
+            lbAccountAndPassword.Text = langHelper.GetString("Account and Password");
+            btnChangePassword.Text = langHelper.GetString("Change password");
+            lbStopUsing.Text = langHelper.GetString("STOP USING ACCOUNT");
+            btnDisableAccount.Text = langHelper.GetString("Disable account");
+            btnDeleteAccount.Text = langHelper.GetString("Delete account");
+            lbLanguage.Text = langHelper.GetString("Language");
+        }
 
         private void btnCloseMain_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+
+        //Đổi sang tiếng việt---------------------------------------------------------------------------------------------------------------------------------------------------
         private void btnVietnamese_Click(object sender, EventArgs e)
         {
             if (WebConfigurationManager.AppSettings["Language"] == "vi") return;
@@ -69,6 +102,8 @@ namespace BankManagement.View
             }
         }
 
+
+        //Đổi sang tiếng anh------------------------------------------------------------------------------------------------------------------------------------------------------
         private void btnEnglish_Click(object sender, EventArgs e)
         {
             if (WebConfigurationManager.AppSettings["Language"] == "") return;
@@ -104,6 +139,42 @@ namespace BankManagement.View
 
             // Thoát ứng dụng hiện tại
             Application.Exit();
+        }
+
+
+        //Vô hiệu hoá tài khoản
+        private void btnDisableAccount_Click(object sender, EventArgs e)
+        {
+            string btn_id = CustomMessageBox.ShowBox(langHelper.GetString("Are you sure you want to disable your account?"), "Error");
+            if (btn_id == "1")
+            {
+                try
+                {
+                    viewModel.DisableAccount(staffId);
+                    CustomMessageBox.ShowBox(langHelper.GetString("Account disabled successfully!"), "Success");
+                    // Khởi động lại ứng dụng
+                    RestartApplication();
+                }
+                catch (Exception ex)
+                {
+                    CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
+                }
+            }
+            
+        }
+
+
+        //Đổi mật khẩu
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            ChangePasswordForm changePasswordForm = new ChangePasswordForm(staffId);
+            // Đặt vị trí của InfoStaff ngay dưới nút btnStaffAvatar
+            changePasswordForm.StartPosition = FormStartPosition.Manual;
+
+            // Lấy tọa độ và điều chỉnh vị trí
+            var startPos = new Point(this.Location.X + (this.Width - changePasswordForm.Width) / 2 + 1, this.Location.Y + 36);
+            changePasswordForm.Location = startPos;
+            changePasswordForm.ShowDialog();
         }
     }
 }

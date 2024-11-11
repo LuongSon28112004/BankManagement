@@ -16,8 +16,12 @@ namespace BankManagement.ViewModel
 
 		//Các thuộc tính bind với LoginForm
 		private int id;
+		private string status;
 
 		public int GetID() { return id; }
+		public void SetID(int idd) { this.id = idd; }
+		public string GetStatus() { return status; }
+		public void SetStatus(string statuss) { this.status = statuss; }
 
 		public LoginViewModel()
 		{
@@ -35,6 +39,7 @@ namespace BankManagement.ViewModel
 			if (staff != null)
 			{
 				this.id = staff.GetId(); //Nếu có tài khoản này trong csdl thì lấy ra ID
+				this.status = staff.GetStatus();
 			}
 		}
 

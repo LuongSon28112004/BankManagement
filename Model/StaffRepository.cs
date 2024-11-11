@@ -1,23 +1,38 @@
-﻿using System;
+﻿using BankManagement.Language;
+using BankManagement.View;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Configuration;
+using System.Windows.Forms;
 
 namespace BankManagement.Model
 {
 	internal class StaffRepository
 	{
 		//Chuỗi kết nối database
-		private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False"; 
+		private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
+		LangHelper langHelper;
+
+		public StaffRepository()
+		{
+            langHelper = new LangHelper();
+            if (WebConfigurationManager.AppSettings["Language"] != "")
+            {
+                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+            }
+        }
+
 
 		// Phương thức lấy thông tin Staff từ bảng staff_account bằng ID
 		public Staff GetStaffById(int staffId)
 		{
 			Staff staff = null;
 
-			string query = "SELECT TOP 1 id, name, username, password, working_branch, job_position, staff_photo FROM staff_account WHERE id = @id";
+			string query = "SELECT TOP 1 id, name, username, password, working_branch, job_position, staff_photo, email, status FROM staff_account WHERE id = @id";
 
 			try
 			{
@@ -42,9 +57,10 @@ namespace BankManagement.Model
 								string workingBranch = reader.GetString(4);
 								string jobPosition = reader.GetString(5);
 								string staffPhoto = reader.GetString(6);
-
+								string email = reader.GetString(7);
+								string status = reader.GetString(8);
 								// Tạo đối tượng Staff từ dữ liệu truy vấn
-								staff = new Staff(id, name, username, password, workingBranch, jobPosition, staffPhoto);
+								staff = new Staff(id, name, username, password, workingBranch, jobPosition, staffPhoto, email, status);
 							}
 						}
 					}
@@ -52,9 +68,9 @@ namespace BankManagement.Model
 			}
 			catch (Exception ex)
 			{
-				// Xử lý lỗi nếu có
-				Console.WriteLine("Error: " + ex.Message);
-			}
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Error: " + ex.Message, ex);
+            }
 
 			return staff; // Trả về đối tượng Staff hoặc null nếu không tìm thấy
 		}
@@ -66,7 +82,7 @@ namespace BankManagement.Model
 		{
 			Staff staff = null;
 
-			string query = "SELECT TOP 1 id, name, username, password, working_branch, job_position, staff_photo FROM staff_account WHERE username = @username AND password = @password";
+			string query = "SELECT TOP 1 id, name, username, password, working_branch, job_position, staff_photo, email, status FROM staff_account WHERE username = @username AND password = @password";
 
 			try
 			{
@@ -92,9 +108,11 @@ namespace BankManagement.Model
 								string workingBranch = reader.GetString(4);
 								string jobPosition = reader.GetString(5);
 								string staffPhoto = reader.GetString(6);
+								string email = reader.GetString(7);
+								string status = reader.GetString(8);
 
 								// Tạo đối tượng Staff từ dữ liệu truy vấn
-								staff = new Staff(id, name, username, password, workingBranch, jobPosition, staffPhoto);
+								staff = new Staff(id, name, username, password, workingBranch, jobPosition, staffPhoto, email, status);
 							}
 						}
 					}
@@ -102,13 +120,72 @@ namespace BankManagement.Model
 			}
 			catch (Exception ex)
 			{
-				// Xử lý lỗi nếu có
-				Console.WriteLine("Error: " + ex.Message);
-			}
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Error: " + ex.Message, ex);
+            }
 
 			return staff; // Trả về đối tượng Staff hoặc null nếu không tìm thấy
 		}
 
 
-	}
+
+		//Phương thức vô hiệu hoá tài khoản
+        public void DisableAccount(int staffId)
+        {
+            string query = "UPDATE staff_account SET status = 'disabled' WHERE id = @id";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString)) // Đảm bảo ngắt kết nối sau khi thực thi
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn)) // Thực thi truy vấn
+                    {
+                        // Thêm tham số vào truy vấn
+                        cmd.Parameters.AddWithValue("@id", staffId);
+                        // Thực thi truy vấn
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Error: " + ex.Message, ex);
+            }
+        }
+
+
+
+
+
+        //Phương thức đổi mật khẩu
+        public void ChangePassword(string password, int staffId)
+        {
+            string query = "UPDATE staff_account SET password = @password WHERE id = @id";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString)) // Đảm bảo ngắt kết nối sau khi thực thi
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn)) // Thực thi truy vấn
+                    {
+                        // Thêm tham số vào truy vấn
+                        cmd.Parameters.AddWithValue("@id", staffId);
+                        cmd.Parameters.AddWithValue("@password", password);
+                        // Thực thi truy vấn
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Ném lại ngoại lệ để form cha có thể xử lý
+                throw new Exception("Error: " + ex.Message, ex);
+            }
+        }
+    }
 }

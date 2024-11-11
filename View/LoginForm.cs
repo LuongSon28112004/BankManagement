@@ -91,7 +91,8 @@ namespace BankManagement
 		//Sự kiện login
 		private void btnLogin_Click(object sender, EventArgs e)
         {
-			string username = txtUsername.Text; //Lấy username từ TextBox
+            lblWarningLogin.Text = "";
+            string username = txtUsername.Text; //Lấy username từ TextBox
 			string password = txtPassword.Text; //Lấy password từ TextBox
 
 			if (username == "")
@@ -111,17 +112,28 @@ namespace BankManagement
 				viewModel.LoadLogin(username, password); //Thực hiện truy vấn với username và password từ người dùng nhập
 				if (viewModel.GetID() != 0) //Nếu có tài khoản này trong csdl đồng nghĩa với việc lấy ra được ID của tk đó
 				{
-					lblWarningLogin.Text = "";
-					MainForm main = new MainForm(Convert.ToInt32(viewModel.GetID())); //Chuẩn bị truyền dữ liệu (ID) cho form Main
-					main.Show();
-					this.Hide();
+					if (viewModel.GetStatus() == "disabled")
+					{
+						CustomMessageBox.ShowBox(langHelper.GetString("Your account has been disabled!"), "Error");
+                        viewModel.SetID(0);
+                        return;
+					}
+					if (viewModel.GetStatus() == "active")
+					{
+                        lblWarningLogin.Text = "";
+                        MainForm main = new MainForm(Convert.ToInt32(viewModel.GetID())); //Chuẩn bị truyền dữ liệu (ID) cho form Main
+                        main.Show();
+                        this.Hide();
+                    }
 				}
 				else
 				{
 					lblWarningLogin.Text = langHelper.GetString("Wrong username or password!");
                     txtPassword.Focus();
                 }
-			}
+                viewModel.SetStatus("");
+                
+            }
 			catch (Exception ex)
 			{
 				// Xử lý lỗi và hiển thị thông báo

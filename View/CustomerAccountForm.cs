@@ -587,6 +587,9 @@ namespace BankManagement.View
             int currentRow = 4;
             for (int k = 0; k < transfer.Rows.Count; k++)
             {
+                string value = transfer.Rows[k][1].ToString();
+                value = value.Substring(0, value.Length - 4);
+                transfer.Rows[k][1] = value;
                 for (int j = 0; j < transfer.Columns.Count; j++)
                 {
                     Excel.Range cell = (Excel.Range)worksheet.Cells[currentRow, j + 1];
@@ -620,6 +623,9 @@ namespace BankManagement.View
             currentRow++;
             for (int k = 0; k < deposit.Rows.Count; k++)
             {
+                string value = deposit.Rows[k][1].ToString();
+                value = value.Substring(0, value.Length - 4);
+                deposit.Rows[k][1] = value;
                 for (int j = 0; j < deposit.Columns.Count; j++)
                 {
                     Excel.Range cell = (Excel.Range)worksheet.Cells[currentRow, j + 1];
@@ -653,6 +659,9 @@ namespace BankManagement.View
             currentRow++;
             for (int k = 0; k < withdraw.Rows.Count; k++)
             {
+                string value = withdraw.Rows[k][1].ToString();
+                value = value.Substring(0, value.Length - 4);
+                withdraw.Rows[k][1] = value;
                 for (int j = 0; j < withdraw.Columns.Count; j++)
                 {
                     Excel.Range cell = (Excel.Range)worksheet.Cells[currentRow, j + 1];

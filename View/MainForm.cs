@@ -71,12 +71,12 @@ namespace BankManagement
 				}
 				else
 				{
-                    CustomMessageBox.ShowBox("Không tìm thấy file ảnh!", "Error");
+                    CustomMessageBox.ShowBox(langHelper.GetString("Error image file not found!"), "Error");
                 }
 			}
 			catch (Exception ex)
 			{
-                CustomMessageBox.ShowBox("Lỗi: " + ex.Message, "Error");
+                CustomMessageBox.ShowBox("Error: " + ex.Message, "Error");
             }
 
         }
@@ -617,7 +617,7 @@ namespace BankManagement
                 settingForm.StartPosition = FormStartPosition.Manual;
 
                 // Lấy tọa độ và điều chỉnh vị trí
-                var startPos = btnSettingMainForm.PointToScreen(new System.Drawing.Point(panelLeftBarMain.Width - 20, btnSettingMainForm.Height - 600));
+                var startPos = btnSettingMainForm.PointToScreen(new System.Drawing.Point(panelLeftBarMain.Width - 20, btnSettingMainForm.Height - 617));
                 settingForm.Location = startPos;
                 settingForm.ShowDialog();
             }
@@ -632,7 +632,7 @@ namespace BankManagement
             if (settingForm != null && !settingForm.IsDisposed)
             {
                 // Lấy tọa độ và điều chỉnh vị trí
-                var startPos = btnSettingMainForm.PointToScreen(new System.Drawing.Point(panelLeftBarMain.Width - 20, btnSettingMainForm.Height - 600));
+                var startPos = btnSettingMainForm.PointToScreen(new System.Drawing.Point(panelLeftBarMain.Width - 20, btnSettingMainForm.Height - 617));
                 settingForm.Location = new Point(startPos.X, startPos.Y);
             }
         }

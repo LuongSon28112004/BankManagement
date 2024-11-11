@@ -277,7 +277,7 @@
     <value>Chi nhánh</value>
   </data>
   <data name="Position" xml:space="preserve">
-    <value>Position</value>
+    <value>Vị trí</value>
   </data>
   <data name="Error image file not found!" xml:space="preserve">
     <value>Lỗi không tìm thấy file ảnh!</value>
@@ -476,5 +476,74 @@
   </data>
   <data name="Warning!" xml:space="preserve">
     <value>Cảnh báo!</value>
+  </data>
+  <data name="My Profile" xml:space="preserve">
+    <value>Hồ sơ của tôi</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>Thay đổi</value>
+  </data>
+  <data name="Account and Password" xml:space="preserve">
+    <value>Tài khoản và mật khẩu</value>
+  </data>
+  <data name="Change password" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+  </data>
+  <data name="STOP USING ACCOUNT" xml:space="preserve">
+    <value>NGỪNG SỬ DỤNG TÀI KHOẢN</value>
+  </data>
+  <data name="If you disable your account you can reactivate it at any time." xml:space="preserve">
+    <value>Nếu bạn vô hiệu hóa tài khoản, bạn có thể kích hoạt lại bất cứ lúc nào.</value>
+  </data>
+  <data name="Disable account" xml:space="preserve">
+    <value>Vô hiệu hoá</value>
+  </data>
+  <data name="Delete account" xml:space="preserve">
+    <value>Xoá tài khoản</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
+  <data name="Account disabled successfully!" xml:space="preserve">
+    <value>Vô hiệu hoá tài khoản thành công!</value>
+  </data>
+  <data name="Your account has been disabled!" xml:space="preserve">
+    <value>Tài khoản của bạn đã bị vô hiệu hoá!</value>
+  </data>
+  <data name="Are you sure you want to disable your account?" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn vô hiệu hóa tài khoản của mình không?</value>
+  </data>
+  <data name="Current password" xml:space="preserve">
+    <value>Mật khẩu hiện tại</value>
+  </data>
+  <data name="New password" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="Re-type new password" xml:space="preserve">
+    <value>Nhập lại mật khẩu</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="Please enter current password!" xml:space="preserve">
+    <value>Vui lòng điền mật khẩu hiện tại!</value>
+  </data>
+  <data name="Please enter new password!" xml:space="preserve">
+    <value>Vui lòng điền mật khẩu mới!</value>
+  </data>
+  <data name="Please re-type new password!" xml:space="preserve">
+    <value>Vui lòng nhập lại mật khẩu!</value>
+  </data>
+  <data name="The password does not match!" xml:space="preserve">
+    <value>Mật khẩu không khớp!</value>
+  </data>
+  <data name="Incorrect password!" xml:space="preserve">
+    <value>Sai mật khẩu!</value>
+  </data>
+  <data name="Password changed successfully!" xml:space="preserve">
+    <value>Đổi mật khẩu thành công!</value>
+  </data>
+  <data name="New password must be at least 8 characters!" xml:space="preserve">
+    <value>Mật khẩu mới cần có ít nhất 8 ký tự!</value>
   </data>
 </root>

@@ -477,4 +477,73 @@
   <data name="Warning!" xml:space="preserve">
     <value>Warning!</value>
   </data>
+  <data name="My Profile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="Account and Password" xml:space="preserve">
+    <value>Account and Password</value>
+  </data>
+  <data name="Change password" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="STOP USING ACCOUNT" xml:space="preserve">
+    <value>STOP USING ACCOUNT</value>
+  </data>
+  <data name="If you disable your account you can reactivate it at any time." xml:space="preserve">
+    <value>If you disable your account you can reactivate it at any time.</value>
+  </data>
+  <data name="Disable account" xml:space="preserve">
+    <value>Disable account</value>
+  </data>
+  <data name="Delete account" xml:space="preserve">
+    <value>Delete account</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Account disabled successfully!" xml:space="preserve">
+    <value>Account disabled successfully!</value>
+  </data>
+  <data name="Your account has been disabled!" xml:space="preserve">
+    <value>Your account has been disabled!</value>
+  </data>
+  <data name="Are you sure you want to disable your account?" xml:space="preserve">
+    <value>Are you sure you want to disable your account?</value>
+  </data>
+  <data name="Current password" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="New password" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="Re-type new password" xml:space="preserve">
+    <value>Re-type new password</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Please enter current password!" xml:space="preserve">
+    <value>Please enter current password!</value>
+  </data>
+  <data name="Please enter new password!" xml:space="preserve">
+    <value>Please enter new password!</value>
+  </data>
+  <data name="Please re-type new password!" xml:space="preserve">
+    <value>Please re-type new password!</value>
+  </data>
+  <data name="The password does not match!" xml:space="preserve">
+    <value>The password does not match!</value>
+  </data>
+  <data name="Incorrect password!" xml:space="preserve">
+    <value>Incorrect password!</value>
+  </data>
+  <data name="Password changed successfully!" xml:space="preserve">
+    <value>Password changed successfully!</value>
+  </data>
+  <data name="New password must be at least 8 characters!" xml:space="preserve">
+    <value>New password must be at least 8 characters!</value>
+  </data>
 </root>
