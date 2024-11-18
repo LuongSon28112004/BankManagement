@@ -549,4 +549,10 @@
   <data name="Current job" xml:space="preserve">
     <value>Current job</value>
   </data>
+  <data name="New password duplicates old password!" xml:space="preserve">
+    <value>New password duplicates old password!</value>
+  </data>
+  <data name="Please refresh before filling in the information!" xml:space="preserve">
+    <value>Please refresh before filling in the information!</value>
+  </data>
 </root>

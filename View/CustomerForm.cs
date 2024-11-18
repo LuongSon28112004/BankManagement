@@ -210,6 +210,9 @@ namespace BankManagement
             // Kiểm tra xem chỉ số hàng hợp lệ
             if (e.RowIndex >= 0)
             {
+                btnAddCustomerForm.Enabled = false;
+                btnDeleteCustomerForm.Enabled = true;
+                btnUpdateCustomerForm.Enabled = true;
                 // Lấy hàng được chọn
                 DataGridViewRow selectedRow = dataGridViewCustomerInforCustomerForm.Rows[e.RowIndex];
 
@@ -309,7 +312,6 @@ namespace BankManagement
                 CustomMessageBox.ShowBox($"{error}", "Error");
                 return;
             }
-
 
             //lấy dữ liệu từ các textBox
             this.UpdateViewModelFromForm();
@@ -442,6 +444,9 @@ namespace BankManagement
             btnActiveCustomerForm.Visible = false;
             imgStatusCustomerForm.Image = null;
             lbStatusCustomerForm.Text = "";
+            btnAddCustomerForm.Enabled = true;
+            btnDeleteCustomerForm.Enabled = false;
+            btnUpdateCustomerForm.Enabled = false;
         }
 
 

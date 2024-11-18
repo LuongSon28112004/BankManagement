@@ -285,6 +285,10 @@ namespace BankManagement.View
             imgCustomerInfStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
             imgAccountStatusCustomerAccountForm.Image = Image.FromFile("..\\..\\Resources\\checked.png");
             btnActiveCustomerAccountForm.Visible = false;
+            btnActiveCustomerAccountForm.Enabled = false;
+            btnDeleteCustomerAccountForm.Enabled = false;
+            btnStatementCustomerAccountForm.Enabled = false;
+            btnAddCustomerAccountForm.Enabled = true;
 
         }
         //Cập nhật ngày hiện tại
@@ -352,6 +356,10 @@ namespace BankManagement.View
             // Kiểm tra xem chỉ số hàng hợp lệ
             if (e.RowIndex >= 0)
             {
+                btnActiveCustomerAccountForm.Enabled = true;
+                btnDeleteCustomerAccountForm.Enabled = true;
+                btnStatementCustomerAccountForm.Enabled = true;
+                btnAddCustomerAccountForm.Enabled = false;
                 // Lấy hàng được chọn
                 DataGridViewRow selectedRow = dataGridViewCustomerAccountForm.Rows[e.RowIndex];
                 txtUsernameCustomerAccountForm.ReadOnly = true;

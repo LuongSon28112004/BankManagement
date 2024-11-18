@@ -549,4 +549,10 @@
   <data name="Current job" xml:space="preserve">
     <value>Công việc hiện tại</value>
   </data>
+  <data name="New password duplicates old password!" xml:space="preserve">
+    <value>Mật khẩu mới trùng với mật khẩu cũ!</value>
+  </data>
+  <data name="Please refresh before filling in the information!" xml:space="preserve">
+    <value>Vui lòng làm mới trước khi điền thông tin!</value>
+  </data>
 </root>

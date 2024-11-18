@@ -85,6 +85,12 @@ namespace BankManagement.View
                 txtReType.Focus();
                 return;
             }
+            if (txtCurrentPassword.Text == txtNewPassword.Text)
+            {
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("New password duplicates old password!"), "Error");
+                txtNewPassword.Focus();
+                return;
+            }
             try
             {
 
