@@ -822,6 +822,7 @@
             this.lbLoanStatusLoanForm.Size = new System.Drawing.Size(73, 16);
             this.lbLoanStatusLoanForm.TabIndex = 31;
             this.lbLoanStatusLoanForm.Text = "Within term";
+            this.lbLoanStatusLoanForm.Visible = false;
             // 
             // imgLoanStatusLoanForm
             // 
@@ -833,6 +834,7 @@
             this.imgLoanStatusLoanForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgLoanStatusLoanForm.TabIndex = 32;
             this.imgLoanStatusLoanForm.TabStop = false;
+            this.imgLoanStatusLoanForm.Visible = false;
             // 
             // btnPaymentLoanForm
             // 

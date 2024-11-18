@@ -15,17 +15,16 @@ namespace BankManagement.Model
         private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
 
         //Lấy ra list log bằng staff_id -------------------------------------------------------------------------------------------------------------------------------------------------
-        public DataTable searchLogByStaffId(int id)
+        public DataTable searchLogByStaffId(int id, DateTime from, DateTime to)
         {
             DataTable dataTableLog = new DataTable();
 
             // Lệnh truy vấn
-            string query = @"
-            SELECT id, staff_id, content, time 
-            FROM log 
-            WHERE staff_id = @staffId 
-            AND time >= DATEADD(month, -1, GETDATE()) 
-            ORDER BY time DESC"; // Sắp xếp theo thời gian từ sớm nhất đến lâu nhất
+            string query = @"SELECT id, staff_id, content, time 
+                            FROM log 
+                            WHERE staff_id = @staffId 
+                            AND time BETWEEN @from AND @to 
+                            ORDER BY time DESC"; // Sắp xếp theo thời gian giảm dần
 
             try
             {
@@ -33,8 +32,10 @@ namespace BankManagement.Model
                 {
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        // Sử dụng LIKE với ký tự `%` để tìm kiếm chuỗi cccd chứa chuỗi đầu vào
+                        // Thêm tham số cho truy vấn
                         cmd.Parameters.AddWithValue("@staffId", id);
+                        cmd.Parameters.AddWithValue("@from", from);
+                        cmd.Parameters.AddWithValue("@to", to);
 
                         // Mở kết nối đến cơ sở dữ liệu
                         conn.Open();
@@ -56,6 +57,7 @@ namespace BankManagement.Model
             // Trả về DataTable chứa các bản ghi tìm kiếm được
             return dataTableLog;
         }
+
 
         public void AddLog(Log log)
         {

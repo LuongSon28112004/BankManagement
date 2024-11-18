@@ -15,7 +15,7 @@ using BankManagement.ViewModel;
 using BankManagement.Model;
 using BankManagement.Language;
 using BankManagement.View;
-using System.Web.Configuration;
+using System.Configuration;
 
 
 namespace BankManagement
@@ -29,9 +29,9 @@ namespace BankManagement
             InitializeComponent();
             viewModel = new LoginViewModel();
             langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
+            if (ConfigurationManager.AppSettings["Language"] != "")
             {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
             }
         }
 

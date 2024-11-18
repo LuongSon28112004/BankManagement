@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Configuration;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement
@@ -30,9 +30,9 @@ namespace BankManagement
         {
             InitializeComponent();
             langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
+            if (ConfigurationManager.AppSettings["Language"] != "")
             {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
             }
             this.Load += Main_Load;
 
@@ -528,15 +528,14 @@ namespace BankManagement
                 logForm.StartPosition = FormStartPosition.Manual;
 
                 // Lấy tọa độ và điều chỉnh vị trí
-                var startPos = btnLogMainForm.PointToScreen(new System.Drawing.Point(50, btnLogMainForm.Height - 343));
+                var startPos = btnLogMainForm.PointToScreen(new System.Drawing.Point(50, btnLogMainForm.Height - 376));
                 logForm.Location = startPos;
-                logForm.Show();
+                logForm.ShowDialog();
             }
             else
             {
                 UpdateLogFormSizeAndPosition();
-                logForm.UpdateFlowPanel();
-                logForm.Show();
+                logForm.ShowDialog();
             }
         }
         private void UpdateLogFormSizeAndPosition()

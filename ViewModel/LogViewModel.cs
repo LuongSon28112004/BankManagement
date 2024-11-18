@@ -21,9 +21,9 @@ namespace BankManagement.ViewModel
 
         public DataTable LogTable { get => logTable; set => logTable = value;}
 
-        public void searchLogByStaffId(int id)
+        public void searchLogByStaffId(int id, DateTime from, DateTime to)
         {
-            this.logTable = logRepository.searchLogByStaffId(id);
+            this.logTable = logRepository.searchLogByStaffId(id, from, to);
         }
     }
 }

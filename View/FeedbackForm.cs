@@ -10,7 +10,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Configuration;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement.View
@@ -23,9 +23,9 @@ namespace BankManagement.View
         public FeedbackForm(int StaffId)
         {
             langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
+            if (ConfigurationManager.AppSettings["Language"] != "")
             {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
             }
             viewModel = new FeedBackViewModel();
             this.StaffId = StaffId;

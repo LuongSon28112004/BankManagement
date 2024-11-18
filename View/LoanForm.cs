@@ -9,7 +9,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Configuration;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement.View
@@ -22,9 +22,9 @@ namespace BankManagement.View
         public LoanFrom(int staffId)
         {
             langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
+            if (ConfigurationManager.AppSettings["Language"] != "")
             {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
             }
             InitializeComponent();
             this.staffId = staffId;
@@ -386,30 +386,14 @@ namespace BankManagement.View
             }
         }
         //Chuyển đổi khi nhập 50000 -> 50.000
-        private bool isUpdating = false;
         private void txtAmountLoanForm_TextChanged(object sender, EventArgs e)
         {
-            if (isUpdating) return; // Nếu đang cập nhật thì bỏ qua
-
-            // Lưu giá trị tạm thời
-            string input = txtAmountLoanForm.Text;
-
-            // Thay thế dấu phẩy thành dấu chấm (nếu có)
-            input = input.Replace(',', '.');
-
-            // Xóa các ký tự không phải số
-            input = new string(input.Where(char.IsDigit).ToArray());
-
             // Thử chuyển đổi sang decimal
-            if (Decimal.TryParse(input, out decimal amount))
+            if (Decimal.TryParse(txtAmountLoanForm.Text, out decimal amount))
             {
-                // Định dạng lại thành chuỗi với dấu phân cách hàng nghìn
-                isUpdating = true; // Đánh dấu là đang cập nhật
                 txtAmountLoanForm.Text = amount.ToString("#,0", new CultureInfo("vi-VN"));
-
-                // Đặt con trỏ vào cuối TextBox
+                //Đặt con trỏ về cuối
                 txtAmountLoanForm.SelectionStart = txtAmountLoanForm.Text.Length;
-                isUpdating = false; // Kết thúc cập nhật
             }
         }
 

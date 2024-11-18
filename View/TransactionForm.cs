@@ -11,7 +11,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Configuration;
+using System.Configuration;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
@@ -28,9 +28,9 @@ namespace BankManagement.View
         public TransactionForm(int staffId)
         {
             langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
+            if (ConfigurationManager.AppSettings["Language"] != "")
             {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
             }
             this.staffId = staffId;
             InitializeComponent();
@@ -669,30 +669,15 @@ namespace BankManagement.View
 
 
         //Tự động chuyển 5000 thành 5.000 --------------------------------------------------------------------------------------------------------------------------------------------------------------
-        private bool isUpdating = false;
         private void txtAmountTransactionForm_TextChanged(object sender, EventArgs e)
         {
-            if (isUpdating) return; // Nếu đang cập nhật thì bỏ qua
-
-            // Lưu giá trị tạm thời
-            string input = txtAmountTransactionForm.Text;
-
-            // Thay thế dấu phẩy thành dấu chấm (nếu có)
-            input = input.Replace(',', '.');
-
-            // Xóa các ký tự không phải số
-            input = new string(input.Where(char.IsDigit).ToArray());
 
             // Thử chuyển đổi sang decimal
-            if (Decimal.TryParse(input, out decimal amount))
+            if (Decimal.TryParse(txtAmountTransactionForm.Text, out decimal amount))
             {
-                // Định dạng lại thành chuỗi với dấu phân cách hàng nghìn
-                isUpdating = true; // Đánh dấu là đang cập nhật
                 txtAmountTransactionForm.Text = amount.ToString("#,0", new CultureInfo("vi-VN"));
-
                 // Đặt con trỏ vào cuối TextBox
                 txtAmountTransactionForm.SelectionStart = txtAmountTransactionForm.Text.Length;
-                isUpdating = false; // Kết thúc cập nhật
             }
         }
 

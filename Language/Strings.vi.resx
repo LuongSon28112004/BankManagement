@@ -546,4 +546,7 @@
   <data name="New password must be at least 8 characters!" xml:space="preserve">
     <value>Mật khẩu mới cần có ít nhất 8 ký tự!</value>
   </data>
+  <data name="Current job" xml:space="preserve">
+    <value>Công việc hiện tại</value>
+  </data>
 </root>

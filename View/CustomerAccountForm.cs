@@ -10,7 +10,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Configuration;
+using System.Configuration;
 using System.Windows.Forms;
 
 using Excel = Microsoft.Office.Interop.Excel;
@@ -28,9 +28,9 @@ namespace BankManagement.View
         {
             InitializeComponent();
             langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
+            if (ConfigurationManager.AppSettings["Language"] != "")
             {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
             }
             viewModel = new AccountViewModel();
             this.reset();
@@ -52,6 +52,7 @@ namespace BankManagement.View
         //Thay đổi ngôn ngữ------------------------------------------------------------------------------------------------------------------------------------------------
         void ChangeLanguage()
         {
+            lbGenderCustomerAccountForm.Text = langHelper.GetString("Gender");
             lbCustomerAccountCustomerAccountForm.Text = langHelper.GetString("Customer Account");
             txtSearchByCCCDCustomerAccountForm.PlaceholderText = langHelper.GetString("Search by CCCD");
             btnSearchByCCCDCustomerAccountForm.Text = langHelper.GetString("Search");
@@ -493,7 +494,7 @@ namespace BankManagement.View
             }
             viewModel.StaffId = staffId;
             viewModel.Username = txtUsernameCustomerAccountForm.Text;
-            viewModel.Date_opened = DateTime.Parse(txtDateOfBirthCustomerAccountForm.Text);
+            viewModel.Date_opened = DateTime.Parse(txtOpenDateCustomerAccountForm.Text);
             viewModel.Balance = Decimal.Parse(txtBalanceCustomerAccountForm.Text, new CultureInfo("vi-VN"));
         }
 

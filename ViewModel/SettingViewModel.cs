@@ -17,12 +17,14 @@ namespace BankManagement.ViewModel
         private string position;
         private string branch;
         private string email;
+        private string photo;
 
         public string Username { get => username; set => username = value; }
         public string Name { get => name; set => name = value; }
         public string Position { get => position; set => position = value; }
         public string Branch { get => branch; set => branch = value; }
         public string Email { get => email; set => email = value; }
+        public string Photo { get => photo; set => photo = value; }
 
         public SettingViewModel()
         {
@@ -35,7 +37,8 @@ namespace BankManagement.ViewModel
             this.name = staff.GetName();
             this.position = staff.GetJobPosition();
             this.branch = staff.GetWorkingBranch();
-            this.Email = staff.GetEmail();
+            this.email = staff.GetEmail();
+            this.photo = staff.GetPhotoPath();
         }
 
         public void DisableAccount(int staffId)

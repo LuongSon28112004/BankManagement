@@ -7,10 +7,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Configuration;
-using System.Windows.Forms;
 using System.Configuration;
+using System.Windows.Forms;
 using BankManagement.ViewModel;
+using System.IO;
 
 namespace BankManagement.View
 {
@@ -24,9 +24,9 @@ namespace BankManagement.View
         {
             InitializeComponent();
             langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
+            if (ConfigurationManager.AppSettings["Language"] != "")
             {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
             }
             this.staffId = staffId;
             viewModel = new SettingViewModel();
@@ -35,13 +35,25 @@ namespace BankManagement.View
 
         private void SettingForm_Load(object sender, EventArgs e)
         {
-            if (WebConfigurationManager.AppSettings["Language"] == "vi") radVietnamese.Checked = true;
-            if (WebConfigurationManager.AppSettings["Language"] == "") radEnglish.Checked = true;
+            if (ConfigurationManager.AppSettings["Language"] == "vi") radVietnamese.Checked = true;
+            if (ConfigurationManager.AppSettings["Language"] == "") radEnglish.Checked = true;
             ChangeLanguage();
             //Lấy ra thông tin nhân viên
             try
             {
                 viewModel.GetStaffById(staffId);
+                // Lấy đường dẫn ảnh từ viewModel
+                string photoPath = viewModel.Photo;
+
+
+                if (File.Exists(photoPath))
+                {
+                    imgStaff.Image = Bitmap.FromFile(photoPath);
+                }
+                else
+                {
+                    CustomMessageBox.ShowBox(langHelper.GetString("Error image file not found!"), "Error");
+                }
                 txtStaffName.Text = viewModel.Name;
                 txtUsername.Text = viewModel.Username;
                 txtPosition.Text = viewModel.Position;
@@ -76,7 +88,7 @@ namespace BankManagement.View
         //Đổi sang tiếng việt---------------------------------------------------------------------------------------------------------------------------------------------------
         private void btnVietnamese_Click(object sender, EventArgs e)
         {
-            if (WebConfigurationManager.AppSettings["Language"] == "vi") return;
+            if (ConfigurationManager.AppSettings["Language"] == "vi") return;
             string btn_id = CustomMessageBox.ShowBox(langHelper.GetString("Restart the app to change the language!"), "Error");
             if (btn_id == "1")
             {
@@ -106,7 +118,7 @@ namespace BankManagement.View
         //Đổi sang tiếng anh------------------------------------------------------------------------------------------------------------------------------------------------------
         private void btnEnglish_Click(object sender, EventArgs e)
         {
-            if (WebConfigurationManager.AppSettings["Language"] == "") return;
+            if (ConfigurationManager.AppSettings["Language"] == "") return;
             string btn_id = CustomMessageBox.ShowBox(langHelper.GetString("Restart the app to change the language!"), "Error");
             if (btn_id == "1")
             {

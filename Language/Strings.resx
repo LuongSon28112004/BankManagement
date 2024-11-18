@@ -546,4 +546,7 @@
   <data name="New password must be at least 8 characters!" xml:space="preserve">
     <value>New password must be at least 8 characters!</value>
   </data>
+  <data name="Current job" xml:space="preserve">
+    <value>Current job</value>
+  </data>
 </root>

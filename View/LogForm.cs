@@ -4,7 +4,7 @@ using Guna.UI2.WinForms;
 using System;
 using System.Data;
 using System.Drawing;
-using System.Web.Configuration;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace BankManagement.View
@@ -16,14 +16,14 @@ namespace BankManagement.View
         private int id;
         public LogForm(int id)
         {
+            viewModel = new LogViewModel();
             langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
+            if (ConfigurationManager.AppSettings["Language"] != "")
             {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
             }
             InitializeComponent();
             SetupForm();
-            viewModel = new LogViewModel();
             this.id = id;
         }
 
@@ -31,13 +31,21 @@ namespace BankManagement.View
         {
             flowPanelLogForm.FlowDirection = FlowDirection.TopDown; // Xếp các thông báo từ trên xuống
             flowPanelLogForm.WrapContents = false; // Không quấn các phần tử
+
+            dateTimeFrom.MaxDate = DateTime.Today;
+            dateTimeFrom.MinDate = DateTime.Today.AddYears(-1);
+            dateTimeTo.MaxDate = DateTime.Today;
+            dateTimeTo.MinDate = DateTime.Today.AddYears(-1);
+
+            dateTimeFrom.Value = DateTime.Today.AddMonths(-1);
+            dateTimeTo.Value = DateTime.Today;
         }
 
         private void LogForm_Load(object sender, EventArgs e)
         {
             lbHistoryLogForm.Text = langHelper.GetString("History");
             txtSearchLogForm.PlaceholderText = langHelper.GetString("Search anything");
-            viewModel.searchLogByStaffId(this.id);
+            viewModel.searchLogByStaffId(this.id, dateTimeFrom.Value, dateTimeTo.Value.AddDays(1));
             foreach (DataRow row in viewModel.LogTable.Rows)
             {
                 // Chuyển đổi "time" thành kiểu DateTime trước
@@ -76,32 +84,8 @@ namespace BankManagement.View
 
         private void LogForm_Deactivate(object sender, EventArgs e)
         {
-            this.reset();
-            this.Hide();
-        }
-
-        public void reset()
-        {
-            txtSearchLogForm.Text = "";
-        }
-
-        public void UpdateFlowPanel()
-        {
-            flowPanelLogForm.Controls.Clear();
-            viewModel.searchLogByStaffId(this.id);
-            foreach (DataRow row in viewModel.LogTable.Rows)
-            {
-                // Chuyển đổi "time" thành kiểu DateTime trước
-                DateTime time = DateTime.Parse(row["time"].ToString());
-
-                // Định dạng DateTime thành chuỗi theo định dạng mong muốn: "dd/MM/yyyy HH:mm"
-                string formattedTime = time.ToString("dd/MM/yyyy HH:mm");
-
-                // Lấy nội dung thông báo
-                string content = row["content"].ToString();
-
-                AddItem("  " + formattedTime + "  " + content);
-            }
+            //this.reset();
+            //this.Hide();
         }
 
         private void btnSearchByAnyThingLogFormForm_Click(object sender, EventArgs e)
@@ -128,6 +112,45 @@ namespace BankManagement.View
             }
         }
 
-      
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCloseLogForm_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void dateTimeTo_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimeFrom.Value > dateTimeTo.Value)
+            {
+                dateTimeTo.Value = dateTimeFrom.Value;
+                return;
+            }
+            try
+            {
+                viewModel.searchLogByStaffId(this.id, dateTimeFrom.Value, dateTimeTo.Value.AddDays(1));
+                flowPanelLogForm.Controls.Clear();
+                foreach (DataRow row in viewModel.LogTable.Rows)
+                {
+                    // Chuyển đổi "time" thành kiểu DateTime trước
+                    DateTime time = DateTime.Parse(row["time"].ToString());
+
+                    // Định dạng DateTime thành chuỗi theo định dạng mong muốn: "dd/MM/yyyy HH:mm"
+                    string formattedTime = time.ToString("dd/MM/yyyy HH:mm");
+
+                    // Lấy nội dung thông báo
+                    string content = row["content"].ToString();
+
+                    AddItem("  " + formattedTime + "  " + content);
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.ShowBox(ex.Message, "Error");
+            }
+        }
     }
 }

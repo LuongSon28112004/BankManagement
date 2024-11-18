@@ -13,7 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Configuration;
+using System.Configuration;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
@@ -34,9 +34,9 @@ namespace BankManagement
 		{
 			InitializeComponent();
             langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
+            if (ConfigurationManager.AppSettings["Language"] != "")
             {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
+                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
             }
             viewModel = new CustomerViewModel();
 			this.ShowInTaskbar = false; //Ẩn khỏi thanh taskbar
@@ -82,6 +82,7 @@ namespace BankManagement
             lbNationalityCustomerForm.Text = langHelper.GetString("Nationality");
             btnAddCustomerForm.Text = langHelper.GetString("Add");
             btnDeleteCustomerForm.Text = langHelper.GetString("Delete");
+            txtJobCustomerForm.PlaceholderText = langHelper.GetString("Current job");
         }
 
 
@@ -140,6 +141,7 @@ namespace BankManagement
         //Tìm kiếm theo cccd---------------------------------------------------------------------------------------------------------------------------
         private void btnSearchCustomerForm_Click(object sender, EventArgs e)
         {
+            if (txtSearchCustomerForm.Text == "") return;
             try
             {
                 // Lấy ra các Customer phù hợp
