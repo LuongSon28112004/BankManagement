@@ -172,6 +172,7 @@
             this.dateTimeFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.dateTimeFrom.TextOffset = new System.Drawing.Point(5, 2);
             this.dateTimeFrom.Value = new System.DateTime(2024, 11, 17, 12, 11, 20, 1);
+            this.dateTimeFrom.ValueChanged += new System.EventHandler(this.dateTimeFrom_ValueChanged);
             // 
             // btnCloseLogForm
             // 

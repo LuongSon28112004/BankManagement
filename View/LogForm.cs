@@ -152,5 +152,36 @@ namespace BankManagement.View
                 CustomMessageBox.ShowBox(ex.Message, "Error");
             }
         }
+
+        private void dateTimeFrom_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimeFrom.Value > dateTimeTo.Value)
+            {
+                dateTimeFrom.Value = dateTimeTo.Value;
+                return;
+            }
+            try
+            {
+                viewModel.searchLogByStaffId(this.id, dateTimeFrom.Value, dateTimeTo.Value.AddDays(1));
+                flowPanelLogForm.Controls.Clear();
+                foreach (DataRow row in viewModel.LogTable.Rows)
+                {
+                    // Chuyển đổi "time" thành kiểu DateTime trước
+                    DateTime time = DateTime.Parse(row["time"].ToString());
+
+                    // Định dạng DateTime thành chuỗi theo định dạng mong muốn: "dd/MM/yyyy HH:mm"
+                    string formattedTime = time.ToString("dd/MM/yyyy HH:mm");
+
+                    // Lấy nội dung thông báo
+                    string content = row["content"].ToString();
+
+                    AddItem("  " + formattedTime + "  " + content);
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.ShowBox(ex.Message, "Error");
+            }
+        }
     }
 }
