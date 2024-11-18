@@ -16,15 +16,10 @@ namespace BankManagement.Model
     internal class LoanRepository
     {
         //Chuỗi kết nối database
-        private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
-        LangHelper langHelper;
+        private string connectionString = getConnectionString.connectionString;
         public LoanRepository()
         {
-            langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
-            }
+
         }
 
         //Tạo 1 khoản vay
@@ -52,7 +47,7 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                     //MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    CustomMessageBox.ShowBox(langHelper.GetString("Loan created successfully!"), "Success");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Loan created successfully!"), "Success");
                 }
             }
             catch (Exception ex)
@@ -137,7 +132,7 @@ namespace BankManagement.Model
                         cmd.Parameters.Add(new SqlParameter("@Loan_id", SqlDbType.Int) { Value = id });
                         cmd.ExecuteNonQuery();
                     }
-                    CustomMessageBox.ShowBox(langHelper.GetString("Payment successful!"), "Success");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Payment successful!"), "Success");
                 }
             }
             catch (Exception ex)

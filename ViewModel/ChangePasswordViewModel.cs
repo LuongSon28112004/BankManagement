@@ -15,7 +15,6 @@ namespace BankManagement.ViewModel
 {
     internal class ChangePasswordViewModel
     {
-        LangHelper langHelper;
         private StaffRepository staffRepository;
         private int staffId;
         private string currentPassword;
@@ -30,11 +29,6 @@ namespace BankManagement.ViewModel
 
         public ChangePasswordViewModel()
         {
-            langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
-            }
             staffRepository = new StaffRepository();
         }
 
@@ -46,7 +40,7 @@ namespace BankManagement.ViewModel
             this.currentPassword = ComputeSha256Hash(this.currentPassword);
             if (this.currentPassword != this.password)
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Incorrect password!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Incorrect password!"), "Error");
                 return false;
             }
             staffRepository.ChangePassword(this.newPassword, this.staffId);

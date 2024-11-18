@@ -11,17 +11,11 @@ namespace BankManagement.View
 {
     public partial class LogForm : Form
     {
-        LangHelper langHelper;
         private LogViewModel viewModel;
         private int id;
         public LogForm(int id)
         {
             viewModel = new LogViewModel();
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
             InitializeComponent();
             SetupForm();
             this.id = id;
@@ -43,8 +37,8 @@ namespace BankManagement.View
 
         private void LogForm_Load(object sender, EventArgs e)
         {
-            lbHistoryLogForm.Text = langHelper.GetString("History");
-            txtSearchLogForm.PlaceholderText = langHelper.GetString("Search anything");
+            lbHistoryLogForm.Text = LangHelper.Instance.GetString("History");
+            txtSearchLogForm.PlaceholderText = LangHelper.Instance.GetString("Search anything");
             viewModel.searchLogByStaffId(this.id, dateTimeFrom.Value, dateTimeTo.Value.AddDays(1));
             foreach (DataRow row in viewModel.LogTable.Rows)
             {

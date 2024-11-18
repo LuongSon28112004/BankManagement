@@ -17,7 +17,6 @@ namespace BankManagement.ViewModel
     {
         //Độ dài mật khẩu mặc định khi tạo mới tài khoản
         const int PASSWORD_LENGH = 12;
-        LangHelper langHelper;
         CustomerAccountWithInforRepository customerAccountWithInforRepository;
         CustomerInforRepository customerInforRepository;
         LogRepository logRepository;
@@ -38,11 +37,6 @@ namespace BankManagement.ViewModel
 
         public AccountViewModel()
         {
-            langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
-            }
             this.customerAccountWithInforRepository = new CustomerAccountWithInforRepository();
             this.customerInforRepository = new CustomerInforRepository();
             this.logRepository = new LogRepository();
@@ -113,7 +107,7 @@ namespace BankManagement.ViewModel
             //Kiểm tra xem UserName đã tồn tại chưa
             if(customerAccountWithInforRepository.getCustomerAccountByUserName(this.username) != null)
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("This username already exists!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("This username already exists!"), "Error");
                 return;
             }
 

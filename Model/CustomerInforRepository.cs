@@ -19,16 +19,10 @@ namespace BankManagement.Model
     internal class CustomerInforRepository
     {
         //Chuỗi kết nối database
-        private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
+        private string connectionString = getConnectionString.connectionString;
 
-        LangHelper langHelper;
         public CustomerInforRepository()
         {
-            langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
-            }
         }
 
         //Lấy ra thông tin của một khách hàng bằng CCCD----------------------------------------------------------------------------------------------------------------------------
@@ -197,7 +191,7 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                 }
-                CustomMessageBox.ShowBox(langHelper.GetString("Added customer successfully!"), "Success"); 
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Added customer successfully!"), "Success"); 
             }
             catch (Exception ex)
             {
@@ -227,7 +221,7 @@ namespace BankManagement.Model
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            CustomMessageBox.ShowBox(langHelper.GetString("Customer deleted successfully!"), "Success");
+                            CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Customer deleted successfully!"), "Success");
                         }
                     }
                 }
@@ -282,7 +276,7 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                 }
-                CustomMessageBox.ShowBox(langHelper.GetString("Update successful!"), "Success");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Update successful!"), "Success");
             }
             catch (Exception ex)
             {

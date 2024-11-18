@@ -17,17 +17,11 @@ namespace BankManagement.View
     public partial class SettingForm : Form
     {
         private int staffId;
-        LangHelper langHelper;
         private SettingViewModel viewModel;
 
         public SettingForm(int staffId)
         {
             InitializeComponent();
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
             this.staffId = staffId;
             viewModel = new SettingViewModel();
             this.ShowInTaskbar = false;
@@ -52,7 +46,7 @@ namespace BankManagement.View
                 }
                 else
                 {
-                    CustomMessageBox.ShowBox(langHelper.GetString("Error image file not found!"), "Error");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Error image file not found!"), "Error");
                 }
                 txtStaffName.Text = viewModel.Name;
                 txtUsername.Text = viewModel.Username;
@@ -67,16 +61,16 @@ namespace BankManagement.View
         }
         void ChangeLanguage()
         {
-            lbMyProfile.Text = langHelper.GetString("My Profile");
-            lbUsername.Text = langHelper.GetString("Username");
-            lbPosition.Text = langHelper.GetString("Position");
-            lbWorkingBranch.Text = langHelper.GetString("Branch");
-            lbAccountAndPassword.Text = langHelper.GetString("Account and Password");
-            btnChangePassword.Text = langHelper.GetString("Change password");
-            lbStopUsing.Text = langHelper.GetString("STOP USING ACCOUNT");
-            btnDisableAccount.Text = langHelper.GetString("Disable account");
-            btnDeleteAccount.Text = langHelper.GetString("Delete account");
-            lbLanguage.Text = langHelper.GetString("Language");
+            lbMyProfile.Text = LangHelper.Instance.GetString("My Profile");
+            lbUsername.Text = LangHelper.Instance.GetString("Username");
+            lbPosition.Text = LangHelper.Instance.GetString("Position");
+            lbWorkingBranch.Text = LangHelper.Instance.GetString("Branch");
+            lbAccountAndPassword.Text = LangHelper.Instance.GetString("Account and Password");
+            btnChangePassword.Text = LangHelper.Instance.GetString("Change password");
+            lbStopUsing.Text = LangHelper.Instance.GetString("STOP USING ACCOUNT");
+            btnDisableAccount.Text = LangHelper.Instance.GetString("Disable account");
+            btnDeleteAccount.Text = LangHelper.Instance.GetString("Delete account");
+            lbLanguage.Text = LangHelper.Instance.GetString("Language");
         }
 
         private void btnCloseMain_Click(object sender, EventArgs e)
@@ -89,7 +83,7 @@ namespace BankManagement.View
         private void btnVietnamese_Click(object sender, EventArgs e)
         {
             if (ConfigurationManager.AppSettings["Language"] == "vi") return;
-            string btn_id = CustomMessageBox.ShowBox(langHelper.GetString("Restart the app to change the language!"), "Error");
+            string btn_id = CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Restart the app to change the language!"), "Error");
             if (btn_id == "1")
             {
                 // Mở tệp cấu hình hiện tại
@@ -119,7 +113,7 @@ namespace BankManagement.View
         private void btnEnglish_Click(object sender, EventArgs e)
         {
             if (ConfigurationManager.AppSettings["Language"] == "") return;
-            string btn_id = CustomMessageBox.ShowBox(langHelper.GetString("Restart the app to change the language!"), "Error");
+            string btn_id = CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Restart the app to change the language!"), "Error");
             if (btn_id == "1")
             {
                 // Mở tệp cấu hình hiện tại
@@ -157,13 +151,13 @@ namespace BankManagement.View
         //Vô hiệu hoá tài khoản
         private void btnDisableAccount_Click(object sender, EventArgs e)
         {
-            string btn_id = CustomMessageBox.ShowBox(langHelper.GetString("Are you sure you want to disable your account?"), "Error");
+            string btn_id = CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Are you sure you want to disable your account?"), "Error");
             if (btn_id == "1")
             {
                 try
                 {
                     viewModel.DisableAccount(staffId);
-                    CustomMessageBox.ShowBox(langHelper.GetString("Account disabled successfully!"), "Success");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Account disabled successfully!"), "Success");
                     // Khởi động lại ứng dụng
                     RestartApplication();
                 }

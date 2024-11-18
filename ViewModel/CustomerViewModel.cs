@@ -15,7 +15,6 @@ namespace BankManagement.ViewModel
 {
     internal class CustomerViewModel
     {
-        LangHelper langHelper;
         private CustomerInforRepository customerInforRepository;
         private CustomerAccountWithInforRepository customerAccountWithInforRepository;
         private LogRepository logRepository;
@@ -38,11 +37,6 @@ namespace BankManagement.ViewModel
 
         public CustomerViewModel()
         {
-            langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
-            }
             customerInforRepository = new CustomerInforRepository();
             customerAccountWithInforRepository = new CustomerAccountWithInforRepository();
             logRepository = new LogRepository();
@@ -144,7 +138,7 @@ namespace BankManagement.ViewModel
             CustomerInfor customerInfor = customerInforRepository.getCustomerInforByCccd(this.Cccd);
             if (customerInfor != null)
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("This customer is already in the system!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("This customer is already in the system!"), "Error");
                 return;
             }
             else if (customerInfor == null)
@@ -177,7 +171,7 @@ namespace BankManagement.ViewModel
             {
                 if (row["account_status"].ToString() == "Active")
                 {
-                    throw new Exception(langHelper.GetString("The customer account still exists!"));
+                    throw new Exception(LangHelper.Instance.GetString("The customer account still exists!"));
                 }
             }
             customerInforRepository.deleteCustomer(this.cccd);
@@ -241,21 +235,21 @@ namespace BankManagement.ViewModel
                 txtAddressCustomerForm == "" ||
                 cbGenderCustomerForm == "")
             {
-                error = langHelper.GetString("Please fill in all information!");
+                error = LangHelper.Instance.GetString("Please fill in all information!");
                 return error;
             }
 
             // Tên chỉ được phép là chữ cái in hoa
             if (!txtCustomerNameCustomerForm.All(c => char.IsUpper(c) || char.IsWhiteSpace(c)))
             {
-                error = langHelper.GetString("Please enter customer name in correct format! Example: DINH NGOC THE");
+                error = LangHelper.Instance.GetString("Please enter customer name in correct format! Example: DINH NGOC THE");
                 return error;
             }
 
             // Kiểm tra định dạng của CCCD phải toàn là số
             if (!txtCCCDCustomerForm.All(char.IsDigit))
             {
-                error = langHelper.GetString("Please enter correct CCCD format!");
+                error = LangHelper.Instance.GetString("Please enter correct CCCD format!");
                 return error;
             }
 
@@ -264,14 +258,14 @@ namespace BankManagement.ViewModel
                     System.Globalization.CultureInfo.InvariantCulture,
                     System.Globalization.DateTimeStyles.None, out _))
             {
-                error = langHelper.GetString("Please enter correct date of birth format: DD/MM/YYYY!");
+                error = LangHelper.Instance.GetString("Please enter correct date of birth format: DD/MM/YYYY!");
                 return error;
             }
 
             // Kiểm tra định dạng SĐT phải toàn là số
             if (!txtPhoneNumberCustomerForm.All(char.IsDigit))
             {
-                error = langHelper.GetString("Please enter correct phone number format!");
+                error = LangHelper.Instance.GetString("Please enter correct phone number format!");
                 return error;
             }
 
@@ -279,7 +273,7 @@ namespace BankManagement.ViewModel
             var emailPattern = @"[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"; 
             if (!System.Text.RegularExpressions.Regex.IsMatch(txtEmailCustomerForm, emailPattern))
             {
-                error = langHelper.GetString("Invalid email address!");
+                error = LangHelper.Instance.GetString("Invalid email address!");
                 return error;
             }
 

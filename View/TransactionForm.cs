@@ -20,18 +20,12 @@ namespace BankManagement.View
 {
     public partial class TransactionForm : Form
     {
-        LangHelper langHelper;
         TransactionViewModel viewModel;
 		int staffId;
 
 		//constructor
-        public TransactionForm(int staffId)
-        {
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
+        public TransactionForm(int staffId) 
+        { 
             this.staffId = staffId;
             InitializeComponent();
             viewModel = new TransactionViewModel();
@@ -49,22 +43,22 @@ namespace BankManagement.View
         }
         void ChangeLanguage()
         {
-            lbTransactionTransactionForm.Text = langHelper.GetString("Transaction");
-            btnTransferTaskBarTransactionForm.Text = langHelper.GetString("Transfer");
-            btnDepositWithdrawTaskBarTransactionForm.Text = langHelper.GetString("Deposit") + "/" + langHelper.GetString("Withdraw");
-            txtSearchAccountNumberSendTransactionForm.PlaceholderText = langHelper.GetString("Account Number");
-            btnSearchByAccountSendNumberTransactionForm.Text = langHelper.GetString("Search");
-            lbCustomerNameSendTransactionForm.Text = langHelper.GetString("Customer Name");
-            lbAccountNumberSendTransactionForm.Text = langHelper.GetString("Account Number");
-            lbBalanceTransactionForm.Text = langHelper.GetString("Balance");
-            lbAmountTransactionForm.Text = langHelper.GetString("Amount");
-            lbContentTransactionForm.Text = langHelper.GetString("Content");
-            txtContentTransactionForm.PlaceholderText = langHelper.GetString("Customer Name transfer to...");
-            btnDepositTransactionForm.Text = langHelper.GetString("Deposit");
-            btnWithDrawTransactionForm.Text = langHelper.GetString("Withdraw");
-            lbCustomerNameReceiveTransactionForm.Text = langHelper.GetString("Customer Name");
-            lbAccountNumberReceiveTransactionForm.Text = langHelper.GetString("Account Number");
-            btnTransferTransactionForm.Text = langHelper.GetString("Transfer");
+            lbTransactionTransactionForm.Text = LangHelper.Instance.GetString("Transaction");
+            btnTransferTaskBarTransactionForm.Text = LangHelper.Instance.GetString("Transfer");
+            btnDepositWithdrawTaskBarTransactionForm.Text = LangHelper.Instance.GetString("Deposit") + "/" + LangHelper.Instance.GetString("Withdraw");
+            txtSearchAccountNumberSendTransactionForm.PlaceholderText = LangHelper.Instance.GetString("Account Number");
+            btnSearchByAccountSendNumberTransactionForm.Text = LangHelper.Instance.GetString("Search");
+            lbCustomerNameSendTransactionForm.Text = LangHelper.Instance.GetString("Customer Name");
+            lbAccountNumberSendTransactionForm.Text = LangHelper.Instance.GetString("Account Number");
+            lbBalanceTransactionForm.Text = LangHelper.Instance.GetString("Balance");
+            lbAmountTransactionForm.Text = LangHelper.Instance.GetString("Amount");
+            lbContentTransactionForm.Text = LangHelper.Instance.GetString("Content");
+            txtContentTransactionForm.PlaceholderText = LangHelper.Instance.GetString("Customer Name transfer to...");
+            btnDepositTransactionForm.Text = LangHelper.Instance.GetString("Deposit");
+            btnWithDrawTransactionForm.Text = LangHelper.Instance.GetString("Withdraw");
+            lbCustomerNameReceiveTransactionForm.Text = LangHelper.Instance.GetString("Customer Name");
+            lbAccountNumberReceiveTransactionForm.Text = LangHelper.Instance.GetString("Account Number");
+            btnTransferTransactionForm.Text = LangHelper.Instance.GetString("Transfer");
         }
 
         private void TransactionForm_Resize(object sender, EventArgs e)
@@ -89,7 +83,7 @@ namespace BankManagement.View
 			btnDepositTransactionForm.Visible = true;
 			btnWithDrawTransactionForm.Visible = true;
 			//reset content
-			txtContentTransactionForm.PlaceholderText = langHelper.GetString("Customer Name") + " " + langHelper.GetString("Deposit") + "/" + langHelper.GetString("Withdraw") + "...";
+			txtContentTransactionForm.PlaceholderText = LangHelper.Instance.GetString("Customer Name") + " " + LangHelper.Instance.GetString("Deposit") + "/" + LangHelper.Instance.GetString("Withdraw") + "...";
 		}
 
 
@@ -117,7 +111,7 @@ namespace BankManagement.View
             btnWithDrawTransactionForm.Visible = false;
 
 			//reset content
-			txtContentTransactionForm.PlaceholderText = langHelper.GetString("Customer Name transfer to...");
+			txtContentTransactionForm.PlaceholderText = LangHelper.Instance.GetString("Customer Name transfer to...");
 		}
 
 
@@ -130,33 +124,33 @@ namespace BankManagement.View
             // Vô hiệu hóa nút để tránh click nhiều lần
             btnTransferTransactionForm.Enabled = false;
 
-            if (lbCustomerNameSendTransactionForm.Text == langHelper.GetString("") || lbCustomerNameReceiveTransactionForm.Text == "Customer Name")
+            if (lbCustomerNameSendTransactionForm.Text == LangHelper.Instance.GetString("") || lbCustomerNameReceiveTransactionForm.Text == "Customer Name")
 			{
-                CustomMessageBox.ShowBox(langHelper.GetString("Please fill in all information!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please fill in all information!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
 			}
             if(txtAccountNumberSendTransactionForm.Text == txtAccountNumberReceiveTransactionForm.Text)
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Cannot transfer money between 2 same accounts!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Cannot transfer money between 2 same accounts!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
             }
 			if(txtAmountTransactionForm.Text == "")
 			{
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter the amount to transfer!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter the amount to transfer!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
 			}
 			if(lbCustomerSendStatusTransactionForm.Text == "Inactive")
 			{
-                CustomMessageBox.ShowBox(langHelper.GetString("The deposit account no longer exists in the system!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("The deposit account no longer exists in the system!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
 			}
 			if(lbCustomerReceiveStatusTransactionForm.Text == "Inactive")
 			{
-                CustomMessageBox.ShowBox(langHelper.GetString("The receiving account no longer exists in the system!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("The receiving account no longer exists in the system!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
 			}
@@ -166,7 +160,7 @@ namespace BankManagement.View
             {
                 if (checkAmount < 10000)
                 {
-                    CustomMessageBox.ShowBox(langHelper.GetString("Minimum transaction amount 10,000 VNĐ"), "Error");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Minimum transaction amount 10,000 VNĐ"), "Error");
                     btnTransferTransactionForm.Enabled = true;
                     return;
                 }
@@ -185,14 +179,14 @@ namespace BankManagement.View
             {
                 if (balance < amount)
                 {
-                    CustomMessageBox.ShowBox(langHelper.GetString("Account does not have enough funds to trade!"), "Error");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Account does not have enough funds to trade!"), "Error");
                     btnTransferTransactionForm.Enabled = true;
                     return;
                 }
             }
             if (txtContentTransactionForm.Text == "")
 			{
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter transaction content!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter transaction content!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
                 return;
             }
@@ -254,7 +248,7 @@ namespace BankManagement.View
             else
             {
                 // Xử lý trường hợp giá trị không hợp lệ
-                CustomMessageBox.ShowBox(langHelper.GetString("Invalid currency value!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Invalid currency value!"), "Error");
             }
             viewModel.Note = txtContentTransactionForm.Text == "" ?  "" : txtContentTransactionForm.Text;
 			viewModel.Account_customer_send = txtAccountNumberSendTransactionForm.Text == "" ? 0 : int.Parse(txtAccountNumberSendTransactionForm.Text);
@@ -325,7 +319,7 @@ namespace BankManagement.View
 			if (txtAccountNumberReceiveTransactionForm.Text == "") return;
 			if (txtAccountNumberSendTransactionForm.Text == "")
 			{
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter transfer account!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter transfer account!"), "Error");
                 return;
             }
 
@@ -344,7 +338,7 @@ namespace BankManagement.View
             if(viewModel.DatatableAccountReceive.Rows.Count == 1)
             {
                 this.updateCustomerAccountReceive(viewModel.DatatableAccountReceive);
-				if (lbCustomerNameSendTransactionForm.Text != langHelper.GetString("Customer Name") && lbCustomerNameReceiveTransactionForm.Text != langHelper.GetString("Customer Name"))
+				if (lbCustomerNameSendTransactionForm.Text != LangHelper.Instance.GetString("Customer Name") && lbCustomerNameReceiveTransactionForm.Text != LangHelper.Instance.GetString("Customer Name"))
 				{
                     txtContentTransactionForm.Text = txtContentTransactionForm.Text = viewModel.DatatableAccountSend.Rows[0]["name"].ToString() + " chuyen tien toi " + viewModel.DatatableAccountReceive.Rows[0]["name"].ToString();
                 }
@@ -413,9 +407,9 @@ namespace BankManagement.View
             btnDepositTransactionForm.Enabled = false;
             btnWithDrawTransactionForm.Enabled = false;
 
-            if (lbCustomerNameSendTransactionForm.Text == langHelper.GetString("Customer Name"))
+            if (lbCustomerNameSendTransactionForm.Text == LangHelper.Instance.GetString("Customer Name"))
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please fill in all information!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please fill in all information!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -423,7 +417,7 @@ namespace BankManagement.View
 
             if (txtAmountTransactionForm.Text == "")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter the amount to deposit!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter the amount to deposit!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -431,7 +425,7 @@ namespace BankManagement.View
 
             if (lbCustomerSendStatusTransactionForm.Text == "Inactive")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Deposit account no longer exists in the system!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Deposit account no longer exists in the system!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -439,7 +433,7 @@ namespace BankManagement.View
 
             if (txtContentTransactionForm.Text == "")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter transaction content!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter transaction content!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -451,7 +445,7 @@ namespace BankManagement.View
             {
                 if (checkAmount < 10000)
                 {
-                    CustomMessageBox.ShowBox(langHelper.GetString("Minimum transaction amount 10,000 VNĐ"), "Error");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Minimum transaction amount 10,000 VNĐ"), "Error");
                     btnDepositTransactionForm.Enabled = true;
                     btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                     return;
@@ -509,7 +503,7 @@ namespace BankManagement.View
 
             if (lbCustomerNameSendTransactionForm.Text == "Customer Name")
 			{
-                CustomMessageBox.ShowBox(langHelper.GetString("Please fill in all information!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please fill in all information!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true;
                 return;
@@ -517,21 +511,21 @@ namespace BankManagement.View
 
 			if (txtAmountTransactionForm.Text == "")
 			{
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter the amount to withdraw!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter the amount to withdraw!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true;
                 return;
 			}
 			if (lbCustomerSendStatusTransactionForm.Text == "Inactive")
 			{
-                CustomMessageBox.ShowBox(langHelper.GetString("The withdrawal account no longer exists in the system!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("The withdrawal account no longer exists in the system!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true;
                 return;
 			}
             if (txtContentTransactionForm.Text == "")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter transaction content!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter transaction content!"), "Error");
                 btnDepositTransactionForm.Enabled = true;
                 btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                 return;
@@ -543,7 +537,7 @@ namespace BankManagement.View
             {
                 if (checkAmount < 10000)
                 {
-                    CustomMessageBox.ShowBox(langHelper.GetString("Minimum transaction amount 10,000 VNĐ"), "Error");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Minimum transaction amount 10,000 VNĐ"), "Error");
                     btnDepositTransactionForm.Enabled = true;
                     btnWithDrawTransactionForm.Enabled = true; // Kích hoạt lại nút
                     return;
@@ -563,7 +557,7 @@ namespace BankManagement.View
             {
                 if (balance < amount)
                 {
-                    CustomMessageBox.ShowBox(langHelper.GetString("Account does not have enough funds to withdraw!"), "Error");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Account does not have enough funds to withdraw!"), "Error");
                     btnDepositTransactionForm.Enabled = true;
                     btnWithDrawTransactionForm.Enabled = true;
                     return;
@@ -622,7 +616,7 @@ namespace BankManagement.View
             imgCustomerSendTracsactionForm.Image = System.Drawing.Image.FromFile($"..\\..\\Resources\\avatar_customer_default.png");
             imgCustomerReceiveTransactionForm.Image = System.Drawing.Image.FromFile($"..\\..\\Resources\\avatar_customer_default.png");
             txtSearchAccountNumberSendTransactionForm.Text = "";
-            lbCustomerNameSendTransactionForm.Text = langHelper.GetString("Customer Name");
+            lbCustomerNameSendTransactionForm.Text = LangHelper.Instance.GetString("Customer Name");
             lbCCCDCustomerSendTransactionForm.Text = "024xxxxxxxxx";
             this.SetAccountSendStatus("Status");
             txtAccountNumberSendTransactionForm.Text = "";

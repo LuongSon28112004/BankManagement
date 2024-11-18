@@ -15,15 +15,9 @@ namespace BankManagement.Model
     internal class FeedBackReponsitory
     {
         //Chuỗi kết nối database
-        private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
-        LangHelper langHelper;
+        private string connectionString = getConnectionString.connectionString;
         public FeedBackReponsitory()
         {
-            langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
-            }
         }
 
         //thêm một feedback vaò cơ sở dự liệu
@@ -44,7 +38,7 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                     }
                 }
-                CustomMessageBox.ShowBox(langHelper.GetString("Feedback sent successfully!"), "Success");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Feedback sent successfully!"), "Success");
             }
             catch (Exception ex)
             {

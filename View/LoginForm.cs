@@ -22,17 +22,11 @@ namespace BankManagement
 {
     public partial class LoginForm : Form
     {
-		LangHelper langHelper;
-		private LoginViewModel viewModel;
-		public LoginForm()
+        private LoginViewModel viewModel;
+        public LoginForm()
         {
             InitializeComponent();
             viewModel = new LoginViewModel();
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -41,41 +35,41 @@ namespace BankManagement
             btnCloseLogin.HoverState.FillColor = Color.FromArgb(255, 90, 90); //Thuộc tính hover btnClose "đỏ"
             btnMinimizeLogin.HoverState.FillColor = Color.FromArgb(50, 50, 73); //Thuộc tính hover btnMinimize
 
-			lbAdminLogin.Text = langHelper.GetString("Admin Login");
-			lbUserName.Text = langHelper.GetString("Username");
-			lbPassword.Text = langHelper.GetString("Password");
-			btnLogin.Text = langHelper.GetString("Login");
+            lbAdminLogin.Text = LangHelper.Instance.GetString("Admin Login");
+            lbUserName.Text = LangHelper.Instance.GetString("Username");
+            lbPassword.Text = LangHelper.Instance.GetString("Password");
+            btnLogin.Text = LangHelper.Instance.GetString("Login");
         }
 
 
         //Btn đóng, thu nhỏ ứng dụng
         private void btnLoginClose_Click(object sender, EventArgs e)
-		{
+        {
             Application.Exit(); //Đóng ứng dụng
-		}
+        }
 
-		private void btnLoginMinimize_Click(object sender, EventArgs e)
-		{
-			this.WindowState = FormWindowState.Minimized;  //Thu nhỏ ứng dụng
-		}
+        private void btnLoginMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;  //Thu nhỏ ứng dụng
+        }
 
 
 
         //Begin - Hỗ trợ kéo thả khi giữ click vào thanh title
-        public const int WM_NCLBUTTONDOWN = 0xA1; 
+        public const int WM_NCLBUTTONDOWN = 0xA1;
         //0xA1 là mã Hex đại diện cho sự kiện khi Windows khi nhấn nút trái chuột vào vùng không chứa title bar
 
-        public const int HT_CAPTION = 0x2; 
+        public const int HT_CAPTION = 0x2;
         //Tương tự là khi người dùng nhấn vào thanh title bar
 
-        [DllImportAttribute("user32.dll")] 
+        [DllImportAttribute("user32.dll")]
         //Gọi hàm API từ thư viện user32.dll
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-		//hWnd là một handle ("giống như ID định danh cho một loại tài nguyên, ở đây là form hiện tại)
-		//Msg gửi thông điệp WM_NCLBUTTONDOWN (0xA1) là mã để báo hiệu click chuột trái vào title bar
-		//wParam, lParam  Là các tham số bổ sung, thường mang thông tin về sự kiện chuột hoặc bàn phím, hoặc các chi tiết khác phụ thuộc vào thông điệp bạn đang gửi
+        //hWnd là một handle ("giống như ID định danh cho một loại tài nguyên, ở đây là form hiện tại)
+        //Msg gửi thông điệp WM_NCLBUTTONDOWN (0xA1) là mã để báo hiệu click chuột trái vào title bar
+        //wParam, lParam  Là các tham số bổ sung, thường mang thông tin về sự kiện chuột hoặc bàn phím, hoặc các chi tiết khác phụ thuộc vào thông điệp bạn đang gửi
 
-		[DllImportAttribute("user32.dll")] 
+        [DllImportAttribute("user32.dll")]
         //Mỗi lần import chỉ hoạt động cho một hàm cụ thể nên phải import nhiều lần
         public static extern bool ReleaseCapture();
         //Giải phóng việc bắt giữ chuột từ control hiện tại
@@ -84,63 +78,63 @@ namespace BankManagement
             ReleaseCapture(); //Nếu không có hàm này thì mọi sự kiện chuột ("kéo thả") vẫn sẽ được gửi đến title bar
             SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0); //Gửi thông điệp đến hđh để bắt đầu di chuyển form
         }
-		//End - Hỗ trợ kéo thả khi giữ click vào thanh title
+        //End - Hỗ trợ kéo thả khi giữ click vào thanh title
 
 
 
-		//Sự kiện login
-		private void btnLogin_Click(object sender, EventArgs e)
+        //Sự kiện login
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             lblWarningLogin.Text = "";
             string username = txtUsername.Text; //Lấy username từ TextBox
-			string password = txtPassword.Text; //Lấy password từ TextBox
+            string password = txtPassword.Text; //Lấy password từ TextBox
 
-			if (username == "")
-			{
-				lblWarningLogin.Text = langHelper.GetString("Enter username and password!");
-				txtUsername.Focus();
-				return;
-			}
-			if (password == "")
-			{
-                lblWarningLogin.Text = langHelper.GetString("Enter username and password!");
+            if (username == "")
+            {
+                lblWarningLogin.Text = LangHelper.Instance.GetString("Enter username and password!");
+                txtUsername.Focus();
+                return;
+            }
+            if (password == "")
+            {
+                lblWarningLogin.Text = LangHelper.Instance.GetString("Enter username and password!");
                 txtPassword.Focus();
                 return;
             }
-			try
-			{
-				viewModel.LoadLogin(username, password); //Thực hiện truy vấn với username và password từ người dùng nhập
-				if (viewModel.GetID() != 0) //Nếu có tài khoản này trong csdl đồng nghĩa với việc lấy ra được ID của tk đó
-				{
-					if (viewModel.GetStatus() == "disabled")
-					{
-						CustomMessageBox.ShowBox(langHelper.GetString("Your account has been disabled!"), "Error");
+            try
+            {
+                viewModel.LoadLogin(username, password); //Thực hiện truy vấn với username và password từ người dùng nhập
+                if (viewModel.GetID() != 0) //Nếu có tài khoản này trong csdl đồng nghĩa với việc lấy ra được ID của tk đó
+                {
+                    if (viewModel.GetStatus() == "disabled")
+                    {
+                        CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Your account has been disabled!"), "Error");
                         viewModel.SetID(0);
                         return;
-					}
-					if (viewModel.GetStatus() == "active")
-					{
+                    }
+                    if (viewModel.GetStatus() == "active")
+                    {
                         lblWarningLogin.Text = "";
                         MainForm main = new MainForm(Convert.ToInt32(viewModel.GetID())); //Chuẩn bị truyền dữ liệu (ID) cho form Main
                         main.Show();
                         this.Hide();
                     }
-				}
-				else
-				{
-					lblWarningLogin.Text = langHelper.GetString("Wrong username or password!");
+                }
+                else
+                {
+                    lblWarningLogin.Text = LangHelper.Instance.GetString("Wrong username or password!");
                     txtPassword.Focus();
                 }
                 viewModel.SetStatus("");
-                
-            }
-			catch (Exception ex)
-			{
-				// Xử lý lỗi và hiển thị thông báo
-				CustomMessageBox.ShowBox("Error" + ex.Message, "Error");
-			}
-		}
 
-        
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi và hiển thị thông báo
+                CustomMessageBox.ShowBox("Error" + ex.Message, "Error");
+            }
+        }
+
+
     }
 }

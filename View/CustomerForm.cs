@@ -25,7 +25,6 @@ namespace BankManagement
 {
 	public partial class CustomerForm : Form
 	{
-        LangHelper langHelper;
 		CustomerViewModel viewModel;
         string filePath;
         private int staffId;
@@ -33,11 +32,6 @@ namespace BankManagement
 		public CustomerForm(int staffId)
 		{
 			InitializeComponent();
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
             viewModel = new CustomerViewModel();
 			this.ShowInTaskbar = false; //Ẩn khỏi thanh taskbar
             this.staffId = staffId;
@@ -66,23 +60,23 @@ namespace BankManagement
         }
         void ChangeLanguage()
         {
-            lbCustomerInformationCustomerAccountForm.Text = langHelper.GetString("Customer Information");
-            txtSearchCustomerForm.PlaceholderText = langHelper.GetString("Search by CCCD");
-            btnSearchCustomerForm.Text = langHelper.GetString("Search");
-            txtCustomerNameCustomerForm.PlaceholderText = langHelper.GetString("Customer Name");
-            lbGenderCustomerForm.Text = langHelper.GetString("Gender");
-            btnActiveCustomerForm.Text = langHelper.GetString("Active");
-            btnUpdateCustomerForm.Text = langHelper.GetString("Update");
-            lbDateOfBirthCustomerForm.Text = langHelper.GetString("Date of birth");
-            lbJobCustomerForm.Text = langHelper.GetString("Job");
-            lbPhoneNumberCustomerForm.Text = langHelper.GetString("Phone number");
-            txtPhoneNumberCustomerForm.PlaceholderText = langHelper.GetString("Only digits");
-            lbAddressCustomerForm.Text = langHelper.GetString("Address");
-            txtAddressCustomerForm.PlaceholderText = langHelper.GetString("Ward - District - City");
-            lbNationalityCustomerForm.Text = langHelper.GetString("Nationality");
-            btnAddCustomerForm.Text = langHelper.GetString("Add");
-            btnDeleteCustomerForm.Text = langHelper.GetString("Delete");
-            txtJobCustomerForm.PlaceholderText = langHelper.GetString("Current job");
+            lbCustomerInformationCustomerAccountForm.Text = LangHelper.Instance.GetString("Customer Information");
+            txtSearchCustomerForm.PlaceholderText = LangHelper.Instance.GetString("Search by CCCD");
+            btnSearchCustomerForm.Text = LangHelper.Instance.GetString("Search");
+            txtCustomerNameCustomerForm.PlaceholderText = LangHelper.Instance.GetString("Customer Name");
+            lbGenderCustomerForm.Text = LangHelper.Instance.GetString("Gender");
+            btnActiveCustomerForm.Text = LangHelper.Instance.GetString("Active");
+            btnUpdateCustomerForm.Text = LangHelper.Instance.GetString("Update");
+            lbDateOfBirthCustomerForm.Text = LangHelper.Instance.GetString("Date of birth");
+            lbJobCustomerForm.Text = LangHelper.Instance.GetString("Job");
+            lbPhoneNumberCustomerForm.Text = LangHelper.Instance.GetString("Phone number");
+            txtPhoneNumberCustomerForm.PlaceholderText = LangHelper.Instance.GetString("Only digits");
+            lbAddressCustomerForm.Text = LangHelper.Instance.GetString("Address");
+            txtAddressCustomerForm.PlaceholderText = LangHelper.Instance.GetString("Ward - District - City");
+            lbNationalityCustomerForm.Text = LangHelper.Instance.GetString("Nationality");
+            btnAddCustomerForm.Text = LangHelper.Instance.GetString("Add");
+            btnDeleteCustomerForm.Text = LangHelper.Instance.GetString("Delete");
+            txtJobCustomerForm.PlaceholderText = LangHelper.Instance.GetString("Current job");
         }
 
 
@@ -330,7 +324,7 @@ namespace BankManagement
                 viewModel.SearchCustomer(viewModel.Cccd);
                 if (viewModel.DataTableCustomerInfor.Rows.Count == 0)
                 {
-                    CustomMessageBox.ShowBox(langHelper.GetString("Please enter correct customer information!"), "Error");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter correct customer information!"), "Error");
                     return;
                 }
 
@@ -381,7 +375,7 @@ namespace BankManagement
             {
                 if (lbStatusCustomerForm.Text == "Inactive")
                 {
-                    CustomMessageBox.ShowBox(langHelper.GetString("Customer is no longer active!"), "Error");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Customer is no longer active!"), "Error");
                     return;
                 }
                 // Lấy dữ liệu từ các TextBox

@@ -16,15 +16,10 @@ namespace BankManagement.Model
     internal class CustomerAccountWithInforRepository
     {
         //Chuỗi kết nối database
-        private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
-        LangHelper langHelper;
+        private string connectionString = getConnectionString.connectionString;
         public CustomerAccountWithInforRepository()
         {
-            langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
-            }
+
         }
 
 
@@ -172,7 +167,7 @@ namespace BankManagement.Model
                         cmd.ExecuteNonQuery();
                      }
                 }
-                CustomMessageBox.ShowBox(langHelper.GetString("Account created successfully!"), "Success");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Account created successfully!"), "Success");
             }
             catch (Exception ex)
             {
@@ -274,7 +269,7 @@ namespace BankManagement.Model
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            CustomMessageBox.ShowBox(langHelper.GetString("Account deleted successfully!"), "Success");
+                            CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Account deleted successfully!"), "Success");
                         }
                     }
                 }
@@ -307,7 +302,7 @@ namespace BankManagement.Model
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            CustomMessageBox.ShowBox(langHelper.GetString("Account recovery successful!"), "Success");
+                            CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Account recovery successful!"), "Success");
                         }
                     }
                 }

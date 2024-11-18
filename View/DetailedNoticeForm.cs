@@ -14,22 +14,16 @@ namespace BankManagement.View
 {
     public partial class DetailedNoticeForm : Form
     {
-        LangHelper langHelper;
         public DetailedNoticeForm(string title, string message)
         {
             InitializeComponent();
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
             txtTitleDetailedNoticeForm.Text = title;
             txtContentDetailedNoticeForm.Text = message;
         }
         private void DetailedNoticeForm_Load(object sender, EventArgs e)
         {
             lbNotifications.Focus();
-            lbNotifications.Text = langHelper.GetString("Notifications");
+            lbNotifications.Text = LangHelper.Instance.GetString("Notifications");
         }
 
         private void btnCloseDetailedNoticeForm_Click(object sender, EventArgs e)

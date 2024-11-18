@@ -16,16 +16,10 @@ namespace BankManagement.View
 {
     public partial class LoanFrom : Form
     {
-        LangHelper langHelper;
         private int staffId;
         private LoanViewModel viewModel;
         public LoanFrom(int staffId)
         {
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
             InitializeComponent();
             this.staffId = staffId;
             viewModel = new LoanViewModel();    
@@ -44,27 +38,27 @@ namespace BankManagement.View
         }
         void ChangeLanguage()
         {
-            lbLoanLoanForm.Text = langHelper.GetString("Loan");
-            btnCreateTaskBarLoanForm.Text = langHelper.GetString("Create");
-            btnPaymentTaskBarLoanForm.Text = langHelper.GetString("Payment");
-            txtSearchByAccountNumberLoanForm.PlaceholderText = langHelper.GetString("Account Number");
-            btnSearchByAccountNumberLoanForm.Text = langHelper.GetString("Search");
-            lbCustomerNameLoanForm.Text = langHelper.GetString("Customer Name");
-            lbPhoneNumberLoanForm.Text = langHelper.GetString("Phone number");
-            lbAmountLoanForm.Text = langHelper.GetString("Amount");
-            lbInterestRateLoanForm.Text = langHelper.GetString("Interest rate");
-            lbLoanDateLoanForm.Text = langHelper.GetString("Loan date");
-            lbLoanTermLoanForm.Text = langHelper.GetString("Loan term");
-            txtLoanTermLoanForm.PlaceholderText = langHelper.GetString("Month");
-            lbLoanPurposeLoanForm.Text = langHelper.GetString("Loan purpose");
-            txtLoanPurposeLoanForm.PlaceholderText = langHelper.GetString("Borrow money to...");
-            btnCreateLoanForm.Text = langHelper.GetString("Create");
-            lbNextInterestDueDateLoanForm.Text = langHelper.GetString("Next interest due date");
-            lbLastPaymentDateLoanForm.Text = langHelper.GetString("Last payment date");
-            lbInterestDueAmountLoanForm.Text = langHelper.GetString("Interest due amount");
-            lbPenaltyFeeLoanForm.Text = langHelper.GetString("Penalty fee");
-            lbTotalLoanForm.Text = langHelper.GetString("Total");
-            btnPaymentLoanForm.Text = langHelper.GetString("Payment");
+            lbLoanLoanForm.Text = LangHelper.Instance.GetString("Loan");
+            btnCreateTaskBarLoanForm.Text = LangHelper.Instance.GetString("Create");
+            btnPaymentTaskBarLoanForm.Text = LangHelper.Instance.GetString("Payment");
+            txtSearchByAccountNumberLoanForm.PlaceholderText = LangHelper.Instance.GetString("Account Number");
+            btnSearchByAccountNumberLoanForm.Text = LangHelper.Instance.GetString("Search");
+            lbCustomerNameLoanForm.Text = LangHelper.Instance.GetString("Customer Name");
+            lbPhoneNumberLoanForm.Text = LangHelper.Instance.GetString("Phone number");
+            lbAmountLoanForm.Text = LangHelper.Instance.GetString("Amount");
+            lbInterestRateLoanForm.Text = LangHelper.Instance.GetString("Interest rate");
+            lbLoanDateLoanForm.Text = LangHelper.Instance.GetString("Loan date");
+            lbLoanTermLoanForm.Text = LangHelper.Instance.GetString("Loan term");
+            txtLoanTermLoanForm.PlaceholderText = LangHelper.Instance.GetString("Month");
+            lbLoanPurposeLoanForm.Text = LangHelper.Instance.GetString("Loan purpose");
+            txtLoanPurposeLoanForm.PlaceholderText = LangHelper.Instance.GetString("Borrow money to...");
+            btnCreateLoanForm.Text = LangHelper.Instance.GetString("Create");
+            lbNextInterestDueDateLoanForm.Text = LangHelper.Instance.GetString("Next interest due date");
+            lbLastPaymentDateLoanForm.Text = LangHelper.Instance.GetString("Last payment date");
+            lbInterestDueAmountLoanForm.Text = LangHelper.Instance.GetString("Interest due amount");
+            lbPenaltyFeeLoanForm.Text = LangHelper.Instance.GetString("Penalty fee");
+            lbTotalLoanForm.Text = LangHelper.Instance.GetString("Total");
+            btnPaymentLoanForm.Text = LangHelper.Instance.GetString("Payment");
         }
 
 
@@ -146,7 +140,7 @@ namespace BankManagement.View
         private void reset()
         {
             imgCustomerLoanForm.Image = System.Drawing.Image.FromFile($"..\\..\\Resources\\avatar_customer_default.png");
-            lbCustomerNameLoanForm.Text = langHelper.GetString("Customer Name");
+            lbCustomerNameLoanForm.Text = LangHelper.Instance.GetString("Customer Name");
             lbAccountNumberLoanForm.Text = "101xxxxxxx";
             this.SetAccountSendStatus("Status");
             txtCCCDLoanForm.Text = "";
@@ -306,31 +300,31 @@ namespace BankManagement.View
             //Kiểm tra xem tài khoản này có đang phải trả khoản vay nào không
             if (viewModel.InPaymentPeriod())
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("This customer is in a loan period and cannot borrow more!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("This customer is in a loan period and cannot borrow more!"), "Error");
                 return;
             }
 
             if(lbAccountStatusLoanForm.Text == "Inactive")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("This account has been deleted!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("This account has been deleted!"), "Error");
                 return;
             }
 
             if(txtAmountLoanForm.Text == "")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter the amount you need to borrow!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter the amount you need to borrow!"), "Error");
                 return;
             }
 
             if(txtLoanTermLoanForm.Text == "")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter loan term!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter loan term!"), "Error");
                 return;
             }
 
             if(txtLoanPurposeLoanForm.Text == "")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter loan purpose!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter loan purpose!"), "Error");
                 return;
             }
             this.updateViewModelFromForm();

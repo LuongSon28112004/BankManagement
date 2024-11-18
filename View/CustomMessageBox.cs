@@ -36,23 +36,17 @@ namespace BankManagement.View
 
         public static string ShowBox(string txtMessage, string icon)
         {
-            LangHelper langHelper;
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
             newMessageBox = new CustomMessageBox();
             if (icon == "Error")
             {
                 newMessageBox.imgIcon.Image = Image.FromFile("..\\..\\Resources\\warning_icon.png");
-                newMessageBox.lbTitle.Text = langHelper.GetString("Warning!");
+                newMessageBox.lbTitle.Text = LangHelper.Instance.GetString("Warning!");
                 newMessageBox.btnOk.FillColor = Color.FromArgb(255, 50, 70);
             }
             if (icon == "Success")
             {
                 newMessageBox.imgIcon.Image = Image.FromFile("..\\..\\Resources\\success_icon.png");
-                newMessageBox.lbTitle.Text = langHelper.GetString("Success!");
+                newMessageBox.lbTitle.Text = LangHelper.Instance.GetString("Success!");
                 newMessageBox.btnOk.FillColor = Color.FromArgb(70, 180, 110);
             }
 

@@ -14,16 +14,10 @@ namespace BankManagement.Model
 	internal class StaffRepository
 	{
 		//Chuỗi kết nối database
-		private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
-		LangHelper langHelper;
+		private string connectionString = getConnectionString.connectionString;
 
 		public StaffRepository()
 		{
-            langHelper = new LangHelper();
-            if (WebConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(WebConfigurationManager.AppSettings["Language"]);
-            }
         }
 
 

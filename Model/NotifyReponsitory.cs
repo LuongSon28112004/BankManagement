@@ -11,7 +11,7 @@ namespace BankManagement.Model
     internal class NotifyReponsitory
     {
         //Chuỗi kết nối database
-        private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
+        private string connectionString = getConnectionString.connectionString;
 
         public DataTable getAllNotifyByStaffId(int Id)
         {

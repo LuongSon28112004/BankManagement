@@ -18,17 +18,11 @@ namespace BankManagement
 {
     public partial class InfoStaffForm : Form
     {
-        LangHelper langHelper;
         private int staffId;
         private InfoStaffViewModel viewModel;
         public InfoStaffForm(int staffId)
         {
             InitializeComponent();
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
             this.staffId = staffId; //Nhận dữ liệu từ Main
 
             this.ShowInTaskbar = false; // Ẩn form khỏi thanh taskbar 
@@ -47,9 +41,9 @@ namespace BankManagement
             //Cập nhật các thuộc tính bind với form
             lbStaffNameInfoStaffForm.Text = viewModel.GetStaffName();
             lbUserNameInfoStaffForm.Text = viewModel.GetUserName();
-            lbBranchInfoStaffForm.Text = langHelper.GetString("Branch") + ": " + viewModel.GetWorkingBranch();
-            lbJobPositionInfoStaffForm.Text = langHelper.GetString("Position") + ": " + viewModel.GetJobPosition();
-            btnLogOutInfoStaffForm.Text = langHelper.GetString("Log out");
+            lbBranchInfoStaffForm.Text = LangHelper.Instance.GetString("Branch") + ": " + viewModel.GetWorkingBranch();
+            lbJobPositionInfoStaffForm.Text = LangHelper.Instance.GetString("Position") + ": " + viewModel.GetJobPosition();
+            btnLogOutInfoStaffForm.Text = LangHelper.Instance.GetString("Log out");
 
 
 			// Cập nhật ảnh của PictureBox từ file
@@ -65,7 +59,7 @@ namespace BankManagement
 				}
 				else
 				{
-                    CustomMessageBox.ShowBox(langHelper.GetString("Error image file not found!"), "Error");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Error image file not found!"), "Error");
                 }
 			}
 			catch (Exception ex)

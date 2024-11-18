@@ -12,7 +12,7 @@ namespace BankManagement.Model
     internal class LogRepository
     {
         //Chuỗi kết nối database
-        private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
+        private string connectionString = getConnectionString.connectionString;
 
         //Lấy ra list log bằng staff_id -------------------------------------------------------------------------------------------------------------------------------------------------
         public DataTable searchLogByStaffId(int id, DateTime from, DateTime to)

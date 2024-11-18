@@ -19,7 +19,6 @@ namespace BankManagement
 {
     public partial class MainForm : Form
     {
-        LangHelper langHelper;
 		private int staffId; //Nhận dữ liệu truyền từ LoginForm
 		private MainViewModel viewModel;
 
@@ -29,11 +28,6 @@ namespace BankManagement
         public MainForm(int staffId)
         {
             InitializeComponent();
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
             this.Load += Main_Load;
 
 			this.staffId = staffId;//Nhận dữ liệu từ LoginForm
@@ -71,7 +65,7 @@ namespace BankManagement
 				}
 				else
 				{
-                    CustomMessageBox.ShowBox(langHelper.GetString("Error image file not found!"), "Error");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Error image file not found!"), "Error");
                 }
 			}
 			catch (Exception ex)
@@ -82,11 +76,11 @@ namespace BankManagement
         }
         void ChangeLanguage()
         {
-            lbClientServicesMain.Text = langHelper.GetString("Client Services");
-            btnCustomer.Text = langHelper.GetString("Customer");
-            btnAccount.Text = langHelper.GetString("Account");
-            btnTransaction.Text = langHelper.GetString("Transaction");
-            btnLoan.Text = langHelper.GetString("Loan");
+            lbClientServicesMain.Text = LangHelper.Instance.GetString("Client Services");
+            btnCustomer.Text = LangHelper.Instance.GetString("Customer");
+            btnAccount.Text = LangHelper.Instance.GetString("Account");
+            btnTransaction.Text = LangHelper.Instance.GetString("Transaction");
+            btnLoan.Text = LangHelper.Instance.GetString("Loan");
         }
 
 

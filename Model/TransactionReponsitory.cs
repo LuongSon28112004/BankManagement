@@ -12,7 +12,7 @@ namespace BankManagement.Model
 	internal class TransactionReponsitory
 	{
 		//Chuỗi kết nối database
-		private string connectionString = $@"Data Source={getServerName.serverName};Initial Catalog=UTCBank;Integrated Security=True;Encrypt=False";
+		private string connectionString = getConnectionString.connectionString;
 
 	
 		//thêm một transaction transfer vào trong cơ sở dữ liệu------------------------------------------------------------------------------------------------------------------------

@@ -17,16 +17,10 @@ namespace BankManagement.View
     public partial class ChangePasswordForm : Form
     {
         private int staffId;
-        LangHelper langHelper;
         ChangePasswordViewModel viewModel;
         public ChangePasswordForm(int staffId)
         {
             InitializeComponent();
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
             this.staffId = staffId;
             viewModel = new ChangePasswordViewModel();
         }
@@ -39,11 +33,11 @@ namespace BankManagement.View
         }
         void ChangeLanguage()
         {
-            lbChangePassword.Text = langHelper.GetString("Change password");
-            lbCurrentPassword.Text = langHelper.GetString("Current password");
-            lbNewPassword.Text = langHelper.GetString("New password");
-            lbReType.Text = langHelper.GetString("Re-type new password");
-            btnConfirm.Text = langHelper.GetString("Confirm");
+            lbChangePassword.Text = LangHelper.Instance.GetString("Change password");
+            lbCurrentPassword.Text = LangHelper.Instance.GetString("Current password");
+            lbNewPassword.Text = LangHelper.Instance.GetString("New password");
+            lbReType.Text = LangHelper.Instance.GetString("Re-type new password");
+            btnConfirm.Text = LangHelper.Instance.GetString("Confirm");
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -63,31 +57,31 @@ namespace BankManagement.View
         {
             if (txtCurrentPassword.Text == "")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter current password!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter current password!"), "Error");
                 txtCurrentPassword.Focus();
                 return;
             }
             if (txtNewPassword.Text == "")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter new password!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter new password!"), "Error");
                 txtNewPassword.Focus();
                 return;
             }
             if (txtReType.Text == "")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please re-type new password!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please re-type new password!"), "Error");
                 txtReType.Focus();
                 return;
             }
             if (txtNewPassword.Text.Length < 8)
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("New password must be at least 8 characters!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("New password must be at least 8 characters!"), "Error");
                 txtNewPassword.Focus();
                 return;
             }
             if (txtNewPassword.Text != txtReType.Text)
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("The password does not match!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("The password does not match!"), "Error");
                 txtReType.Focus();
                 return;
             }
@@ -97,7 +91,7 @@ namespace BankManagement.View
                 this.UpdateViewModelFromForm();
                 if (viewModel.ChangePassword())
                 {
-                    CustomMessageBox.ShowBox(langHelper.GetString("Password changed successfully!"), "Success");
+                    CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Password changed successfully!"), "Success");
                     // Đóng tất cả các form đang mở
                     foreach (Form form in Application.OpenForms.Cast<Form>().ToList())
                     {

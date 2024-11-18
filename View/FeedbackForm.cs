@@ -17,16 +17,10 @@ namespace BankManagement.View
 {
     public partial class FeedbackForm : Form
     {
-        LangHelper langHelper;
         FeedBackViewModel viewModel;
         int StaffId;
         public FeedbackForm(int StaffId)
         {
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
             viewModel = new FeedBackViewModel();
             this.StaffId = StaffId;
             InitializeComponent();
@@ -39,13 +33,13 @@ namespace BankManagement.View
         }
         void ChangeLanguage()
         {
-            lbFeedbackFeedbackForm.Text = langHelper.GetString("Feedback");
-            lbTitleFeedbackForm.Text = langHelper.GetString("Title");
-            txtTitleFeedbackForm.PlaceholderText = langHelper.GetString("Summary of the problem");
-            lbDescriptionsFeedbackForm.Text = langHelper.GetString("Descriptiones");
-            txtDescriptionsFeedbackForm.PlaceholderText = langHelper.GetString("Describe in detail the problems, requirements...");
-            lbRattingFeedbackForm.Text = langHelper.GetString("How would you rate your experience with this app?");
-            btnSendFeedbackForm.Text = langHelper.GetString("Send Feedback");
+            lbFeedbackFeedbackForm.Text = LangHelper.Instance.GetString("Feedback");
+            lbTitleFeedbackForm.Text = LangHelper.Instance.GetString("Title");
+            txtTitleFeedbackForm.PlaceholderText = LangHelper.Instance.GetString("Summary of the problem");
+            lbDescriptionsFeedbackForm.Text = LangHelper.Instance.GetString("Descriptiones");
+            txtDescriptionsFeedbackForm.PlaceholderText = LangHelper.Instance.GetString("Describe in detail the problems, requirements...");
+            lbRattingFeedbackForm.Text = LangHelper.Instance.GetString("How would you rate your experience with this app?");
+            btnSendFeedbackForm.Text = LangHelper.Instance.GetString("Send Feedback");
         }
 
 
@@ -130,12 +124,12 @@ namespace BankManagement.View
         {
             if(txtTitleFeedbackForm.Text == "" || txtDescriptionsFeedbackForm.Text == "")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please fill in all information!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please fill in all information!"), "Error");
                 return;
             }
             if(n == 0)
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please select from 1 to 5 stars to rate your experience!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please select from 1 to 5 stars to rate your experience!"), "Error");
                 return;
             }
             this.updateViewModelFromForm();

@@ -16,18 +16,12 @@ namespace BankManagement.View
 {
     public partial class NotifyForm : Form
     {
-        LangHelper langHelper;
         private int StaffId;
         private NotifyViewModel viewModel;
         public NotifyForm(int staffId)
         {
             InitializeComponent();
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
-            lbNotificationsLogForm.Text = langHelper.GetString("Notifications");
+            lbNotificationsLogForm.Text = LangHelper.Instance.GetString("Notifications");
             viewModel = new NotifyViewModel();
             SetupForm();
             this.StaffId = staffId;

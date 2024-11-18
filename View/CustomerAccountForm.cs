@@ -19,7 +19,7 @@ namespace BankManagement.View
 {
     public partial class CustomerAccountForm : Form
     {
-        LangHelper langHelper;
+
         AccountViewModel viewModel;
         private int staffId;
         private int accountCustomerId;
@@ -27,11 +27,6 @@ namespace BankManagement.View
         public CustomerAccountForm(int staffId)
         {
             InitializeComponent();
-            langHelper = new LangHelper();
-            if (ConfigurationManager.AppSettings["Language"] != "")
-            {
-                langHelper.ChangeLanguage(ConfigurationManager.AppSettings["Language"]);
-            }
             viewModel = new AccountViewModel();
             this.reset();
             this.ShowInTaskbar = false; //Ẩn khỏi thanh taskbar
@@ -52,25 +47,25 @@ namespace BankManagement.View
         //Thay đổi ngôn ngữ------------------------------------------------------------------------------------------------------------------------------------------------
         void ChangeLanguage()
         {
-            lbGenderCustomerAccountForm.Text = langHelper.GetString("Gender");
-            lbCustomerAccountCustomerAccountForm.Text = langHelper.GetString("Customer Account");
-            txtSearchByCCCDCustomerAccountForm.PlaceholderText = langHelper.GetString("Search by CCCD");
-            btnSearchByCCCDCustomerAccountForm.Text = langHelper.GetString("Search");
-            lbCustomerNameCustomerAccountForm.Text = langHelper.GetString("Customer Name");
-            lbDateOfBirthCustomerAccountForm.Text = langHelper.GetString("Date of birth");
-            lbAddressCustomerAccountForm.Text = langHelper.GetString("Address");
-            txtAddressCustomerAccountForm.PlaceholderText = langHelper.GetString("Ward - District - City");
-            lbAccountNumberCustomerAccountForm.Text = langHelper.GetString("Account Number");
-            lbOpenDateCustomerAccountForm.Text = langHelper.GetString("Open date");
-            lbUsernameCustomerAccountForm.Text = langHelper.GetString("Username");
-            txtUsernameCustomerAccountForm.PlaceholderText = langHelper.GetString("Customise");
-            lbBalanceCustomerAccountForm.Text = langHelper.GetString("Balance");
-            btnActiveCustomerAccountForm.Text = langHelper.GetString("Active");
-            btnStatementCustomerAccountForm.Text = langHelper.GetString("Statement");
-            btnAddCustomerAccountForm.Text = langHelper.GetString("Add");
-            btnDeleteCustomerAccountForm.Text = langHelper.GetString("Delete");
-            btnSearchByAccountNumberCustomerAccountForm.Text = langHelper.GetString("Search");
-            txtSearchAccountNumberAccountCustomerForm.PlaceholderText = langHelper.GetString("Account Number");
+            lbGenderCustomerAccountForm.Text = LangHelper.Instance.GetString("Gender");
+            lbCustomerAccountCustomerAccountForm.Text = LangHelper.Instance.GetString("Customer Account");
+            txtSearchByCCCDCustomerAccountForm.PlaceholderText = LangHelper.Instance.GetString("Search by CCCD");
+            btnSearchByCCCDCustomerAccountForm.Text = LangHelper.Instance.GetString("Search");
+            lbCustomerNameCustomerAccountForm.Text = LangHelper.Instance.GetString("Customer Name");
+            lbDateOfBirthCustomerAccountForm.Text = LangHelper.Instance.GetString("Date of birth");
+            lbAddressCustomerAccountForm.Text = LangHelper.Instance.GetString("Address");
+            txtAddressCustomerAccountForm.PlaceholderText = LangHelper.Instance.GetString("Ward - District - City");
+            lbAccountNumberCustomerAccountForm.Text = LangHelper.Instance.GetString("Account Number");
+            lbOpenDateCustomerAccountForm.Text = LangHelper.Instance.GetString("Open date");
+            lbUsernameCustomerAccountForm.Text = LangHelper.Instance.GetString("Username");
+            txtUsernameCustomerAccountForm.PlaceholderText = LangHelper.Instance.GetString("Customise");
+            lbBalanceCustomerAccountForm.Text = LangHelper.Instance.GetString("Balance");
+            btnActiveCustomerAccountForm.Text = LangHelper.Instance.GetString("Active");
+            btnStatementCustomerAccountForm.Text = LangHelper.Instance.GetString("Statement");
+            btnAddCustomerAccountForm.Text = LangHelper.Instance.GetString("Add");
+            btnDeleteCustomerAccountForm.Text = LangHelper.Instance.GetString("Delete");
+            btnSearchByAccountNumberCustomerAccountForm.Text = LangHelper.Instance.GetString("Search");
+            txtSearchAccountNumberAccountCustomerForm.PlaceholderText = LangHelper.Instance.GetString("Account Number");
         }
 
 
@@ -178,20 +173,20 @@ namespace BankManagement.View
         {
             if (lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please fill in all information!"), "Error"); 
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please fill in all information!"), "Error"); 
                 return;
             }
             //Khi khách hàng không còn tồn tại trong hệ thống
             if (lbCustomerInfStatusCustomerAccountForm.Text == "Inactive") 
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("This customer no longer exists in the system!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("This customer no longer exists in the system!"), "Error");
                 return;
             }
 
             this.updateViewModelFromForm();
             if(txtUsernameCustomerAccountForm.Text == "")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please enter username!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please enter username!"), "Error");
                 return;
             }
             try
@@ -233,12 +228,12 @@ namespace BankManagement.View
         {
             if (txtAccountNumberCustomerAccountForm.Text == "0000000000" || lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please select the account to delete!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please select the account to delete!"), "Error");
                 return;
             }    
             if (lbAccountStatusCustomerAccountForm.Text == "Inactive")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("This account has been deleted!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("This account has been deleted!"), "Error");
                 return;
             }
             this.updateViewModelFromForm();
@@ -274,7 +269,7 @@ namespace BankManagement.View
             txtUsernameCustomerAccountForm.ReadOnly = false;
             txtAccountNumberCustomerAccountForm.Text = "000xxxxxxx";
             txtSearchByCCCDCustomerAccountForm.Text = "";
-            lbCustomerNameCustomerAccountForm.Text = langHelper.GetString("Customer Name");
+            lbCustomerNameCustomerAccountForm.Text = LangHelper.Instance.GetString("Customer Name");
             lbCCCDCustomerAccountForm.Text = "024xxxxxxxxx";
             txtDateOfBirthCustomerAccountForm.Text = "";
             txtGenderCustomerAccountForm.Text = "";
@@ -315,12 +310,12 @@ namespace BankManagement.View
         {
             if (txtAccountNumberCustomerAccountForm.Text == "000xxxxxxx" || lbCCCDCustomerAccountForm.Text == "024xxxxxxxxx")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please select an account!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please select an account!"), "Error");
                 return;
             }
             if (lbCustomerInfStatusCustomerAccountForm.Text == "Inactive")
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("This account cannot be activated because the customer is no longer active!"), "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("This account cannot be activated because the customer is no longer active!"), "Error");
                 return;
             }
 
@@ -539,9 +534,9 @@ namespace BankManagement.View
 
         private void BtnStatementCustomerAccountForm_Click(object sender, EventArgs e)
         {
-            if(lbCustomerNameCustomerAccountForm.Text == langHelper.GetString("Customer Name"))
+            if(lbCustomerNameCustomerAccountForm.Text == LangHelper.Instance.GetString("Customer Name"))
             {
-                CustomMessageBox.ShowBox(langHelper.GetString("Please select the account you want to statement!") , "Error");
+                CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please select the account you want to statement!") , "Error");
                 return;
             }
             viewModel.getAllTransferByIdAccount(this.accountCustomerId);
