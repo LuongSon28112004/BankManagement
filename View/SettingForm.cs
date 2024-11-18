@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Windows.Forms;
 using BankManagement.ViewModel;
 using System.IO;
+using System.Xml;
 
 namespace BankManagement.View
 {
@@ -87,14 +88,14 @@ namespace BankManagement.View
             if (btn_id == "1")
             {
                 // Mở tệp cấu hình hiện tại
-                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None); 
-
+                //var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None); 
+                
                 // Cập nhật giá trị cho `Language`
-                config.AppSettings.Settings["Language"].Value = "vi";
+                //config.AppSettings.Settings["Language"].Value = "vi";
 
                 // Lưu thay đổi vào tệp cấu hình
-                config.Save(ConfigurationSaveMode.Modified);
-
+                //config.Save(ConfigurationSaveMode.Modified);
+                UpdateAppConfig("Language", "vi");
                 // Yêu cầu tải lại các cài đặt để thay đổi có hiệu lực
                 ConfigurationManager.RefreshSection("appSettings");
                 // Đóng tất cả các form đang mở
@@ -117,16 +118,21 @@ namespace BankManagement.View
             if (btn_id == "1")
             {
                 // Mở tệp cấu hình hiện tại
-                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                //var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
                 // Cập nhật giá trị cho `Language`
-                config.AppSettings.Settings["Language"].Value = "";
+                //config.AppSettings.Settings["Language"].Value = "";
 
                 // Lưu thay đổi vào tệp cấu hình
-                config.Save(ConfigurationSaveMode.Modified);
+                //config.Save(ConfigurationSaveMode.Modified);
+                UpdateAppConfig("Language", "");
+
 
                 // Yêu cầu tải lại các cài đặt để thay đổi có hiệu lực
                 ConfigurationManager.RefreshSection("appSettings");
+
+                
+
                 // Đóng tất cả các form đang mở
                 foreach (Form form in Application.OpenForms.Cast<Form>().ToList())
                 {
@@ -140,12 +146,13 @@ namespace BankManagement.View
         }
         private void RestartApplication()
         {
-            // Khởi động lại ứng dụng bằng cách sử dụng lệnh debug của Visual Studio
+            // Khởi động lại ứng dụng
             System.Diagnostics.Process.Start("cmd.exe", "/C start \"\" \"" + System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName + "\"");
 
             // Thoát ứng dụng hiện tại
             Application.Exit();
         }
+
 
 
         //Vô hiệu hoá tài khoản
@@ -181,6 +188,46 @@ namespace BankManagement.View
             var startPos = new Point(this.Location.X + (this.Width - changePasswordForm.Width) / 2 + 1, this.Location.Y + 36);
             changePasswordForm.Location = startPos;
             changePasswordForm.ShowDialog();
+        }
+
+
+        private void UpdateAppConfig(string key, string value)
+        {
+            // Đường dẫn tới file App.config
+            string appConfigPath = "..\\..\\App.config"; // Thay đường dẫn bằng chính xác tệp App.config của bạn
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(appConfigPath);
+
+            // Tìm phần tử appSettings
+            XmlNode appSettingsNode = xmlDoc.SelectSingleNode("configuration/appSettings");
+
+            if (appSettingsNode != null)
+            {
+                // Tìm khóa cần cập nhật
+                XmlNode settingNode = appSettingsNode.SelectSingleNode($"add[@key='{key}']");
+
+                if (settingNode != null)
+                {
+                    // Nếu tồn tại, cập nhật giá trị
+                    XmlAttribute valueAttribute = settingNode.Attributes["value"];
+                    if (valueAttribute != null)
+                    {
+                        valueAttribute.Value = value;
+                    }
+                }
+                else
+                {
+                    // Nếu không tồn tại, thêm mới
+                    XmlElement newSetting = xmlDoc.CreateElement("add");
+                    newSetting.SetAttribute("key", key);
+                    newSetting.SetAttribute("value", value);
+                    appSettingsNode.AppendChild(newSetting);
+                }
+
+                // Lưu lại tệp App.config
+                xmlDoc.Save(appConfigPath);
+            }
         }
     }
 }

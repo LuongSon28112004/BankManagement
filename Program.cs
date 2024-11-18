@@ -17,6 +17,10 @@ namespace BankManagement
         [STAThread]
         static void Main()
         {
+            if (!System.Diagnostics.Debugger.IsAttached)
+            {
+                System.Diagnostics.Debugger.Launch();
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //DateTime time = DateTime.Now;

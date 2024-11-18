@@ -124,7 +124,7 @@ namespace BankManagement.View
             // Vô hiệu hóa nút để tránh click nhiều lần
             btnTransferTransactionForm.Enabled = false;
 
-            if (lbCustomerNameSendTransactionForm.Text == LangHelper.Instance.GetString("") || lbCustomerNameReceiveTransactionForm.Text == "Customer Name")
+            if (lbCustomerNameSendTransactionForm.Text == LangHelper.Instance.GetString("Customer Name") || lbCustomerNameReceiveTransactionForm.Text == LangHelper.Instance.GetString("Customer Name"))
 			{
                 CustomMessageBox.ShowBox(LangHelper.Instance.GetString("Please fill in all information!"), "Error");
                 btnTransferTransactionForm.Enabled = true;
