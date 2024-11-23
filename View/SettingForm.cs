@@ -88,14 +88,15 @@ namespace BankManagement.View
             if (btn_id == "1")
             {
                 // Mở tệp cấu hình hiện tại
-                //var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None); 
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None); 
                 
                 // Cập nhật giá trị cho `Language`
-                //config.AppSettings.Settings["Language"].Value = "vi";
+                config.AppSettings.Settings["Language"].Value = "vi";
 
                 // Lưu thay đổi vào tệp cấu hình
-                //config.Save(ConfigurationSaveMode.Modified);
+                config.Save(ConfigurationSaveMode.Modified);
                 UpdateAppConfig("Language", "vi");
+
                 // Yêu cầu tải lại các cài đặt để thay đổi có hiệu lực
                 ConfigurationManager.RefreshSection("appSettings");
                 // Đóng tất cả các form đang mở
@@ -118,13 +119,13 @@ namespace BankManagement.View
             if (btn_id == "1")
             {
                 // Mở tệp cấu hình hiện tại
-                //var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
                 // Cập nhật giá trị cho `Language`
-                //config.AppSettings.Settings["Language"].Value = "";
+                config.AppSettings.Settings["Language"].Value = "";
 
-                // Lưu thay đổi vào tệp cấu hình
-                //config.Save(ConfigurationSaveMode.Modified);
+                //Lưu thay đổi vào tệp cấu hình
+                config.Save(ConfigurationSaveMode.Modified);
                 UpdateAppConfig("Language", "");
 
 
